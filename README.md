@@ -1,6 +1,6 @@
 # ChainFlow 官网 V0.1
 
-ChainFlow 是一个基于 Next.js、React 和 Tailwind CSS 的单页 Landing Page。当前版本围绕 RouteFlow、NetworkFlow、Prototype Skills 和试点服务入口组织内容，目标是获得第一批真实供应链场景与试点用户。
+ChainFlow 是一个基于 Next.js、React 和 Tailwind CSS 的单页 Landing Page。当前版本围绕 RouteFlow、NetworkFlow、后续工具规划和试点服务入口组织内容，目标是获得第一批真实供应链场景与试点用户。
 
 ## 本地运行
 
@@ -67,10 +67,10 @@ git push -u origin main
 
 ## 后续修改
 
-- 修改导航、Skill、案例、服务、未来方向、联系信息：`lib/content.ts`
+- 修改导航、工具、案例、服务、未来方向、联系信息：`lib/content.ts`
 - 修改首页组件结构：`app/page.tsx`
 - 修改各区块视觉和布局：`components/`
 - 修改全局配色、按钮、动效：`app/globals.css` 和 `tailwind.config.ts`
 - 替换首屏视觉资产：替换 `public/chainflow-hero-flow.png`，保持文件名不变即可
 
-当前占位联系方式在 `lib/content.ts` 的 `contactLinks` 中。
+当前占位联系方式在 `lib/content.ts` 的 `siteContent.zh.contact.links` 和 `siteContent.en.contact.links` 中。

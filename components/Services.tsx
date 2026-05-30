@@ -1,24 +1,30 @@
 import { ArrowRight, Check } from "lucide-react";
-import { services } from "@/lib/content";
+import { siteContent, type Language } from "@/lib/content";
 import { SectionHeader } from "./SectionHeader";
 
-export function Services() {
+type ServicesProps = {
+  lang: Language;
+};
+
+export function Services({ lang }: ServicesProps) {
+  const copy = siteContent[lang];
+
   return (
     <section id="services" className="section-band bg-paper">
       <div className="mx-auto max-w-7xl px-5 py-20 lg:px-8 lg:py-28">
         <div className="flex flex-col justify-between gap-8 md:flex-row md:items-end">
           <SectionHeader
-            eyebrow="Industrial AI Supply Chain Services"
-            title="Turn one painful workflow into a usable AI tool."
-            subtitle="For early users who want to start with one concrete supply chain workflow, then move toward deployment."
+            eyebrow={copy.servicesHeader.eyebrow}
+            title={copy.servicesHeader.title}
+            subtitle={copy.servicesHeader.subtitle}
           />
           <a href="#contact" className="btn-outline w-fit">
-            Start a Pilot
+            {copy.servicesCta}
           </a>
         </div>
 
         <div className="mt-14 grid gap-5 lg:grid-cols-4">
-          {services.map((service, index) => (
+          {copy.services.map((service, index) => (
             <article key={service.name} className="relative rounded-2xl border border-line bg-rice p-6 shadow-soft">
               <div className="mb-7 flex items-center justify-between">
                 <span className="text-sm text-ink/50">0{index + 1}</span>
