@@ -1,6 +1,6 @@
-# ChainFlow 官网 V0.1
+# ChainFlow 官网 V0.2
 
-ChainFlow 是一个基于 Next.js、React 和 Tailwind CSS 的单页 Landing Page。当前版本围绕 RouteFlow、NetworkFlow、后续工具规划和试点服务入口组织内容，目标是获得第一批真实供应链场景与试点用户。
+ChainFlow 是一个基于 Next.js、React 和 Tailwind CSS 的供应链 AI 工具箱网站。当前版本围绕“省时间 / 做判断 / 看见网络”组织首页，重点展示 RouteFlow、NetworkFlow、Pricing 和第一批试点入口。
 
 ## 本地运行
 
@@ -61,14 +61,15 @@ git push -u origin main
 后续需要绑定自定义域名时：
 
 1. 在 Vercel 项目中进入 `Settings` -> `Domains`。
-2. 添加你的域名，例如 `chainflow.ai` 或 `www.chainflow.ai`。
+2. 添加你的域名，例如 `chainflowlab.com` 或 `www.chainflowlab.com`。
 3. 按 Vercel 提示到域名服务商添加 DNS 记录。
 4. 等待 DNS 生效后，Vercel 会自动签发 HTTPS 证书。
 
 ## 后续修改
 
-- 修改导航、工具、案例、服务、未来方向、联系信息：`lib/content.ts`
+- 修改导航、工具、Pricing、未来方向、联系信息：`lib/content.ts`
 - 修改首页组件结构：`app/page.tsx`
+- 修改 Demo 页面：`app/tools/routeflow/page.tsx`、`app/tools/networkflow/page.tsx` 和 `components/ToolDemoPage.tsx`
 - 修改各区块视觉和布局：`components/`
 - 修改全局配色、按钮、动效：`app/globals.css` 和 `tailwind.config.ts`
 - 替换首屏视觉资产：替换 `public/chainflow-hero-flow.png`，保持文件名不变即可

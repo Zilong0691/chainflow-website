@@ -31,7 +31,7 @@ export function ThreeLayers({ lang }: ThreeLayersProps) {
               <p className="mt-4 min-h-16 text-base leading-7 text-ink/70">{layer.summary}</p>
 
               <div className="mt-7">
-                <p className="text-sm font-medium text-ink/50">{layer.coversLabel}</p>
+                <p className="text-sm font-medium text-ink/50">{copy.labels.bestFor}</p>
                 <div className="mt-3 flex flex-wrap gap-2">
                   {layer.scenes.map((scene) => (
                     <span key={scene} className="rounded-full border border-line bg-paper px-3 py-1.5 text-sm text-ink/70">

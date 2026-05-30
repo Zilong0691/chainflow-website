@@ -13,6 +13,8 @@ const config: Config = {
         graphite: "#080b09",
         paper: "#f5f1e9",
         rice: "#fffaf0",
+        gold: "#d7b15d",
+        ember: "#f2c76a",
         jade: "#1f8f84",
         moss: "#637464",
         clay: "#b77852",

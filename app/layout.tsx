@@ -3,9 +3,10 @@ import type { ReactNode } from "react";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "ChainFlow | AI-native supply chain flow",
+  metadataBase: new URL("https://chainflowlab.com"),
+  title: "ChainFlow | Supply Chain AI Toolbox",
   description:
-    "ChainFlow explores how AI can reduce friction, improve decisions, and create better connections across global supply chains.",
+    "ChainFlow is a supply chain AI toolbox for small businesses, buyers, and operators.",
   openGraph: {
     title: "ChainFlow",
     description: "让供应链，如水流动。",

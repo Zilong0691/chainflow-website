@@ -11,35 +11,35 @@ export function WhyChainFlow({ lang }: WhyChainFlowProps) {
   return (
     <section id="vision" className="section-band bg-graphite text-rice">
       <div className="mx-auto max-w-7xl px-5 py-20 lg:px-8 lg:py-28">
-        <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
-          <SectionHeader
-            eyebrow={copy.why.eyebrow}
-            title={copy.why.title}
-            subtitle={copy.why.subtitle}
-            tone="dark"
-          />
-          <div className="space-y-6 text-lg leading-9 text-rice/70">
-            {copy.why.paragraphs.map((paragraph) => (
-              <p key={paragraph}>{paragraph}</p>
-            ))}
-          </div>
-        </div>
+        <SectionHeader
+          eyebrow={copy.threeWaysHeader.eyebrow}
+          title={copy.threeWaysHeader.title}
+          subtitle={copy.threeWaysHeader.subtitle}
+          tone="dark"
+        />
 
-        <div className="mt-16">
-          <div className="grid gap-3 md:grid-cols-5">
-            {copy.flowSteps.map((step, index) => (
-              <div key={step.term} className="flow-step">
-                <div className="flex items-center justify-between">
-                  <span className="text-sm text-rice/50">0{index + 1}</span>
-                  {index < copy.flowSteps.length - 1 ? (
-                    <span className="hidden h-px flex-1 bg-rice/20 md:ml-4 md:block" />
-                  ) : null}
-                </div>
-                <h3 className="mt-5 text-2xl font-semibold text-rice">{step.term}</h3>
-                <p className="mt-3 text-sm leading-6 text-rice/60">{step.description}</p>
+        <div className="mt-14 grid gap-px overflow-hidden rounded-2xl border border-rice/10 bg-rice/10 lg:grid-cols-3">
+          {copy.threeWays.map((item, index) => (
+            <article key={item.layer} className="bg-graphite p-6 md:p-8">
+              <div className="mb-8 flex items-center justify-between">
+                <span className="text-sm text-rice/40">0{index + 1}</span>
+                <span className="rounded-full border border-gold/25 bg-gold/10 px-3 py-1 text-xs text-gold">
+                  {item.layer}
+                </span>
               </div>
-            ))}
-          </div>
+              <h3 className="text-3xl font-semibold leading-tight text-rice">{item.title}</h3>
+              {lang === "zh" ? <p className="mt-2 text-base text-rice/50">{item.englishTitle}</p> : null}
+              <p className="mt-6 text-base leading-8 text-rice/70">{item.description}</p>
+              {lang === "zh" ? <p className="mt-3 text-sm leading-7 text-rice/50">{item.englishDescription}</p> : null}
+              <div className="mt-7 flex flex-wrap gap-2">
+                {item.examples.map((example) => (
+                  <span key={example} className="rounded-full border border-rice/10 bg-rice/[0.045] px-3 py-1.5 text-xs text-rice/70">
+                    {example}
+                  </span>
+                ))}
+              </div>
+            </article>
+          ))}
         </div>
       </div>
     </section>
