@@ -28,9 +28,7 @@ export function WhyChainFlow({ lang }: WhyChainFlowProps) {
                 </span>
               </div>
               <h3 className="text-3xl font-semibold leading-tight text-rice">{item.title}</h3>
-              {lang === "zh" ? <p className="mt-2 text-base text-rice/50">{item.englishTitle}</p> : null}
               <p className="mt-6 text-base leading-8 text-rice/70">{item.description}</p>
-              {lang === "zh" ? <p className="mt-3 text-sm leading-7 text-rice/50">{item.englishDescription}</p> : null}
               <div className="mt-7 flex flex-wrap gap-2">
                 {item.examples.map((example) => (
                   <span key={example} className="rounded-full border border-rice/10 bg-rice/[0.045] px-3 py-1.5 text-xs text-rice/70">

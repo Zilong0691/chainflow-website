@@ -3,8 +3,8 @@
 import { useEffect, useState } from "react";
 import { About } from "@/components/About";
 import { BeyondScripts } from "@/components/BeyondScripts";
+import { Cases } from "@/components/Cases";
 import { Contact } from "@/components/Contact";
-import { DemoSection } from "@/components/DemoSection";
 import { Footer } from "@/components/Footer";
 import { FutureDirections } from "@/components/FutureDirections";
 import { Hero } from "@/components/Hero";
@@ -40,7 +40,7 @@ export function SiteShell() {
         <WhyChainFlow lang={lang} />
         <ThreeLayers lang={lang} />
         <Skills lang={lang} />
-        <DemoSection lang={lang} />
+        <Cases lang={lang} />
         <BeyondScripts lang={lang} />
         <Services lang={lang} />
         <FutureDirections lang={lang} />

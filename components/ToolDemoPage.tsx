@@ -13,7 +13,7 @@ export function ToolDemoPage({ slug }: ToolDemoPageProps) {
       <section className="relative isolate overflow-hidden">
         <div className="absolute inset-0 -z-20 bg-[radial-gradient(circle_at_72%_32%,rgba(215,177,93,0.18)_0%,rgba(31,143,132,0.08)_32%,rgba(8,11,9,0.96)_70%)]" />
         <div className="mx-auto max-w-7xl px-5 py-10 lg:px-8">
-          <a href="/#demo" className="inline-flex items-center gap-2 text-sm text-rice/70 transition hover:text-gold">
+          <a href="/#skills" className="inline-flex items-center gap-2 text-sm text-rice/70 transition hover:text-gold">
             <ArrowLeft size={16} />
             Back to ChainFlow
           </a>
@@ -52,7 +52,7 @@ export function ToolDemoPage({ slug }: ToolDemoPageProps) {
         </div>
       </section>
 
-      <section className="border-t border-rice/10 bg-rice text-ink">
+      <section className="border-t border-rice/10 bg-graphite text-rice">
         <div className="mx-auto grid max-w-7xl gap-5 px-5 py-20 lg:grid-cols-3 lg:px-8 lg:py-24">
           <DemoPanel title={demo.inputTitle} items={demo.inputs} />
           <DemoPanel title={demo.outputTitle} items={demo.outputs} featured />
@@ -60,11 +60,11 @@ export function ToolDemoPage({ slug }: ToolDemoPageProps) {
         </div>
       </section>
 
-      <section className="bg-paper">
+      <section className="bg-graphite text-rice">
         <div className="mx-auto max-w-7xl px-5 py-16 lg:px-8">
-          <div className="rounded-2xl border border-line bg-rice p-6 md:p-8">
-            <p className="text-sm font-medium text-jade">Safety note</p>
-            <p className="mt-3 max-w-4xl text-base leading-8 text-ink/70">
+          <div className="rounded-2xl border border-rice/10 bg-rice/[0.045] p-6 md:p-8">
+            <p className="text-sm font-medium text-gold">Safety note</p>
+            <p className="mt-3 max-w-4xl text-base leading-8 text-rice/70">
               当前 Demo 使用脱敏 mock data，仅展示输入结构、输出形式、地图预览和报告结构。不公开课程题目、原始 Excel、API Key、完整源码或任何真实企业 / 个人敏感数据。
             </p>
           </div>
@@ -76,12 +76,12 @@ export function ToolDemoPage({ slug }: ToolDemoPageProps) {
 
 function DemoPanel({ title, items, featured = false }: { title: string; items: readonly string[]; featured?: boolean }) {
   return (
-    <article className={`rounded-2xl border p-6 shadow-soft ${featured ? "border-gold/35 bg-gold/10" : "border-line bg-paper"}`}>
-      <h2 className="text-xl font-semibold text-ink">{title}</h2>
+    <article className={`rounded-2xl border p-6 ${featured ? "border-gold/35 bg-gold/10" : "border-rice/10 bg-rice/[0.045]"}`}>
+      <h2 className="text-xl font-semibold text-rice">{title}</h2>
       <div className="mt-6 grid gap-3">
         {items.map((item) => (
-          <div key={item} className="flex gap-3 text-sm leading-7 text-ink/70">
-            <CheckCircle2 className="mt-1 shrink-0 text-jade" size={16} />
+          <div key={item} className="flex gap-3 text-sm leading-7 text-rice/70">
+            <CheckCircle2 className="mt-1 shrink-0 text-gold" size={16} />
             <span>{item}</span>
           </div>
         ))}

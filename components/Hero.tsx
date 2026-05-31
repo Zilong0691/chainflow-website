@@ -32,7 +32,7 @@ export function Hero({ lang }: HeroProps) {
               {copy.primaryCta}
               <ArrowRight size={18} />
             </a>
-            <a href="#demo" className="btn-ghost">
+            <a href="#skills" className="btn-ghost">
               <Sparkles size={18} />
               {copy.secondaryCta}
             </a>
