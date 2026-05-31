@@ -7,6 +7,7 @@ type ContactProps = {
 
 export function Contact({ lang }: ContactProps) {
   const copy = siteContent[lang].contact;
+  const emailHref = copy.links.find((link) => link.href.startsWith("mailto:"))?.href ?? "#contact";
 
   return (
     <section id="contact" className="section-band bg-graphite text-rice">
@@ -18,7 +19,7 @@ export function Contact({ lang }: ContactProps) {
             <p className="mt-6 text-2xl leading-tight text-rice/80">{copy.subtitle}</p>
             <p className="mt-8 max-w-2xl text-lg leading-9 text-rice/70">{copy.body}</p>
             <p className="mt-5 max-w-2xl text-base leading-8 text-rice/60">{copy.pilot}</p>
-            <a href="mailto:your-email@example.com" className="btn-primary mt-10">
+            <a href={emailHref} className="btn-primary mt-10">
               <Mail size={18} />
               {copy.cta}
             </a>

@@ -227,10 +227,10 @@ export const siteContent = {
       pilot: "适合中小企业老板、个人店铺老板、职业采购人员、物流 / 仓储 / 运营负责人和准备出海的小团队。",
       cta: "Start a Pilot",
       links: [
-        { label: "Email", value: "your-email@example.com", href: "mailto:your-email@example.com" },
-        { label: "WeChat", value: "待补充", href: "#contact" },
-        { label: "GitHub", value: "待补充", href: "#contact" },
-        { label: "Domain", value: "chainflowlab.com", href: "#contact" }
+        { label: "Email", value: "zilong@chainflowlab.com", href: "mailto:zilong@chainflowlab.com" },
+        { label: "WeChat", value: "邮件联系获取", href: "mailto:zilong@chainflowlab.com" },
+        { label: "GitHub", value: "Zilong0691", href: "https://github.com/Zilong0691" },
+        { label: "Website", value: "chainflowlab.com", href: "https://chainflowlab.com" }
       ]
     },
     footer: {
@@ -454,10 +454,10 @@ export const siteContent = {
       pilot: "Built for small business owners, shop owners, professional buyers, logistics / warehouse / operations leads, and teams expanding globally.",
       cta: "Start a Pilot",
       links: [
-        { label: "Email", value: "your-email@example.com", href: "mailto:your-email@example.com" },
-        { label: "WeChat", value: "Coming Soon", href: "#contact" },
-        { label: "GitHub", value: "Coming Soon", href: "#contact" },
-        { label: "Domain", value: "chainflowlab.com", href: "#contact" }
+        { label: "Email", value: "zilong@chainflowlab.com", href: "mailto:zilong@chainflowlab.com" },
+        { label: "WeChat", value: "Available by email", href: "mailto:zilong@chainflowlab.com" },
+        { label: "GitHub", value: "Zilong0691", href: "https://github.com/Zilong0691" },
+        { label: "Website", value: "chainflowlab.com", href: "https://chainflowlab.com" }
       ]
     },
     footer: {
