@@ -296,8 +296,8 @@ export const siteContent = {
         layer: "Efficiency Layer",
         title: "Save Time",
         englishTitle: "Save Time",
-        description: "Turn repetitive, time-consuming, error-prone supply chain work into AI Skills.",
-        englishDescription: "Turn repetitive supply chain work into practical AI Skills.",
+        description: "Turn repetitive, time-consuming, error-prone supply chain work into AI toolkits.",
+        englishDescription: "Turn repetitive supply chain work into practical AI toolkits.",
         examples: ["Excel processing", "Procurement email", "Quote comparison", "Inventory checks", "Delivery routing", "Warehouse screening"]
       },
       {
@@ -483,7 +483,7 @@ export const siteContent = {
     },
     futureHeader: {
       eyebrow: "Long-term Exploration",
-      title: "From one Skill toward deeper supply chain intelligence."
+      title: "From one toolkit toward deeper supply chain intelligence."
     },
     futureDirections: [
       { title: "Multi-tier Supply Maps", description: "Explore Tier-2 / Tier-3 risk, alternative paths, and deeper supplier relationships." },
@@ -506,7 +506,7 @@ export const siteContent = {
       eyebrow: "Pilot",
       title: "Looking for the first 5 pilot users.",
       subtitle: "Bring one real supply chain problem.",
-      body: "You can provide a sanitized spreadsheet or a real workflow problem. ChainFlow will judge whether it fits an AI Skill or decision intelligence approach, then suggest a small pilot.",
+      body: "You can provide a sanitized spreadsheet or a real workflow problem. ChainFlow will judge whether it fits an AI toolkit or decision intelligence approach, then suggest a small pilot.",
       pilot: "Built for small business owners, shop owners, professional buyers, logistics / warehouse / operations leads, and teams expanding globally.",
       cta: "Start a Pilot",
       links: [
