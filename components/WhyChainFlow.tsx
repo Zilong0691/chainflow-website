@@ -55,7 +55,7 @@ export function WhyChainFlow({ lang }: WhyChainFlowProps) {
                 <div key={step.label} className="relative rounded-xl border border-rice/10 bg-graphite/70 p-4">
                   <p className="text-xs text-rice/35">0{index + 1}</p>
                   <p className="mt-3 text-base font-semibold text-gold">{step.label}</p>
-                  <p className="mt-1 text-sm font-medium text-rice">{step.cn}</p>
+                  {step.cn !== step.label ? <p className="mt-1 text-sm font-medium text-rice">{step.cn}</p> : null}
                   <p className="mt-3 text-xs leading-5 text-rice/55">{step.description}</p>
                 </div>
               ))}

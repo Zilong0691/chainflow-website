@@ -55,7 +55,7 @@ export function Skills({ lang }: SkillsProps) {
               <p className="text-sm font-medium text-gold">{copy.comingSoonHeader}</p>
               <p className="mt-2 max-w-2xl text-sm leading-7 text-rice/60">
                 {lang === "zh"
-                  ? "后续工具包会逐步补可体验 Demo，现在先把两个可演示工具做深。"
+                  ? "后续工具包会逐步补可体验演示，现在先把两个可演示工具做深。"
                   : "Future toolkits will receive interactive demos gradually. The current focus is making the two ready demos strong."}
               </p>
             </div>
@@ -173,7 +173,7 @@ function DemoWorkbench({ lang, tool }: { lang: Language; tool: Tool }) {
     <div className="mt-8 rounded-2xl border border-gold/25 bg-[linear-gradient(135deg,rgba(215,177,93,0.12),rgba(255,250,240,0.035))] p-5 shadow-soft md:p-8">
       <div className="flex flex-col justify-between gap-5 lg:flex-row lg:items-end">
         <div>
-          <p className="text-sm font-medium text-gold">{tool.name} Demo</p>
+          <p className="text-sm font-medium text-gold">{lang === "zh" ? `${tool.name} 演示` : `${tool.name} Demo`}</p>
           <h3 className="mt-2 text-3xl font-semibold leading-tight text-rice">{demo.title}</h3>
           <p className="mt-3 max-w-3xl text-sm leading-7 text-rice/65">{demo.subtitle}</p>
         </div>
@@ -339,8 +339,8 @@ function getDemoConfig(slug: ToolSlug, lang: Language, mode: "balanced" | "cost"
       ],
       metrics: metrics[mode],
       nodes: ["left-[22%] top-[28%]", "left-[42%] top-[20%]", "left-[66%] top-[35%]", "left-[74%] top-[62%]", "left-[48%] top-[72%]", "left-[25%] top-[60%]"],
-      primaryCta: zh ? "Get Lite Version ¥399" : "Get Lite Version ¥399",
-      secondaryCta: zh ? "Customize This Skill" : "Customize This Skill"
+      primaryCta: zh ? "获取轻量版 ¥399" : "Get Lite Version ¥399",
+      secondaryCta: zh ? "定制这个工具" : "Customize This Skill"
     };
   }
 
@@ -410,7 +410,7 @@ function getDemoConfig(slug: ToolSlug, lang: Language, mode: "balanced" | "cost"
     ],
     metrics: metrics[mode],
     nodes: ["left-[18%] top-[32%]", "left-[38%] top-[20%]", "left-[62%] top-[36%]", "left-[76%] top-[62%]", "left-[48%] top-[74%]", "left-[24%] top-[58%]"],
-    primaryCta: zh ? "Get Lite Version ¥199" : "Get Lite Version ¥199",
-    secondaryCta: zh ? "Customize This Skill" : "Customize This Skill"
+    primaryCta: zh ? "获取轻量版 ¥199" : "Get Lite Version ¥199",
+    secondaryCta: zh ? "定制这个工具" : "Customize This Skill"
   };
 }

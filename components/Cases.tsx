@@ -34,13 +34,13 @@ export function Cases({ lang }: CasesProps) {
 
               <div className="mt-7 grid gap-4">
                 {[
-                  ["Problem", item.problem],
-                  ["Data", item.data],
-                  ["Method", item.method],
-                  ["Output", item.output],
-                  ["Business Value", item.value],
-                  ["Limitation", item.limitation],
-                  ["Next Step", item.nextStep]
+                  [copy.caseLabels.problem, item.problem],
+                  [copy.caseLabels.data, item.data],
+                  [copy.caseLabels.method, item.method],
+                  [copy.caseLabels.output, item.output],
+                  [copy.caseLabels.value, item.value],
+                  [copy.caseLabels.limitation, item.limitation],
+                  [copy.caseLabels.nextStep, item.nextStep]
                 ].map(([label, value]) => (
                   <div key={label} className="border-t border-rice/10 pt-4">
                     <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gold/80">{label}</p>

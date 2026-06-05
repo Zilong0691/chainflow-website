@@ -23,19 +23,19 @@ export const siteContent = {
     ],
     navCta: "预约试点",
     hero: {
-      eyebrow: "A Supply Chain × AI portfolio and product lab",
+      eyebrow: "供应链 × AI 产品实验室",
       brand: "ChainFlow",
       title: "让供应链，如水流动",
-      subtitle: "给中小企业、采购人员和企业主的供应链 AI 工具箱。",
-      body: "AI-native tools and intelligence for global supply chain flow. 从一个小工具开始，帮你看懂、管好、省心、优化、高效你的供应链。",
-      primaryCta: "Explore Tools",
-      secondaryCta: "体验 Demo",
-      tertiaryCta: "Start a Pilot"
+      subtitle: "面向供应链从业者、商家与中小企业的实用 AI 小工具实验室。",
+      body: "从一个具体问题开始，把排线、选址、核对、沟通这些耗时工作做成看得懂、用得上、有人带着跑起来的工具。",
+      primaryCta: "查看工具",
+      secondaryCta: "体验演示",
+      tertiaryCta: "预约试点"
     },
     portfolio: {
-      eyebrow: "Portfolio / Product Lab / Community Pilot",
-      title: "一个更真实的 Supply Chain × AI 产品实验室。",
-      body: "ChainFlow 既沉淀供应链 × AI 的作品与案例，也通过小而实用的 AI Skill 验证真实业务场景。它服务职业叙事，也面向认真经营的小企业、商家和供应链从业者，探索一个具体问题能否被更好地解决。",
+      eyebrow: "作品集 / 产品实验室 / 真实场景共创",
+      title: "一个更真实的供应链 × AI 产品实验室。",
+      body: "ChainFlow 既沉淀供应链 × AI 的作品与案例，也通过小而实用的 AI 小工具验证真实业务场景。它服务职业叙事，也面向认真经营的小企业、商家和供应链从业者，探索一个具体问题能否被更好地解决。",
       points: ["AI 供应链作品集", "产品实验室", "真实场景共创平台"]
     },
     threeWaysHeader: {
@@ -48,7 +48,7 @@ export const siteContent = {
         layer: "效率层",
         title: "帮你省时间",
         englishTitle: "Save Time",
-        description: "把重复、耗时、容易出错的供应链工作做成 AI Skill。",
+        description: "把重复、耗时、容易出错的供应链工作做成实用 AI 小工具。",
         englishDescription: "",
         examples: ["Excel 处理", "采购邮件", "报价对比", "库存核对", "配送排线", "仓网初步评估"]
       },
@@ -70,15 +70,15 @@ export const siteContent = {
       }
     ],
     flowLogic: {
-      eyebrow: "Why ChainFlow",
+      eyebrow: "为什么做 ChainFlow",
       title: "企业不缺更多资讯，缺的是能变成行动的判断。",
       body: "ChainFlow 不做普通供应链资讯推送。真正有价值的不是更多信息，而是和自己有关、被判断过、能省时间、做决策、找机会、降风险的信息。",
       steps: [
-        { label: "Data", cn: "数据", description: "原始表格、邮件、订单、库存和物流信息。" },
-        { label: "Signal", cn: "信号", description: "从杂乱数据里识别有价值的变化与异常。" },
-        { label: "Insight", cn: "判断", description: "把信号转化为风险、机会和方案比较。" },
-        { label: "Action", cn: "行动", description: "输出可执行的工具、报告、路线、清单或建议。" },
-        { label: "Flow", cn: "流动", description: "让工作流、决策流和供应链连接更顺畅。" }
+        { label: "数据", cn: "数据", description: "原始表格、邮件、订单、库存和物流信息。" },
+        { label: "信号", cn: "信号", description: "从杂乱数据里识别有价值的变化与异常。" },
+        { label: "判断", cn: "判断", description: "把信号转化为风险、机会和方案比较。" },
+        { label: "行动", cn: "行动", description: "输出可执行的工具、报告、路线、清单或建议。" },
+        { label: "流动", cn: "流动", description: "让工作流、决策流和供应链连接更顺畅。" }
       ]
     },
     layersHeader: {
@@ -110,11 +110,11 @@ export const siteContent = {
       }
     ],
     toolsHeader: {
-      eyebrow: "Tools / Skills",
-      title: "每个 Skill，先解决一个具体问题。",
-      subtitle: "Tools 是瑞士军刀里的每一把刀：明确问题、输入、输出，并提供 Free Demo、Lite Version 和 Custom Development 三个入口。"
+      eyebrow: "工具与技能",
+      title: "每个工具，先解决一个具体问题。",
+      subtitle: "工具不是概念展示，而是一把能拿来用的刀：说明它解决什么、适合谁、需要什么输入、会交付什么输出。不会代码也可以先看演示；需要落地时，可以用模板教程，也可以手把手部署到本地。"
     },
-    toolsDemoCta: "先试 Demo",
+    toolsDemoCta: "先看演示",
     labels: {
       problem: "解决什么问题",
       bestFor: "适合谁",
@@ -132,16 +132,16 @@ export const siteContent = {
         bestFor: ["同城配送", "小车队", "门店补货", "区域分拨"],
         inputs: ["订单表", "地址", "车辆", "时间窗", "货量"],
         outputs: ["路线方案", "司机任务表", "地图", "简短报告"],
-        pricing: "Free Demo ¥0 / Lite Version ¥199 买断 / Custom Development From ¥2999",
-        status: "可体验 Demo",
-        cta: "体验 Demo",
+        pricing: "免费演示 ¥0 / 轻量版 ¥199 买断 / 定制部署 ¥2999 起",
+        status: "可体验演示",
+        cta: "体验演示",
         href: commonToolLinks.routeflow,
         demoInput: ["18 个订单", "3 台车辆", "2 个时间窗", "单仓出发"],
         demoOutput: ["3 条配送路线", "预计里程 86.4 公里", "车辆装载率 82%", "异常地址 1 个"],
         plans: [
-          { name: "Free Demo", price: "¥0", cta: "View Demo" },
-          { name: "Lite Version", price: "¥199 买断", cta: "Get Lite Version" },
-          { name: "Custom Development", price: "From ¥2999", cta: "Customize This Skill" }
+          { name: "免费演示", price: "¥0", cta: "查看演示" },
+          { name: "轻量版", price: "¥199 买断", cta: "获取轻量版" },
+          { name: "定制部署", price: "¥2999 起", cta: "定制这个工具" }
         ]
       },
       {
@@ -153,16 +153,16 @@ export const siteContent = {
         bestFor: ["区域仓规划", "出海仓布局", "经销网络优化"],
         inputs: ["需求城市", "候选仓", "成本参数", "服务范围"],
         outputs: ["推荐仓点", "分配方案", "成本拆分", "地图", "决策报告"],
-        pricing: "Free Demo ¥0 / Lite Version ¥399 买断 / Custom Development From ¥2999",
-        status: "可体验 Demo",
-        cta: "体验 Demo",
+        pricing: "免费演示 ¥0 / 轻量版 ¥399 买断 / 定制部署 ¥2999 起",
+        status: "可体验演示",
+        cta: "体验演示",
         href: commonToolLinks.networkflow,
         demoInput: ["9 个需求城市", "5 个候选仓", "固定成本约束", "服务半径 350 公里"],
         demoOutput: ["推荐 2 个仓点", "覆盖率 94%", "成本下降 11.8%", "备用方案 2 个"],
         plans: [
-          { name: "Free Demo", price: "¥0", cta: "View Demo" },
-          { name: "Lite Version", price: "¥399 买断", cta: "Get Lite Version" },
-          { name: "Custom Development", price: "From ¥2999", cta: "Customize This Skill" }
+          { name: "免费演示", price: "¥0", cta: "查看演示" },
+          { name: "轻量版", price: "¥399 买断", cta: "获取轻量版" },
+          { name: "定制部署", price: "¥2999 起", cta: "定制这个工具" }
         ]
       }
     ],
@@ -174,46 +174,55 @@ export const siteContent = {
       { name: "DemandFlow", title: "需求预测助手" }
     ],
     demoHeader: {
-      eyebrow: "工具包 Demo",
+      eyebrow: "工具演示",
       title: "先看示例效果，再决定从哪一个问题开始。",
-      subtitle: "每个 Demo 都使用脱敏 mock 数据，只展示输入结构、输出结果和报告形态。"
+      subtitle: "演示展示的是一个模糊业务需求如何被整理成输入、计算过程和可交付结果。"
     },
     pricingHeader: {
-      eyebrow: "Pricing",
-      title: "Start Small. Solve One Real Problem.",
-      subtitle: "Try a demo, buy one focused Skill, or customize it with your own data."
+      eyebrow: "价格",
+      title: "先从一个真实问题开始。",
+      subtitle: "你可以先看演示，再选择一个聚焦工具，或者用自己的真实流程做定制部署。"
     },
     pricingCards: [
       {
-        name: "Free Demo",
+        name: "免费演示",
         price: "¥0",
         items: ["查看 RouteFlow / NetworkFlow 示例", "查看地图和输出", "不上传真实数据", "不开放源码"],
-        cta: "View Free Demo"
+        cta: "查看免费演示"
       },
       {
-        name: "Skill Lite",
-        price: "From ¥199",
-        items: ["RouteFlow Lite：¥199", "NetworkFlow Lite：¥399", "标准模板", "示例数据", "基础教程", "买断使用"],
-        cta: "Choose a Skill"
+        name: "工具轻量版",
+        price: "¥199 起",
+        items: ["RouteFlow 轻量版：¥199", "NetworkFlow 轻量版：¥399", "标准模板", "示例数据", "基础教程", "买断使用"],
+        cta: "选择一个工具"
       },
       {
-        name: "Custom Skill",
-        price: "From ¥2999",
-        items: ["用你的真实表格适配", "修改字段和模板", "输出定制报告", "本地部署", "远程讲解"],
-        cta: "Customize a Skill"
+        name: "定制部署",
+        price: "¥2999 起",
+        items: ["用你的真实表格适配", "修改字段和模板", "输出定制报告", "手把手本地部署", "远程讲解"],
+        cta: "定制一个工具"
       },
       {
-        name: "AI Diagnosis",
+        name: "AI 流程诊断",
         price: "¥999",
         items: ["60 分钟访谈", "梳理一个供应链流程", "找出 3 个 AI 可改造点", "给出优先级", "输出一页建议"],
-        cta: "Book Diagnosis"
+        cta: "预约诊断"
       }
     ],
-    pricingNotes: ["GoGlobal Supply Chain Diagnosis：¥2999", "Decision Intelligence Project：From ¥8000"],
+    pricingNotes: ["出海供应链诊断：¥2999", "决策智能项目：¥8000 起"],
     casesHeader: {
-      eyebrow: "Portfolio Case Library",
+      eyebrow: "案例库",
       title: "把供应链问题，沉淀成可讲清楚的 AI 应用案例。",
-      subtitle: "每个案例都用 Problem / Data / Method / Output / Value / Limitation / Next Step 记录，服务作品集展示和真实试点验证。"
+      subtitle: "每个案例都按照问题、数据、方法、输出、业务价值、当前限制、下一步来记录，既能展示能力，也能沉淀真实试点经验。"
+    },
+    caseLabels: {
+      problem: "问题",
+      data: "数据",
+      method: "方法",
+      output: "输出",
+      value: "业务价值",
+      limitation: "当前限制",
+      nextStep: "下一步"
     },
     cases: [
       {
@@ -255,27 +264,27 @@ export const siteContent = {
       title: "不止是一段代码",
       subtitle: "单个脚本很容易被复制，但真正有价值的是把供应链问题变成可运行、可交付、可复用的工作流。",
       cta: "预约试点",
-      items: ["真实场景理解", "数据模板设计", "字段和口径适配", "工作流搭建", "可读输出", "本地部署", "傻瓜教程", "持续优化"]
+      items: ["真实场景理解", "数据模板设计", "字段和口径适配", "工作流搭建", "可读输出", "手把手部署", "傻瓜教程", "持续优化"]
     },
     community: {
-      eyebrow: "Community Pilot",
+      eyebrow: "真实场景共创",
       title: "真实场景共创计划",
       subtitle: "每月 3 个免费部署名额。",
-      body: "ChainFlow 不只是一个作品集或产品实验。它也希望验证：实用 AI 工具能否真正帮助真实商家和小企业解决供应链难题。",
-      fitTitle: "适合对象",
-      includesTitle: "免费试点包含",
-      excludesTitle: "免费试点不包含",
-      fit: ["业务确实存在供应链、采购、库存、物流、仓储或配送问题", "商家或小企业口碑良好", "认真经营", "对员工友善", "愿意提供脱敏数据", "愿意提供真实反馈", "认可这是一次小规模试点，而不是长期免费服务"],
-      includes: ["一个明确的供应链相关问题", "一个 ChainFlow AI Skill", "一次脱敏数据试跑", "一次基础结果演示", "一份简短说明或操作建议", "一次反馈沟通"],
-      excludes: ["长期运维", "多轮复杂定制", "ERP / WMS / SRM 系统对接", "大规模数据清洗", "无限修改", "敏感数据处理", "商业机密责任承担", "长期免费顾问服务"],
-      primaryCta: "Apply for Free Pilot",
-      secondaryCta: "Start a Paid Pilot"
+      body: "如果你真的在被库存、采购、调度、仓储或配送问题消耗，我希望和你一起试一次：把一个具体问题拆清楚，用一个小工具跑一遍，看它能不能省下一点时间，减少一点混乱。",
+      fitTitle: "我在找这样的你",
+      includesTitle: "这次共创会一起做什么",
+      excludesTitle: "为了把事情做好，也需要先说清边界",
+      fit: ["正在被采购、库存、调度、物流这些事折腾得焦头烂额", "试过一些办法，但要么太贵，要么不够贴近自己的生意", "在认真经营自己的业务，也善待跟着自己做事的人", "愿意拿出一个真实问题和一份可讨论的数据", "愿意花一点时间告诉我真实感受，哪里有用，哪里没用", "明白这是一次小范围实验，不是永久的免费服务"],
+      includes: ["一起把一个供应链相关问题讲清楚", "选择一个最适合的 ChainFlow 工具", "用你的样例数据或脱敏数据试跑一次", "演示基础结果和可视化输出", "给出一份简短说明或操作建议", "做一次反馈沟通，判断下一步值不值得继续"],
+      excludes: ["长期运维和随叫随到", "多轮复杂定制", "ERP / WMS / SRM 系统对接", "大规模数据清洗", "无限修改", "敏感数据或商业机密责任承担", "长期免费顾问服务"],
+      primaryCta: "申请免费试点",
+      secondaryCta: "开始付费试点"
     },
     openNotes: {
-      eyebrow: "Open Notes",
+      eyebrow: "开放笔记",
       title: "开放笔记",
       body: "ChainFlow 会开放部分非敏感模板、示例和方法笔记，供供应链从业者参考。可运行工具包、部署版本和定制工作流，将通过试点和服务交付。",
-      cta: "View GitHub Notes"
+      cta: "查看 GitHub 笔记"
     },
     futureHeader: {
       eyebrow: "长期探索",
@@ -289,21 +298,21 @@ export const siteContent = {
     about: {
       eyebrow: "关于",
       title: "ChainFlow Lab",
-      subtitle: "Personal Product Lab",
+      subtitle: "个人产品实验室",
       statement: "ChainFlow Lab 是一个个人产品实验室，探索 AI 在真实供应链工作流中的应用。",
       paragraphs: [
-        "由赵子龙（走了尤）发起，关注汽车供应链、采购运营、物流优化、供应链韧性、中国企业出海，以及 AI Agent 在业务流程中的落地。",
+        "由赵子龙（走了尤）发起，关注汽车供应链、采购运营、物流优化、供应链韧性、中国企业出海，以及 AI 智能体在业务流程中的落地。",
         "ChainFlow 会从小而实用的工具开始，逐步探索决策智能与供应链网络洞察。"
       ],
       focusLabel: "我关注",
-      focusAreas: ["汽车供应链", "采购运营", "物流优化", "供应链韧性", "中国企业出海", "AI Agent 在真实业务场景中的落地"]
+      focusAreas: ["汽车供应链", "采购运营", "物流优化", "供应链韧性", "中国企业出海", "AI 智能体在真实业务场景中的落地"]
     },
     contact: {
       eyebrow: "试点",
-      title: "寻找前 5 个真实供应链场景试点用户。",
-      subtitle: "正在寻找前 5 个真实供应链场景试点用户。",
-      body: "你可以提供一个脱敏表格或一个真实流程问题。ChainFlow 会判断是否适合用 AI 工具包或决策智能方法解决，并给出一个小试点建议。",
-      pilot: "适合中小企业老板、个人店铺老板、职业采购人员、物流 / 仓储 / 运营负责人和准备出海的小团队。",
+      title: "从一个真实问题开始聊。",
+      subtitle: "不用准备完整方案，先把困扰你的流程讲清楚。",
+      body: "你可以发来一个模糊需求、一份表格，或者只是描述一个每天反复消耗人的供应链问题。ChainFlow 会先判断它适不适合做成小工具，再给出一个低门槛的试点建议。",
+      pilot: "适合供应链相关从业者、商家、中小企业，以及正在处理采购、库存、物流、仓储、配送或出海供应链问题的团队。",
       cta: "预约试点",
       links: [
         { label: "邮箱", value: "zilong@chainflowlab.com", href: "mailto:zilong@chainflowlab.com" },
@@ -314,7 +323,7 @@ export const siteContent = {
     },
     footer: {
       brand: "ChainFlow Lab",
-      line: "AI-native tools and intelligence for global supply chain flow."
+      line: "让供应链，如水流动。"
     }
   },
   en: {
@@ -521,6 +530,15 @@ export const siteContent = {
       title: "Turn supply chain problems into clear AI application cases.",
       subtitle: "Each case is documented through Problem / Data / Method / Output / Value / Limitation / Next Step, so it can support both career storytelling and real pilot validation."
     },
+    caseLabels: {
+      problem: "Problem",
+      data: "Data",
+      method: "Method",
+      output: "Output",
+      value: "Business Value",
+      limitation: "Limitation",
+      nextStep: "Next Step"
+    },
     cases: [
       {
         title: "RouteFlow: Short-haul delivery routing",
@@ -631,29 +649,41 @@ export const demoPages = {
   routeflow: {
     name: "RouteFlow",
     title: "短途配送排线助手",
-    subtitle: "把订单表转化为车辆排线方案、司机任务表和地图预览。",
-    price: "Free Demo ¥0 / Lite Version ¥199 买断 / Custom Development From ¥2999",
-    inputTitle: "示例输入结构",
-    outputTitle: "示例输出预览",
-    reportTitle: "示例报告结构",
-    inputs: ["订单编号", "收货地址", "货量", "时间窗", "车辆容量", "仓库起点"],
-    outputs: ["车辆 A：7 单，预计 31.2 公里", "车辆 B：6 单，预计 28.7 公里", "车辆 C：5 单，预计 26.5 公里", "发现 1 个地址需人工复核"],
-    report: ["路线概览", "司机任务表", "异常地址提示", "里程与装载率摘要"],
-    primaryCta: "Get Lite Version",
-    secondaryCta: "Customize This Skill"
+    subtitle: "把一张并不完美的订单表，整理成车辆排线方案、司机任务表、异常提醒和可视化路线图。",
+    price: "免费演示 ¥0 / 轻量版 ¥199 买断 / 定制部署 ¥2999 起",
+    storyTitle: "模拟业务场景",
+    story: "一家门店配送团队每天凌晨要把几百个订单排给不同车型。地址写法不统一，货量有大有小，部分订单有时间窗，人工排线既慢又容易把路线绕远。",
+    painTitle: "客户一开始说不清的痛点",
+    dataTitle: "拿到的数据通常长这样",
+    processTitle: "工具怎么运作",
+    outputTitle: "最后能交付什么",
+    reportTitle: "结果预览",
+    pains: ["订单每天变化，靠经验排线很难复用", "地址、站点、重量、体积字段不完全标准", "不同车型容量不同，超载和空载都浪费", "老板想要地图和司机任务表，而不是一堆代码"],
+    inputs: ["订单编号、收货地址、站点名", "重量、体积、件数等货量字段", "车辆车型、重量容量、体积容量", "配送中心地址、发车时间、回站时间", "可选时间窗和特殊规则"],
+    process: ["自动识别地址、重量、体积、站点等字段", "把地址转成可计算的坐标，标出异常地址", "建立带容量和时间窗约束的车辆路径模型", "计算车辆分配、配送顺序、里程和装载率", "生成 Excel、JSON 和交互式 HTML 地图"],
+    outputs: ["路线 1：金杯车，12 个站点，约 21 公里，05:24 前回站", "路线 2：4.2 米车，覆盖外环以外高货量订单", "输出司机任务表：每站顺序、到达时间、货量、异常提示", "输出地图：按路线筛选，点击表格可定位到对应路线", "输出异常摘要：超载风险、地址需复核、时间窗风险"],
+    report: ["路线概览", "司机任务表", "路线地图", "甘特图", "异常地址提示", "里程与装载率摘要"],
+    primaryCta: "获取轻量版",
+    secondaryCta: "定制这个工具"
   },
   networkflow: {
     name: "NetworkFlow",
     title: "仓网选址评估助手",
-    subtitle: "基于需求城市、候选仓点和成本参数，快速比较仓网布局方案。",
-    price: "Free Demo ¥0 / Lite Version ¥399 买断 / Custom Development From ¥2999",
-    inputTitle: "示例输入结构",
-    outputTitle: "示例输出预览",
-    reportTitle: "示例报告结构",
-    inputs: ["需求城市", "需求量", "候选仓城市", "固定成本", "运输成本", "服务半径"],
-    outputs: ["推荐仓点：苏州 + 武汉", "覆盖率：94%", "成本下降：11.8%", "保留 2 个备用方案"],
-    report: ["候选仓对比", "需求分配表", "成本拆分", "服务范围地图", "决策建议"],
-    primaryCta: "Get Lite Version",
-    secondaryCta: "Customize This Skill"
+    subtitle: "把订单流向、候选城市和成本假设，转化为仓库布局、需求分配、成本拆分和地图化决策依据。",
+    price: "免费演示 ¥0 / 轻量版 ¥399 买断 / 定制部署 ¥2999 起",
+    storyTitle: "模拟业务场景",
+    story: "一家区域供应链团队想判断仓库应该设在哪里。现有数据只有起点、终点和订单流向，固定成本、运输费率、仓库容量都不是精确参数，但管理层需要先看到可比较的方案。",
+    painTitle: "客户一开始说不清的痛点",
+    dataTitle: "拿到的数据通常长这样",
+    processTitle: "工具怎么运作",
+    outputTitle: "最后能交付什么",
+    reportTitle: "结果预览",
+    pains: ["候选城市很多，凭感觉很难判断", "固定成本、运输成本、服务范围互相牵制", "老板关心的不只是最便宜，还要看覆盖和备选方案", "数据不完整，但需要先做一版可讨论的模型"],
+    inputs: ["起点城市、终点城市、订单流向", "候选仓城市和可追加候选城市", "固定成本、运输费率、平均重量等假设参数", "服务半径、容量系数、仓库数量约束", "城市坐标和区域信息"],
+    process: ["从订单流向提取供应端和需求端", "补齐城市坐标，计算城市间距离", "建立固定成本 + 运输成本的两阶段选址模型", "枚举不同仓库数量并做成本曲线比较", "输出选址方案、需求分配、地图和可调参数页面"],
+    outputs: ["当前方案识别 11 个使用仓点", "示例仓点包括芜湖、开封、福州、广州、重庆等", "平均配送距离约 506.8 公里", "输出需求城市分配明细和仓库利用率", "输出可交互地图和多方案成本对比"],
+    report: ["当前选址评估", "需求分配明细", "成本拆分", "多方案比较", "服务范围地图", "决策建议"],
+    primaryCta: "获取轻量版",
+    secondaryCta: "定制这个工具"
   }
 } as const;

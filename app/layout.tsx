@@ -4,9 +4,9 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://chainflowlab.com"),
-  title: "ChainFlow | Supply Chain AI Toolbox",
+  title: "ChainFlow | Supply Chain AI Product Lab",
   description:
-    "ChainFlow is a supply chain AI toolbox for small businesses, buyers, and operators.",
+    "ChainFlow is a Supply Chain AI product lab for practical tools, workflow pilots, and decision intelligence.",
   openGraph: {
     title: "ChainFlow",
     description: "让供应链，如水流动。",

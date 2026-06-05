@@ -24,7 +24,15 @@ export function Hero({ lang }: HeroProps) {
             {copy.eyebrow}
           </p>
           <p className="mb-4 text-xl font-medium text-rice/80 md:text-2xl">{copy.brand}</p>
-          <h1 className="text-balance text-5xl font-semibold leading-[1.06] text-rice md:text-7xl">{copy.title}</h1>
+          <h1 className="text-balance text-5xl font-semibold leading-[1.06] text-rice md:text-7xl">
+            {lang === "zh" ? (
+              <>
+                让供应链，如<span className="flow-word">水流动</span>
+              </>
+            ) : (
+              copy.title
+            )}
+          </h1>
           <p className="mt-6 max-w-3xl text-xl leading-8 text-rice/80 md:text-2xl">{copy.subtitle}</p>
           <p className="mt-7 max-w-3xl text-base leading-8 text-rice/70 md:text-lg">{copy.body}</p>
           <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
@@ -43,7 +51,7 @@ export function Hero({ lang }: HeroProps) {
           </div>
         </div>
 
-        <div className="relative hidden min-h-[34rem] items-center justify-center lg:flex">
+        <div className="relative flex min-h-[18rem] items-center justify-center sm:min-h-[24rem] lg:min-h-[34rem]">
           <GlobalFlowOrb />
         </div>
       </div>
@@ -53,26 +61,30 @@ export function Hero({ lang }: HeroProps) {
 
 function GlobalFlowOrb() {
   const nodes = [
-    "left-[18%] top-[28%]",
-    "left-[34%] top-[16%]",
-    "left-[56%] top-[22%]",
-    "left-[70%] top-[38%]",
-    "left-[62%] top-[64%]",
-    "left-[40%] top-[76%]",
-    "left-[22%] top-[58%]",
-    "left-[48%] top-[46%]"
+    "left-[16%] top-[30%]",
+    "left-[30%] top-[22%]",
+    "left-[48%] top-[28%]",
+    "left-[66%] top-[35%]",
+    "left-[75%] top-[52%]",
+    "left-[58%] top-[68%]",
+    "left-[36%] top-[72%]",
+    "left-[22%] top-[56%]",
+    "left-[48%] top-[48%]"
   ];
 
   return (
-    <div className="network-orb" aria-hidden="true">
-      <div className="network-orb__ring" />
-      <div className="network-orb__ring network-orb__ring--tilt" />
-      <div className="network-orb__mesh" />
-      <div className="network-orb__pulse network-orb__pulse--one" />
-      <div className="network-orb__pulse network-orb__pulse--two" />
-      <div className="network-orb__pulse network-orb__pulse--three" />
+    <div className="supply-flow" aria-hidden="true">
+      <div className="supply-flow__hemisphere" />
+      <div className="supply-flow__grid supply-flow__grid--one" />
+      <div className="supply-flow__grid supply-flow__grid--two" />
+      <div className="supply-flow__ribbon supply-flow__ribbon--one" />
+      <div className="supply-flow__ribbon supply-flow__ribbon--two" />
+      <div className="supply-flow__ribbon supply-flow__ribbon--three" />
+      <div className="supply-flow__pulse supply-flow__pulse--one" />
+      <div className="supply-flow__pulse supply-flow__pulse--two" />
+      <div className="supply-flow__pulse supply-flow__pulse--three" />
       {nodes.map((position, index) => (
-        <span key={position} className={`network-orb__node ${position}`} style={{ animationDelay: `${index * 0.35}s` }} />
+        <span key={position} className={`supply-flow__node ${position}`} style={{ animationDelay: `${index * 0.28}s` }} />
       ))}
     </div>
   );
