@@ -132,16 +132,16 @@ export const siteContent = {
         bestFor: ["同城配送", "小车队", "门店补货", "区域分拨"],
         inputs: ["订单表", "地址", "车辆", "时间窗", "货量"],
         outputs: ["路线方案", "司机任务表", "地图", "简短报告"],
-        pricing: "免费演示 ¥0 / 轻量版 ¥199 买断 / 定制部署 ¥2999 起",
+        pricing: "Demo 免费 / 标准版 ¥399 / 定制化开发部署 ¥2999 / 陪跑咨询 ¥5999",
         status: "可体验演示",
         cta: "体验演示",
         href: commonToolLinks.routeflow,
         demoInput: ["18 个订单", "3 台车辆", "2 个时间窗", "单仓出发"],
         demoOutput: ["3 条配送路线", "预计里程 86.4 公里", "车辆装载率 82%", "异常地址 1 个"],
         plans: [
-          { name: "免费演示", price: "¥0", cta: "查看演示" },
-          { name: "轻量版", price: "¥199 买断", cta: "获取轻量版" },
-          { name: "定制部署", price: "¥2999 起", cta: "定制这个工具" }
+          { name: "Demo 免费", price: "¥0", cta: "查看演示" },
+          { name: "标准版", price: "¥399", cta: "获取标准版" },
+          { name: "定制开发", price: "¥2999 / ¥5999", cta: "定制这个工具" }
         ]
       },
       {
@@ -153,16 +153,16 @@ export const siteContent = {
         bestFor: ["区域仓规划", "出海仓布局", "经销网络优化"],
         inputs: ["需求城市", "候选仓", "成本参数", "服务范围"],
         outputs: ["推荐仓点", "分配方案", "成本拆分", "地图", "决策报告"],
-        pricing: "免费演示 ¥0 / 轻量版 ¥399 买断 / 定制部署 ¥2999 起",
+        pricing: "Demo 免费 / 标准版 ¥399 / 定制化开发部署 ¥2999 / 陪跑咨询 ¥5999",
         status: "可体验演示",
         cta: "体验演示",
         href: commonToolLinks.networkflow,
         demoInput: ["9 个需求城市", "5 个候选仓", "固定成本约束", "服务半径 350 公里"],
         demoOutput: ["推荐 2 个仓点", "覆盖率 94%", "成本下降 11.8%", "备用方案 2 个"],
         plans: [
-          { name: "免费演示", price: "¥0", cta: "查看演示" },
-          { name: "轻量版", price: "¥399 买断", cta: "获取轻量版" },
-          { name: "定制部署", price: "¥2999 起", cta: "定制这个工具" }
+          { name: "Demo 免费", price: "¥0", cta: "查看演示" },
+          { name: "标准版", price: "¥399", cta: "获取标准版" },
+          { name: "定制开发", price: "¥2999 / ¥5999", cta: "定制这个工具" }
         ]
       }
     ],
@@ -180,36 +180,36 @@ export const siteContent = {
     },
     pricingHeader: {
       eyebrow: "价格",
-      title: "先从一个真实问题开始。",
-      subtitle: "你可以先看演示，再选择一个聚焦工具，或者用自己的真实流程做定制部署。"
+      title: "SKU 保持简单，先解决一个真实问题。",
+      subtitle: "不做复杂套餐。先看免费演示，再选择标准版、定制开发部署，或一个月陪跑咨询。"
     },
     pricingCards: [
       {
-        name: "免费演示",
+        name: "Demo 免费",
         price: "¥0",
         items: ["查看 RouteFlow / NetworkFlow 示例", "查看地图和输出", "不上传真实数据", "不开放源码"],
         cta: "查看免费演示"
       },
       {
-        name: "工具轻量版",
-        price: "¥199 起",
-        items: ["RouteFlow 轻量版：¥199", "NetworkFlow 轻量版：¥399", "标准模板", "示例数据", "基础教程", "买断使用"],
-        cta: "选择一个工具"
+        name: "标准版",
+        price: "¥399",
+        items: ["一个标准版 AI 工具", "标准模板和示例数据", "基础教程", "适合标准场景", "买断使用"],
+        cta: "获取标准版"
       },
       {
-        name: "定制部署",
-        price: "¥2999 起",
+        name: "定制化开发部署",
+        price: "¥2999",
         items: ["用你的真实表格适配", "修改字段和模板", "输出定制报告", "手把手本地部署", "远程讲解"],
-        cta: "定制一个工具"
+        cta: "定制开发部署"
       },
       {
-        name: "AI 流程诊断",
-        price: "¥999",
-        items: ["60 分钟访谈", "梳理一个供应链流程", "找出 3 个 AI 可改造点", "给出优先级", "输出一页建议"],
-        cta: "预约诊断"
+        name: "定制部署 + 一个月陪跑咨询",
+        price: "¥5999",
+        items: ["包含定制化开发部署", "一个月使用陪跑", "系列诊断报告", "问题复盘与优化建议", "适合希望认真落地的团队"],
+        cta: "预约陪跑咨询"
       }
     ],
-    pricingNotes: ["出海供应链诊断：¥2999", "决策智能项目：¥8000 起"],
+    pricingNotes: [],
     casesHeader: {
       eyebrow: "案例库",
       title: "把供应链问题，沉淀成可讲清楚的 AI 应用案例。",
@@ -267,17 +267,17 @@ export const siteContent = {
       items: ["真实场景理解", "数据模板设计", "字段和口径适配", "工作流搭建", "可读输出", "手把手部署", "傻瓜教程", "持续优化"]
     },
     community: {
-      eyebrow: "真实场景共创",
-      title: "试点不是填表申请，而是先把问题讲清楚。",
-      subtitle: "每月保留 3 个免费共创名额，也接受付费小试点。",
-      body: "这一段不是再做一次销售转化，而是说明 ChainFlow 怎么和真实业务一起试。免费共创适合小范围验证；付费试点适合希望更快适配自己流程的团队。无论哪一种，都从一个具体问题开始。",
-      fitTitle: "我在找这样的你",
-      includesTitle: "这次共创会一起做什么",
-      excludesTitle: "为了把事情做好，也需要先说清边界",
-      fit: ["正在被采购、库存、调度、物流这些事折腾得焦头烂额", "试过一些办法，但要么太贵，要么不够贴近自己的生意", "在认真经营自己的业务，也善待跟着自己做事的人", "愿意拿出一个真实问题和一份可讨论的数据", "愿意花一点时间告诉我真实感受，哪里有用，哪里没用", "明白这是一次小范围实验，不是永久的免费服务"],
-      includes: ["一起把一个供应链相关问题讲清楚", "选择一个最适合的 ChainFlow 工具", "用你的样例数据或脱敏数据试跑一次", "演示基础结果和可视化输出", "给出一份简短说明或操作建议", "做一次反馈沟通，判断下一步值不值得继续"],
-      excludes: ["长期运维和随叫随到", "多轮复杂定制", "ERP / WMS / SRM 系统对接", "大规模数据清洗", "无限修改", "敏感数据或商业机密责任承担", "长期免费顾问服务"],
-      note: "如果你读到这里觉得“这说的就是我”，不用先写完整需求。到最后的联系区，发来一个问题、一张表，或者一段真实流程描述就可以。"
+      eyebrow: "小微企业公益共创",
+      title: "专门服务被主流供应链工具忽略的小微企业。",
+      subtitle: "各行业细分赛道各招募 2 位合作伙伴，先到先得，额满即止。",
+      body: "这是一个纯公益性质的计划。我相信好的技术应该惠及每一个认真做事的人，而不是只服务大公司。ChainFlow 希望和小微企业、工厂、贸易商、电商卖家一起验证：一个具体供应链问题，能不能被一个小而实用的 AI 工具改善。",
+      fitTitle: "招募对象",
+      includesTitle: "我们需要你",
+      excludesTitle: "我们提供",
+      fit: ["年营收 5000 万以下的小微企业、工厂、贸易商、电商卖家", "有明确的供应链相关痛点：采购、库存、调度、物流、仓储均可", "各行业细分赛道各招募 2 位合作伙伴", "先到先得，额满即止"],
+      includes: ["认真经营，信誉良好", "能提供脱敏的业务数据用于测试", "能给出真实、坦诚的使用反馈", "接受这是一次试点，产品可能还不完美"],
+      excludes: ["免费为你定制一个解决具体问题的 AI 工具", "全程 1 对 1 部署和使用指导", "永久免费使用该工具的基础版本", "根据真实反馈持续优化工具方向"],
+      note: "公益共创不是长期免费外包，也不处理敏感数据或商业机密责任。它适合一个边界清楚、愿意一起试、愿意真实反馈的具体问题。"
     },
     openNotes: {
       eyebrow: "开放笔记",
@@ -310,12 +310,12 @@ export const siteContent = {
       eyebrow: "试点",
       title: "最后，只需要发来一个真实问题。",
       subtitle: "不用准备完整方案，也不用先懂 AI 或代码。",
-      body: "你可以发来一个模糊需求、一份表格，或者只是描述一个每天反复消耗人的供应链问题。ChainFlow 会先判断它适不适合做成小工具，再建议走免费共创、付费小试点，还是先做一次流程诊断。",
+      body: "你可以发来一个模糊需求、一份表格，或者只是描述一个每天反复消耗人的供应链问题。ChainFlow 会先判断它适不适合做成小工具，再建议走公益共创、标准版、定制化开发部署，还是一个月陪跑咨询。",
       pilot: "适合供应链相关从业者、商家、中小企业，以及正在处理采购、库存、物流、仓储、配送或出海供应链问题的团队。",
       paths: [
-        { title: "免费共创", description: "适合一个明确问题、可提供样例数据、愿意反馈真实感受的场景。" },
-        { title: "付费小试点", description: "适合希望用自己的字段、模板和流程更快跑出第一版结果的团队。" },
-        { title: "流程诊断", description: "适合还没想清楚从哪里开始，但已经感到流程里有明显低效的人。" }
+        { title: "公益共创", description: "适合小微企业，有明确痛点，愿意提供脱敏数据和真实反馈。" },
+        { title: "定制开发部署", description: "适合希望用自己的字段、模板和流程更快跑出第一版结果的团队。" },
+        { title: "一个月陪跑咨询", description: "适合希望部署后继续复盘、优化，并形成系列诊断报告的团队。" }
       ],
       cta: "预约试点",
       links: [
@@ -431,7 +431,7 @@ export const siteContent = {
     toolsHeader: {
       eyebrow: "Tools / Skills",
       title: "Each Skill solves one concrete problem first.",
-      subtitle: "Tools are the individual blades inside the toolkit: clear problem, input, output, and three entries: Free Demo, Lite Version, and Custom Development."
+      subtitle: "Tools are the individual blades inside the toolkit: clear problem, input, output, and simple entries: free demo, standard version, custom deployment, or one-month implementation support."
     },
     toolsDemoCta: "Try Demo",
     labels: {
@@ -451,7 +451,7 @@ export const siteContent = {
         bestFor: ["Local delivery", "Small fleets", "Store replenishment", "Regional distribution"],
         inputs: ["Order sheet", "Address", "Vehicle", "Time window", "Volume"],
         outputs: ["Route plan", "Driver task sheet", "Map", "Short report"],
-        pricing: "Free Demo ¥0 / Lite Version ¥199 one-time / Custom Development From ¥2999",
+        pricing: "Free Demo ¥0 / Standard Version ¥399 / Custom Development ¥2999 / Deployment + one-month support ¥5999",
         status: "Demo Ready",
         cta: "View Demo",
         href: commonToolLinks.routeflow,
@@ -459,8 +459,8 @@ export const siteContent = {
         demoOutput: ["3 delivery routes", "86.4 km estimated distance", "82% load rate", "1 address exception"],
         plans: [
           { name: "Free Demo", price: "¥0", cta: "View Demo" },
-          { name: "Lite Version", price: "¥199 one-time", cta: "Get Lite Version" },
-          { name: "Custom Development", price: "From ¥2999", cta: "Customize This Skill" }
+          { name: "Standard Version", price: "¥399", cta: "Get Standard Version" },
+          { name: "Custom Development", price: "¥2999 / ¥5999", cta: "Customize This Skill" }
         ]
       },
       {
@@ -472,7 +472,7 @@ export const siteContent = {
         bestFor: ["Regional warehouse planning", "Outbound warehouse layout", "Dealer network optimization"],
         inputs: ["Demand cities", "Candidate warehouses", "Cost parameters", "Service range"],
         outputs: ["Recommended sites", "Allocation plan", "Cost breakdown", "Map", "Decision report"],
-        pricing: "Free Demo ¥0 / Lite Version ¥399 one-time / Custom Development From ¥2999",
+        pricing: "Free Demo ¥0 / Standard Version ¥399 / Custom Development ¥2999 / Deployment + one-month support ¥5999",
         status: "Demo Ready",
         cta: "View Demo",
         href: commonToolLinks.networkflow,
@@ -480,8 +480,8 @@ export const siteContent = {
         demoOutput: ["2 recommended sites", "94% coverage", "11.8% cost reduction", "2 backup scenarios"],
         plans: [
           { name: "Free Demo", price: "¥0", cta: "View Demo" },
-          { name: "Lite Version", price: "¥399 one-time", cta: "Get Lite Version" },
-          { name: "Custom Development", price: "From ¥2999", cta: "Customize This Skill" }
+          { name: "Standard Version", price: "¥399", cta: "Get Standard Version" },
+          { name: "Custom Development", price: "¥2999 / ¥5999", cta: "Customize This Skill" }
         ]
       }
     ],
@@ -499,8 +499,8 @@ export const siteContent = {
     },
     pricingHeader: {
       eyebrow: "Pricing",
-      title: "Start Small. Solve One Real Problem.",
-      subtitle: "Try a demo, buy one focused Skill, or customize it with your own data."
+      title: "Simple SKUs. One real problem first.",
+      subtitle: "No complex packages: free demo, standard version, custom deployment, or one-month implementation support."
     },
     pricingCards: [
       {
@@ -510,25 +510,25 @@ export const siteContent = {
         cta: "View Free Demo"
       },
       {
-        name: "Skill Lite",
-        price: "From ¥199",
-        items: ["RouteFlow Lite: ¥199", "NetworkFlow Lite: ¥399", "Standard templates", "Sample data", "Basic tutorial", "One-time use package"],
-        cta: "Choose a Skill"
+        name: "Standard Version",
+        price: "¥399",
+        items: ["One standard AI tool", "Standard templates and sample data", "Basic tutorial", "Built for standard scenarios", "One-time use package"],
+        cta: "Get Standard Version"
       },
       {
-        name: "Custom Skill",
-        price: "From ¥2999",
+        name: "Custom Development Deployment",
+        price: "¥2999",
         items: ["Adapt to your real spreadsheet", "Modify fields and templates", "Custom report outputs", "Local deployment", "Remote walkthrough"],
-        cta: "Customize a Skill"
+        cta: "Customize Deployment"
       },
       {
-        name: "AI Diagnosis",
-        price: "¥999",
-        items: ["60-minute interview", "Map one supply chain workflow", "Find 3 AI improvement points", "Prioritize next actions", "One-page recommendation"],
-        cta: "Book Diagnosis"
+        name: "Deployment + One-month Support",
+        price: "¥5999",
+        items: ["Includes custom deployment", "One-month implementation support", "Series of diagnosis reports", "Review and optimization suggestions", "For teams serious about adoption"],
+        cta: "Book Support"
       }
     ],
-    pricingNotes: ["GoGlobal Supply Chain Diagnosis: ¥2999", "Decision Intelligence Project: From ¥8000"],
+    pricingNotes: [],
     casesHeader: {
       eyebrow: "Portfolio Case Library",
       title: "Turn supply chain problems into clear AI application cases.",
@@ -586,17 +586,17 @@ export const siteContent = {
       items: ["Real context understanding", "Data template design", "Field and metric adaptation", "Workflow building", "Readable outputs", "Local deployment", "Simple tutorials", "Continuous improvement"]
     },
     community: {
-      eyebrow: "Community Pilot",
-      title: "A pilot starts by making one problem clear.",
-      subtitle: "3 free co-creation spots per month, plus paid small pilots.",
-      body: "This section explains how ChainFlow tests real workflows. Free co-creation is for small validation. Paid pilots are for teams that want faster adaptation to their own fields and process. Both start from one concrete problem.",
-      fitTitle: "Who I am looking for",
-      includesTitle: "What we will do together",
-      excludesTitle: "Clear boundaries",
-      fit: ["A real supply chain, procurement, inventory, logistics, warehousing, or delivery problem", "A merchant or small business with a good reputation", "Serious long-term operation", "Friendly treatment of employees", "Willingness to provide sanitized data", "Willingness to provide real feedback", "Understanding that this is a small pilot, not a long-term free service"],
-      includes: ["One clearly defined supply-chain-related problem", "One ChainFlow AI Skill", "One sanitized data trial run", "One basic result demo", "A short explanation or operating suggestion", "One feedback conversation"],
-      excludes: ["Long-term maintenance", "Multiple rounds of complex customization", "ERP / WMS / SRM integration", "Large-scale data cleaning", "Unlimited revisions", "Sensitive data processing", "Commercial secret liability", "Long-term free consulting"],
-      note: "If this feels like your situation, you do not need a complete brief. Use the final contact section and send one problem, one spreadsheet, or a short workflow description."
+      eyebrow: "Public-interest Co-creation for Micro Businesses",
+      title: "For micro businesses overlooked by mainstream supply chain tools.",
+      subtitle: "Recruiting 2 partners in each industry niche, first come first served.",
+      body: "This is a public-interest plan. Good technology should benefit people who work seriously, not only large companies. ChainFlow wants to work with micro businesses, factories, trading companies, and ecommerce sellers to test whether one concrete supply chain problem can be improved by a small practical AI tool.",
+      fitTitle: "Who can apply",
+      includesTitle: "What we need from you",
+      excludesTitle: "What we provide",
+      fit: ["Annual revenue below RMB 50 million", "Micro businesses, factories, trading companies, ecommerce sellers", "A clear supply chain pain point: procurement, inventory, scheduling, logistics, or warehousing", "2 partners recruited in each industry niche, first come first served"],
+      includes: ["Serious operation and good reputation", "Sanitized business data for testing", "Honest usage feedback", "Acceptance that this is a pilot and the product may not be perfect"],
+      excludes: ["A free customized AI tool for one concrete problem", "1-on-1 deployment and usage guidance", "Permanent free use of the basic version", "Continuous direction improvement based on real feedback"],
+      note: "This is public-interest co-creation, not long-term free outsourcing. It does not handle sensitive data or commercial-secret liability. It works best for one clear, bounded problem."
     },
     openNotes: {
       eyebrow: "Open Notes",
@@ -629,12 +629,12 @@ export const siteContent = {
       eyebrow: "Pilot",
       title: "Send one real problem.",
       subtitle: "You do not need a complete plan or technical background.",
-      body: "You can send a rough need, a spreadsheet, or a short description of a recurring supply chain problem. ChainFlow will first judge whether it fits a practical tool, then suggest free co-creation, a paid pilot, or a workflow diagnosis.",
+      body: "You can send a rough need, a spreadsheet, or a short description of a recurring supply chain problem. ChainFlow will first judge whether it fits a practical tool, then suggest public-interest co-creation, the standard version, custom deployment, or one-month support.",
       pilot: "Built for small business owners, shop owners, professional buyers, logistics / warehouse / operations leads, and teams expanding globally.",
       paths: [
-        { title: "Free co-creation", description: "For one clear problem, sample data, and honest workflow feedback." },
-        { title: "Paid small pilot", description: "For teams that want their own fields, templates, and process adapted quickly." },
-        { title: "Workflow diagnosis", description: "For people who feel the process is inefficient but are not sure where to start." }
+        { title: "Public-interest co-creation", description: "For micro businesses with a clear pain point, sanitized data, and honest feedback." },
+        { title: "Custom development deployment", description: "For teams that want their own fields, templates, and process adapted quickly." },
+        { title: "One-month support", description: "For teams that need follow-up, review, optimization, and diagnosis reports after deployment." }
       ],
       cta: "Start a Pilot",
       links: [
@@ -658,7 +658,7 @@ export const demoPages = {
     name: "RouteFlow",
     title: "短途配送排线助手",
     subtitle: "把一张并不完美的订单表，整理成车辆排线方案、司机任务表、异常提醒和可视化路线图。",
-    price: "免费演示 ¥0 / 轻量版 ¥199 买断 / 定制部署 ¥2999 起",
+    price: "Demo 免费 / 标准版 ¥399 / 定制化开发部署 ¥2999 / 定制部署 + 一个月陪跑咨询 ¥5999",
     storyTitle: "模拟业务场景",
     story: "一家门店配送团队每天凌晨要把几百个订单排给不同车型。地址写法不统一，货量有大有小，部分订单有时间窗，人工排线既慢又容易把路线绕远。",
     painTitle: "客户一开始说不清的痛点",
@@ -671,14 +671,14 @@ export const demoPages = {
     process: ["自动识别地址、重量、体积、站点等字段", "把地址转成可计算的坐标，标出异常地址", "建立带容量和时间窗约束的车辆路径模型", "计算车辆分配、配送顺序、里程和装载率", "生成 Excel、JSON 和交互式 HTML 地图"],
     outputs: ["路线 1：金杯车，12 个站点，约 21 公里，05:24 前回站", "路线 2：4.2 米车，覆盖外环以外高货量订单", "输出司机任务表：每站顺序、到达时间、货量、异常提示", "输出地图：按路线筛选，点击表格可定位到对应路线", "输出异常摘要：超载风险、地址需复核、时间窗风险"],
     report: ["路线概览", "司机任务表", "路线地图", "甘特图", "异常地址提示", "里程与装载率摘要"],
-    primaryCta: "获取轻量版",
+    primaryCta: "获取标准版",
     secondaryCta: "定制这个工具"
   },
   networkflow: {
     name: "NetworkFlow",
     title: "仓网选址评估助手",
     subtitle: "把订单流向、候选城市和成本假设，转化为仓库布局、需求分配、成本拆分和地图化决策依据。",
-    price: "免费演示 ¥0 / 轻量版 ¥399 买断 / 定制部署 ¥2999 起",
+    price: "Demo 免费 / 标准版 ¥399 / 定制化开发部署 ¥2999 / 定制部署 + 一个月陪跑咨询 ¥5999",
     storyTitle: "模拟业务场景",
     story: "一家区域供应链团队想判断仓库应该设在哪里。现有数据只有起点、终点和订单流向，固定成本、运输费率、仓库容量都不是精确参数，但管理层需要先看到可比较的方案。",
     painTitle: "客户一开始说不清的痛点",
@@ -691,7 +691,7 @@ export const demoPages = {
     process: ["从订单流向提取供应端和需求端", "补齐城市坐标，计算城市间距离", "建立固定成本 + 运输成本的两阶段选址模型", "枚举不同仓库数量并做成本曲线比较", "输出选址方案、需求分配、地图和可调参数页面"],
     outputs: ["当前方案识别 11 个使用仓点", "示例仓点包括芜湖、开封、福州、广州、重庆等", "平均配送距离约 506.8 公里", "输出需求城市分配明细和仓库利用率", "输出可交互地图和多方案成本对比"],
     report: ["当前选址评估", "需求分配明细", "成本拆分", "多方案比较", "服务范围地图", "决策建议"],
-    primaryCta: "获取轻量版",
+    primaryCta: "获取标准版",
     secondaryCta: "定制这个工具"
   }
 } as const;

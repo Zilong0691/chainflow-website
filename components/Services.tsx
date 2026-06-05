@@ -41,13 +41,15 @@ export function Services({ lang }: ServicesProps) {
           ))}
         </div>
 
-        <div className="mt-6 flex flex-wrap justify-center gap-3">
-          {copy.pricingNotes.map((note) => (
-            <span key={note} className="rounded-full border border-gold/25 bg-gold/10 px-4 py-2 text-sm text-gold">
-              {note}
-            </span>
-          ))}
-        </div>
+        {copy.pricingNotes.length > 0 ? (
+          <div className="mt-6 flex flex-wrap justify-center gap-3">
+            {copy.pricingNotes.map((note) => (
+              <span key={note} className="rounded-full border border-gold/25 bg-gold/10 px-4 py-2 text-sm text-gold">
+                {note}
+              </span>
+            ))}
+          </div>
+        ) : null}
       </div>
     </section>
   );
