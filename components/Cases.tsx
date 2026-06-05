@@ -31,11 +31,22 @@ export function Cases({ lang }: CasesProps) {
 
               <h3 className="text-2xl font-semibold leading-tight text-rice">{item.title}</h3>
               <p className="mt-3 text-sm font-medium text-gold">{item.audience}</p>
-              <p className="mt-6 text-sm leading-7 text-rice/60">{item.pain}</p>
 
-              <div className="mt-7 rounded-xl border border-gold/25 bg-gold/10 p-4">
-                <p className="text-sm font-semibold text-gold">{item.skill}</p>
-                <p className="mt-2 text-sm leading-7 text-rice/75">{item.result}</p>
+              <div className="mt-7 grid gap-4">
+                {[
+                  ["Problem", item.problem],
+                  ["Data", item.data],
+                  ["Method", item.method],
+                  ["Output", item.output],
+                  ["Business Value", item.value],
+                  ["Limitation", item.limitation],
+                  ["Next Step", item.nextStep]
+                ].map(([label, value]) => (
+                  <div key={label} className="border-t border-rice/10 pt-4">
+                    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gold/80">{label}</p>
+                    <p className="mt-2 text-sm leading-6 text-rice/68">{value}</p>
+                  </div>
+                ))}
               </div>
 
               <a href="#skills" className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-rice/75 transition hover:text-gold">

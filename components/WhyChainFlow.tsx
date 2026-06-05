@@ -39,6 +39,29 @@ export function WhyChainFlow({ lang }: WhyChainFlowProps) {
             </article>
           ))}
         </div>
+
+        <div className="mt-10 rounded-2xl border border-gold/20 bg-[linear-gradient(135deg,rgba(215,177,93,0.11),rgba(31,143,132,0.06))] p-6 md:p-8">
+          <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
+            <div>
+              <p className="text-sm font-medium text-gold">{copy.flowLogic.eyebrow}</p>
+              <h3 className="mt-4 max-w-2xl text-3xl font-semibold leading-tight text-rice md:text-4xl">
+                {copy.flowLogic.title}
+              </h3>
+              <p className="mt-5 max-w-2xl text-base leading-8 text-rice/70">{copy.flowLogic.body}</p>
+            </div>
+
+            <div className="grid gap-3 sm:grid-cols-5">
+              {copy.flowLogic.steps.map((step, index) => (
+                <div key={step.label} className="relative rounded-xl border border-rice/10 bg-graphite/70 p-4">
+                  <p className="text-xs text-rice/35">0{index + 1}</p>
+                  <p className="mt-3 text-base font-semibold text-gold">{step.label}</p>
+                  <p className="mt-1 text-sm font-medium text-rice">{step.cn}</p>
+                  <p className="mt-3 text-xs leading-5 text-rice/55">{step.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );

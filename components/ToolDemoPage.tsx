@@ -65,7 +65,7 @@ export function ToolDemoPage({ slug }: ToolDemoPageProps) {
           <div className="rounded-2xl border border-rice/10 bg-rice/[0.045] p-6 md:p-8">
             <p className="text-sm font-medium text-gold">Safety note</p>
             <p className="mt-3 max-w-4xl text-base leading-8 text-rice/70">
-              当前 Demo 使用脱敏 mock data，仅展示输入结构、输出形式、地图预览和报告结构。不公开课程题目、原始 Excel、API Key、完整源码或任何真实企业 / 个人敏感数据。
+              当前 Demo 使用脱敏 mock data，仅展示输入结构、输出形式、地图预览和报告结构。不支持上传真实业务数据，不公开课程题目、原始 Excel、API Key、完整源码或任何真实企业 / 个人敏感数据。
             </p>
           </div>
         </div>
