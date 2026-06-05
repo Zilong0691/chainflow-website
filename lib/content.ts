@@ -268,17 +268,16 @@ export const siteContent = {
     },
     community: {
       eyebrow: "真实场景共创",
-      title: "真实场景共创计划",
-      subtitle: "每月 3 个免费部署名额。",
-      body: "如果你真的在被库存、采购、调度、仓储或配送问题消耗，我希望和你一起试一次：把一个具体问题拆清楚，用一个小工具跑一遍，看它能不能省下一点时间，减少一点混乱。",
+      title: "试点不是填表申请，而是先把问题讲清楚。",
+      subtitle: "每月保留 3 个免费共创名额，也接受付费小试点。",
+      body: "这一段不是再做一次销售转化，而是说明 ChainFlow 怎么和真实业务一起试。免费共创适合小范围验证；付费试点适合希望更快适配自己流程的团队。无论哪一种，都从一个具体问题开始。",
       fitTitle: "我在找这样的你",
       includesTitle: "这次共创会一起做什么",
       excludesTitle: "为了把事情做好，也需要先说清边界",
       fit: ["正在被采购、库存、调度、物流这些事折腾得焦头烂额", "试过一些办法，但要么太贵，要么不够贴近自己的生意", "在认真经营自己的业务，也善待跟着自己做事的人", "愿意拿出一个真实问题和一份可讨论的数据", "愿意花一点时间告诉我真实感受，哪里有用，哪里没用", "明白这是一次小范围实验，不是永久的免费服务"],
       includes: ["一起把一个供应链相关问题讲清楚", "选择一个最适合的 ChainFlow 工具", "用你的样例数据或脱敏数据试跑一次", "演示基础结果和可视化输出", "给出一份简短说明或操作建议", "做一次反馈沟通，判断下一步值不值得继续"],
       excludes: ["长期运维和随叫随到", "多轮复杂定制", "ERP / WMS / SRM 系统对接", "大规模数据清洗", "无限修改", "敏感数据或商业机密责任承担", "长期免费顾问服务"],
-      primaryCta: "申请免费试点",
-      secondaryCta: "开始付费试点"
+      note: "如果你读到这里觉得“这说的就是我”，不用先写完整需求。到最后的联系区，发来一个问题、一张表，或者一段真实流程描述就可以。"
     },
     openNotes: {
       eyebrow: "开放笔记",
@@ -309,10 +308,15 @@ export const siteContent = {
     },
     contact: {
       eyebrow: "试点",
-      title: "从一个真实问题开始聊。",
-      subtitle: "不用准备完整方案，先把困扰你的流程讲清楚。",
-      body: "你可以发来一个模糊需求、一份表格，或者只是描述一个每天反复消耗人的供应链问题。ChainFlow 会先判断它适不适合做成小工具，再给出一个低门槛的试点建议。",
+      title: "最后，只需要发来一个真实问题。",
+      subtitle: "不用准备完整方案，也不用先懂 AI 或代码。",
+      body: "你可以发来一个模糊需求、一份表格，或者只是描述一个每天反复消耗人的供应链问题。ChainFlow 会先判断它适不适合做成小工具，再建议走免费共创、付费小试点，还是先做一次流程诊断。",
       pilot: "适合供应链相关从业者、商家、中小企业，以及正在处理采购、库存、物流、仓储、配送或出海供应链问题的团队。",
+      paths: [
+        { title: "免费共创", description: "适合一个明确问题、可提供样例数据、愿意反馈真实感受的场景。" },
+        { title: "付费小试点", description: "适合希望用自己的字段、模板和流程更快跑出第一版结果的团队。" },
+        { title: "流程诊断", description: "适合还没想清楚从哪里开始，但已经感到流程里有明显低效的人。" }
+      ],
       cta: "预约试点",
       links: [
         { label: "邮箱", value: "zilong@chainflowlab.com", href: "mailto:zilong@chainflowlab.com" },
@@ -583,17 +587,16 @@ export const siteContent = {
     },
     community: {
       eyebrow: "Community Pilot",
-      title: "Real Workflow Co-creation Program",
-      subtitle: "3 free deployment spots per month.",
-      body: "ChainFlow is not only a portfolio or a product experiment. It is also a way to test whether practical AI tools can help real businesses solve real supply chain problems.",
-      fitTitle: "Who it fits",
-      includesTitle: "What the free pilot includes",
-      excludesTitle: "What it does not include",
+      title: "A pilot starts by making one problem clear.",
+      subtitle: "3 free co-creation spots per month, plus paid small pilots.",
+      body: "This section explains how ChainFlow tests real workflows. Free co-creation is for small validation. Paid pilots are for teams that want faster adaptation to their own fields and process. Both start from one concrete problem.",
+      fitTitle: "Who I am looking for",
+      includesTitle: "What we will do together",
+      excludesTitle: "Clear boundaries",
       fit: ["A real supply chain, procurement, inventory, logistics, warehousing, or delivery problem", "A merchant or small business with a good reputation", "Serious long-term operation", "Friendly treatment of employees", "Willingness to provide sanitized data", "Willingness to provide real feedback", "Understanding that this is a small pilot, not a long-term free service"],
       includes: ["One clearly defined supply-chain-related problem", "One ChainFlow AI Skill", "One sanitized data trial run", "One basic result demo", "A short explanation or operating suggestion", "One feedback conversation"],
       excludes: ["Long-term maintenance", "Multiple rounds of complex customization", "ERP / WMS / SRM integration", "Large-scale data cleaning", "Unlimited revisions", "Sensitive data processing", "Commercial secret liability", "Long-term free consulting"],
-      primaryCta: "Apply for Free Pilot",
-      secondaryCta: "Start a Paid Pilot"
+      note: "If this feels like your situation, you do not need a complete brief. Use the final contact section and send one problem, one spreadsheet, or a short workflow description."
     },
     openNotes: {
       eyebrow: "Open Notes",
@@ -624,10 +627,15 @@ export const siteContent = {
     },
     contact: {
       eyebrow: "Pilot",
-      title: "Looking for the first 5 pilot users.",
-      subtitle: "Bring one real supply chain problem.",
-      body: "You can provide a sanitized spreadsheet or a real workflow problem. ChainFlow will judge whether it fits an AI toolkit or decision intelligence approach, then suggest a small pilot.",
+      title: "Send one real problem.",
+      subtitle: "You do not need a complete plan or technical background.",
+      body: "You can send a rough need, a spreadsheet, or a short description of a recurring supply chain problem. ChainFlow will first judge whether it fits a practical tool, then suggest free co-creation, a paid pilot, or a workflow diagnosis.",
       pilot: "Built for small business owners, shop owners, professional buyers, logistics / warehouse / operations leads, and teams expanding globally.",
+      paths: [
+        { title: "Free co-creation", description: "For one clear problem, sample data, and honest workflow feedback." },
+        { title: "Paid small pilot", description: "For teams that want their own fields, templates, and process adapted quickly." },
+        { title: "Workflow diagnosis", description: "For people who feel the process is inefficient but are not sure where to start." }
+      ],
       cta: "Start a Pilot",
       links: [
         { label: "Email", value: "zilong@chainflowlab.com", href: "mailto:zilong@chainflowlab.com" },

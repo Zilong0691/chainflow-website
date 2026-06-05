@@ -46,10 +46,10 @@ export function SiteShell() {
         <Skills lang={lang} />
         <Cases lang={lang} />
         <BeyondScripts lang={lang} />
+        <FutureDirections lang={lang} />
         <Services lang={lang} />
         <CommunityPilot lang={lang} />
         <OpenNotes lang={lang} />
-        <FutureDirections lang={lang} />
         <About lang={lang} />
         <Contact lang={lang} />
       </main>

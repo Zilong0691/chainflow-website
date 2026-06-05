@@ -19,6 +19,14 @@ export function Contact({ lang }: ContactProps) {
             <p className="mt-6 text-2xl leading-tight text-rice/80">{copy.subtitle}</p>
             <p className="mt-8 max-w-2xl text-lg leading-9 text-rice/70">{copy.body}</p>
             <p className="mt-5 max-w-2xl text-base leading-8 text-rice/60">{copy.pilot}</p>
+            <div className="mt-8 grid max-w-3xl gap-3 md:grid-cols-3">
+              {copy.paths.map((path) => (
+                <div key={path.title} className="rounded-2xl border border-rice/10 bg-rice/[0.045] p-4">
+                  <p className="text-sm font-semibold text-gold">{path.title}</p>
+                  <p className="mt-2 text-xs leading-6 text-rice/58">{path.description}</p>
+                </div>
+              ))}
+            </div>
             <a href={emailHref} className="btn-primary mt-10">
               <Mail size={18} />
               {copy.cta}

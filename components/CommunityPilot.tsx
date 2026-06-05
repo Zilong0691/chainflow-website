@@ -1,4 +1,4 @@
-import { ArrowRight, CheckCircle2, ShieldCheck } from "lucide-react";
+import { CheckCircle2, ShieldCheck } from "lucide-react";
 import { siteContent, type Language } from "@/lib/content";
 import { SectionHeader } from "./SectionHeader";
 
@@ -16,15 +16,7 @@ export function CommunityPilot({ lang }: CommunityPilotProps) {
           <div>
             <SectionHeader eyebrow={copy.eyebrow} title={copy.title} subtitle={copy.subtitle} />
             <p className="mt-7 max-w-2xl text-base leading-8 text-ink/70 md:text-lg">{copy.body}</p>
-            <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-              <a href="#contact" className="btn-primary">
-                {copy.primaryCta}
-                <ArrowRight size={16} />
-              </a>
-              <a href="#contact" className="btn-outline">
-                {copy.secondaryCta}
-              </a>
-            </div>
+            <p className="mt-8 rounded-2xl border border-jade/15 bg-jade/10 p-5 text-sm leading-7 text-ink/68">{copy.note}</p>
           </div>
 
           <div className="grid gap-5">
