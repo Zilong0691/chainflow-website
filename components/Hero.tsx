@@ -155,11 +155,11 @@ function GlobeFlowVisual({ lang }: { lang: Language }) {
         <div className="globe-grid" />
         <div className="globe-contents">
           <svg className="globe-map" viewBox="0 0 800 400" preserveAspectRatio="xMidYMid slice">
-            {/* 真实世界地图底图 — Wikipedia SVG */}
+            {/* 真实世界地图底图 */}
             <image
-              href="https://upload.wikimedia.org/wikipedia/commons/8/80/World_map_-_low_resolution.svg"
+              href="https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/World_map_-_low_resolution.svg/800px-World_map_-_low_resolution.svg.png"
               x="0" y="0" width="800" height="400"
-              style={{ opacity: 0.30, filter: "brightness(0.5) saturate(0.7)" }}
+              style={{ opacity: 0.42 }}
             />
 
             {/* 链流网络 */}
@@ -218,18 +218,6 @@ function GlobeFlowVisual({ lang }: { lang: Language }) {
           <div className="globe-node globe-node--teal" style={{ left:"84.8%", top:"75.5%" }} />
           <div className="globe-node" style={{ left:"32.2%", top:"69.5%" }} />
           <div className="globe-node" style={{ left:"24.0%", top:"40.0%" }} />
-        </div>
-      </div>
-
-      <div className="globe-panel">
-        <div className="globe-panel__text">
-          <p>{zh ? "全球供应链网络 · AI 实时计算" : "Global Supply Chain Network · AI Processing"}</p>
-          <strong>{zh ? "35 条链路 × 22 港口 → 全球互联" : "35 routes × 22 ports → Global Mesh"}</strong>
-        </div>
-        <div className="globe-panel__metrics">
-          <span>{zh ? "链路" : "Routes"}&nbsp;35</span>
-          <span>{zh ? "港口" : "Ports"}&nbsp;22</span>
-          <span>{zh ? "大洲" : "Cont."}&nbsp;6</span>
         </div>
       </div>
     </div>
