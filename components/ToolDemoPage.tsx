@@ -71,10 +71,35 @@ export function ToolDemoPage({ slug }: ToolDemoPageProps) {
             </a>
           </div>
 
+          {/* 三步引导 */}
+          <div className="mb-6 grid gap-3 md:grid-cols-3">
+            <div className="flex gap-3 rounded-xl border border-rice/10 bg-rice/[0.03] p-4">
+              <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-gold/15 text-sm font-bold text-gold">1</span>
+              <div>
+                <p className="text-sm font-semibold text-rice">先看</p>
+                <p className="mt-1 text-xs leading-5 text-rice/55">浏览地图、路线、结果表和指标，理解这个工具能输出什么。</p>
+              </div>
+            </div>
+            <div className="flex gap-3 rounded-xl border border-rice/10 bg-rice/[0.03] p-4">
+              <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-gold/15 text-sm font-bold text-gold">2</span>
+              <div>
+                <p className="text-sm font-semibold text-rice">再试</p>
+                <p className="mt-1 text-xs leading-5 text-rice/55">拖拽地图、切换参数、点选路线，看不同选择怎么影响结果。</p>
+              </div>
+            </div>
+            <div className="flex gap-3 rounded-xl border border-rice/10 bg-rice/[0.03] p-4">
+              <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-gold/15 text-sm font-bold text-gold">3</span>
+              <div>
+                <p className="text-sm font-semibold text-rice">想用</p>
+                <p className="mt-1 text-xs leading-5 text-rice/55">觉得有用？联系我，用你的数据和字段做定制部署。</p>
+              </div>
+            </div>
+          </div>
+
           <div className="overflow-hidden rounded-2xl border border-rice/10 bg-rice/[0.04] shadow-soft">
             <div className="flex flex-col gap-2 border-b border-rice/10 bg-graphite/80 px-4 py-3 text-xs text-rice/55 sm:flex-row sm:items-center sm:justify-between">
-              <span>{liveDemo.browserLabel}</span>
-              <span>示例数据 · 页面内演示 · 不上传真实业务资料</span>
+              <span className="font-medium text-rice/70">{liveDemo.browserLabel}</span>
+              <span>脱敏示例数据 · 页面内交互体验 · 不上传真实业务资料</span>
             </div>
             <iframe
               src={liveDemo.src}

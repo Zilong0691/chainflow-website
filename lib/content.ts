@@ -132,7 +132,7 @@ export const siteContent = {
         bestFor: ["同城配送", "小车队", "门店补货", "区域分拨"],
         inputs: ["订单表/地址", "车型容量", "发车回站时间", "重量体积", "特殊规则"],
         outputs: ["排线方案", "司机任务表", "异常处置建议", "地图和甘特图", "简短汇报"],
-        pricing: "Demo 免费 / Lite 版 ¥199 / 定制化开发部署 ¥2999 起",
+        pricing: "Demo 免费 / 标准版 ¥399 / 定制化开发部署 ¥2999 起",
         status: "可体验演示",
         cta: "体验演示",
         href: commonToolLinks.routeflow,
@@ -140,7 +140,7 @@ export const siteContent = {
         demoOutput: ["29 条求解路线", "27 辆实车排班", "配送里程 1501.97 公里", "8 条异常处置建议"],
         plans: [
           { name: "Demo 免费", price: "¥0", cta: "查看演示" },
-          { name: "Lite 版", price: "¥199", cta: "获取 Lite 版" },
+          { name: "标准版", price: "¥399", cta: "获取标准版" },
           { name: "定制开发", price: "¥2999 起", cta: "定制这个工具" }
         ]
       },
@@ -465,7 +465,7 @@ export const siteContent = {
         bestFor: ["Local delivery", "Small fleets", "Store replenishment", "Regional distribution"],
         inputs: ["Orders/addresses", "Vehicle capacity", "Depot hours", "Weight/volume", "Special rules"],
         outputs: ["Route plan", "Driver task sheet", "Exception actions", "Map and Gantt view", "Short report"],
-        pricing: "Free Demo ¥0 / Lite Version ¥199 / Custom Development from ¥2999",
+        pricing: "Free Demo ¥0 / Standard Version ¥399 / Custom Development from ¥2999",
         status: "Demo Ready",
         cta: "View Demo",
         href: commonToolLinks.routeflow,
@@ -473,7 +473,7 @@ export const siteContent = {
         demoOutput: ["29 solver routes", "27 physical vehicles", "1501.97 km delivery distance", "8 exception actions"],
         plans: [
           { name: "Free Demo", price: "¥0", cta: "View Demo" },
-          { name: "Lite Version", price: "¥199", cta: "Get Lite Version" },
+          { name: "Standard Version", price: "¥399", cta: "Get Standard Version" },
           { name: "Custom Development", price: "from ¥2999", cta: "Customize This Skill" }
         ]
       },
@@ -672,7 +672,7 @@ export const demoPages = {
     name: "RouteFlow",
     title: "短途配送排线工作台",
     subtitle: "把一张并不完美的订单表，整理成车辆排线方案、司机任务表、异常处置建议和可视化路线图。",
-    price: "Demo 免费 / Lite 版 ¥199 / 定制化开发部署 ¥2999 起",
+    price: "Demo 免费 / 标准版 ¥399 / 定制化开发部署 ¥2999 起",
     storyTitle: "模拟业务场景",
     story: "一家门店配送团队每天凌晨要把数百个订单排给不同车型。地址写法不统一，货量有大有小，部分订单有时间窗，老板要看总里程和用车数，司机要看每站顺序，调度还要知道哪些订单需要人工复核。",
     painTitle: "客户一开始说不清的痛点",
@@ -685,7 +685,7 @@ export const demoPages = {
     process: ["识别地址、重量、体积、站点等字段", "把地址转成可计算坐标，并标出需要复核的数据", "建立带容量和时间窗约束的车辆路径模型", "计算车辆分配、配送顺序、里程、装载和工作时长", "生成 Excel、JSON 和交互式 HTML 工作台"],
     outputs: ["示例结果：801 个脱敏订单生成 29 条路线", "实车排班：29 条求解路线折算为 27 辆实车", "司机任务表：每站顺序、到达时间、货量、路线归属", "交互地图：按路线和车型筛选，点击路线查看明细", "异常摘要：超载、超时、路程过长等处置建议"],
     report: ["运营摘要", "司机任务表", "路线地图", "作业甘特图", "工作负荷分布", "异常处置建议"],
-    primaryCta: "获取 Lite 版",
+    primaryCta: "获取标准版",
     secondaryCta: "定制这个工具"
   },
   networkflow: {

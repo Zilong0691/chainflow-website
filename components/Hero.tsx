@@ -24,7 +24,7 @@ export function Hero({ lang }: HeroProps) {
             {copy.eyebrow}
           </p>
           <p className="mb-4 text-xl font-medium text-rice/80 md:text-2xl">{copy.brand}</p>
-          <h1 className="whitespace-nowrap text-[clamp(1.78rem,7.2vw,4.5rem)] font-semibold leading-[1.08] text-rice md:text-7xl">
+          <h1 className="text-balance text-[clamp(1.78rem,7.2vw,4.5rem)] font-semibold leading-[1.12] text-rice md:text-7xl md:leading-[1.08]">
             {lang === "zh" ? (
               <>
                 让供应链，如<span className="flow-word">水一般</span>
@@ -52,23 +52,35 @@ export function Hero({ lang }: HeroProps) {
         </div>
 
         <div className="relative flex min-h-[18rem] items-center justify-center sm:min-h-[24rem] lg:min-h-[34rem]">
-          <SupplyChainFlowVisual />
+          <SupplyChainFlowVisual lang={lang} />
         </div>
       </div>
     </section>
   );
 }
 
-function SupplyChainFlowVisual() {
+function SupplyChainFlowVisual({ lang }: { lang: Language }) {
+  const zh = lang === "zh";
   const flows = [
-    { label: "采购", className: "flow-dashboard__node--supplier" },
-    { label: "库存", className: "flow-dashboard__node--stock" },
-    { label: "配送", className: "flow-dashboard__node--route" },
-    { label: "仓网", className: "flow-dashboard__node--network" }
+    { label: zh ? "采购" : "Buy", className: "flow-dashboard__node--supplier" },
+    { label: zh ? "库存" : "Stock", className: "flow-dashboard__node--stock" },
+    { label: zh ? "配送" : "Delivery", className: "flow-dashboard__node--route" },
+    { label: zh ? "仓网" : "Network", className: "flow-dashboard__node--network" }
   ];
 
   return (
     <div className="flow-dashboard" aria-hidden="true">
+      {/* Stage labels */}
+      <span className="flow-dashboard__stage flow-dashboard__stage--input">
+        {zh ? "数据输入" : "Input"}
+      </span>
+      <span className="flow-dashboard__stage flow-dashboard__stage--ai">
+        {zh ? "AI 判断" : "AI"}
+      </span>
+      <span className="flow-dashboard__stage flow-dashboard__stage--output">
+        {zh ? "执行输出" : "Output"}
+      </span>
+
       <div className="flow-dashboard__map">
         <div className="flow-dashboard__terrain" />
         <div className="flow-dashboard__river flow-dashboard__river--one" />
@@ -77,6 +89,10 @@ function SupplyChainFlowVisual() {
         <div className="flow-dashboard__route flow-dashboard__route--one" />
         <div className="flow-dashboard__route flow-dashboard__route--two" />
         <div className="flow-dashboard__route flow-dashboard__route--three" />
+        {/* Flow particles along routes */}
+        <div className="flow-dashboard__particle flow-dashboard__particle--one" />
+        <div className="flow-dashboard__particle flow-dashboard__particle--two" />
+        <div className="flow-dashboard__particle flow-dashboard__particle--three" />
         {flows.map((flow) => (
           <div key={flow.label} className={`flow-dashboard__node ${flow.className}`}>
             <span>{flow.label}</span>
@@ -84,19 +100,19 @@ function SupplyChainFlowVisual() {
         ))}
         <div className="flow-dashboard__hub">
           <strong>AI</strong>
-          <span>判断</span>
+          <span>{zh ? "判断" : "Engine"}</span>
         </div>
       </div>
 
       <div className="flow-dashboard__panel">
         <div>
-          <p>ChainFlow 正在处理</p>
-          <strong>订单表 → 路线 / 仓网 / 报告</strong>
+          <p>{zh ? "ChainFlow 正在处理" : "ChainFlow Processing"}</p>
+          <strong>{zh ? "订单表 → 路线 / 仓网 / 报告" : "Orders → Routes / Network / Report"}</strong>
         </div>
-        <div className="flow-dashboard__bars">
-          <span />
-          <span />
-          <span />
+        <div className="flow-dashboard__result-mini">
+          <span>{zh ? "路线" : "Routes"}&nbsp;29</span>
+          <span>{zh ? "车辆" : "Vehicles"}&nbsp;27</span>
+          <span>{zh ? "覆盖" : "Cover"}&nbsp;94%</span>
         </div>
       </div>
     </div>

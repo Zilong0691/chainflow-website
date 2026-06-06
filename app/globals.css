@@ -507,6 +507,63 @@ section[id] {
   font-size: 0.72rem;
 }
 
+.flow-dashboard__stage {
+  position: absolute;
+  z-index: 6;
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(255, 250, 240, 0.22);
+  pointer-events: none;
+}
+
+.flow-dashboard__stage--input {
+  top: 0.5rem;
+  left: 1.4rem;
+}
+
+.flow-dashboard__stage--ai {
+  top: 0.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.flow-dashboard__stage--output {
+  top: 0.5rem;
+  right: 1.4rem;
+}
+
+.flow-dashboard__particle {
+  position: absolute;
+  z-index: 5;
+  width: 0.28rem;
+  height: 0.28rem;
+  border-radius: 9999px;
+  background: #f2c76a;
+  box-shadow: 0 0 10px rgba(242, 199, 106, 0.8);
+  pointer-events: none;
+  animation: particle-drift 3.2s ease-in-out infinite;
+}
+
+.flow-dashboard__particle--one {
+  left: 28%;
+  top: 42%;
+  animation-delay: 0s;
+}
+
+.flow-dashboard__particle--two {
+  left: 48%;
+  top: 58%;
+  animation-delay: -1.1s;
+}
+
+.flow-dashboard__particle--three {
+  left: 58%;
+  top: 34%;
+  animation-delay: -2.3s;
+}
+
 .flow-dashboard__panel {
   position: absolute;
   left: 1.1rem;
@@ -554,6 +611,26 @@ section[id] {
 
 .flow-dashboard__bars span:nth-child(3) {
   width: 46%;
+}
+
+.flow-dashboard__result-mini {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  gap: 0.6rem;
+}
+
+.flow-dashboard__result-mini span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(215, 177, 93, 0.18);
+  background: rgba(215, 177, 93, 0.08);
+  padding: 0.25rem 0.55rem;
+  color: rgba(242, 199, 106, 0.85);
+  font-size: 0.7rem;
+  font-weight: 600;
+  white-space: nowrap;
 }
 
 .demo-map {
@@ -693,6 +770,17 @@ section[id] {
   }
 }
 
+@keyframes particle-drift {
+  0%, 100% {
+    opacity: 0.35;
+    transform: translate(0, 0) scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(0.35rem, -0.2rem) scale(1.4);
+  }
+}
+
 @keyframes orbit-flow {
   from {
     offset-distance: 0%;
@@ -733,6 +821,18 @@ section[id] {
     height: 4.35rem;
   }
 
+  .flow-dashboard__stage {
+    font-size: 0.56rem;
+  }
+
+  .flow-dashboard__stage--input {
+    left: 0.9rem;
+  }
+
+  .flow-dashboard__stage--output {
+    right: 0.9rem;
+  }
+
   .flow-dashboard__panel {
     left: 0.85rem;
     right: 0.85rem;
@@ -742,6 +842,18 @@ section[id] {
 
   .flow-dashboard__bars {
     width: 100%;
+  }
+
+  .flow-dashboard__result-mini {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.4rem;
+    width: 100%;
+  }
+
+  .flow-dashboard__result-mini span {
+    justify-content: center;
+    font-size: 0.64rem;
+    padding: 0.22rem 0.4rem;
   }
 }
 

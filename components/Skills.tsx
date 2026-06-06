@@ -410,7 +410,7 @@ function getDemoConfig(slug: ToolSlug, lang: Language, mode: "balanced" | "cost"
     ],
     metrics: metrics[mode],
     nodes: ["left-[18%] top-[32%]", "left-[38%] top-[20%]", "left-[62%] top-[36%]", "left-[76%] top-[62%]", "left-[48%] top-[74%]", "left-[24%] top-[58%]"],
-    primaryCta: zh ? "获取 Lite 版 ¥199" : "Get Lite Version ¥199",
+    primaryCta: zh ? "获取标准版 ¥399" : "Get Standard Version ¥399",
     secondaryCta: zh ? "定制这个工具" : "Customize This Skill"
   };
 }
