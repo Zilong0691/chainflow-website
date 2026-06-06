@@ -24,7 +24,7 @@ export function Hero({ lang }: HeroProps) {
             {copy.eyebrow}
           </p>
           <p className="mb-4 text-xl font-medium text-rice/80 md:text-2xl">{copy.brand}</p>
-          <h1 className="text-balance text-5xl font-semibold leading-[1.06] text-rice md:text-7xl">
+          <h1 className="whitespace-nowrap text-[clamp(1.78rem,7.2vw,4.5rem)] font-semibold leading-[1.08] text-rice md:text-7xl">
             {lang === "zh" ? (
               <>
                 让供应链，如<span className="flow-word">水一般</span>
@@ -52,44 +52,53 @@ export function Hero({ lang }: HeroProps) {
         </div>
 
         <div className="relative flex min-h-[18rem] items-center justify-center sm:min-h-[24rem] lg:min-h-[34rem]">
-          <GlobalFlowOrb />
+          <SupplyChainFlowVisual />
         </div>
       </div>
     </section>
   );
 }
 
-function GlobalFlowOrb() {
-  const nodes = [
-    "left-[12%] top-[42%]",
-    "left-[24%] top-[35%]",
-    "left-[39%] top-[39%]",
-    "left-[52%] top-[32%]",
-    "left-[66%] top-[43%]",
-    "left-[78%] top-[52%]",
-    "left-[60%] top-[62%]",
-    "left-[42%] top-[58%]",
-    "left-[28%] top-[66%]"
+function SupplyChainFlowVisual() {
+  const flows = [
+    { label: "采购", className: "flow-dashboard__node--supplier" },
+    { label: "库存", className: "flow-dashboard__node--stock" },
+    { label: "配送", className: "flow-dashboard__node--route" },
+    { label: "仓网", className: "flow-dashboard__node--network" }
   ];
 
   return (
-    <div className="supply-flow" aria-hidden="true">
-      <div className="supply-flow__surface" />
-      <div className="supply-flow__coast supply-flow__coast--one" />
-      <div className="supply-flow__coast supply-flow__coast--two" />
-      <div className="supply-flow__stream supply-flow__stream--one" />
-      <div className="supply-flow__stream supply-flow__stream--two" />
-      <div className="supply-flow__stream supply-flow__stream--three" />
-      <div className="supply-flow__stream supply-flow__stream--four" />
-      <div className="supply-flow__wash supply-flow__wash--one" />
-      <div className="supply-flow__wash supply-flow__wash--two" />
-      <div className="supply-flow__pulse supply-flow__pulse--one" />
-      <div className="supply-flow__pulse supply-flow__pulse--two" />
-      <div className="supply-flow__pulse supply-flow__pulse--three" />
-      <div className="supply-flow__pulse supply-flow__pulse--four" />
-      {nodes.map((position, index) => (
-        <span key={position} className={`supply-flow__node ${position}`} style={{ animationDelay: `${index * 0.28}s` }} />
-      ))}
+    <div className="flow-dashboard" aria-hidden="true">
+      <div className="flow-dashboard__map">
+        <div className="flow-dashboard__terrain" />
+        <div className="flow-dashboard__river flow-dashboard__river--one" />
+        <div className="flow-dashboard__river flow-dashboard__river--two" />
+        <div className="flow-dashboard__river flow-dashboard__river--three" />
+        <div className="flow-dashboard__route flow-dashboard__route--one" />
+        <div className="flow-dashboard__route flow-dashboard__route--two" />
+        <div className="flow-dashboard__route flow-dashboard__route--three" />
+        {flows.map((flow) => (
+          <div key={flow.label} className={`flow-dashboard__node ${flow.className}`}>
+            <span>{flow.label}</span>
+          </div>
+        ))}
+        <div className="flow-dashboard__hub">
+          <strong>AI</strong>
+          <span>判断</span>
+        </div>
+      </div>
+
+      <div className="flow-dashboard__panel">
+        <div>
+          <p>ChainFlow 正在处理</p>
+          <strong>订单表 → 路线 / 仓网 / 报告</strong>
+        </div>
+        <div className="flow-dashboard__bars">
+          <span />
+          <span />
+          <span />
+        </div>
+      </div>
     </div>
   );
 }

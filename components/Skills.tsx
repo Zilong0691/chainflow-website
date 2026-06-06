@@ -347,61 +347,61 @@ function getDemoConfig(slug: ToolSlug, lang: Language, mode: "balanced" | "cost"
   const metrics = {
     balanced: zh
       ? [
-          { label: "配送路线", value: "3 条" },
-          { label: "预计里程", value: "86.4km" },
-          { label: "装载率", value: "82%" },
-          { label: "异常地址", value: "1 个" }
+          { label: "求解路线", value: "29 条" },
+          { label: "实车排班", value: "27 辆" },
+          { label: "配送里程", value: "1501.97km" },
+          { label: "异常建议", value: "8 条" }
         ]
       : [
-          { label: "Routes", value: "3" },
-          { label: "Distance", value: "86.4km" },
-          { label: "Load rate", value: "82%" },
-          { label: "Exceptions", value: "1" }
+          { label: "Solver routes", value: "29" },
+          { label: "Physical vehicles", value: "27" },
+          { label: "Delivery distance", value: "1501.97km" },
+          { label: "Exception actions", value: "8" }
         ],
     cost: zh
       ? [
-          { label: "配送路线", value: "3 条" },
-          { label: "预计里程", value: "78.9km" },
-          { label: "装载率", value: "88%" },
-          { label: "异常地址", value: "2 个" }
+          { label: "求解路线", value: "28 条" },
+          { label: "实车排班", value: "26 辆" },
+          { label: "配送里程", value: "1468km" },
+          { label: "需复核", value: "10 条" }
         ]
       : [
-          { label: "Routes", value: "3" },
-          { label: "Distance", value: "78.9km" },
-          { label: "Load rate", value: "88%" },
-          { label: "Exceptions", value: "2" }
+          { label: "Solver routes", value: "28" },
+          { label: "Physical vehicles", value: "26" },
+          { label: "Delivery distance", value: "1468km" },
+          { label: "Review items", value: "10" }
         ],
     speed: zh
       ? [
-          { label: "配送路线", value: "4 条" },
-          { label: "预计里程", value: "92.3km" },
-          { label: "准时率", value: "98%" },
-          { label: "异常地址", value: "0 个" }
+          { label: "求解路线", value: "31 条" },
+          { label: "实车排班", value: "29 辆" },
+          { label: "工作窗口", value: "04:00-09:00" },
+          { label: "时间风险", value: "下降" }
         ]
       : [
-          { label: "Routes", value: "4" },
-          { label: "Distance", value: "92.3km" },
-          { label: "On-time", value: "98%" },
-          { label: "Exceptions", value: "0" }
+          { label: "Solver routes", value: "31" },
+          { label: "Physical vehicles", value: "29" },
+          { label: "Work window", value: "04:00-09:00" },
+          { label: "Time risk", value: "Lower" }
         ]
   };
 
   return {
-    title: zh ? "脱敏配送排线工作台" : "Sanitized Route Planning Workbench",
-    subtitle: zh ? "点击不同目标，模拟里程、准时率和车辆装载的权衡。" : "Switch objectives to simulate the trade-off between mileage, on-time rate, and vehicle load.",
+    title: zh ? "脱敏短途配送排线工作台" : "Sanitized Short-haul Routing Workbench",
+    subtitle: zh ? "点击不同目标，模拟用车数、里程、时间风险和异常复核的权衡。" : "Switch objectives to simulate trade-offs among fleet count, distance, timing risk, and exception review.",
     inputTitle: zh ? "脱敏输入" : "Sanitized input",
     outputTitle: zh ? "输出摘要" : "Output summary",
     tableHeaders: zh ? ["车辆", "订单", "建议"] : ["Vehicle", "Orders", "Suggestion"],
     rows: zh
       ? [
-          ["车辆 A", "7 单 / 31.2km", "先送高时效"],
-          ["车辆 B", "6 单 / 28.7km", "避开拥堵区"],
-          ["车辆 C", "5 单 / 26.5km", "复核 1 个地址"]
+          ["金杯-1", "12 站 / 21.0km", "可直接执行"],
+          ["4.2米-10", "49 站 / 57.8km", "关注工作时长"],
+          ["金杯-8", "31 站 / 61.8km", "复核异常建议"]
         ]
       : [
-          ["Vehicle A", "7 orders / 31.2km", "Serve urgent stops first"],
-          ["Vehicle B", "6 orders / 28.7km", "Avoid congested zone"],
-          ["Vehicle C", "5 orders / 26.5km", "Review 1 address"]
+          ["Van-1", "12 stops / 21.0km", "Ready to execute"],
+          ["4.2m-10", "49 stops / 57.8km", "Watch work duration"],
+          ["Van-8", "31 stops / 61.8km", "Review exceptions"]
         ],
     modes: [
       { label: zh ? "均衡方案" : "Balanced", value: "balanced" as const },
@@ -410,7 +410,7 @@ function getDemoConfig(slug: ToolSlug, lang: Language, mode: "balanced" | "cost"
     ],
     metrics: metrics[mode],
     nodes: ["left-[18%] top-[32%]", "left-[38%] top-[20%]", "left-[62%] top-[36%]", "left-[76%] top-[62%]", "left-[48%] top-[74%]", "left-[24%] top-[58%]"],
-    primaryCta: zh ? "获取标准版 ¥399" : "Get Standard Version ¥399",
+    primaryCta: zh ? "获取 Lite 版 ¥199" : "Get Lite Version ¥199",
     secondaryCta: zh ? "定制这个工具" : "Customize This Skill"
   };
 }

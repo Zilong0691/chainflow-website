@@ -40,7 +40,7 @@ export const siteContent = {
     },
     threeWaysHeader: {
       eyebrow: "ChainFlow 做三件事",
-      title: "省时间，做判断，看见网络。",
+      title: "省时间、做判断、看见网络",
       subtitle: "从日常效率、业务判断到供应链网络，把复杂问题拆成可落地的工具。"
     },
     threeWays: [
@@ -126,22 +126,22 @@ export const siteContent = {
       {
         slug: "routeflow",
         name: "RouteFlow",
-        title: "短途配送排线助手",
-        value: "把订单表转化为车辆排线方案、配送顺序和可视化路线图。",
-        problem: "人工排线耗时、易错、难以优化。",
+        title: "短途配送排线工作台",
+        value: "把不标准订单表转成车辆路线、司机任务表、异常处置建议和地图化交付件。",
+        problem: "人工排线耗时、约束难兼顾，排完以后还难向司机和老板解释。",
         bestFor: ["同城配送", "小车队", "门店补货", "区域分拨"],
-        inputs: ["订单表", "地址", "车辆", "时间窗", "货量"],
-        outputs: ["路线方案", "司机任务表", "地图", "简短报告"],
-        pricing: "Demo 免费 / 标准版 ¥399 / 定制化开发部署 ¥2999 / 陪跑咨询 ¥5999",
+        inputs: ["订单表/地址", "车型容量", "发车回站时间", "重量体积", "特殊规则"],
+        outputs: ["排线方案", "司机任务表", "异常处置建议", "地图和甘特图", "简短汇报"],
+        pricing: "Demo 免费 / Lite 版 ¥199 / 定制化开发部署 ¥2999 起",
         status: "可体验演示",
         cta: "体验演示",
         href: commonToolLinks.routeflow,
-        demoInput: ["18 个订单", "3 台车辆", "2 个时间窗", "单仓出发"],
-        demoOutput: ["3 条配送路线", "预计里程 86.4 公里", "车辆装载率 82%", "异常地址 1 个"],
+        demoInput: ["801 个脱敏订单", "金杯/4.2米等车型", "单仓凌晨出发", "地址/重量/体积/时间窗"],
+        demoOutput: ["29 条求解路线", "27 辆实车排班", "配送里程 1501.97 公里", "8 条异常处置建议"],
         plans: [
           { name: "Demo 免费", price: "¥0", cta: "查看演示" },
-          { name: "标准版", price: "¥399", cta: "获取标准版" },
-          { name: "定制开发", price: "¥2999 / ¥5999", cta: "定制这个工具" }
+          { name: "Lite 版", price: "¥199", cta: "获取 Lite 版" },
+          { name: "定制开发", price: "¥2999 起", cta: "定制这个工具" }
         ]
       },
       {
@@ -300,11 +300,25 @@ export const siteContent = {
       subtitle: "个人产品实验室",
       statement: "ChainFlow Lab 是一个个人产品实验室，探索 AI 在真实供应链工作流中的应用。",
       paragraphs: [
-        "由赵子龙（走了尤）发起，关注汽车供应链、采购运营、物流优化、供应链韧性、中国企业出海，以及 AI 智能体在业务流程中的落地。",
-        "ChainFlow 会从小而实用的工具开始，逐步探索决策智能与供应链网络洞察。"
+        "由赵子龙（走了尤）发起，结合其在上海交通大学深圳行业研究院跨国企业供应链研究团队的研究员经历，关注先进制造与真实经营场景中的供应链问题。",
+        "研究与实践方向包括汽车、消费电子、储能、机器人等先进制造领域，也包括中小企业、个体户和小微商家的采购、库存、物流、仓储、配送等微供应链问题。",
+        "ChainFlow 会从小而实用的工具开始，逐步探索 AI 智能体在业务流程中的落地、决策智能与供应链网络洞察。"
       ],
       focusLabel: "我关注",
-      focusAreas: ["汽车供应链", "采购运营", "物流优化", "供应链韧性", "中国企业出海", "AI 智能体在真实业务场景中的落地"]
+      focusAreas: [
+        "汽车供应链",
+        "消费电子",
+        "储能",
+        "机器人",
+        "先进制造",
+        "中小企业微供应链",
+        "个体户经营流程",
+        "采购运营",
+        "物流优化",
+        "供应链韧性",
+        "中国企业出海",
+        "AI 智能体落地"
+      ]
     },
     contact: {
       eyebrow: "试点",
@@ -445,22 +459,22 @@ export const siteContent = {
       {
         slug: "routeflow",
         name: "RouteFlow",
-        title: "Short-haul Delivery Route Planner",
-        value: "Turn an order sheet into vehicle routes, delivery sequences, and visual route maps.",
-        problem: "Manual routing is slow, error-prone, and hard to optimize.",
+        title: "Short-haul Delivery Routing Workbench",
+        value: "Turn imperfect order sheets into vehicle routes, driver tasks, exception actions, and map-based deliverables.",
+        problem: "Manual routing is slow, constraint-heavy, and difficult to explain after the plan is made.",
         bestFor: ["Local delivery", "Small fleets", "Store replenishment", "Regional distribution"],
-        inputs: ["Order sheet", "Address", "Vehicle", "Time window", "Volume"],
-        outputs: ["Route plan", "Driver task sheet", "Map", "Short report"],
-        pricing: "Free Demo ¥0 / Standard Version ¥399 / Custom Development ¥2999 / Deployment + one-month support ¥5999",
+        inputs: ["Orders/addresses", "Vehicle capacity", "Depot hours", "Weight/volume", "Special rules"],
+        outputs: ["Route plan", "Driver task sheet", "Exception actions", "Map and Gantt view", "Short report"],
+        pricing: "Free Demo ¥0 / Lite Version ¥199 / Custom Development from ¥2999",
         status: "Demo Ready",
         cta: "View Demo",
         href: commonToolLinks.routeflow,
-        demoInput: ["18 orders", "3 vehicles", "2 time windows", "Single depot"],
-        demoOutput: ["3 delivery routes", "86.4 km estimated distance", "82% load rate", "1 address exception"],
+        demoInput: ["801 sanitized orders", "Van / 4.2m truck types", "Single early-morning depot", "Address / weight / volume / windows"],
+        demoOutput: ["29 solver routes", "27 physical vehicles", "1501.97 km delivery distance", "8 exception actions"],
         plans: [
           { name: "Free Demo", price: "¥0", cta: "View Demo" },
-          { name: "Standard Version", price: "¥399", cta: "Get Standard Version" },
-          { name: "Custom Development", price: "¥2999 / ¥5999", cta: "Customize This Skill" }
+          { name: "Lite Version", price: "¥199", cta: "Get Lite Version" },
+          { name: "Custom Development", price: "from ¥2999", cta: "Customize This Skill" }
         ]
       },
       {
@@ -656,22 +670,22 @@ export type ToolSlug = "routeflow" | "networkflow";
 export const demoPages = {
   routeflow: {
     name: "RouteFlow",
-    title: "短途配送排线助手",
-    subtitle: "把一张并不完美的订单表，整理成车辆排线方案、司机任务表、异常提醒和可视化路线图。",
-    price: "Demo 免费 / 标准版 ¥399 / 定制化开发部署 ¥2999 / 定制部署 + 一个月陪跑咨询 ¥5999",
+    title: "短途配送排线工作台",
+    subtitle: "把一张并不完美的订单表，整理成车辆排线方案、司机任务表、异常处置建议和可视化路线图。",
+    price: "Demo 免费 / Lite 版 ¥199 / 定制化开发部署 ¥2999 起",
     storyTitle: "模拟业务场景",
-    story: "一家门店配送团队每天凌晨要把几百个订单排给不同车型。地址写法不统一，货量有大有小，部分订单有时间窗，人工排线既慢又容易把路线绕远。",
+    story: "一家门店配送团队每天凌晨要把数百个订单排给不同车型。地址写法不统一，货量有大有小，部分订单有时间窗，老板要看总里程和用车数，司机要看每站顺序，调度还要知道哪些订单需要人工复核。",
     painTitle: "客户一开始说不清的痛点",
     dataTitle: "拿到的数据通常长这样",
     processTitle: "工具怎么运作",
     outputTitle: "最后能交付什么",
     reportTitle: "结果预览",
-    pains: ["订单每天变化，靠经验排线很难复用", "地址、站点、重量、体积字段不完全标准", "不同车型容量不同，超载和空载都浪费", "老板想要地图和司机任务表，而不是一堆代码"],
-    inputs: ["订单编号、收货地址、站点名", "重量、体积、件数等货量字段", "车辆车型、重量容量、体积容量", "配送中心地址、发车时间、回站时间", "可选时间窗和特殊规则"],
-    process: ["自动识别地址、重量、体积、站点等字段", "把地址转成可计算的坐标，标出异常地址", "建立带容量和时间窗约束的车辆路径模型", "计算车辆分配、配送顺序、里程和装载率", "生成 Excel、JSON 和交互式 HTML 地图"],
-    outputs: ["路线 1：金杯车，12 个站点，约 21 公里，05:24 前回站", "路线 2：4.2 米车，覆盖外环以外高货量订单", "输出司机任务表：每站顺序、到达时间、货量、异常提示", "输出地图：按路线筛选，点击表格可定位到对应路线", "输出异常摘要：超载风险、地址需复核、时间窗风险"],
-    report: ["路线概览", "司机任务表", "路线地图", "甘特图", "异常地址提示", "里程与装载率摘要"],
-    primaryCta: "获取标准版",
+    pains: ["订单每天变化，靠经验排线很难复用", "地址、站点、重量、体积字段不完全标准", "车型容量、时间窗和工作时长彼此牵制", "老板想要能解释的结果，司机想要能执行的任务表"],
+    inputs: ["订单编号、收货地址、站点名", "重量、体积、件数和可选备注", "车辆车型、重量容量、体积容量和可用数量", "配送中心地址、发车时间、回站时间", "可选时间窗、不可分装、加急等人工规则"],
+    process: ["识别地址、重量、体积、站点等字段", "把地址转成可计算坐标，并标出需要复核的数据", "建立带容量和时间窗约束的车辆路径模型", "计算车辆分配、配送顺序、里程、装载和工作时长", "生成 Excel、JSON 和交互式 HTML 工作台"],
+    outputs: ["示例结果：801 个脱敏订单生成 29 条路线", "实车排班：29 条求解路线折算为 27 辆实车", "司机任务表：每站顺序、到达时间、货量、路线归属", "交互地图：按路线和车型筛选，点击路线查看明细", "异常摘要：超载、超时、路程过长等处置建议"],
+    report: ["运营摘要", "司机任务表", "路线地图", "作业甘特图", "工作负荷分布", "异常处置建议"],
+    primaryCta: "获取 Lite 版",
     secondaryCta: "定制这个工具"
   },
   networkflow: {

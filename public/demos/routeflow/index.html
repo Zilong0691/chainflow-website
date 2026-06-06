@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang='zh-CN'><head>
 <meta charset='UTF-8'><meta name='viewport' content='width=device-width,initial-scale=1'>
-<title>运输调度可视化</title>
+<title>RouteFlow | ChainFlow 短途配送排线工作台</title>
 <meta http-equiv='Cache-Control' content='no-cache, no-store, must-revalidate'>
 <meta http-equiv='Pragma' content='no-cache'>
 <meta http-equiv='Expires' content='0'>
@@ -16,10 +16,30 @@
 /*# sourceMappingURL=/sm/bfbb31271eec85d6fb0a8b43b40900904aaa52e8aa82dd11f27aaf15d06b417a.map */
 /* End Leaflet CSS */
   * { margin:0; padding:0; box-sizing:border-box; }
-  body { font-family:-apple-system,'Microsoft YaHei','PingFang SC',sans-serif; display:flex; flex-direction:column; height:100vh; overflow:hidden; background:#1a1a2e; color:#e0e0e0; }
+  body { font-family:-apple-system,'Microsoft YaHei','PingFang SC',sans-serif; display:flex; flex-direction:column; height:100vh; overflow:hidden; background:#111712; color:#e9efe8; }
   #mainContainer { display:flex; flex:1; overflow:hidden; }
   #map { flex:2; height:100%; min-height:0; }
-  #panel { flex:1; height:100%; overflow-y:auto; background:#16213e; padding:14px 18px; min-width:360px; max-width:500px; }
+  #panel { flex:1; height:100%; overflow-y:auto; background:#14231e; padding:14px 18px; min-width:380px; max-width:520px; }
+  .cf-brand { display:flex;align-items:center;gap:8px;padding:4px 10px;border:1px solid rgba(215,177,93,.28);border-radius:999px;background:rgba(31,143,132,.16);color:#f4dfaa; }
+  .cf-brand b { color:#fff;font-size:13px;letter-spacing:.2px; }
+  .cf-brand span { color:#cbd7cf;font-size:12px; }
+  .cf-brief { margin-bottom:10px;padding:14px;border:1px solid rgba(215,177,93,.18);border-radius:10px;background:linear-gradient(135deg,rgba(31,143,132,.18),rgba(215,177,93,.08));box-shadow:0 8px 26px rgba(0,0,0,.18); }
+  .cf-titlebar { display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:12px; }
+  .cf-titlebar p { margin:0 0 4px;font-size:11px;color:#d7b15d;font-weight:700; }
+  .cf-titlebar h2 { margin:0;font-size:20px;line-height:1.2;color:#fff; }
+  .cf-titlebar .cf-desc { display:block;margin-top:7px;font-size:12px;line-height:1.6;color:#c8d6ce; }
+  .cf-chip { flex-shrink:0;border:1px solid rgba(215,177,93,.35);border-radius:999px;padding:5px 10px;background:rgba(215,177,93,.12);font-size:11px;color:#f4dfaa;white-space:nowrap; }
+  .cf-kpis { display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-bottom:10px; }
+  .cf-kpi { border:1px solid rgba(255,255,255,.08);border-radius:8px;background:rgba(0,0,0,.16);padding:9px 8px; }
+  .cf-kpi b { display:block;color:#fff;font-size:17px;line-height:1.2; }
+  .cf-kpi span { display:block;margin-top:3px;color:#96aaa0;font-size:11px; }
+  .cf-guide { margin:0;color:#b9c8c0;font-size:12px;line-height:1.7; }
+  .cf-guide b { color:#f4dfaa; }
+  .summary-item { min-width:150px;flex:1; }
+  .summary-item span { display:block;font-size:11px;color:#8fa59a;margin-bottom:4px; }
+  .summary-item small { display:block;margin-top:4px;font-size:10px;line-height:1.4;color:#8fa59a; }
+  .empty-alert-bar { background:rgba(31,143,132,.12);border:1px solid rgba(31,143,132,.28);border-radius:8px;padding:10px 14px;margin-bottom:10px;color:#bde6dc;font-size:12px;line-height:1.6; }
+  .modal-subtitle { padding:0 20px 12px;color:#b8c8c0;font-size:12px;line-height:1.7;border-bottom:1px solid rgba(255,255,255,.08); }
   /* ── 通用模态框 ── */
   .modal-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,.7); z-index:10000; align-items:center; justify-content:center; }
   .modal-overlay.show { display:flex; }
@@ -61,7 +81,7 @@
     cursor:pointer; font-size:12px; color:#aac8e0; white-space:nowrap; border-bottom:none; }
   .anomaly-tab-btn.active { background:rgba(79,195,247,.15); color:#4fc3f7; font-weight:bold; border-color:rgba(79,195,247,.4); }
   .anomaly-tab-btn:hover { background:rgba(79,195,247,.08); }
-  .summary { background:linear-gradient(135deg,#1a3a5c,#0f3460); padding:14px 20px; margin-bottom:10px; border-radius:10px;
+  .summary { background:linear-gradient(135deg,#183d35,#0f2d28); padding:14px 20px; margin-bottom:10px; border-radius:10px;
              box-shadow:0 2px 8px rgba(0,0,0,.3); display:flex; gap:30px; flex-wrap:wrap; font-size:13px; color:#b0c4de; border:1px solid rgba(255,255,255,.06); }
   .summary b { color:#4fc3f7; font-size:16px; }
   h3 { margin:8px 0 6px; color:#e0e0e0; font-size:15px; }
@@ -158,7 +178,7 @@
   td { padding:5px 6px; border-bottom:1px solid rgba(255,255,255,.05); text-align:center; color:#b0c4de; }
   tr.data-row:hover { background:rgba(79,195,247,.08); cursor:pointer; }
   .badge { display:inline-block; padding:2px 8px; border-radius:10px; color:#fff; font-size:11px; font-weight:bold; }
-  .toolbar { background:#0d1b2a; padding:8px 14px; display:flex; gap:14px; align-items:center;
+  .toolbar { background:#0b1411; padding:8px 14px; display:flex; gap:14px; align-items:center;
                border-bottom:1px solid rgba(255,255,255,.08); font-size:13px; flex-wrap:wrap; }
   .toolbar label { cursor:pointer; color:#b0c4de; }
   .toolbar button { padding:4px 14px; border:1px solid rgba(79,195,247,.3); border-radius:4px;
@@ -187,11 +207,11 @@
   .formula-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,.35); z-index:1000; }
   .formula-overlay.show { display:block; }
   .param-dropdown { position:relative; display:inline-block; }
-  .param-content { display:none; position:absolute; top:100%; right:0; background:#fff; border:1px solid #ccc; border-radius:6px;
+  .param-content { display:none; position:absolute; top:100%; right:0; background:#17241f; border:1px solid rgba(215,177,93,.22); border-radius:6px;
     padding:12px 16px; min-width:240px; box-shadow:0 4px 12px rgba(0,0,0,.15); z-index:999; font-size:12px; }
   .param-content.show { display:block; }
-  .param-content b { color:#1F4E79; }
-  .param-content .cmd { background:#f0f0f0; padding:4px 8px; border-radius:4px; font-family:monospace; font-size:11px;
+  .param-content b { color:#d7b15d; }
+  .param-content .cmd { background:rgba(0,0,0,.22); padding:4px 8px; border-radius:4px; font-family:monospace; font-size:11px;
     word-break:break-all; margin-top:6px; }
   .sel-filter { padding:4px 8px; border:1px solid #ccc; border-radius:4px; font-size:13px; background:#fff; cursor:pointer; }
   .sel-filter:focus { outline:none; border-color:#1F4E79; }
@@ -202,9 +222,10 @@
 <!-- Mobile loading spinner -->
 <div id='mobileLoading' style='position:fixed;inset:0;background:#f5f5f5;z-index:99999;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:sans-serif;'>
 <div style='width:36px;height:36px;border:3px solid #ddd;border-top-color:#1F4E79;border-radius:50%;animation:spin .8s linear infinite;'></div>
-<div style='margin-top:14px;color:#666;font-size:13px;'>地图加载中...</div>
+<div style='margin-top:14px;color:#666;font-size:13px;'>RouteFlow 地图加载中...</div>
 </div>
 <div class='toolbar'>
+  <div class='cf-brand'><b>RouteFlow</b><span>ChainFlow 短途配送排线</span></div>
   <label>路线: <select class='sel-filter' id='selVehicle' onchange='filterVehicle()'>
     <option value='all'>全部车辆 (29)</option>
   </select></label>
@@ -216,10 +237,10 @@
   <span id='routeStatus' style='color:#b0bec5;font-size:12px;'></span>
   <span style='flex:1'></span>
   <div class='formula-dropdown'>
-    <button onclick='toggleFormula()' style='font-size:12px;'>📐 目标函数</button>
+    <button onclick='toggleFormula()' style='font-size:12px;'>📐 模型说明</button>
   </div>
   <div class='param-dropdown'>
-    <button onclick='toggleParams()' style='font-size:12px;'>⛭ 求解参数</button>
+    <button onclick='toggleParams()' style='font-size:12px;'>⛭ 求解口径</button>
     <div class='param-content' id='paramPanel'>
       <b>当前求解参数</b><br>
       车辆总数: <b>80</b> 辆候选 &nbsp;|&nbsp; 实际使用: <b>29</b> 条路线 / <b>27</b> 辆实车<br>
@@ -234,33 +255,47 @@
 <div id='mainContainer'>
 <div id='map'></div>
 <div id='panel'>
+  <div class='cf-brief'>
+    <div class='cf-titlebar'>
+      <div><p>ChainFlow Demo</p><h2>短途配送排线工作台</h2><span class='cf-desc'>脱敏订单样例。本页展示从订单表到路线、司机任务表、异常复核和交付说明的完整结果。</span></div>
+      <span class='cf-chip'>本地求解 · 不上传数据</span>
+    </div>
+    <div class='cf-kpis'>
+      <div class='cf-kpi'><b>801</b><span>订单</span></div>
+      <div class='cf-kpi'><b>29</b><span>求解路线</span></div>
+      <div class='cf-kpi'><b>27</b><span>实车排班</span></div>
+      <div class='cf-kpi'><b>8</b><span>需复核建议</span></div>
+    </div>
+    <p class='cf-guide'><b>阅读顺序：</b>先看运营摘要和异常建议，再看甘特图确认工作窗口，最后展开实车路线卡片给司机复核。</p>
+  </div>
   <div class='summary' id='statsPanel'>
-    <div>使用车辆: <b id='statVehicles'>29 辆</b></div>
-    <div>配送里程: <b id='statDeliveryKm'>1501.97 km</b> (全程含返程: <span id='statTotalKm'>1814.73 km</span>)</div>
-    <div>总载重: <b id='statLoad'>87969.4 kg</b> &nbsp; 总体积: <b id='statVol'>159.63 m³</b></div>
-    <div>目标值: <b id='statObj'>1814735</b></div>
+    <div class='summary-item'><span>实际用车</span><b id='statVehicles'>27 辆</b><small>29 条求解路线折算后的执行规模</small></div>
+    <div class='summary-item'><span>配送里程</span><b id='statDeliveryKm'>1501.97 km</b><small>全程含返程 <span id='statTotalKm'>1814.73 km</span></small></div>
+    <div class='summary-item'><span>货量</span><b id='statLoad'>87969.4 kg</b><small>总体积 <span id='statVol'>159.63 m³</span></small></div>
+    <div class='summary-item'><span>目标值</span><b id='statObj'>1814735</b><small>用于方案比较，不等同财务成本</small></div>
   </div>
   <div class='vol-alert-bar' onclick='document.getElementById("anomalyModal").classList.add("show")'>
-    <span class='alert-badge'>⚠ 8 条异常</span>
-    <span class='alert-text'>质量 8条 · 点击查看完整处理建议</span>
-    <span class='alert-hint'>切换分类查看 ▶</span>
+    <span class='alert-badge'>需复核 8 条</span>
+    <span class='alert-text'>质量 8条 · 这不是报错，而是调度执行前的复核清单</span>
+    <span class='alert-hint'>查看处置建议 ▶</span>
   </div>
   <div class='modal-overlay' id='anomalyModal'>
     <div class='modal-box'>
       <div class='modal-header'>
         <span style='font-size:22px;'>⚠️</span>
-        <h3>异常处理建议（8 条）</h3>
+        <h3>异常处置建议（8 条需复核）</h3>
         <button class='close-btn' onclick='document.getElementById("anomalyModal").classList.remove("show")'>✕</button>
       </div>
-      <div style='display:flex;gap:4px;padding:8px 20px;border-bottom:1px solid #eee;overflow-x:auto;'>
+      <div class='modal-subtitle'>RouteFlow 会先给出可执行排线初稿，再把容量、里程和时间风险整理成运营动作。建议调度员逐条确认后再下发司机任务。</div>
+      <div style='display:flex;gap:4px;padding:8px 20px;border-bottom:1px solid rgba(255,255,255,.08);overflow-x:auto;'>
         <button class='anomaly-tab-btn active' data-tab='wgt' id='tabBtnWgt' onclick='switchAnomalyTab("wgt")'>⚖️ 质量超容（8）</button>
       </div>
       <div class='modal-body'>
-        <div class='anomaly-tab-panel active' id='tabPanelVol'>
-        <p style='font-size:12px;color:#b0bec5;margin-bottom:10px;'>实装体积 > 车型容量。推荐升级/租车/分装/对跑。</p>
+        <div class='anomaly-tab-panel' id='tabPanelVol' style='display:none;'>
+        <p style='font-size:12px;color:#b0bec5;margin-bottom:10px;'>实装体积大于车型容积。优先确认是否可分装，再选择升级车型、临时租车或同车两趟。</p>
         </div>
-        <div class='anomaly-tab-panel' id='tabPanelWgt' style='display:none;'>
-        <p style='font-size:12px;color:#b0bec5;margin-bottom:10px;'>车辆实装载重 > 车型载重上限。建议换载重更大车型或多趟运输。</p>
+        <div class='anomaly-tab-panel active' id='tabPanelWgt'>
+        <p style='font-size:12px;color:#b0bec5;margin-bottom:10px;'>车辆实装载重大于车型载重上限。请先判断是否录入错误，再决定换车或拆分运输。</p>
         <div class='suggest-card' style='border-left:4px solid #e65100;'>
           <div class='card-title'>⚖️ 车辆2 · 4.2米（容量3000.0kg）</div>
           <div class='card-meta'>实装：<b style='color:#e65100;'>3010.86kg</b>（超100.4%）| 路程：78.35km</div>
@@ -383,10 +418,10 @@
         </div>
         </div>
         <div class='anomaly-tab-panel' id='tabPanelDist' style='display:none;'>
-        <p style='font-size:12px;color:#b0bec5;margin-bottom:10px;'>路线总公里数超过当日合理范围（时间窗×40km/h×80%）。</p>
+        <p style='font-size:12px;color:#b0bec5;margin-bottom:10px;'>路线总公里数超过当日合理范围。建议拆线、调整服务范围，或把部分订单转为备用路线。</p>
         </div>
         <div class='anomaly-tab-panel' id='tabPanelTime' style='display:none;'>
-        <p style='font-size:12px;color:#b0bec5;margin-bottom:10px;'>车辆完成配送时间晚于仓库关闭时刻。</p>
+        <p style='font-size:12px;color:#b0bec5;margin-bottom:10px;'>预计完成时间晚于仓库工作窗口。优先检查发车时间、服务时间和末段低优先级订单。</p>
         </div>
         <div class='confirm-split-panel' id='confirmedSplitsPanel'>
           <h4>✅ 已确认分装的路线</h4>
@@ -494,7 +529,7 @@
   </script>
   <!-- ── 参数配置面板（上下排布）── -->
   <div id="param-panel">
-    <h4>⚙ 参数配置 <span style="font-weight:normal;font-size:11px;color:#b0bec5;">调整后实时刷新甘特图</span></h4>
+    <h4>⚙ 运营参数试算 <span style="font-weight:normal;font-size:11px;color:#b0bec5;">页面内重算展示，不改动原始求解结果</span></h4>
     <div style="display:flex;flex-direction:column;gap:8px;">
       <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
         <label style="font-size:12px;color:#e0e0e0;display:flex;align-items:center;gap:4px;">路线间休息(min)<input id="paramRest" type="number" value="30" min="0" max="180" step="5" style="width:62px;padding:4px 6px;border:1px solid rgba(255,255,255,.15);border-radius:4px;font-size:13px;text-align:center;background:rgba(255,255,255,.06);color:#e0e0e0;" onchange="applyParams()"></label>
@@ -505,7 +540,7 @@
       <div style="display:flex;gap:8px;align-items:center;">
         <button onclick="applyParams()" style="padding:5px 20px;border:1px solid #4fc3f7;border-radius:4px;background:#1565c0;color:#fff;cursor:pointer;font-size:12px;width:100%;">🔄 应用至甘特图</button>
       </div>
-      <div class="param-hint">路线间休息=同一路线两趟之间 · 路线切换休整=同车换路线之间</div>
+      <div class="param-hint">用于快速讨论“如果速度、装卸时间或休整时间变化，排班会怎样”。正式下发前请重新求解或人工确认。</div>
     </div>
   </div>
   <!-- ── 工作时长配置 ── -->
@@ -563,7 +598,7 @@
   </div>
   <!-- ── 自然语言覆盖 ── -->
   <div id="nl-panel">
-    <h4>💬 自然语言规则覆盖 <span style="font-weight:normal;font-size:11px;color:#b0bec5;">逐条输入，回车或点击「应用」</span></h4>
+    <h4>💬 临时规则试算 <span style="font-weight:normal;font-size:11px;color:#b0bec5;">把调度员的临时判断转成页面内试算规则</span></h4>
     <textarea id="nlInput" placeholder="例: 路线1必须在5:00前完成 · 车辆2休息时间5分钟 · 路线3速度50 · 路线5服务时间10分钟"></textarea>
     <div class="nl-row">
       <button onclick="applyNLRule()">📝 应用规则</button>
@@ -574,7 +609,7 @@
   </div>
   <!-- ── 甘特图 ── -->
   <div id="gantt-panel">
-    <h3>📊 实车作业甘特图 <span class="toggle-gantt" onclick="toggleGantt()">收起 ▲</span></h3>
+    <h3>📊 作业甘特图（实车视角） <span class="toggle-gantt" onclick="toggleGantt()">收起 ▲</span></h3>
     <div class="gantt-legend" style="font-size:11px;color:#666;padding-bottom:4px;">
       <span>纵轴=路线(按时间排序) · 色块颜色=实车 · 文字=实车编号</span>
     </div>
@@ -583,14 +618,14 @@
   </div>
   <!-- ── 工作负荷图 ── -->
   <div id="workload-panel">
-    <h3>📈 工作负荷分布 <span style="font-weight:normal;font-size:12px;color:#8aaccc;">（小时/天）</span> <span class="toggle-workload" onclick="toggleWorkload()">收起 ▲</span></h3>
+    <h3>📈 车辆工作负荷 <span style="font-weight:normal;font-size:12px;color:#8aaccc;">（小时/天）</span> <span class="toggle-workload" onclick="toggleWorkload()">收起 ▲</span></h3>
     <div id="wl-chart"></div>
     <div id="wl-stats"></div>
   </div>
   <div style="margin-top:14px;">
-    <h3 style="margin-bottom:6px;">&#128202; 实车路线卡片
+    <h3 style="margin-bottom:6px;">&#128202; 司机任务卡片
       <span style="font-weight:normal;font-size:11px;color:#b0bec5;margin-left:8px;">
-        点击卡片标题展开/收起路线详情
+        点击卡片标题展开/收起，每张卡可作为司机复核任务单
       </span>
     </h3>
     <div id="route-cards">
@@ -2069,7 +2104,7 @@
 <div class='formula-overlay' id='formulaOverlay' onclick='toggleFormula()'></div>
 <div class='formula-content' id='formulaPanel'>
   <button class='close-fml' onclick='toggleFormula()'>✕</button>
-  <h3>📐 VRP 数学模型 & 目标函数</h3>
+  <h3>📐 模型说明（给汇报/复盘）</h3>
   <h4>▎决策变量</h4>
   <div class='fml'>x<sub>ijk</sub> ∈ {0, 1}  — 车辆 k 是否从节点 i 行驶到节点 j</div>
   <div class='fml'>T<sub>ik</sub> ∈ ℝ⁺        — 车辆 k 到达节点 i 的时间</div>

@@ -1,5 +1,4 @@
 import { siteContent, type Language } from "@/lib/content";
-import { SectionHeader } from "./SectionHeader";
 
 type WhyChainFlowProps = {
   lang: Language;
@@ -11,12 +10,18 @@ export function WhyChainFlow({ lang }: WhyChainFlowProps) {
   return (
     <section id="vision" className="section-band bg-graphite text-rice">
       <div className="mx-auto max-w-7xl px-5 py-20 lg:px-8 lg:py-28">
-        <SectionHeader
-          eyebrow={copy.threeWaysHeader.eyebrow}
-          title={copy.threeWaysHeader.title}
-          subtitle={copy.threeWaysHeader.subtitle}
-          tone="dark"
-        />
+        <div className="flex max-w-3xl flex-col gap-4">
+          <p className="text-sm font-medium text-[#75d4cb]">{copy.threeWaysHeader.eyebrow}</p>
+          {lang === "zh" ? (
+            <h2 className="text-pretty text-[2.15rem] font-semibold leading-[1.18] text-rice sm:text-5xl">
+              <span className="block sm:inline">省时间、做判断、</span>
+              <span className="block sm:inline">看见网络</span>
+            </h2>
+          ) : (
+            <h2 className="text-balance text-3xl font-semibold leading-tight text-rice md:text-5xl">{copy.threeWaysHeader.title}</h2>
+          )}
+          <p className="max-w-2xl text-base leading-8 text-rice/70 md:text-lg">{copy.threeWaysHeader.subtitle}</p>
+        </div>
 
         <div className="mt-14 grid gap-px overflow-hidden rounded-2xl border border-rice/10 bg-rice/10 lg:grid-cols-3">
           {copy.threeWays.map((item, index) => (
