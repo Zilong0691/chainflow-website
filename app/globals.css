@@ -96,8 +96,14 @@ section[id] {
   position: relative;
   display: inline-block;
   margin-left: 0.14em;
-  color: #f2c76a;
-  text-shadow: 0 0 28px rgba(31, 143, 132, 0.28);
+  color: inherit;
+  background: linear-gradient(135deg, #fffaf0 0%, #e8f5f3 40%, #fffaf0 55%, #d4ede9 75%, #fffaf0 100%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: water-shimmer 4.8s ease-in-out infinite;
+  filter: drop-shadow(0 0 14px rgba(117, 212, 203, 0.35));
 }
 
 .flow-word::after {
@@ -108,7 +114,7 @@ section[id] {
   height: 0.08em;
   content: "";
   border-radius: 9999px;
-  background: linear-gradient(90deg, transparent, rgba(117, 212, 203, 0.88), rgba(242, 199, 106, 0.9), transparent);
+  background: linear-gradient(90deg, transparent, rgba(117, 212, 203, 0.72), rgba(255, 250, 240, 0.85), rgba(117, 212, 203, 0.55), transparent);
   transform-origin: left center;
   animation: flow-underline 3.8s ease-in-out infinite;
 }
@@ -313,324 +319,222 @@ section[id] {
   animation-delay: -4s;
 }
 
-.flow-dashboard {
+/* =============================================
+   Globe Flow Visual — 旋转地球 + 供应链流动线
+   ============================================= */
+
+.globe-visual {
   position: relative;
-  width: min(36rem, 46vw);
-  min-height: 30rem;
-  border-radius: 1.8rem;
-  border: 1px solid rgba(255, 250, 240, 0.10);
+  width: min(32rem, 44vw);
+  min-height: 32rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+}
+
+.globe-atmosphere {
+  position: absolute;
+  inset: -8%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(117, 212, 203, 0.10) 55%, rgba(31, 143, 132, 0.06) 72%, transparent 82%);
+  filter: blur(18px);
+  pointer-events: none;
+  animation: atmosphere-breathe 6s ease-in-out infinite;
+}
+
+.globe-sphere {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  max-width: 28rem;
+  border-radius: 50%;
   background:
-    radial-gradient(circle at 62% 34%, rgba(117, 212, 203, 0.18), transparent 24%),
-    radial-gradient(circle at 34% 72%, rgba(215, 177, 93, 0.13), transparent 25%),
-    linear-gradient(145deg, rgba(255, 250, 240, 0.08), rgba(8, 11, 9, 0.18) 42%, rgba(8, 11, 9, 0.62));
+    radial-gradient(circle at 38% 42%, rgba(31, 143, 132, 0.25), transparent 48%),
+    radial-gradient(circle at 58% 38%, rgba(117, 212, 203, 0.15), transparent 38%),
+    radial-gradient(circle at 62% 55%, rgba(215, 177, 93, 0.12), transparent 35%),
+    radial-gradient(circle at 35% 60%, rgba(31, 143, 132, 0.18), transparent 40%),
+    linear-gradient(195deg, #0d2623 0%, #0b1d1a 28%, #091512 62%, #0b1d19 100%);
   box-shadow:
-    0 30px 90px rgba(0, 0, 0, 0.22),
-    inset 0 1px 0 rgba(255, 250, 240, 0.08);
+    0 0 80px rgba(31, 143, 132, 0.15),
+    0 0 160px rgba(31, 143, 132, 0.06),
+    inset 0 0 60px rgba(117, 212, 203, 0.08);
   overflow: hidden;
 }
 
-.flow-dashboard::before {
+/* 经纬线网格 */
+.globe-grid {
   position: absolute;
-  inset: 1.1rem;
-  content: "";
-  border-radius: 1.35rem;
-  border: 1px solid rgba(255, 250, 240, 0.08);
+  inset: 0;
+  border-radius: 50%;
   background:
-    linear-gradient(90deg, rgba(255, 250, 240, 0.035) 1px, transparent 1px),
-    linear-gradient(0deg, rgba(255, 250, 240, 0.035) 1px, transparent 1px);
-  background-size: 4.6rem 4.6rem;
-  mask-image: linear-gradient(180deg, black, transparent 86%);
-}
-
-.flow-dashboard__map {
-  position: absolute;
-  inset: 1.1rem 1.1rem 7.2rem;
-  border-radius: 1.25rem;
-  overflow: hidden;
-  background:
-    radial-gradient(ellipse at 50% 46%, rgba(117, 212, 203, 0.10), transparent 42%),
-    linear-gradient(160deg, rgba(31, 143, 132, 0.18), transparent 38%),
-    rgba(8, 11, 9, 0.32);
-}
-
-.flow-dashboard__terrain {
-  position: absolute;
-  left: 8%;
-  right: 7%;
-  top: 20%;
-  height: 62%;
-  border-radius: 48% 52% 46% 54% / 58% 60% 40% 42%;
-  border: 1px solid rgba(255, 250, 240, 0.12);
-  background:
-    radial-gradient(ellipse at 38% 48%, rgba(255, 250, 240, 0.07), transparent 35%),
-    radial-gradient(ellipse at 66% 58%, rgba(215, 177, 93, 0.08), transparent 34%),
-    linear-gradient(24deg, transparent 47%, rgba(117, 212, 203, 0.12) 48%, transparent 50%);
-  transform: perspective(720px) rotateX(58deg) rotateZ(-8deg);
-  box-shadow: inset 0 0 54px rgba(117, 212, 203, 0.12);
-}
-
-.flow-dashboard__river,
-.flow-dashboard__route {
-  position: absolute;
-  z-index: 2;
-  border-radius: 9999px;
-  transform-origin: left center;
-}
-
-.flow-dashboard__river {
-  height: 1.15rem;
-  background: linear-gradient(90deg, transparent, rgba(117, 212, 203, 0.10), rgba(117, 212, 203, 0.44), rgba(255, 250, 240, 0.18), transparent);
-  filter: blur(8px);
-  animation: dashboard-river 6s ease-in-out infinite;
-}
-
-.flow-dashboard__river--one {
-  --river-rotate: 4deg;
-  left: -5%;
-  top: 45%;
-  width: 82%;
-  transform: rotate(var(--river-rotate));
-}
-
-.flow-dashboard__river--two {
-  --river-rotate: -18deg;
-  left: 20%;
-  top: 59%;
-  width: 68%;
-  transform: rotate(var(--river-rotate));
-  animation-delay: -2.1s;
-}
-
-.flow-dashboard__river--three {
-  --river-rotate: 31deg;
-  left: 22%;
-  top: 29%;
-  width: 54%;
-  transform: rotate(var(--river-rotate));
-  animation-delay: -3.6s;
-}
-
-.flow-dashboard__route {
-  height: 2px;
-  background: linear-gradient(90deg, transparent, rgba(242, 199, 106, 0.35), rgba(242, 199, 106, 0.95), rgba(117, 212, 203, 0.75), transparent);
-  filter: drop-shadow(0 0 14px rgba(117, 212, 203, 0.5));
-  animation: dashboard-route 4.8s ease-in-out infinite;
-}
-
-.flow-dashboard__route--one {
-  --route-rotate: 8deg;
-  left: 13%;
-  top: 44%;
-  width: 72%;
-  transform: rotate(var(--route-rotate));
-}
-
-.flow-dashboard__route--two {
-  --route-rotate: -17deg;
-  left: 16%;
-  top: 62%;
-  width: 64%;
-  transform: rotate(var(--route-rotate));
-  animation-delay: -1.4s;
-}
-
-.flow-dashboard__route--three {
-  --route-rotate: 34deg;
-  left: 31%;
-  top: 30%;
-  width: 46%;
-  transform: rotate(var(--route-rotate));
-  animation-delay: -2.8s;
-}
-
-.flow-dashboard__node,
-.flow-dashboard__hub {
-  position: absolute;
-  z-index: 4;
-  display: grid;
-  place-items: center;
-  border-radius: 9999px;
-  border: 1px solid rgba(255, 250, 240, 0.14);
-  background: rgba(8, 11, 9, 0.78);
-  box-shadow: 0 0 28px rgba(117, 212, 203, 0.14);
-  backdrop-filter: blur(12px);
-}
-
-.flow-dashboard__node {
-  min-width: 4.1rem;
-  height: 2.4rem;
-  padding: 0 0.75rem;
-  color: rgba(255, 250, 240, 0.78);
-  font-size: 0.82rem;
-}
-
-.flow-dashboard__node--supplier {
-  left: 9%;
-  top: 28%;
-}
-
-.flow-dashboard__node--stock {
-  left: 20%;
-  bottom: 22%;
-}
-
-.flow-dashboard__node--route {
-  right: 11%;
-  top: 35%;
-}
-
-.flow-dashboard__node--network {
-  right: 17%;
-  bottom: 25%;
-}
-
-.flow-dashboard__hub {
-  left: 50%;
-  top: 48%;
-  width: 5.25rem;
-  height: 5.25rem;
-  transform: translate(-50%, -50%);
-  background:
-    radial-gradient(circle, rgba(242, 199, 106, 0.20), transparent 62%),
-    rgba(8, 11, 9, 0.82);
-}
-
-.flow-dashboard__hub strong {
-  color: #f2c76a;
-  font-size: 1.5rem;
-  line-height: 1;
-}
-
-.flow-dashboard__hub span {
-  margin-top: -0.65rem;
-  color: rgba(255, 250, 240, 0.62);
-  font-size: 0.72rem;
-}
-
-.flow-dashboard__stage {
-  position: absolute;
-  z-index: 6;
-  font-size: 0.62rem;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: rgba(255, 250, 240, 0.22);
+    radial-gradient(circle at 50% 50%, transparent 28%, rgba(255, 250, 240, 0.04) 28.5%, transparent 29%),
+    radial-gradient(circle at 50% 50%, transparent 48%, rgba(255, 250, 240, 0.05) 48.5%, transparent 49%),
+    radial-gradient(circle at 50% 50%, transparent 68%, rgba(255, 250, 240, 0.04) 68.5%, transparent 69%),
+    linear-gradient(0deg, transparent 49.7%, rgba(255, 250, 240, 0.06) 49.9%, rgba(255, 250, 240, 0.06) 50.1%, transparent 50.3%),
+    linear-gradient(90deg, transparent 49.7%, rgba(255, 250, 240, 0.06) 49.9%, rgba(255, 250, 240, 0.06) 50.1%, transparent 50.3%);
   pointer-events: none;
+  mask-image: radial-gradient(circle at 50% 50%, black 88%, transparent 100%);
 }
 
-.flow-dashboard__stage--input {
-  top: 0.5rem;
-  left: 1.4rem;
-}
-
-.flow-dashboard__stage--ai {
-  top: 0.5rem;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.flow-dashboard__stage--output {
-  top: 0.5rem;
-  right: 1.4rem;
-}
-
-.flow-dashboard__particle {
+/* 旋转内容层 */
+.globe-contents {
   position: absolute;
-  z-index: 5;
-  width: 0.28rem;
-  height: 0.28rem;
-  border-radius: 9999px;
+  inset: 0;
+  border-radius: 50%;
+  animation: globe-rotate 48s linear infinite;
+}
+
+/* 大陆 SVG */
+.globe-land {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.55;
+}
+
+.globe-land path {
+  fill: rgba(31, 143, 132, 0.28);
+  stroke: rgba(117, 212, 203, 0.18);
+  stroke-width: 0.5;
+}
+
+/* 流动路线 SVG */
+.globe-routes {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.globe-routes .flow-path {
+  fill: none;
+  stroke-width: 1.2;
+  stroke-linecap: round;
+  opacity: 0.7;
+  animation: flow-dash 2.5s linear infinite;
+}
+
+.globe-routes .flow-path--gold {
+  stroke: #d7b15d;
+  filter: drop-shadow(0 0 6px rgba(215, 177, 93, 0.6));
+  animation-duration: 2.2s;
+}
+
+.globe-routes .flow-path--teal {
+  stroke: #75d4cb;
+  filter: drop-shadow(0 0 6px rgba(117, 212, 203, 0.6));
+  animation-duration: 3s;
+}
+
+.globe-routes .flow-path--warm {
+  stroke: url(#flowGradientWarm);
+  filter: drop-shadow(0 0 5px rgba(242, 199, 106, 0.5));
+  animation-duration: 2.8s;
+}
+
+.globe-routes .flow-path--cool {
+  stroke: url(#flowGradientCool);
+  filter: drop-shadow(0 0 5px rgba(117, 212, 203, 0.5));
+  animation-duration: 3.3s;
+}
+
+/* 节点光点 */
+.globe-node {
+  position: absolute;
+  z-index: 3;
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 50%;
   background: #f2c76a;
-  box-shadow: 0 0 10px rgba(242, 199, 106, 0.8);
+  box-shadow: 0 0 12px rgba(242, 199, 106, 0.9), 0 0 28px rgba(242, 199, 106, 0.4);
   pointer-events: none;
-  animation: particle-drift 3.2s ease-in-out infinite;
+  animation: node-pulse 2.8s ease-in-out infinite alternate;
 }
 
-.flow-dashboard__particle--one {
-  left: 28%;
-  top: 42%;
-  animation-delay: 0s;
+.globe-node--major {
+  width: 0.6rem;
+  height: 0.6rem;
+  background: #fffaf0;
+  box-shadow: 0 0 16px rgba(255, 250, 240, 0.9), 0 0 36px rgba(117, 212, 203, 0.5);
 }
 
-.flow-dashboard__particle--two {
-  left: 48%;
-  top: 58%;
-  animation-delay: -1.1s;
+.globe-node--teal {
+  background: #75d4cb;
+  box-shadow: 0 0 12px rgba(117, 212, 203, 0.9), 0 0 28px rgba(117, 212, 203, 0.4);
 }
 
-.flow-dashboard__particle--three {
-  left: 58%;
-  top: 34%;
-  animation-delay: -2.3s;
-}
-
-.flow-dashboard__panel {
-  position: absolute;
-  left: 1.1rem;
-  right: 1.1rem;
-  bottom: 1.1rem;
-  z-index: 5;
+/* 底部面板 */
+.globe-panel {
+  width: 100%;
+  max-width: 24rem;
+  border-radius: 1.1rem;
+  border: 1px solid rgba(255, 250, 240, 0.10);
+  background: rgba(8, 11, 9, 0.65);
+  padding: 0.85rem 1.1rem;
+  backdrop-filter: blur(18px);
   display: grid;
   grid-template-columns: 1fr auto;
   gap: 1rem;
   align-items: center;
-  border-radius: 1.1rem;
-  border: 1px solid rgba(255, 250, 240, 0.10);
-  background: rgba(8, 11, 9, 0.72);
-  padding: 1rem;
-  backdrop-filter: blur(18px);
 }
 
-.flow-dashboard__panel p {
-  color: rgba(255, 250, 240, 0.48);
-  font-size: 0.78rem;
+.globe-panel__text p {
+  color: rgba(255, 250, 240, 0.45);
+  font-size: 0.72rem;
 }
 
-.flow-dashboard__panel strong {
+.globe-panel__text strong {
   display: block;
-  margin-top: 0.35rem;
-  color: rgba(255, 250, 240, 0.88);
-  font-size: 0.95rem;
+  margin-top: 0.25rem;
+  color: rgba(255, 250, 240, 0.85);
+  font-size: 0.88rem;
 }
 
-.flow-dashboard__bars {
-  display: grid;
-  width: 5.8rem;
-  gap: 0.42rem;
-}
-
-.flow-dashboard__bars span {
-  height: 0.42rem;
-  border-radius: 9999px;
-  background: linear-gradient(90deg, rgba(117, 212, 203, 0.35), rgba(242, 199, 106, 0.8));
-}
-
-.flow-dashboard__bars span:nth-child(2) {
-  width: 72%;
-}
-
-.flow-dashboard__bars span:nth-child(3) {
-  width: 46%;
-}
-
-.flow-dashboard__result-mini {
+.globe-panel__metrics {
   display: grid;
   grid-template-columns: repeat(3, auto);
-  gap: 0.6rem;
+  gap: 0.45rem;
 }
 
-.flow-dashboard__result-mini span {
+.globe-panel__metrics span {
   display: inline-flex;
   align-items: center;
-  gap: 0.2rem;
-  border-radius: 0.5rem;
-  border: 1px solid rgba(215, 177, 93, 0.18);
-  background: rgba(215, 177, 93, 0.08);
-  padding: 0.25rem 0.55rem;
-  color: rgba(242, 199, 106, 0.85);
-  font-size: 0.7rem;
+  border-radius: 0.4rem;
+  border: 1px solid rgba(215, 177, 93, 0.16);
+  background: rgba(215, 177, 93, 0.07);
+  padding: 0.2rem 0.45rem;
+  color: rgba(242, 199, 106, 0.82);
+  font-size: 0.65rem;
   font-weight: 600;
   white-space: nowrap;
+}
+
+/* --- 动画关键帧 --- */
+@keyframes globe-rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes atmosphere-breathe {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.04); }
+}
+
+@keyframes water-shimmer {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes node-pulse {
+  from { opacity: 0.5; transform: scale(0.8); }
+  to { opacity: 1; transform: scale(1.3); }
+}
+
+@keyframes flow-dash {
+  to { stroke-dashoffset: -80; }
 }
 
 .demo-map {
@@ -799,61 +703,29 @@ section[id] {
     width: min(21rem, 82vw);
   }
 
-  .flow-dashboard {
-    width: min(22rem, 88vw);
+  .globe-visual {
+    width: min(20rem, 82vw);
     min-height: 24rem;
-    border-radius: 1.35rem;
   }
 
-  .flow-dashboard__map {
-    inset: 0.85rem 0.85rem 6.4rem;
+  .globe-sphere {
+    max-width: 20rem;
   }
 
-  .flow-dashboard__node {
-    min-width: 3.35rem;
-    height: 2rem;
-    padding: 0 0.55rem;
-    font-size: 0.72rem;
-  }
-
-  .flow-dashboard__hub {
-    width: 4.35rem;
-    height: 4.35rem;
-  }
-
-  .flow-dashboard__stage {
-    font-size: 0.56rem;
-  }
-
-  .flow-dashboard__stage--input {
-    left: 0.9rem;
-  }
-
-  .flow-dashboard__stage--output {
-    right: 0.9rem;
-  }
-
-  .flow-dashboard__panel {
-    left: 0.85rem;
-    right: 0.85rem;
-    bottom: 0.85rem;
+  .globe-panel {
+    max-width: 20rem;
     grid-template-columns: 1fr;
   }
 
-  .flow-dashboard__bars {
-    width: 100%;
-  }
-
-  .flow-dashboard__result-mini {
+  .globe-panel__metrics {
     grid-template-columns: repeat(3, 1fr);
-    gap: 0.4rem;
     width: 100%;
   }
 
-  .flow-dashboard__result-mini span {
+  .globe-panel__metrics span {
     justify-content: center;
-    font-size: 0.64rem;
-    padding: 0.22rem 0.4rem;
+    font-size: 0.6rem;
+    padding: 0.18rem 0.35rem;
   }
 }
 

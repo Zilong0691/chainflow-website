@@ -24,7 +24,7 @@ export function SectionHeader({
     <div className={`flex max-w-3xl flex-col gap-4 ${alignment} ${className}`}>
       {eyebrow ? <p className={`text-sm font-medium ${eyebrowColor}`}>{eyebrow}</p> : null}
       <h2 className={`text-balance text-3xl font-semibold leading-tight md:text-5xl ${titleColor}`}>{title}</h2>
-      {subtitle ? <p className={`max-w-2xl text-base leading-8 md:text-lg ${subtitleColor}`}>{subtitle}</p> : null}
+      {subtitle ? <p className={`max-w-2xl text-pretty text-base leading-8 md:text-lg ${subtitleColor}`}>{subtitle}</p> : null}
     </div>
   );
 }

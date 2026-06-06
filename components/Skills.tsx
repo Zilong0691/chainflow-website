@@ -104,7 +104,7 @@ function ToolCard({
 
       <p className="text-sm font-medium text-gold">{tool.name}</p>
       <h3 className="mt-2 text-3xl font-semibold leading-tight text-rice">{tool.title}</h3>
-      <p className="mt-5 text-base leading-8 text-rice/70">{tool.value}</p>
+      <p className="mt-5 text-pretty text-base leading-8 text-rice/70">{tool.value}</p>
 
       <div className="mt-7 grid gap-5 border-t border-rice/10 pt-6">
         <ToolLine label={labels.problem} value={tool.problem} />

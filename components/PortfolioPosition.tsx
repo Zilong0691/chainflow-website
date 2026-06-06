@@ -16,7 +16,7 @@ export function PortfolioPosition({ lang }: PortfolioPositionProps) {
         </div>
 
         <div className="flex flex-col justify-end">
-          <p className="max-w-3xl text-base leading-8 text-ink/70 md:text-lg">{copy.body}</p>
+          <p className="max-w-3xl text-pretty text-base leading-8 text-ink/70 md:text-lg">{copy.body}</p>
           <div className="mt-7 flex flex-wrap gap-2">
             {copy.points.map((point) => (
               <span key={point} className="rounded-full border border-jade/20 bg-jade/10 px-4 py-2 text-sm font-medium text-jade">

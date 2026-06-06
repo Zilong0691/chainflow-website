@@ -18,8 +18,8 @@ export function CommunityPilot({ lang }: CommunityPilotProps) {
         <div className="grid gap-12 lg:grid-cols-[0.92fr_1.08fr]">
           <div>
             <SectionHeader eyebrow={copy.eyebrow} title={copy.title} subtitle={copy.subtitle} />
-            <p className="mt-7 max-w-2xl text-base leading-8 text-ink/70 md:text-lg">{copy.body}</p>
-            <p className="mt-8 rounded-2xl border border-jade/15 bg-jade/10 p-5 text-sm leading-7 text-ink/68">{copy.note}</p>
+            <p className="mt-7 max-w-2xl text-pretty text-base leading-8 text-ink/70 md:text-lg">{copy.body}</p>
+            <p className="mt-8 rounded-2xl border border-jade/15 bg-jade/10 p-5 text-pretty text-sm leading-7 text-ink/68">{copy.note}</p>
           </div>
 
           <div className="grid gap-5">
@@ -40,8 +40,8 @@ export function CommunityPilot({ lang }: CommunityPilotProps) {
             <p className="text-sm font-medium text-jade">{contactCopy.eyebrow}</p>
             <h2 className="mt-5 text-balance text-4xl font-semibold leading-tight md:text-6xl">{contactCopy.title}</h2>
             <p className="mt-6 text-2xl leading-tight text-ink/80">{contactCopy.subtitle}</p>
-            <p className="mt-8 max-w-2xl text-lg leading-9 text-ink/70">{contactCopy.body}</p>
-            <p className="mt-5 max-w-2xl text-base leading-8 text-ink/60">{contactCopy.pilot}</p>
+            <p className="mt-8 max-w-2xl text-pretty text-lg leading-9 text-ink/70">{contactCopy.body}</p>
+            <p className="mt-5 max-w-2xl text-pretty text-base leading-8 text-ink/60">{contactCopy.pilot}</p>
             <div className="mt-8 grid max-w-3xl gap-3 md:grid-cols-3">
               {contactCopy.paths.map((path) => (
                 <div key={path.title} className="rounded-2xl border border-ink/10 bg-white/55 p-4">

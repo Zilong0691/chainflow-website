@@ -20,7 +20,7 @@ export function WhyChainFlow({ lang }: WhyChainFlowProps) {
           ) : (
             <h2 className="text-balance text-3xl font-semibold leading-tight text-rice md:text-5xl">{copy.threeWaysHeader.title}</h2>
           )}
-          <p className="max-w-2xl text-base leading-8 text-rice/70 md:text-lg">{copy.threeWaysHeader.subtitle}</p>
+          <p className="max-w-2xl text-pretty text-base leading-8 text-rice/70 md:text-lg">{copy.threeWaysHeader.subtitle}</p>
         </div>
 
         <div className="mt-14 grid gap-px overflow-hidden rounded-2xl border border-rice/10 bg-rice/10 lg:grid-cols-3">
@@ -49,10 +49,10 @@ export function WhyChainFlow({ lang }: WhyChainFlowProps) {
           <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
             <div>
               <p className="text-sm font-medium text-gold">{copy.flowLogic.eyebrow}</p>
-              <h3 className="mt-4 max-w-2xl text-3xl font-semibold leading-tight text-rice md:text-4xl">
+              <h3 className="mt-4 max-w-2xl text-pretty text-3xl font-semibold leading-tight text-rice md:text-4xl">
                 {copy.flowLogic.title}
               </h3>
-              <p className="mt-5 max-w-2xl text-base leading-8 text-rice/70">{copy.flowLogic.body}</p>
+              <p className="mt-5 max-w-2xl text-pretty text-base leading-8 text-rice/70">{copy.flowLogic.body}</p>
             </div>
 
             <div className="grid gap-3 sm:grid-cols-5">

@@ -36,7 +36,7 @@ export function About({ lang }: AboutProps) {
         </div>
 
         <div className="flex flex-col justify-end">
-          <div className="space-y-6 text-lg leading-9 text-rice/70">
+          <div className="space-y-6 text-pretty text-lg leading-9 text-rice/70">
             {copy.paragraphs.map((paragraph) => (
               <p key={paragraph}>{paragraph}</p>
             ))}
