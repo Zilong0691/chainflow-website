@@ -93,30 +93,28 @@ section[id] {
 }
 
 .flow-word {
-  position: relative;
   display: inline-block;
-  margin-left: 0.14em;
-  color: inherit;
-  background: linear-gradient(135deg, #fffaf0 0%, #e8f5f3 40%, #fffaf0 55%, #d4ede9 75%, #fffaf0 100%);
-  background-size: 200% 100%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: water-shimmer 4.8s ease-in-out infinite;
-  filter: drop-shadow(0 0 14px rgba(117, 212, 203, 0.35));
+  margin-left: 0.08em;
+  font-family: "Liu Jian Mao Cao", "Noto Serif SC", serif;
+  font-weight: 400;
+  font-size: 1.18em;
+  line-height: 1;
+  color: #fffaf0;
+  text-shadow:
+    0 0 18px rgba(117, 212, 203, 0.25),
+    0 2px 4px rgba(8, 11, 9, 0.3);
+  letter-spacing: 0.04em;
+  transform: translateY(-0.02em);
+  animation: calligraphy-breath 5s ease-in-out infinite;
 }
 
-.flow-word::after {
-  position: absolute;
-  left: 0.04em;
-  right: 0.02em;
-  bottom: -0.08em;
-  height: 0.08em;
-  content: "";
-  border-radius: 9999px;
-  background: linear-gradient(90deg, transparent, rgba(117, 212, 203, 0.72), rgba(255, 250, 240, 0.85), rgba(117, 212, 203, 0.55), transparent);
-  transform-origin: left center;
-  animation: flow-underline 3.8s ease-in-out infinite;
+@keyframes calligraphy-breath {
+  0%, 100% {
+    text-shadow: 0 0 18px rgba(117, 212, 203, 0.25), 0 2px 4px rgba(8, 11, 9, 0.3);
+  }
+  50% {
+    text-shadow: 0 0 32px rgba(117, 212, 203, 0.45), 0 1px 2px rgba(8, 11, 9, 0.2);
+  }
 }
 
 .supply-flow {
@@ -538,6 +536,39 @@ section[id] {
 
 @keyframes flow-dash {
   to { stroke-dashoffset: -80; }
+}
+
+/* =============================================
+   工具墙卡片
+   ============================================= */
+.tool-card {
+  display: block;
+  border-radius: 1.1rem;
+  border: 1px solid rgba(255, 250, 240, 0.08);
+  background: rgba(255, 250, 240, 0.025);
+  padding: 1.1rem;
+  cursor: pointer;
+  transition: border-color 0.25s, background 0.25s, transform 0.2s;
+}
+
+.tool-card:hover {
+  border-color: rgba(215, 177, 93, 0.3);
+  background: rgba(215, 177, 93, 0.04);
+  transform: translateY(-1px);
+}
+
+.tool-card--open {
+  border-color: rgba(215, 177, 93, 0.4);
+  background: rgba(215, 177, 93, 0.06);
+}
+
+.tool-detail {
+  animation: detail-in 0.25s ease-out;
+}
+
+@keyframes detail-in {
+  from { opacity: 0; transform: translateY(-0.5rem); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .demo-map {

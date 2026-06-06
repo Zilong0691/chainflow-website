@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import { About } from "@/components/About";
-import { Cases } from "@/components/Cases";
 import { CommunityPilot } from "@/components/CommunityPilot";
 import { Footer } from "@/components/Footer";
 import { Hero } from "@/components/Hero";
@@ -38,7 +37,6 @@ export function SiteShell() {
         <PortfolioPosition lang={lang} />
         <WhyChainFlow lang={lang} />
         <Skills lang={lang} />
-        <Cases lang={lang} />
         <Services lang={lang} />
         <CommunityPilot lang={lang} />
         <About lang={lang} />
