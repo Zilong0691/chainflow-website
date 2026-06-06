@@ -38,7 +38,7 @@ export function CommunityPilot({ lang }: CommunityPilotProps) {
         <div id="contact" className="scroll-mt-24 grid gap-12 lg:grid-cols-[1.08fr_0.92fr] lg:items-end">
           <div>
             <p className="text-sm font-medium text-jade">{contactCopy.eyebrow}</p>
-            <h2 className="mt-5 text-balance text-4xl font-semibold leading-tight md:text-6xl">{contactCopy.title}</h2>
+            <h2 className="mt-5 whitespace-nowrap text-4xl font-semibold leading-tight md:text-6xl">{contactCopy.title}</h2>
             <p className="mt-6 text-2xl leading-tight text-ink/80">{contactCopy.subtitle}</p>
             <p className="mt-8 max-w-2xl text-pretty text-lg leading-9 text-ink/70">{contactCopy.body}</p>
             <p className="mt-5 max-w-2xl text-pretty text-base leading-8 text-ink/60">{contactCopy.pilot}</p>
