@@ -126,23 +126,8 @@ function GlobeFlowVisual({ lang }: { lang: Language }) {
         {/* 旋转内容层 */}
         <div className="globe-contents">
           <svg className="globe-map" viewBox="0 0 800 400" preserveAspectRatio="xMidYMid slice">
-            <defs>
-              <linearGradient id="fw" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="#d7b15d" stopOpacity="0.05" />
-                <stop offset="25%" stopColor="#f2c76a" stopOpacity="0.85" />
-                <stop offset="75%" stopColor="#d7b15d" stopOpacity="0.75" />
-                <stop offset="100%" stopColor="#d7b15d" stopOpacity="0.05" />
-              </linearGradient>
-              <linearGradient id="fc" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="#75d4cb" stopOpacity="0.05" />
-                <stop offset="25%" stopColor="#75d4cb" stopOpacity="0.9" />
-                <stop offset="75%" stopColor="#1f8f84" stopOpacity="0.7" />
-                <stop offset="100%" stopColor="#75d4cb" stopOpacity="0.05" />
-              </linearGradient>
-            </defs>
-
             {/* ===== 大陆轮廓 ===== */}
-            <g className="continent-group" fill="rgba(31,143,132,0.27)" stroke="rgba(117,212,203,0.16)" strokeWidth="0.6">
+            <g className="continent-group" fill="rgba(31,143,132,0.32)" stroke="rgba(117,212,203,0.20)" strokeWidth="0.6">
               {/* 北美洲 */}
               <path d="M 82,22 C 100,18 125,17 150,20 C 175,22 200,25 220,28
                        C 238,32 255,38 262,48 C 268,56 264,68 256,80
@@ -261,9 +246,22 @@ function GlobeFlowVisual({ lang }: { lang: Language }) {
                 return <path key={i} className={cls} d={d} strokeDasharray={dash} />;
               })}
             </g>
+
+            {/* ===== 港口城市标签 ===== */}
+            <g className="port-labels" fill="rgba(255,250,240,0.35)" fontSize="5.5" fontFamily="system-ui,sans-serif" textAnchor="middle">
+              <text x={650} y={128}>{zh ? "上海" : "Shanghai"}</text>
+              <text x={622} y={224}>{zh ? "新加坡" : "Singapore"}</text>
+              <text x={695} y={110}>{zh ? "东京" : "Tokyo"}</text>
+              <text x={505} y={158}>{zh ? "迪拜" : "Dubai"}</text>
+              <text x={378} y={92}  >{zh ? "鹿特丹" : "Rotterdam"}</text>
+              <text x={115} y={118}>{zh ? "洛杉矶" : "LA"}</text>
+              <text x={205} y={103}>{zh ? "纽约" : "New York"}</text>
+              <text x={422} y={345}>{zh ? "开普敦" : "Cape Town"}</text>
+              <text x={678} y={320}>{zh ? "悉尼" : "Sydney"}</text>
+            </g>
           </svg>
 
-          {/* 枢纽节点 */}
+          {/* 枢纽节点光点 */}
           <div className="globe-node globe-node--major" style={{ left:"81.2%", top:"33.8%" }} />
           <div className="globe-node" style={{ left:"77.8%", top:"52.5%" }} />
           <div className="globe-node" style={{ left:"86.9%", top:"29.5%" }} />
@@ -274,6 +272,7 @@ function GlobeFlowVisual({ lang }: { lang: Language }) {
           <div className="globe-node globe-node--teal" style={{ left:"53.1%", top:"82.5%" }} />
           <div className="globe-node" style={{ left:"84.4%", top:"76.2%" }} />
           <div className="globe-node globe-node--teal" style={{ left:"32.5%", top:"70.0%" }} />
+          <div className="globe-node" style={{ left:"63.1%", top:"43.8%" }} />
         </div>
       </div>
 
