@@ -16,7 +16,7 @@ export function Navbar({ lang, onLanguageChange }: NavbarProps) {
           <span className="grid h-8 w-8 place-items-center rounded-full border border-rice/20 bg-rice/10 text-sm font-semibold">
             CF
           </span>
-          <span className="text-base font-semibold">ChainFlow</span>
+          <span className="text-base font-semibold">{lang === "zh" ? "ChainFlow 链流" : "ChainFlow"}</span>
         </a>
 
         <nav className="hidden items-center gap-7 md:flex" aria-label="Primary navigation">

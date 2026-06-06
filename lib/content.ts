@@ -17,14 +17,13 @@ export const siteContent = {
       { label: "工具包", href: "#skills" },
       { label: "案例", href: "#cases" },
       { label: "价格", href: "#pricing" },
-      { label: "共创", href: "#community" },
-      { label: "关于", href: "#about" },
-      { label: "联系", href: "#contact" }
+      { label: "共创试点", href: "#community" },
+      { label: "关于", href: "#about" }
     ],
     navCta: "预约试点",
     hero: {
       eyebrow: "供应链 × AI 产品实验室",
-      brand: "ChainFlow",
+      brand: "ChainFlow 链流",
       title: "让供应链，如水一般",
       subtitle: "面向供应链从业者、商家与中小企业的实用 AI 小工具实验室。",
       body: "从一个具体问题开始，把排线、选址、核对、沟通这些耗时工作做成看得懂、用得上、有人带着跑起来的工具。",
@@ -340,7 +339,7 @@ export const siteContent = {
       ]
     },
     footer: {
-      brand: "ChainFlow Lab",
+      brand: "ChainFlow 链流",
       line: "让供应链，如水一般。"
     }
   },
@@ -350,9 +349,8 @@ export const siteContent = {
       { label: "Toolkits", href: "#skills" },
       { label: "Cases", href: "#cases" },
       { label: "Pricing", href: "#pricing" },
-      { label: "Community", href: "#community" },
-      { label: "About", href: "#about" },
-      { label: "Contact", href: "#contact" }
+      { label: "Pilot", href: "#community" },
+      { label: "About", href: "#about" }
     ],
     navCta: "Start a Pilot",
     hero: {
@@ -659,7 +657,7 @@ export const siteContent = {
       ]
     },
     footer: {
-      brand: "ChainFlow Lab",
+      brand: "ChainFlow 链流",
       line: "AI-native tools and intelligence for global supply chain flow."
     }
   }

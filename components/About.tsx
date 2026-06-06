@@ -1,3 +1,4 @@
+import { ArrowRight } from "lucide-react";
 import { siteContent, type Language } from "@/lib/content";
 import { SectionHeader } from "./SectionHeader";
 
@@ -7,6 +8,7 @@ type AboutProps = {
 
 export function About({ lang }: AboutProps) {
   const copy = siteContent[lang].about;
+  const notesCopy = siteContent[lang].openNotes;
 
   return (
     <section id="about" className="section-band bg-graphite text-rice">
@@ -15,6 +17,21 @@ export function About({ lang }: AboutProps) {
           <SectionHeader eyebrow={copy.eyebrow} title={copy.title} subtitle={copy.subtitle} tone="dark" />
           <div className="mt-10 rounded-2xl border border-gold/25 bg-gold/10 p-7">
             <p className="text-2xl font-semibold leading-tight text-rice md:text-3xl">{copy.statement}</p>
+          </div>
+
+          {/* 开放笔记 — 整合自原 OpenNotes */}
+          <div className="mt-8 rounded-2xl border border-rice/10 bg-rice/[0.035] p-6">
+            <p className="text-sm font-medium text-gold">{notesCopy.eyebrow}</p>
+            <p className="mt-2 text-sm leading-7 text-rice/60">{notesCopy.body}</p>
+            <a
+              href="https://github.com/Zilong0691"
+              target="_blank"
+              rel="noreferrer"
+              className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-rice/70 transition hover:text-gold"
+            >
+              {notesCopy.cta}
+              <ArrowRight size={14} />
+            </a>
           </div>
         </div>
 
