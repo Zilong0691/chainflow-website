@@ -27,7 +27,7 @@ export function Hero({ lang }: HeroProps) {
           <h1 className="text-balance text-5xl font-semibold leading-[1.06] text-rice md:text-7xl">
             {lang === "zh" ? (
               <>
-                让供应链，如<span className="flow-word">水流动</span>
+                让供应链，如<span className="flow-word">水一般</span>
               </>
             ) : (
               copy.title
@@ -61,28 +61,32 @@ export function Hero({ lang }: HeroProps) {
 
 function GlobalFlowOrb() {
   const nodes = [
-    "left-[16%] top-[30%]",
-    "left-[30%] top-[22%]",
-    "left-[48%] top-[28%]",
-    "left-[66%] top-[35%]",
-    "left-[75%] top-[52%]",
-    "left-[58%] top-[68%]",
-    "left-[36%] top-[72%]",
-    "left-[22%] top-[56%]",
-    "left-[48%] top-[48%]"
+    "left-[12%] top-[42%]",
+    "left-[24%] top-[35%]",
+    "left-[39%] top-[39%]",
+    "left-[52%] top-[32%]",
+    "left-[66%] top-[43%]",
+    "left-[78%] top-[52%]",
+    "left-[60%] top-[62%]",
+    "left-[42%] top-[58%]",
+    "left-[28%] top-[66%]"
   ];
 
   return (
     <div className="supply-flow" aria-hidden="true">
-      <div className="supply-flow__hemisphere" />
-      <div className="supply-flow__grid supply-flow__grid--one" />
-      <div className="supply-flow__grid supply-flow__grid--two" />
-      <div className="supply-flow__ribbon supply-flow__ribbon--one" />
-      <div className="supply-flow__ribbon supply-flow__ribbon--two" />
-      <div className="supply-flow__ribbon supply-flow__ribbon--three" />
+      <div className="supply-flow__surface" />
+      <div className="supply-flow__coast supply-flow__coast--one" />
+      <div className="supply-flow__coast supply-flow__coast--two" />
+      <div className="supply-flow__stream supply-flow__stream--one" />
+      <div className="supply-flow__stream supply-flow__stream--two" />
+      <div className="supply-flow__stream supply-flow__stream--three" />
+      <div className="supply-flow__stream supply-flow__stream--four" />
+      <div className="supply-flow__wash supply-flow__wash--one" />
+      <div className="supply-flow__wash supply-flow__wash--two" />
       <div className="supply-flow__pulse supply-flow__pulse--one" />
       <div className="supply-flow__pulse supply-flow__pulse--two" />
       <div className="supply-flow__pulse supply-flow__pulse--three" />
+      <div className="supply-flow__pulse supply-flow__pulse--four" />
       {nodes.map((position, index) => (
         <span key={position} className={`supply-flow__node ${position}`} style={{ animationDelay: `${index * 0.28}s` }} />
       ))}

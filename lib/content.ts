@@ -25,7 +25,7 @@ export const siteContent = {
     hero: {
       eyebrow: "供应链 × AI 产品实验室",
       brand: "ChainFlow",
-      title: "让供应链，如水流动",
+      title: "让供应链，如水一般",
       subtitle: "面向供应链从业者、商家与中小企业的实用 AI 小工具实验室。",
       body: "从一个具体问题开始，把排线、选址、核对、沟通这些耗时工作做成看得懂、用得上、有人带着跑起来的工具。",
       primaryCta: "查看工具",
@@ -327,7 +327,7 @@ export const siteContent = {
     },
     footer: {
       brand: "ChainFlow Lab",
-      line: "让供应链，如水流动。"
+      line: "让供应链，如水一般。"
     }
   },
   en: {

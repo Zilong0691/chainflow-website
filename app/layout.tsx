@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     "ChainFlow is a Supply Chain AI product lab for practical tools, workflow pilots, and decision intelligence.",
   openGraph: {
     title: "ChainFlow",
-    description: "让供应链，如水流动。",
+    description: "让供应链，如水一般。",
     images: ["/chainflow-hero-flow.png"]
   }
 };
