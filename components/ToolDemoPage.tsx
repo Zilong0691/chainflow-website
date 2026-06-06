@@ -7,6 +7,7 @@ type ToolDemoPageProps = {
 
 export function ToolDemoPage({ slug }: ToolDemoPageProps) {
   const demo = demoPages[slug];
+  const liveDemo = liveDemos[slug];
 
   return (
     <main className="min-h-screen bg-graphite text-rice">
@@ -18,11 +19,12 @@ export function ToolDemoPage({ slug }: ToolDemoPageProps) {
             返回 ChainFlow
           </a>
 
-          <div className="grid gap-12 py-16 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:py-24">
+          <div className="grid gap-12 py-16 lg:grid-cols-[0.92fr_1.08fr] lg:items-center lg:py-24">
             <div>
               <p className="text-sm font-medium text-gold">{demo.name} 演示</p>
               <h1 className="mt-5 text-balance text-5xl font-semibold leading-tight md:text-7xl">{demo.title}</h1>
               <p className="mt-7 max-w-2xl text-xl leading-9 text-rice/70">{demo.subtitle}</p>
+              <p className="mt-5 max-w-2xl text-base leading-8 text-rice/60">{liveDemo.promise}</p>
               <p className="mt-5 text-base font-medium text-rice/60">{demo.price}</p>
               <div className="mt-10 flex flex-col gap-3 sm:flex-row">
                 <a href="/#contact" className="btn-primary">
@@ -36,18 +38,51 @@ export function ToolDemoPage({ slug }: ToolDemoPageProps) {
             </div>
 
             <div className="rounded-2xl border border-rice/10 bg-rice/[0.045] p-5 shadow-soft backdrop-blur">
-              <div className="demo-map">
-                <span className="demo-map__node left-[18%] top-[32%]" />
-                <span className="demo-map__node left-[38%] top-[20%]" />
-                <span className="demo-map__node left-[62%] top-[36%]" />
-                <span className="demo-map__node left-[76%] top-[62%]" />
-                <span className="demo-map__node left-[48%] top-[74%]" />
-                <span className="demo-map__node left-[24%] top-[58%]" />
-                <span className="demo-map__path demo-map__path--one" />
-                <span className="demo-map__path demo-map__path--two" />
-                <span className="demo-map__path demo-map__path--three" />
+              <div className="grid gap-4">
+                <div className="rounded-xl border border-gold/20 bg-gold/10 p-4">
+                  <p className="text-sm font-semibold text-gold">{liveDemo.contextTitle}</p>
+                  <p className="mt-2 text-sm leading-7 text-rice/70">{liveDemo.context}</p>
+                </div>
+                <div className="grid gap-3 sm:grid-cols-3">
+                  {liveDemo.highlights.map((item) => (
+                    <div key={item.label} className="rounded-xl border border-rice/10 bg-graphite/50 p-4">
+                      <p className="text-xs text-rice/50">{item.label}</p>
+                      <p className="mt-2 text-lg font-semibold text-rice">{item.value}</p>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="border-y border-rice/10 bg-[#0b100d] text-rice">
+        <div className="mx-auto max-w-7xl px-5 py-14 lg:px-8 lg:py-20">
+          <div className="mb-6 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+            <div>
+              <p className="text-sm font-medium text-gold">可交互 Demo</p>
+              <h2 className="mt-3 text-3xl font-semibold md:text-5xl">{liveDemo.title}</h2>
+              <p className="mt-4 max-w-3xl text-base leading-8 text-rice/70">{liveDemo.description}</p>
+            </div>
+            <a href={liveDemo.src} target="_blank" rel="noreferrer" className="btn-outline shrink-0">
+              打开全屏 Demo
+              <ArrowRight size={16} />
+            </a>
+          </div>
+
+          <div className="overflow-hidden rounded-2xl border border-rice/10 bg-rice/[0.04] shadow-soft">
+            <div className="flex flex-col gap-2 border-b border-rice/10 bg-graphite/80 px-4 py-3 text-xs text-rice/55 sm:flex-row sm:items-center sm:justify-between">
+              <span>{liveDemo.browserLabel}</span>
+              <span>示例数据 · 页面内演示 · 不上传真实业务资料</span>
+            </div>
+            <iframe
+              src={liveDemo.src}
+              title={`${demo.name} interactive demo`}
+              className="h-[78vh] min-h-[640px] w-full bg-white"
+              sandbox="allow-scripts allow-same-origin allow-popups"
+              loading="lazy"
+            />
           </div>
         </div>
       </section>
@@ -90,6 +125,53 @@ export function ToolDemoPage({ slug }: ToolDemoPageProps) {
     </main>
   );
 }
+
+const liveDemos: Record<
+  ToolSlug,
+  {
+    src: string;
+    promise: string;
+    contextTitle: string;
+    context: string;
+    highlights: { label: string; value: string }[];
+    title: string;
+    description: string;
+    browserLabel: string;
+  }
+> = {
+  routeflow: {
+    src: "/demos/routeflow/",
+    promise: "不用上传文件也能先体验：下面保留原版调度网页，用户可以直接查看地图、车辆路线、任务表、异常提醒和结果面板。",
+    contextTitle: "模拟业务场景",
+    context:
+      "一个本地配送团队拿到一批不够标准的订单和车辆约束，需要快速判断怎么排车、怎么排序、哪里可能超容或超时。",
+    highlights: [
+      { label: "输入", value: "订单 / 车辆 / 时窗" },
+      { label: "过程", value: "排线与异常判断" },
+      { label: "输出", value: "路线图与任务表" }
+    ],
+    title: "像使用一个真实排线工具一样体验 RouteFlow",
+    description:
+      "这不是截图。你可以在嵌入页面里拖动地图、查看车辆路线、阅读任务表和异常提示，理解一个模糊配送需求如何被转化为可执行结果。",
+    browserLabel: "RouteFlow 原版演示网页"
+  },
+  networkflow: {
+    src: "/demos/networkflow/",
+    promise: "不用先理解模型，也能先体验：下面保留原版选址评估网页，用户可以直接查看候选仓、服务范围、成本拆解和方案对比。",
+    contextTitle: "模拟业务场景",
+    context:
+      "一个区域经营团队想扩展仓网，但需求城市、候选点、成本和服务半径都不够精确，需要先做一版可讨论的布局判断。",
+    highlights: [
+      { label: "输入", value: "需求城市 / 候选仓" },
+      { label: "过程", value: "成本与覆盖评估" },
+      { label: "输出", value: "仓网方案对比" }
+    ],
+    title: "像使用一个真实选址工具一样体验 NetworkFlow",
+    description:
+      "这不是静态展示。你可以在嵌入页面里查看地图、切换参数和阅读结果表，理解一组粗糙业务数据如何变成仓网评估方案。",
+    browserLabel: "NetworkFlow 原版演示网页"
+  }
+};
 
 function DemoPanel({
   title,
