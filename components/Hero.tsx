@@ -109,38 +109,29 @@ function GlobeFlowVisual({ lang, worldPathD }: { lang: Language; worldPathD: str
     seattle:    { x: 92, y: 105 },
   };
 
-  /* 35 条链流 */
-  const routes = [
-    { from: P.shanghai,  to: P.tokyo,      c: 0.10, s: 1.5 },
-    { from: P.shanghai,  to: P.busan,       c: 0.08, s: 1.3 },
-    { from: P.shanghai,  to: P.singapore,   c: 0.13, s: 1.8 },
-    { from: P.shenzhen,  to: P.jakarta,     c: 0.09, s: 1.4 },
-    { from: P.hongkong,  to: P.bangkok,     c: 0.07, s: 1.3 },
-    { from: P.shanghai,  to: P.mumbai,      c: -0.11, s: 1.6 },
-    { from: P.shanghai,  to: P.dubai,       c: -0.14, s: 1.8 },
-    { from: P.shanghai,  to: P.istanbul,    c: -0.16, s: 1.5 },
-    { from: P.shanghai,  to: P.rotterdam,   c: -0.18, s: 2.0 },
-    { from: P.ningbo,    to: P.hamburg,     c: -0.17, s: 1.6 },
-    { from: P.shanghai,  to: P.losangeles,  c: 0.30, s: 2.0 },
-    { from: P.shenzhen,  to: P.seattle,     c: 0.28, s: 1.5 },
-    { from: P.shanghai,  to: P.sydney,      c: 0.08, s: 1.4 },
-    { from: P.ningbo,    to: P.melbourne,   c: 0.07, s: 1.2 },
-    { from: P.shanghai,  to: P.mombasa,     c: -0.08, s: 1.4 },
-    { from: P.shenzhen,  to: P.capetown,    c: -0.12, s: 1.5 },
-    { from: P.shanghai,  to: P.santos,      c: -0.22, s: 1.8 },
-    { from: P.hongkong,  to: P.lima,        c: -0.24, s: 1.4 },
-    { from: P.shanghai,  to: P.panama,      c: 0.25, s: 1.6 },
-    { from: P.singapore, to: P.mumbai,      c: -0.08, s: 1.1 },
-    { from: P.singapore, to: P.dubai,       c: -0.10, s: 1.2 },
-    { from: P.dubai,     to: P.istanbul,    c: -0.06, s: 1.1 },
-    { from: P.dubai,     to: P.mombasa,     c: 0.06, s: 1.0 },
-    { from: P.dubai,     to: P.capetown,    c: -0.08, s: 1.2 },
-    { from: P.rotterdam, to: P.london,      c: -0.04, s: 0.8 },
-    { from: P.rotterdam, to: P.newyork,     c: -0.15, s: 1.4 },
-    { from: P.rotterdam, to: P.lagos,       c: -0.12, s: 1.1 },
-    { from: P.losangeles,to: P.newyork,     c: -0.10, s: 1.2 },
-    { from: P.losangeles,to: P.panama,      c: 0.08, s: 1.1 },
-    { from: P.newyork,   to: P.santos,      c: -0.10, s: 1.2 },
+  /* 链流：一级(中国出海，粗金) + 二级(全球中转，细弱) */
+  const primary = [
+    { from: P.shanghai,  to: P.tokyo,      c: 0.10 },
+    { from: P.shanghai,  to: P.singapore,  c: 0.12 },
+    { from: P.shenzhen,  to: P.jakarta,    c: 0.09 },
+    { from: P.shanghai,  to: P.mumbai,     c: -0.10 },
+    { from: P.shanghai,  to: P.dubai,      c: -0.14 },
+    { from: P.shanghai,  to: P.rotterdam,  c: -0.18 },
+    { from: P.shanghai,  to: P.losangeles, c: 0.30 },
+    { from: P.shenzhen,  to: P.sydney,     c: 0.08 },
+    { from: P.shanghai,  to: P.mombasa,    c: -0.08 },
+    { from: P.shanghai,  to: P.capetown,   c: -0.12 },
+    { from: P.shanghai,  to: P.santos,     c: -0.22 },
+  ];
+  const secondary = [
+    { from: P.singapore, to: P.dubai,      c: -0.08 },
+    { from: P.dubai,     to: P.rotterdam,  c: -0.10 },
+    { from: P.singapore, to: P.sydney,     c: 0.06 },
+    { from: P.rotterdam, to: P.newyork,    c: -0.14 },
+    { from: P.losangeles,to: P.newyork,    c: -0.10 },
+    { from: P.dubai,     to: P.capetown,   c: -0.06 },
+    { from: P.rotterdam, to: P.lagos,      c: -0.10 },
+    { from: P.newyork,   to: P.santos,     c: -0.08 },
   ];
 
   function cp(a: {x:number,y:number}, b: {x:number,y:number}, crv: number) {
@@ -161,30 +152,31 @@ function GlobeFlowVisual({ lang, worldPathD }: { lang: Language; worldPathD: str
             {/* 真实地理数据大陆轮廓 */}
             <path
               d={worldPathD}
-              fill="rgba(31,143,132,0.30)"
-              stroke="rgba(117,212,203,0.22)"
-              strokeWidth="0.5"
+              fill="rgba(215,177,93,0.22)"
+              stroke="rgba(215,177,93,0.30)"
+              strokeWidth="0.6"
             />
 
             {/* 链流网络 */}
             <g fill="none" strokeLinecap="round">
-              {routes.map((r, i) => {
-                const k = i % 5;
-                const cls = k === 0 ? "flow-path flow-path--gold"
-                  : k === 1 ? "flow-path flow-path--teal"
-                  : k === 2 ? "flow-path flow-path--warm"
-                  : k === 3 ? "flow-path flow-path--cool"
-                  : "flow-path flow-path--gold";
-                return (
-                  <path
-                    key={i}
-                    className={cls}
-                    d={cp(r.from, r.to, r.c)}
-                    strokeDasharray={`${3 + k} ${5 + k}`}
-                    strokeWidth={r.s * 0.65}
-                  />
-                );
-              })}
+              {/* 一级链路 — 中国出海，粗金线 */}
+              {primary.map((r, i) => (
+                <path
+                  key={"p"+i}
+                  className="flow-path flow-path--primary"
+                  d={cp(r.from, r.to, r.c)}
+                  strokeDasharray="6 4"
+                />
+              ))}
+              {/* 二级链路 — 全球中转，细弱线 */}
+              {secondary.map((r, i) => (
+                <path
+                  key={"s"+i}
+                  className="flow-path flow-path--secondary"
+                  d={cp(r.from, r.to, r.c)}
+                  strokeDasharray="3 8"
+                />
+              ))}
             </g>
 
             {/* 港口标签 */}
@@ -203,24 +195,17 @@ function GlobeFlowVisual({ lang, worldPathD }: { lang: Language; worldPathD: str
             </g>
           </svg>
 
-          {/* 光点 */}
+          {/* 关键港口光点 */}
           <div className="globe-node globe-node--major" style={{ left:"81.5%", top:"33.5%" }} />
           <div className="globe-node globe-node--major" style={{ left:"80.0%", top:"38.0%" }} />
-          <div className="globe-node globe-node--major" style={{ left:"82.2%", top:"33.0%" }} />
           <div className="globe-node" style={{ left:"87.5%", top:"29.0%" }} />
-          <div className="globe-node" style={{ left:"85.0%", top:"30.5%" }} />
           <div className="globe-node" style={{ left:"77.5%", top:"52.0%" }} />
-          <div className="globe-node" style={{ left:"79.4%", top:"56.2%" }} />
-          <div className="globe-node globe-node--teal" style={{ left:"66.9%", top:"43.8%" }} />
           <div className="globe-node globe-node--teal" style={{ left:"62.2%", top:"40.5%" }} />
-          <div className="globe-node" style={{ left:"54.4%", top:"30.0%" }} />
           <div className="globe-node" style={{ left:"48.5%", top:"24.5%" }} />
           <div className="globe-node globe-node--teal" style={{ left:"13.1%", top:"30.5%" }} />
-          <div className="globe-node" style={{ left:"24.8%", top:"27.0%" }} />
           <div className="globe-node" style={{ left:"52.8%", top:"82.0%" }} />
           <div className="globe-node globe-node--teal" style={{ left:"84.8%", top:"75.5%" }} />
           <div className="globe-node" style={{ left:"32.2%", top:"69.5%" }} />
-          <div className="globe-node" style={{ left:"24.0%", top:"40.0%" }} />
         </div>
       </div>
     </div>

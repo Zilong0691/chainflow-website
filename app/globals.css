@@ -347,19 +347,17 @@ section[id] {
   max-width: 28rem;
   border-radius: 50%;
   background:
-    radial-gradient(circle at 38% 42%, rgba(31, 143, 132, 0.25), transparent 48%),
-    radial-gradient(circle at 58% 38%, rgba(117, 212, 203, 0.15), transparent 38%),
-    radial-gradient(circle at 62% 55%, rgba(215, 177, 93, 0.12), transparent 35%),
-    radial-gradient(circle at 35% 60%, rgba(31, 143, 132, 0.18), transparent 40%),
-    linear-gradient(195deg, #0d2623 0%, #0b1d1a 28%, #091512 62%, #0b1d19 100%);
+    radial-gradient(ellipse at 42% 38%, rgba(31, 143, 132, 0.22), transparent 42%),
+    radial-gradient(ellipse at 55% 48%, rgba(117, 212, 203, 0.10), transparent 32%),
+    linear-gradient(180deg, #0a1e1b 0%, #0c2420 25%, #0b1f1c 55%, #091815 100%);
   box-shadow:
-    0 0 80px rgba(31, 143, 132, 0.15),
-    0 0 160px rgba(31, 143, 132, 0.06),
-    inset 0 0 60px rgba(117, 212, 203, 0.08);
+    0 0 100px rgba(31, 143, 132, 0.12),
+    0 0 200px rgba(31, 143, 132, 0.05),
+    inset 0 0 50px rgba(117, 212, 203, 0.06);
   overflow: hidden;
 }
 
-/* 3D 球体阴影——边缘暗中间亮 */
+/* 3D 球体光照——左上高光，边缘变暗 */
 .globe-sphere::after {
   content: "";
   position: absolute;
@@ -367,11 +365,11 @@ section[id] {
   z-index: 2;
   border-radius: 50%;
   background: radial-gradient(
-    ellipse at 38% 35%,
-    rgba(255, 250, 240, 0.08) 0%,
-    transparent 42%,
-    rgba(8, 11, 9, 0.35) 78%,
-    rgba(8, 11, 9, 0.65) 100%
+    ellipse at 35% 32%,
+    rgba(255, 250, 240, 0.10) 0%,
+    transparent 38%,
+    rgba(8, 11, 9, 0.30) 72%,
+    rgba(8, 11, 9, 0.60) 100%
   );
   pointer-events: none;
 }
@@ -410,34 +408,25 @@ section[id] {
 
 .globe-map .flow-path {
   fill: none;
-  stroke-width: 1.3;
   stroke-linecap: round;
-  opacity: 0.7;
-  animation: flow-dash 2.5s linear infinite;
+  animation: flow-dash 3s linear infinite;
 }
 
-.globe-map .flow-path--gold {
-  stroke: #d7b15d;
-  filter: drop-shadow(0 0 6px rgba(215, 177, 93, 0.6));
-  animation-duration: 2.2s;
+/* 一级链路：中国出海 — 金色，粗，发光 */
+.globe-map .flow-path--primary {
+  stroke: #f2c76a;
+  stroke-width: 1.6;
+  opacity: 0.82;
+  filter: drop-shadow(0 0 8px rgba(242, 199, 106, 0.55));
 }
 
-.globe-map .flow-path--teal {
-  stroke: #75d4cb;
-  filter: drop-shadow(0 0 6px rgba(117, 212, 203, 0.6));
-  animation-duration: 3s;
-}
-
-.globe-map .flow-path--warm {
-  stroke: rgba(242, 199, 106, 0.8);
-  filter: drop-shadow(0 0 5px rgba(242, 199, 106, 0.5));
-  animation-duration: 2.8s;
-}
-
-.globe-map .flow-path--cool {
-  stroke: rgba(31, 143, 132, 0.75);
-  filter: drop-shadow(0 0 5px rgba(117, 212, 203, 0.5));
-  animation-duration: 3.3s;
+/* 二级链路：全球中转 — 青灰，细，弱 */
+.globe-map .flow-path--secondary {
+  stroke: rgba(117, 212, 203, 0.45);
+  stroke-width: 0.7;
+  opacity: 0.5;
+  filter: none;
+  animation-duration: 4s;
 }
 
 /* 节点光点 */
@@ -513,8 +502,8 @@ section[id] {
 
 /* --- 动画关键帧 --- */
 @keyframes globe-rotate {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
 }
 
 @keyframes atmosphere-breathe {
