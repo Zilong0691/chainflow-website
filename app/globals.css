@@ -386,57 +386,43 @@ section[id] {
   animation: globe-rotate 48s linear infinite;
 }
 
-/* 大陆 SVG */
-.globe-land {
+/* 世界地图 SVG（大陆 + 路线合并在一个 SVG 中） */
+.globe-map {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  opacity: 0.55;
+  opacity: 0.62;
 }
 
-.globe-land path {
-  fill: rgba(31, 143, 132, 0.28);
-  stroke: rgba(117, 212, 203, 0.18);
-  stroke-width: 0.5;
-}
-
-/* 流动路线 SVG */
-.globe-routes {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.globe-routes .flow-path {
+.globe-map .flow-path {
   fill: none;
-  stroke-width: 1.2;
+  stroke-width: 1.3;
   stroke-linecap: round;
   opacity: 0.7;
   animation: flow-dash 2.5s linear infinite;
 }
 
-.globe-routes .flow-path--gold {
+.globe-map .flow-path--gold {
   stroke: #d7b15d;
   filter: drop-shadow(0 0 6px rgba(215, 177, 93, 0.6));
   animation-duration: 2.2s;
 }
 
-.globe-routes .flow-path--teal {
+.globe-map .flow-path--teal {
   stroke: #75d4cb;
   filter: drop-shadow(0 0 6px rgba(117, 212, 203, 0.6));
   animation-duration: 3s;
 }
 
-.globe-routes .flow-path--warm {
-  stroke: url(#flowGradientWarm);
+.globe-map .flow-path--warm {
+  stroke: url(#fw);
   filter: drop-shadow(0 0 5px rgba(242, 199, 106, 0.5));
   animation-duration: 2.8s;
 }
 
-.globe-routes .flow-path--cool {
-  stroke: url(#flowGradientCool);
+.globe-map .flow-path--cool {
+  stroke: url(#fc);
   filter: drop-shadow(0 0 5px rgba(117, 212, 203, 0.5));
   animation-duration: 3.3s;
 }

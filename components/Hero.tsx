@@ -25,7 +25,7 @@ export function Hero({ lang }: HeroProps) {
             {copy.eyebrow}
           </p>
           <p className="mb-4 text-xl font-medium text-rice/80 md:text-2xl">{copy.brand}</p>
-          <h1 className="text-balance text-[clamp(1.78rem,7.2vw,4.5rem)] font-semibold leading-[1.12] text-rice md:text-7xl md:leading-[1.08]">
+          <h1 className="text-[clamp(1.62rem,6vw,4.5rem)] font-semibold leading-[1.12] text-rice md:text-7xl md:leading-[1.08]">
             {zh ? (
               <>
                 让供应链，如<span className="flow-word">水一般</span>
@@ -61,102 +61,223 @@ export function Hero({ lang }: HeroProps) {
 }
 
 /* =============================================
-   GlobeFlowVisual — 旋转地球 + 供应链流动线
+   GlobeFlowVisual — 旋转地球 + 真实大陆 + 全球航运路线
+   世界地图: 800×400 equirectangular 投影
    ============================================= */
 function GlobeFlowVisual({ lang }: { lang: Language }) {
   const zh = lang === "zh";
+
+  /* 全球主要港口坐标 (800×400 空间) */
+  const ports = {
+    shanghai:    { x: 650, y: 135 },
+    singapore:   { x: 622, y: 210 },
+    tokyo:       { x: 695, y: 118 },
+    busan:       { x: 675, y: 125 },
+    hongkong:    { x: 640, y: 155 },
+    dubai:       { x: 498, y: 165 },
+    rotterdam:   { x: 388, y: 100 },
+    losangeles:  { x: 110, y: 125 },
+    newyork:     { x: 200, y: 110 },
+    capetown:    { x: 425, y: 330 },
+    sydney:      { x: 675, y: 305 },
+    santos:      { x: 260, y: 280 },
+    mombasa:     { x: 460, y: 235 },
+    mumbai:      { x: 535, y: 178 },
+    london:      { x: 370, y: 92 },
+  };
+
+  /* 航运路线定义: [起点, 终点, 弯曲方向, 弯曲程度] */
+  const routes = [
+    { from: ports.shanghai, to: ports.singapore, curve: 0.15 },
+    { from: ports.singapore, to: ports.dubai, curve: -0.12 },
+    { from: ports.dubai, to: ports.rotterdam, curve: 0.18 },
+    { from: ports.shanghai, to: ports.losangeles, curve: 0.28 },
+    { from: ports.shanghai, to: ports.tokyo, curve: 0.08 },
+    { from: ports.singapore, to: ports.capetown, curve: -0.14 },
+    { from: ports.capetown, to: ports.santos, curve: -0.22 },
+    { from: ports.rotterdam, to: ports.newyork, curve: -0.16 },
+    { from: ports.shanghai, to: ports.sydney, curve: 0.10 },
+    { from: ports.dubai, to: ports.mombasa, curve: 0.08 },
+    { from: ports.singapore, to: ports.hongkong, curve: 0.06 },
+    { from: ports.losangeles, to: ports.newyork, curve: -0.12 },
+  ];
+
+  /* 生成弯曲路径 */
+  function curvePath(from: {x:number,y:number}, to: {x:number,y:number}, curve: number) {
+    const mx = (from.x + to.x) / 2;
+    const my = (from.y + to.y) / 2;
+    const dx = to.x - from.x;
+    const dy = to.y - from.y;
+    const cx = mx - dy * curve;
+    const cy = my + dx * curve;
+    return `M${from.x},${from.y} Q${cx},${cy} ${to.x},${to.y}`;
+  }
 
   return (
     <div className="globe-visual" aria-hidden="true">
       {/* 大气光晕 */}
       <div className="globe-atmosphere" />
 
-      {/* 地球 */}
+      {/* 地球球体 */}
       <div className="globe-sphere">
         {/* 经纬线网格 */}
         <div className="globe-grid" />
 
-        {/* 旋转内容层：大陆 + 路线 + 节点 */}
+        {/* 旋转内容层 */}
         <div className="globe-contents">
-          {/* 简化大陆轮廓 */}
-          <svg className="globe-land" viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice">
-            {/* 东亚 */}
-            <path d="M230,80 Q270,60 310,75 Q350,90 355,130 Q360,170 330,195 Q310,210 280,205 Q255,200 240,175 Q225,150 225,115 Z" />
-            {/* 东南亚群岛 */}
-            <path d="M300,210 Q320,200 340,215 Q355,235 340,255 Q320,265 305,250 Q295,235 300,210 Z" />
-            <path d="M325,255 Q340,250 355,260 Q360,275 350,285 Q335,290 325,275 Z" />
-            {/* 南亚次大陆 */}
-            <path d="M200,140 Q220,130 235,150 Q250,180 240,210 Q225,230 205,220 Q190,200 190,170 Z" />
-            {/* 中东 */}
-            <path d="M170,130 Q190,120 200,140 Q195,160 180,165 Q165,160 165,145 Z" />
-            {/* 非洲 */}
-            <path d="M140,160 Q165,145 175,170 Q185,210 170,250 Q155,280 140,285 Q125,270 120,230 Q115,195 130,170 Z" />
-            {/* 欧洲 */}
-            <path d="M125,75 Q155,55 185,70 Q200,85 190,105 Q175,115 150,110 Q125,105 115,90 Z" />
-            {/* 北美 */}
-            <path d="M65,65 Q95,45 120,55 Q140,65 135,90 Q130,115 105,125 Q80,120 65,105 Q50,90 55,72 Z" />
-            {/* 南美 */}
-            <path d="M80,145 Q100,135 105,155 Q110,180 100,210 Q90,225 78,215 Q68,195 70,168 Z" />
-            {/* 澳大利亚 */}
-            <path d="M310,285 Q335,275 350,290 Q355,310 340,320 Q320,322 310,308 Q300,295 310,285 Z" />
-            {/* 中亚/俄罗斯 */}
-            <path d="M120,55 Q180,30 240,55 Q260,68 250,85 Q220,95 170,90 Q130,85 115,70 Z" />
-            {/* 日本 */}
-            <path d="M355,100 Q365,95 368,110 Q366,128 358,130 Q352,120 355,100 Z" />
-          </svg>
-
-          {/* 供应链流动路线 */}
-          <svg className="globe-routes" viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice">
+          <svg className="globe-map" viewBox="0 0 800 400" preserveAspectRatio="xMidYMid slice">
             <defs>
-              <linearGradient id="flowGradientWarm" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="#d7b15d" stopOpacity="0.1" />
-                <stop offset="30%" stopColor="#f2c76a" stopOpacity="0.9" />
-                <stop offset="70%" stopColor="#d7b15d" stopOpacity="0.8" />
+              <linearGradient id="fw" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="#d7b15d" stopOpacity="0.05" />
+                <stop offset="25%" stopColor="#f2c76a" stopOpacity="0.85" />
+                <stop offset="75%" stopColor="#d7b15d" stopOpacity="0.75" />
                 <stop offset="100%" stopColor="#d7b15d" stopOpacity="0.05" />
               </linearGradient>
-              <linearGradient id="flowGradientCool" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="#75d4cb" stopOpacity="0.1" />
-                <stop offset="30%" stopColor="#75d4cb" stopOpacity="0.9" />
-                <stop offset="70%" stopColor="#1f8f84" stopOpacity="0.7" />
+              <linearGradient id="fc" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="#75d4cb" stopOpacity="0.05" />
+                <stop offset="25%" stopColor="#75d4cb" stopOpacity="0.9" />
+                <stop offset="75%" stopColor="#1f8f84" stopOpacity="0.7" />
                 <stop offset="100%" stopColor="#75d4cb" stopOpacity="0.05" />
               </linearGradient>
             </defs>
 
-            {/* 上海 → 新加坡 */}
-            <path className="flow-path flow-path--gold" d="M318,95 Q340,150 335,235" strokeDasharray="4 6" />
-            {/* 上海 → 迪拜 */}
-            <path className="flow-path flow-path--teal" d="M315,100 Q270,120 195,155" strokeDasharray="3 7" />
-            {/* 上海 → 鹿特丹 */}
-            <path className="flow-path flow-path--warm" d="M312,105 Q240,70 155,95" strokeDasharray="5 8" />
-            {/* 新加坡 → 开普敦 */}
-            <path className="flow-path flow-path--cool" d="M330,240 Q290,270 148,275" strokeDasharray="3 6" />
-            {/* 迪拜 → 内罗毕 */}
-            <path className="flow-path flow-path--gold" d="M190,158 Q180,200 155,250" strokeDasharray="4 5" />
-            {/* 鹿特丹 → 纽约 */}
-            <path className="flow-path flow-path--teal" d="M148,92 Q100,80 78,80" strokeDasharray="3 6" />
-            {/* 新加坡 → 悉尼 */}
-            <path className="flow-path flow-path--warm" d="M332,232 Q345,260 345,300" strokeDasharray="3 7" />
-            {/* 上海 → 东京 */}
-            <path className="flow-path flow-path--cool" d="M322,90 Q340,88 358,108" strokeDasharray="2 5" />
-            {/* 上海 → 洛杉矶 */}
-            <path className="flow-path flow-path--gold" d="M308,108 Q250,60 85,58" strokeDasharray="5 10" />
+            {/* ===== 大陆轮廓 ===== */}
+            <g className="continent-group" fill="rgba(31,143,132,0.27)" stroke="rgba(117,212,203,0.16)" strokeWidth="0.6">
+              {/* 北美洲 */}
+              <path d="M 82,22 C 100,18 125,17 150,20 C 175,22 200,25 220,28
+                       C 238,32 255,38 262,48 C 268,56 264,68 256,80
+                       C 248,90 240,100 235,112 C 230,125 228,135 222,142
+                       C 216,148 208,150 200,148 C 192,145 188,140 182,138
+                       C 175,135 168,138 162,142 C 155,146 148,148 140,146
+                       C 132,144 125,136 118,126 C 110,116 100,105 92,95
+                       C 84,85 75,72 68,60 C 60,48 55,35 60,28
+                       C 68,18 75,20 82,22 Z" />
+
+              {/* 南美洲 */}
+              <path d="M 180,148 C 188,145 198,148 208,152 C 218,158 228,168 232,180
+                       C 238,195 240,212 238,230 C 235,250 228,270 220,288
+                       C 212,305 202,318 195,325 C 188,330 182,328 178,320
+                       C 172,308 168,290 165,270 C 162,250 160,228 162,210
+                       C 164,195 168,178 172,165 C 175,158 178,150 180,148 Z" />
+
+              {/* 非洲 */}
+              <path d="M 368,148 C 378,142 392,140 405,142 C 420,145 435,152 445,162
+                       C 452,172 455,185 452,200 C 450,215 445,228 442,242
+                       C 438,258 432,275 428,290 C 422,308 418,322 410,330
+                       C 400,340 390,342 382,338 C 374,332 368,318 364,300
+                       C 358,280 355,258 352,240 C 350,222 348,205 350,192
+                       C 352,180 356,168 362,158 C 366,152 368,150 368,148 Z" />
+              {/* 非洲之角 */}
+              <path d="M 442,185 C 452,182 462,186 468,195 C 472,205 470,215 465,220
+                       C 458,225 450,218 445,208 C 442,200 442,192 442,185 Z" />
+              {/* 马达加斯加 */}
+              <path d="M 468,258 C 475,255 480,260 482,272 C 482,285 478,295 472,298
+                       C 466,300 462,290 462,278 C 462,268 464,260 468,258 Z" />
+
+              {/* 欧洲 */}
+              <path d="M 375,32 C 390,28 405,30 418,35 C 428,38 436,44 440,52
+                       C 442,60 438,68 432,75 C 428,80 422,85 418,88
+                       C 410,95 405,102 398,108 C 390,115 382,120 375,118
+                       C 368,115 365,108 362,100 C 358,88 355,78 358,68
+                       C 360,58 365,48 370,42 C 373,36 375,34 375,32 Z" />
+              {/* 伊比利亚半岛 */}
+              <path d="M 362,95 C 356,90 352,98 350,108 C 348,118 352,125 356,128
+                       C 360,130 364,122 365,112 C 366,102 365,97 362,95 Z" />
+              {/* 不列颠群岛 */}
+              <path d="M 358,78 C 352,74 348,78 346,85 C 346,92 350,98 355,100
+                       C 358,100 362,95 362,88 C 362,82 360,80 358,78 Z" />
+              {/* 斯堪的纳维亚 */}
+              <path d="M 400,18 C 405,12 415,10 422,15 C 428,20 430,28 425,35
+                       C 420,40 412,42 405,38 C 398,35 395,28 398,22 C 400,18 400,18 400,18 Z" />
+
+              {/* 亚洲主体 */}
+              <path d="M 430,28 C 460,20 500,15 540,18 C 580,20 620,25 660,28
+                       C 695,32 720,40 730,52 C 738,62 735,75 728,88
+                       C 720,100 708,108 695,115 C 682,120 670,125 660,130
+                       C 648,138 640,148 635,160 C 628,172 625,185 622,195
+                       C 618,210 615,220 610,225 C 602,232 592,228 585,220
+                       C 578,210 572,198 565,188 C 555,178 545,172 535,170
+                       C 520,165 505,162 492,160 C 478,158 465,155 455,150
+                       C 445,145 438,138 432,128 C 425,118 420,105 418,92
+                       C 415,78 418,62 422,48 C 425,38 428,32 430,28 Z" />
+              {/* 印度次大陆 */}
+              <path d="M 545,158 C 555,155 565,160 572,172 C 578,185 582,200 580,215
+                       C 576,228 568,235 558,232 C 548,228 542,218 536,205
+                       C 532,195 530,182 532,172 C 534,165 538,160 545,158 Z" />
+              {/* 阿拉伯半岛 */}
+              <path d="M 492,148 C 502,142 515,140 525,145 C 535,150 540,158 538,168
+                       C 535,178 525,182 515,180 C 505,178 495,172 488,162
+                       C 484,155 486,150 492,148 Z" />
+              {/* 东南亚 */}
+              <path d="M 622,192 C 635,188 648,192 658,202 C 665,212 668,225 662,235
+                       C 655,245 645,248 635,242 C 625,235 618,222 615,210
+                       C 613,202 615,195 622,192 Z" />
+              {/* 东南亚群岛 */}
+              <path d="M 640,238 C 655,232 668,238 675,250 C 680,262 678,275 670,282
+                       C 662,288 652,285 645,275 C 638,265 635,252 638,242 Z" />
+              <path d="M 672,275 C 685,270 698,275 705,288 C 708,300 705,312 698,318
+                       C 690,322 680,316 675,305 C 670,295 668,285 672,275 Z" />
+              <path d="M 700,250 C 710,245 720,248 725,258 C 728,268 725,280 718,285
+                       C 710,288 702,282 698,272 C 695,262 695,253 700,250 Z" />
+              {/* 日本列岛 */}
+              <path d="M 718,95 C 725,88 735,90 738,102 C 740,115 735,128 728,135
+                       C 720,140 712,132 710,120 C 708,108 710,98 718,95 Z" />
+              {/* 朝鲜半岛 */}
+              <path d="M 690,108 C 695,102 702,105 704,115 C 706,125 702,135 696,138
+                       C 690,140 685,132 684,122 C 683,114 685,110 690,108 Z" />
+
+              {/* 澳大利亚 */}
+              <path d="M 622,288 C 640,280 658,278 672,285 C 685,292 695,305 698,320
+                       C 698,335 692,345 680,348 C 665,350 648,345 635,335
+                       C 625,325 618,312 615,300 C 613,292 616,290 622,288 Z" />
+              {/* 新西兰 */}
+              <path d="M 705,335 C 710,328 715,332 716,342 C 716,355 712,365 706,368
+                       C 702,370 698,362 698,352 C 698,342 700,338 705,335 Z" />
+
+              {/* 中亚 */}
+              <path d="M 422,48 C 440,40 465,35 490,38 C 500,40 505,45 500,52
+                       C 495,58 485,60 470,62 C 452,65 435,62 422,55 C 418,52 420,50 422,48 Z" />
+
+              {/* 斯里兰卡 */}
+              <path d="M 555,222 C 558,218 562,220 563,228 C 562,235 558,238 555,236
+                       C 552,234 551,228 553,224 Z" />
+
+              {/* 台湾 & 菲律宾 */}
+              <path d="M 650,165 C 654,160 658,162 658,170 C 657,178 652,182 648,180
+                       C 644,178 644,170 648,166 Z" />
+              <path d="M 660,198 C 665,192 672,195 674,205 C 675,215 670,225 664,228
+                       C 658,230 655,222 654,212 C 653,204 655,200 660,198 Z" />
+            </g>
+
+            {/* ===== 全球航运路线 ===== */}
+            <g className="route-group" fill="none" strokeWidth="1.3" strokeLinecap="round">
+              {routes.map((r, i) => {
+                const d = curvePath(r.from, r.to, r.curve);
+                const cls = i % 4 === 0 ? "flow-path flow-path--gold"
+                  : i % 4 === 1 ? "flow-path flow-path--teal"
+                  : i % 4 === 2 ? "flow-path flow-path--warm"
+                  : "flow-path flow-path--cool";
+                const dash = (3 + (i % 3)) + " " + (4 + (i % 4));
+                return <path key={i} className={cls} d={d} strokeDasharray={dash} />;
+              })}
+            </g>
           </svg>
 
-          {/* 节点光点 */}
-          <div className="globe-node globe-node--major" style={{ left: "79%", top: "24%" }} />   {/* 上海 */}
-          <div className="globe-node" style={{ left: "82.5%", top: "59%" }} />                    {/* 新加坡 */}
-          <div className="globe-node globe-node--teal" style={{ left: "47.5%", top: "39%" }} />    {/* 迪拜 */}
-          <div className="globe-node" style={{ left: "37%", top: "23.5%" }} />                    {/* 鹿特丹 */}
-          <div className="globe-node globe-node--teal" style={{ left: "37%", top: "70%" }} />      {/* 开普敦 */}
-          <div className="globe-node" style={{ left: "19%", top: "19.5%" }} />                    {/* 纽约 */}
-          <div className="globe-node globe-node--teal" style={{ left: "86.5%", top: "76%" }} />    {/* 悉尼 */}
-          <div className="globe-node" style={{ left: "89.5%", top: "28%" }} />                    {/* 东京 */}
-          <div className="globe-node globe-node--teal" style={{ left: "21%", top: "14%" }} />      {/* 洛杉矶 */}
-          <div className="globe-node" style={{ left: "34%", top: "68%" }} />                      {/* 内罗毕 */}
+          {/* 枢纽节点 */}
+          <div className="globe-node globe-node--major" style={{ left:"81.2%", top:"33.8%" }} />
+          <div className="globe-node" style={{ left:"77.8%", top:"52.5%" }} />
+          <div className="globe-node" style={{ left:"86.9%", top:"29.5%" }} />
+          <div className="globe-node globe-node--teal" style={{ left:"62.2%", top:"41.2%" }} />
+          <div className="globe-node" style={{ left:"48.5%", top:"25.0%" }} />
+          <div className="globe-node globe-node--teal" style={{ left:"13.8%", top:"31.2%" }} />
+          <div className="globe-node" style={{ left:"25.0%", top:"27.5%" }} />
+          <div className="globe-node globe-node--teal" style={{ left:"53.1%", top:"82.5%" }} />
+          <div className="globe-node" style={{ left:"84.4%", top:"76.2%" }} />
+          <div className="globe-node globe-node--teal" style={{ left:"32.5%", top:"70.0%" }} />
         </div>
       </div>
 
-      {/* 底部结果面板 */}
+      {/* 底部面板 */}
       <div className="globe-panel">
         <div className="globe-panel__text">
           <p>{zh ? "ChainFlow 正在处理" : "ChainFlow Processing"}</p>

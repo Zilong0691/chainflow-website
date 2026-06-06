@@ -179,7 +179,7 @@ export const siteContent = {
     },
     pricingHeader: {
       eyebrow: "价格",
-      title: "SKU 保持简单，先解决一个真实问题。",
+      title: "先解决一个真实问题。",
       subtitle: "不做复杂套餐。先看免费演示，再选择标准版、定制开发部署，或一个月陪跑咨询。"
     },
     pricingCards: [
@@ -299,7 +299,7 @@ export const siteContent = {
       subtitle: "个人产品实验室",
       statement: "ChainFlow Lab 是一个个人产品实验室，探索 AI 在真实供应链工作流中的应用。",
       paragraphs: [
-        "由赵子龙（走了尤）发起，结合其在上海交通大学深圳行业研究院跨国企业供应链研究团队的研究员经历，关注先进制造与真实经营场景中的供应链问题。",
+        "由 Zilong Zhao 发起，目前在上海交通大学深圳行业研究院跨国企业供应链研究团队兼任研究工作，关注先进制造与真实经营场景中的供应链问题。",
         "研究与实践方向包括汽车、消费电子、储能、机器人等先进制造领域，也包括中小企业、个体户和小微商家的采购、库存、物流、仓储、配送等微供应链问题。",
         "ChainFlow 会从小而实用的工具开始，逐步探索 AI 智能体在业务流程中的落地、决策智能与供应链网络洞察。"
       ],
@@ -511,7 +511,7 @@ export const siteContent = {
     },
     pricingHeader: {
       eyebrow: "Pricing",
-      title: "Simple SKUs. One real problem first.",
+      title: "One real problem first.",
       subtitle: "No complex packages: free demo, standard version, custom deployment, or one-month implementation support."
     },
     pricingCards: [
