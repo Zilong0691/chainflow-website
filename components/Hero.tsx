@@ -1,9 +1,20 @@
 import { ArrowRight, CalendarDays, Sparkles } from "lucide-react";
 import { siteContent, type Language } from "@/lib/content";
+import { feature } from "topojson-client";
+import { geoEquirectangular, geoPath, type GeoProjection } from "d3-geo";
+import worldTopo from "world-atlas/countries-110m.json";
 
 type HeroProps = {
   lang: Language;
 };
+
+/* 用真实地理数据生成 SVG 路径 */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const topoAny = worldTopo as any;
+const landData = feature(topoAny, topoAny.objects.land);
+const proj: GeoProjection = geoEquirectangular().fitSize([800, 400], landData);
+const pathGen = geoPath(proj);
+const worldPathD: string = pathGen(landData) ?? "";
 
 export function Hero({ lang }: HeroProps) {
   const copy = siteContent[lang].hero;
@@ -52,7 +63,7 @@ export function Hero({ lang }: HeroProps) {
         </div>
 
         <div className="relative flex min-h-[18rem] items-center justify-center sm:min-h-[24rem] lg:min-h-[34rem]">
-          <GlobeFlowVisual lang={lang} />
+          <GlobeFlowVisual lang={lang} worldPathD={worldPathD} />
         </div>
       </div>
     </section>
@@ -60,13 +71,12 @@ export function Hero({ lang }: HeroProps) {
 }
 
 /* =============================================
-   GlobeFlowVisual — 真实世界地图 + 密集全球链流
-   Wikipedia SVG 底图 + 35条航线 + 22个港口
+   GlobeFlowVisual — d3-geo 精确世界地图 + 链流
    ============================================= */
-function GlobeFlowVisual({ lang }: { lang: Language }) {
+function GlobeFlowVisual({ lang, worldPathD }: { lang: Language; worldPathD: string }) {
   const zh = lang === "zh";
 
-  /* 全球港口坐标 (800x400 equirectangular) */
+  /* 港口坐标 (800×400 equirectangular) */
   const P = {
     shanghai:   { x: 652, y: 134 },
     shenzhen:   { x: 640, y: 152 },
@@ -99,9 +109,8 @@ function GlobeFlowVisual({ lang }: { lang: Language }) {
     seattle:    { x: 92, y: 105 },
   };
 
-  /* 35条链流: 一级(中国出发) + 二级(全球中转) */
-  const routes: Array<{from: typeof P.shanghai, to: typeof P.shanghai, c: number, s: number}> = [
-    // 一级链路 — 中国 → 全球
+  /* 35 条链流 */
+  const routes = [
     { from: P.shanghai,  to: P.tokyo,      c: 0.10, s: 1.5 },
     { from: P.shanghai,  to: P.busan,       c: 0.08, s: 1.3 },
     { from: P.shanghai,  to: P.singapore,   c: 0.13, s: 1.8 },
@@ -121,7 +130,6 @@ function GlobeFlowVisual({ lang }: { lang: Language }) {
     { from: P.shanghai,  to: P.santos,      c: -0.22, s: 1.8 },
     { from: P.hongkong,  to: P.lima,        c: -0.24, s: 1.4 },
     { from: P.shanghai,  to: P.panama,      c: 0.25, s: 1.6 },
-    // 二级链路 — 全球中转
     { from: P.singapore, to: P.mumbai,      c: -0.08, s: 1.1 },
     { from: P.singapore, to: P.dubai,       c: -0.10, s: 1.2 },
     { from: P.dubai,     to: P.istanbul,    c: -0.06, s: 1.1 },
@@ -133,11 +141,6 @@ function GlobeFlowVisual({ lang }: { lang: Language }) {
     { from: P.losangeles,to: P.newyork,     c: -0.10, s: 1.2 },
     { from: P.losangeles,to: P.panama,      c: 0.08, s: 1.1 },
     { from: P.newyork,   to: P.santos,      c: -0.10, s: 1.2 },
-    { from: P.newyork,   to: P.miami,       c: 0.05, s: 0.7 },
-    { from: P.singapore, to: P.sydney,      c: 0.06, s: 1.0 },
-    { from: P.tokyo,     to: P.losangeles,  c: 0.22, s: 1.4 },
-    { from: P.tokyo,     to: P.vancouver,   c: 0.24, s: 1.2 },
-    { from: P.mumbai,    to: P.mombasa,     c: 0.05, s: 0.9 },
   ];
 
   function cp(a: {x:number,y:number}, b: {x:number,y:number}, crv: number) {
@@ -155,11 +158,12 @@ function GlobeFlowVisual({ lang }: { lang: Language }) {
         <div className="globe-grid" />
         <div className="globe-contents">
           <svg className="globe-map" viewBox="0 0 800 400" preserveAspectRatio="xMidYMid slice">
-            {/* 真实世界地图底图 */}
-            <image
-              href="https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/World_map_-_low_resolution.svg/800px-World_map_-_low_resolution.svg.png"
-              x="0" y="0" width="800" height="400"
-              style={{ opacity: 0.42 }}
+            {/* 真实地理数据大陆轮廓 */}
+            <path
+              d={worldPathD}
+              fill="rgba(31,143,132,0.30)"
+              stroke="rgba(117,212,203,0.22)"
+              strokeWidth="0.5"
             />
 
             {/* 链流网络 */}
@@ -183,7 +187,7 @@ function GlobeFlowVisual({ lang }: { lang: Language }) {
               })}
             </g>
 
-            {/* 港口名 */}
+            {/* 港口标签 */}
             <g fill="rgba(255,250,240,0.42)" fontSize="5" fontFamily="system-ui,sans-serif" textAnchor="middle">
               <text x={652} y={126} fontWeight="bold" fill="rgba(242,199,106,0.72)">{zh ? "上海" : "Shanghai"}</text>
               <text x={700} y={109}>{zh ? "东京" : "Tokyo"}</text>
@@ -196,7 +200,6 @@ function GlobeFlowVisual({ lang }: { lang: Language }) {
               <text x={422} y={342}>{zh ? "开普敦" : "Cape Town"}</text>
               <text x={678} y={316}>{zh ? "悉尼" : "Sydney"}</text>
               <text x={258} y={292}>{zh ? "桑托斯" : "Santos"}</text>
-              <text x={192} y={153}>{zh ? "巴拿马" : "Panama"}</text>
             </g>
           </svg>
 
