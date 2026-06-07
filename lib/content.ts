@@ -23,8 +23,8 @@ export const siteContent = {
       eyebrow: "供应链 × AI 产品实验室",
       brand: "",
       title: "让供应链，如水一般",
-      subtitle: "把排线、选址、核对、沟通这些耗时工作，做成看得懂、用得上的 AI 工具。",
-      body: "有人带着跑起来。从一个具体问题开始。",
+      subtitle: "从实用工具到智能决策，再到可感知、可预测的供应链网络。",
+      body: "",
       primaryCta: "查看工具",
       secondaryCta: "体验演示",
       tertiaryCta: "预约试点"

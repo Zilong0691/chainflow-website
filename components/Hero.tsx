@@ -142,7 +142,7 @@ export function Hero({ lang }: HeroProps) {
             {zh ? (<>让供应链，如<span className="flow-word">水</span>一般</>) : copy.title}
           </h1>
           <p className="mt-6 max-w-3xl text-pretty text-xl leading-8 text-rice/80 md:text-2xl">{copy.subtitle}</p>
-          <p className="mt-7 max-w-3xl text-pretty text-base leading-8 text-rice/70 md:text-lg">{copy.body}</p>
+          {copy.body && <p className="mt-7 max-w-3xl text-pretty text-base leading-8 text-rice/70 md:text-lg">{copy.body}</p>}
           <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <a href="#skills" className="btn-primary">{copy.primaryCta}<ArrowRight size={18} /></a>
             <a href="#skills" className="btn-ghost"><Sparkles size={18} />{copy.secondaryCta}</a>
