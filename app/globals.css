@@ -412,21 +412,31 @@ section[id] {
   animation: flow-dash 3s linear infinite;
 }
 
-/* 一级链路：中国出海 — 金色，粗，发光 */
-.globe-map .flow-path--primary {
+/* 航运大动脉 — 金色发光，粗线 */
+.globe-map .flow-path--shipping {
   stroke: #f2c76a;
-  stroke-width: 1.6;
-  opacity: 0.82;
-  filter: drop-shadow(0 0 8px rgba(242, 199, 106, 0.55));
+  stroke-width: 1.3;
+  opacity: 0.78;
+  filter: drop-shadow(0 0 5px rgba(242,199,106,0.5));
+  animation-duration: 2.5s;
 }
 
-/* 二级链路：全球中转 — 青灰，细，弱 */
-.globe-map .flow-path--secondary {
-  stroke: rgba(117, 212, 203, 0.45);
-  stroke-width: 0.7;
-  opacity: 0.5;
+/* 铁路骨骼 — 青蓝虚线 */
+.globe-map .flow-path--rail {
+  stroke: rgba(117,212,203,0.55);
+  stroke-width: 0.8;
+  opacity: 0.6;
   filter: none;
-  animation-duration: 4s;
+  animation-duration: 3.8s;
+}
+
+/* 公路毛细血管 — 极细微光 */
+.globe-map .flow-path--road {
+  stroke: rgba(255,250,240,0.22);
+  stroke-width: 0.45;
+  opacity: 0.4;
+  filter: none;
+  animation-duration: 5s;
 }
 
 /* 节点光点 */
@@ -502,8 +512,8 @@ section[id] {
 
 /* --- 动画关键帧 --- */
 @keyframes globe-rotate {
-  from { transform: rotate(360deg); }
-  to { transform: rotate(0deg); }
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
 @keyframes atmosphere-breathe {

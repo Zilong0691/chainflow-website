@@ -31,30 +31,25 @@ export function CommunityPilot({ lang }: CommunityPilotProps) {
           </div>
         </div>
 
-        {/* 分隔 */}
-        <div className="my-20 border-t border-ink/10" />
-
-        {/* 联系试点 — 整合自原 Contact 组件 */}
-        <div id="contact" className="scroll-mt-24 grid gap-12 lg:grid-cols-[1.08fr_0.92fr] lg:items-end">
-          <div>
-            <p className="text-sm font-medium text-jade">{contactCopy.eyebrow}</p>
-            <h2 className="mt-5 whitespace-nowrap text-4xl font-semibold leading-tight md:text-6xl">{contactCopy.title}</h2>
-            <p className="mt-6 text-2xl leading-tight text-ink/80">{contactCopy.subtitle}</p>
-            <p className="mt-8 max-w-2xl text-pretty text-lg leading-9 text-ink/70">{contactCopy.body}</p>
-            <p className="mt-5 max-w-2xl text-pretty text-base leading-8 text-ink/60">{contactCopy.pilot}</p>
-            <div className="mt-8 grid max-w-3xl gap-3 md:grid-cols-3">
-              {contactCopy.paths.map((path) => (
-                <div key={path.title} className="rounded-2xl border border-ink/10 bg-white/55 p-4">
-                  <p className="text-sm font-semibold text-jade">{path.title}</p>
-                  <p className="mt-2 text-xs leading-6 text-ink/58">{path.description}</p>
-                </div>
-              ))}
+        {/* 参与方式 */}
+        <div className="mt-16 border-t border-ink/10 pt-12">
+          <div id="contact" className="scroll-mt-24 grid gap-10 lg:grid-cols-[1fr_auto] lg:items-end">
+            <div>
+              <p className="text-sm font-medium text-jade">{contactCopy.eyebrow}</p>
+              <h2 className="mt-4 whitespace-nowrap text-3xl font-semibold leading-tight md:text-5xl">{contactCopy.title}</h2>
+              <p className="mt-4 max-w-xl text-lg leading-8 text-ink/70">{contactCopy.body}</p>
+              <div className="mt-6 flex flex-wrap gap-3">
+                {contactCopy.paths.map((path) => (
+                  <span key={path.title} className="rounded-full border border-jade/20 bg-jade/5 px-4 py-1.5 text-sm text-jade">
+                    {path.title}
+                  </span>
+                ))}
+              </div>
+              <a href={emailHref} className="btn-primary mt-8">
+                <Mail size={18} />
+                {contactCopy.cta}
+              </a>
             </div>
-            <a href={emailHref} className="btn-primary mt-10">
-              <Mail size={18} />
-              {contactCopy.cta}
-            </a>
-          </div>
 
           <div className="rounded-2xl border border-ink/10 bg-white/55 p-6 backdrop-blur md:p-8">
             <div className="grid gap-px overflow-hidden rounded-xl border border-ink/10 bg-ink/5">
@@ -72,6 +67,7 @@ export function CommunityPilot({ lang }: CommunityPilotProps) {
                 </a>
               ))}
             </div>
+          </div>
           </div>
         </div>
       </div>

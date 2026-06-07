@@ -267,12 +267,12 @@ export const siteContent = {
     community: {
       eyebrow: "小微企业公益共创",
       title: "专门服务被主流供应链工具忽略的小微企业。",
-      subtitle: "各行业细分赛道各招募 2 位合作伙伴，先到先得，额满即止。",
+      subtitle: "各行业赛道各招募 1 位合作伙伴，共 5 位，额满即止。",
       body: "这是一个纯公益性质的计划。我相信好的技术应该惠及每一个认真做事的人，而不是只服务大公司。ChainFlow 希望和小微企业、工厂、贸易商、电商卖家一起验证：一个具体供应链问题，能不能被一个小而实用的 AI 工具改善。",
       fitTitle: "招募对象",
       includesTitle: "我们需要你",
       excludesTitle: "我们提供",
-      fit: ["年营收 5000 万以下的小微企业、工厂、贸易商、电商卖家", "有明确的供应链相关痛点：采购、库存、调度、物流、仓储均可", "各行业细分赛道各招募 2 位合作伙伴", "先到先得，额满即止"],
+      fit: ["年营收 5000 万以下的小微企业、工厂、贸易商、电商卖家", "有明确的供应链相关痛点：采购、库存、调度、物流、仓储均可", "各行业赛道各招募 1 位合作伙伴，共 5 位", "额满即止"],
       includes: ["认真经营，信誉良好", "能提供脱敏的业务数据用于测试", "能给出真实、坦诚的使用反馈", "接受这是一次试点，产品可能还不完美"],
       excludes: ["免费为你定制一个解决具体问题的 AI 工具", "全程 1 对 1 部署和使用指导", "永久免费使用该工具的基础版本", "根据真实反馈持续优化工具方向"],
       note: "公益共创不是长期免费外包，也不处理敏感数据或商业机密责任。它适合一个边界清楚、愿意一起试、愿意真实反馈的具体问题。"
@@ -331,8 +331,8 @@ export const siteContent = {
       ],
       cta: "预约试点",
       links: [
-        { label: "邮箱", value: "zilong@chainflowlab.com", href: "mailto:zilong@chainflowlab.com" },
-        { label: "微信", value: "邮件联系获取", href: "mailto:zilong@chainflowlab.com" },
+        { label: "邮箱", value: "zilong0691@outlook.com", href: "mailto:zilong0691@outlook.com" },
+        { label: "微信", value: "邮件联系获取", href: "mailto:zilong0691@outlook.com" },
         { label: "GitHub", value: "Zilong0691", href: "https://github.com/Zilong0691" },
         { label: "网站", value: "chainflowlab.com", href: "https://chainflowlab.com" }
       ]
@@ -648,8 +648,8 @@ export const siteContent = {
       ],
       cta: "Start a Pilot",
       links: [
-        { label: "Email", value: "zilong@chainflowlab.com", href: "mailto:zilong@chainflowlab.com" },
-        { label: "WeChat", value: "Available by email", href: "mailto:zilong@chainflowlab.com" },
+        { label: "Email", value: "zilong0691@outlook.com", href: "mailto:zilong0691@outlook.com" },
+        { label: "WeChat", value: "Available by email", href: "mailto:zilong0691@outlook.com" },
         { label: "GitHub", value: "Zilong0691", href: "https://github.com/Zilong0691" },
         { label: "Website", value: "chainflowlab.com", href: "https://chainflowlab.com" }
       ]
