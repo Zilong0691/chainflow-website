@@ -327,7 +327,7 @@ export const siteContent = {
       cta: "预约试点",
       links: [
         { label: "邮箱", value: "zilong0691@outlook.com", href: "mailto:zilong0691@outlook.com" },
-        { label: "微信", value: "邮件联系获取", href: "mailto:zilong0691@outlook.com" },
+        { label: "微信", value: "icebear0153", href: "#contact" },
         { label: "GitHub", value: "Zilong0691", href: "https://github.com/Zilong0691" },
         { label: "网站", value: "chainflowlab.com", href: "https://chainflowlab.com" }
       ]
@@ -643,7 +643,7 @@ export const siteContent = {
       cta: "Start a Pilot",
       links: [
         { label: "Email", value: "zilong0691@outlook.com", href: "mailto:zilong0691@outlook.com" },
-        { label: "WeChat", value: "Available by email", href: "mailto:zilong0691@outlook.com" },
+        { label: "WeChat", value: "icebear0153", href: "#contact" },
         { label: "GitHub", value: "Zilong0691", href: "https://github.com/Zilong0691" },
         { label: "Website", value: "chainflowlab.com", href: "https://chainflowlab.com" }
       ]
