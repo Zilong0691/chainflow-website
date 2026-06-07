@@ -30,10 +30,10 @@ export const siteContent = {
       tertiaryCta: "预约试点"
     },
     portfolio: {
-      eyebrow: "作品集 / 产品实验室 / 真实场景共创",
-      title: "供应链 × AI 产品实验室。",
-      body: "ChainFlow 既沉淀供应链 × AI 的作品与案例，也通过小而实用的 AI 小工具验证真实业务场景。它服务职业叙事，也面向认真经营的小企业、商家和供应链从业者，探索一个具体问题能否被更好地解决。",
-      points: ["AI 供应链作品集", "产品实验室", "真实场景共创平台"]
+      eyebrow: "定位",
+      title: "一个更真实的供应链 × AI 产品实验室。",
+      body: "既沉淀作品与案例，也通过小而实用的工具验证真实业务场景。服务职业叙事，也面向认真经营的小企业、商家和供应链从业者。",
+      points: ["作品集", "产品实验室", "真实场景共创"]
     },
     threeWaysHeader: {
       eyebrow: "ChainFlow 做三件事",
@@ -150,7 +150,7 @@ export const siteContent = {
         bestFor: ["区域仓规划", "出海仓布局", "经销网络优化"],
         inputs: ["需求城市", "候选仓", "成本参数", "服务范围"],
         outputs: ["推荐仓点", "分配方案", "成本拆分", "地图", "决策报告"],
-        pricing: "Demo 免费 / 标准版 ¥399 / 定制化开发部署 ¥2999 / 陪跑咨询 ¥5999",
+        pricing: "Demo 免费 / 标准版 ¥399 / 定制化开发部署 ¥2999 起",
         status: "可体验演示",
         cta: "体验演示",
         href: commonToolLinks.networkflow,
@@ -159,7 +159,7 @@ export const siteContent = {
         plans: [
           { name: "Demo 免费", price: "¥0", cta: "查看演示" },
           { name: "标准版", price: "¥399", cta: "获取标准版" },
-          { name: "定制开发", price: "¥2999 / ¥5999", cta: "定制这个工具" }
+          { name: "定制开发", price: "¥2999 起", cta: "定制这个工具" }
         ]
       }
     ],
