@@ -322,7 +322,7 @@ section[id] {
 .globe-visual {
   position: relative;
   width: 100%; max-width: 30rem;
-  min-height: 24rem;
+  min-height: 16rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -398,7 +398,7 @@ section[id] {
   
   width: 100%;
   height: 100%;
-  animation: globe-spin 60s linear infinite;
+  animation: globe-spin 35s linear infinite;
 }
 
 .globe-map-svg {
@@ -584,7 +584,7 @@ section[id] {
 
 .demo-map {
   position: relative;
-  min-height: 24rem;
+  min-height: 16rem;
   overflow: hidden;
   border-radius: 1rem;
   background:
@@ -747,12 +747,12 @@ section[id] {
   /* 地球 */
   .globe-visual {
     width: 100%;
-    max-width: 22rem;
-    min-height: 16rem;
+    max-width: 18rem;
+    min-height: 12rem;
     margin: 0 auto;
   }
   .globe-sphere {
-    max-width: 22rem;
+    max-width: 18rem;
   }
   .globe-atmosphere {
     inset: -5%;

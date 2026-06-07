@@ -63,16 +63,22 @@ export function Skills({ lang }: SkillsProps) {
                       </span>
                     ))}
                   </div>
-                  <div className="mt-4 flex items-center gap-3">
+                  <div className="mt-4 flex items-center gap-2">
                     <a
                       href={tool.href}
                       onClick={(e) => e.stopPropagation()}
-                      className="inline-flex items-center gap-1.5 rounded-full bg-gold px-3 py-1.5 text-xs font-semibold text-graphite transition hover:bg-ember"
+                      className="inline-flex items-center gap-1.5 rounded-full bg-gold px-4 py-2 text-xs font-semibold text-graphite transition hover:bg-ember"
                     >
-                      <Sparkles size={12} />
+                      <Sparkles size={14} />
                       {zh ? "体验演示" : "View Demo"}
                     </a>
-                    <span className="text-xs text-rice/35">{tool.status}</span>
+                    <button
+                      type="button"
+                      onClick={(e) => { e.stopPropagation(); setExpanded(expanded === tool.slug ? null : tool.slug); }}
+                      className="text-xs text-rice/40 transition hover:text-rice/70"
+                    >
+                      {expanded === tool.slug ? (zh ? "收起" : "Less") : (zh ? "详情" : "Details")}
+                    </button>
                   </div>
                 </button>
 
@@ -146,14 +152,6 @@ export function Skills({ lang }: SkillsProps) {
                       ))}
                     </div>
 
-                    {/* Demo 直达 */}
-                    <a
-                      href={tool.href}
-                      className="mt-3 inline-flex items-center gap-1.5 text-xs font-medium text-gold/70 transition hover:text-gold"
-                    >
-                      <ExternalLink size={12} />
-                      {zh ? "打开可交互 Demo 页面" : "Open interactive demo"}
-                    </a>
                   </div>
                 )}
               </div>
