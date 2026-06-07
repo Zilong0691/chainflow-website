@@ -85,110 +85,99 @@ const N = {
   mc:{x:445,y:75}, al:{x:550,y:110},
 };
 
-/* ---- 航运网络：连接所有沿海港口 ---- */
+/* ---- 真实航运大动脉 ---- */
 function buildShipping(): [Pt,Pt,number][] {
-  const res: [Pt,Pt,number][] = [];
-  // 中国→全球各区域
-  const cnPorts = [N.sh,N.sz,N.nb,N.qd,N.tj,N.dl,N.xm,N.gz,N.qhd,N.hk];
-  const asiaPorts = [N.tk,N.bs,N.os,N.sg,N.jk,N.bk,N.mn,N.kl,N.tp];
-  const southAsia = [N.mb,N.dlh,N.klk];
-  const midEast = [N.db,N.ad,N.kw,N.ms];
-  const europe = [N.rt,N.hg,N.ld,N.pr,N.br,N.vn,N.rm];
-  const africa = [N.ct,N.dr,N.mbk,N.lg,N.alx];
-  const northAm = [N.la,N.sf,N.se,N.vc,N.ny];
-  const southAm = [N.sp,N.rj,N.lm];
-  const oceania = [N.sy,N.ml,N.ak];
+  const r: [Pt,Pt,number][] = [];
+  // 中国主要出口港
+  const CN = [N.sh, N.sz, N.nb, N.qd, N.tj, N.dl, N.xm, N.gz];
+  // 各区域枢纽港
+  const ASIA = [N.tk,N.bs,N.os,N.sg,N.jk,N.bk,N.mn,N.kl,N.hk,N.tp];
+  const SA   = [N.mb,N.dlh,N.klk];
+  const ME   = [N.db,N.ad,N.kw,N.ms];
+  const EU   = [N.rt,N.hg,N.ld,N.pr,N.br,N.vn,N.rm];
+  const AF   = [N.ct,N.dr,N.mbk,N.lg,N.alx];
+  const NA   = [N.la,N.sf,N.se,N.vc,N.ny];
+  const SAM  = [N.sp,N.rj,N.lm];
+  const OC   = [N.sy,N.ml,N.ak];
 
-  // 中国→各区域
-  cnPorts.forEach(cn => {
-    asiaPorts.forEach(a => res.push([cn,a,0.06+Math.random()*0.1]));
-    southAsia.forEach(a => res.push([cn,a,-0.06-Math.random()*0.1]));
-    midEast.forEach(a => res.push([cn,a,-0.08-Math.random()*0.1]));
-    europe.forEach(a => res.push([cn,a,-0.10-Math.random()*0.12]));
-    northAm.forEach(a => res.push([cn,a,0.15+Math.random()*0.2]));
-    southAm.forEach(a => res.push([cn,a,-0.12-Math.random()*0.15]));
-    africa.forEach(a => res.push([cn,a,-0.06-Math.random()*0.1]));
-    oceania.forEach(a => res.push([cn,a,0.04+Math.random()*0.06]));
+  // 中国三大港→全球 (上海/深圳/宁波)
+  [N.sh,N.sz,N.nb].forEach(cn => {
+    ASIA.forEach(a => r.push([cn,a,0.04+Math.random()*0.08]));
+    SA.forEach(a => r.push([cn,a,-0.06-Math.random()*0.08]));
+    ME.forEach(a => r.push([cn,a,-0.08-Math.random()*0.08]));
+    EU.forEach(a => r.push([cn,a,-0.10-Math.random()*0.10]));
+    NA.forEach(a => r.push([cn,a,0.15+Math.random()*0.18]));
+    SAM.forEach(a => r.push([cn,a,-0.14-Math.random()*0.12]));
+    AF.forEach(a => r.push([cn,a,-0.06-Math.random()*0.08]));
+    OC.forEach(a => r.push([cn,a,0.04+Math.random()*0.05]));
   });
-
-  // 区域内部
-  [...asiaPorts,...southAsia].forEach((a,i) => {
-    for(let j=i+1; j<[...asiaPorts,...southAsia].length; j++) {
-      if(Math.random()<0.25) res.push([a,[...asiaPorts,...southAsia][j],0.03+Math.random()*0.06]);
-    }
-  });
-  midEast.forEach((a,i) => {
-    for(let j=i+1; j<midEast.length; j++) res.push([a,midEast[j],0.02+Math.random()*0.04]);
-  });
-  europe.forEach((a,i) => {
-    for(let j=i+1; j<europe.length; j++) res.push([a,europe[j],0.01+Math.random()*0.03]);
-  });
-  northAm.forEach((a,i) => {
-    for(let j=i+1; j<northAm.length; j++) res.push([a,northAm[j],0.02+Math.random()*0.05]);
+  // 中国二三线港→区域枢纽
+  CN.filter(c=>c!==N.sh&&c!==N.sz&&c!==N.nb).forEach(cn => {
+    [N.tk,N.sg,N.jk,N.db,N.mb,N.ct,N.la,N.sy,N.sp].forEach(hub => {
+      r.push([cn,hub,(cn.x<hub.x?0.04:-0.04)+Math.random()*0.06]);
+    });
   });
 
-  // 跨区域连接
-  midEast.forEach(m => {africa.forEach(a => res.push([m,a,0.03+Math.random()*0.05]));});
-  europe.forEach(e => {africa.forEach(a => res.push([e,a,-0.04-Math.random()*0.06]));});
-  europe.forEach(e => {northAm.forEach(a => res.push([e,a,-0.08-Math.random()*0.1]));});
-  northAm.forEach(n => {southAm.forEach(a => res.push([n,a,0.04+Math.random()*0.08]));});
-  southAsia.forEach(s => {midEast.forEach(m => res.push([s,m,0.02+Math.random()*0.04]));});
-  southAsia.forEach(s => {africa.forEach(a => res.push([s,a,0.03+Math.random()*0.06]));});
-  asiaPorts.forEach(a => {oceania.forEach(o => res.push([a,o,0.03+Math.random()*0.06]));});
+  // 区域内互联
+  [ASIA,SA,ME,EU,AF,NA,SAM,OC].forEach(region => {
+    region.forEach((a,i) => {
+      for(let j=i+1;j<region.length;j++) r.push([a,region[j],0.01+Math.random()*0.04]);
+    });
+  });
 
-  return res;
+  // 跨区域枢纽连接 (真实航线)
+  [[N.sg,N.db],[N.db,N.rt],[N.rt,N.ny],[N.la,N.ny],[N.sg,N.mb],
+   [N.db,N.mbk],[N.rt,N.lg],[N.rt,N.ct],[N.ny,N.sp],[N.la,N.sp],
+   [N.sg,N.sy],[N.tk,N.la],[N.tk,N.sg],[N.db,N.ct],[N.mb,N.db],
+   [N.mb,N.mbk],[N.sg,N.ct],[N.rt,N.sf],[N.ny,N.rt],[N.la,N.tk],
+   [N.db,N.ms],[N.sg,N.jk],[N.sh,N.hk],[N.hk,N.sg],
+  ].forEach(([a,b]) => { if(a&&b) r.push([a,b,a.x<b.x?0.05:-0.05]); });
+
+  return r;
 }
 
-/* ---- 铁路网络 ---- */
+/* ---- 真实铁路走廊 ---- */
 function buildRail(): [Pt,Pt,number][] {
-  const res: [Pt,Pt,number][] = [];
-  const cnInland = [N.heb,N.cc,N.hr,N.zz,N.wh,N.cd,N.cq,N.xa];
-  const euInland = [N.mc,N.fr,N.br,N.vn,N.rm,N.rt,N.hg,N.pr,N.ld,N.al];
-  const naInland = [N.ch,N.ny,N.se,N.vc,N.sf,N.la];
-
-  // 中国内陆互联
-  cnInland.forEach((a,i) => {
-    for(let j=i+1; j<cnInland.length; j++) if(Math.random()<0.45) res.push([a,cnInland[j],0.01+Math.random()*0.03]);
-  });
-  // 中欧班列路径: 西安→阿拉木图→莫斯科→欧洲
-  res.push([N.xa,N.al,0.04]); res.push([N.al,N.mc,0.04]);
-  euInland.forEach(e => { if(Math.random()<0.5) res.push([N.mc,e,0.02+Math.random()*0.04]); });
-  // 欧洲内部
-  euInland.forEach((a,i) => {
-    for(let j=i+1; j<euInland.length; j++) if(Math.random()<0.35) res.push([a,euInland[j],0.01+Math.random()*0.03]);
-  });
-  // 北美内部
-  naInland.forEach((a,i) => {
-    for(let j=i+1; j<naInland.length; j++) res.push([a,naInland[j],0.02+Math.random()*0.04]);
-  });
+  const r: [Pt,Pt,number][] = [];
+  // 中欧班列三大通道
+  r.push([N.xa,N.al,0.04]); r.push([N.al,N.mc,0.04]); // 阿拉山口→莫斯科
+  r.push([N.xa,N.mc,0.06]); // 西安→莫斯科(经蒙古)
+  r.push([N.cq,N.al,0.05]); // 重庆→阿拉木图
+  r.push([N.zz,N.al,0.04]); // 郑州→阿拉木图
+  // 莫斯科→欧洲各枢纽
+  [N.fr,N.br,N.rt,N.hg,N.pr,N.ld,N.rm,N.vn].forEach(e => r.push([N.mc,e,0.02+Math.random()*0.03]));
   // 西伯利亚铁路
-  res.push([N.hr,N.mc,0.06]);
-  // 中国→南亚铁路
-  res.push([N.cd,N.mb,0.05]);
-  cnInland.forEach(c => {[N.mb,N.dlh,N.klk].forEach(s => {if(Math.random()<0.3) res.push([c,s,0.04+Math.random()*0.06]);});});
-
-  return res;
+  r.push([N.hr,N.mc,0.06]); r.push([N.cc,N.mc,0.07]); r.push([N.dl,N.mc,0.08]);
+  // 中国国内铁路网
+  [[N.heb,N.zz],[N.zz,N.wh],[N.wh,N.cq],[N.cq,N.cd],[N.zz,N.xa],
+   [N.xa,N.cd],[N.heb,N.cc],[N.cc,N.hr],[N.heb,N.qd],[N.wh,N.xa],
+   [N.zz,N.heb],[N.wh,N.cd],[N.cq,N.xa],[N.wh,N.sz],
+  ].forEach(([a,b]) => { if(a&&b) r.push([a,b,0.01+Math.random()*0.03]); });
+  // 欧洲铁路网
+  [[N.rt,N.fr],[N.fr,N.pr],[N.pr,N.rm],[N.rt,N.hg],[N.hg,N.br],
+   [N.br,N.vn],[N.rt,N.ld],[N.fr,N.br],[N.hg,N.vn],[N.ld,N.pr],
+  ].forEach(([a,b]) => { if(a&&b) r.push([a,b,0.01+Math.random()*0.02]); });
+  // 北美横贯铁路
+  r.push([N.la,N.ch,0.04]); r.push([N.sf,N.ch,0.05]); r.push([N.se,N.ch,0.06]);
+  r.push([N.ch,N.ny,0.04]); r.push([N.vc,N.ch,0.05]);
+  // 印度铁路
+  r.push([N.mb,N.dlh,0.02]); r.push([N.dlh,N.klk,0.02]); r.push([N.mb,N.klk,0.03]);
+  // 中国→南亚
+  r.push([N.cd,N.mb,0.05]); r.push([N.cq,N.dlh,0.06]);
+  return r;
 }
 
-/* ---- 公路/内陆连接 ---- */
+/* ---- 公路毛细血管：所有邻近节点全连接 ---- */
 function buildRoad(): [Pt,Pt,number][] {
-  const res: [Pt,Pt,number][] = [];
-  const all = [N.sh,N.sz,N.nb,N.qd,N.tj,N.dl,N.xm,N.gz,N.qhd,N.hk,N.tp,
-              N.heb,N.cc,N.hr,N.zz,N.wh,N.cd,N.cq,N.xa,
-              N.tk,N.bs,N.os,N.sg,N.jk,N.bk,N.mn,N.kl,
-              N.mb,N.dlh,N.klk,N.db,N.ad,N.kw,N.ms,
-              N.rt,N.hg,N.ld,N.fr,N.pr,N.br,N.vn,N.rm,
-              N.ct,N.dr,N.mbk,N.lg,N.alx,
-              N.la,N.sf,N.se,N.vc,N.ny,N.ch,
-              N.sp,N.rj,N.lm,N.sy,N.ml,N.ak,N.mc,N.al];
-  // 邻近节点连接(模拟毛细血管)
+  const r: [Pt,Pt,number][] = [];
+  const all = Object.values(N);
   all.forEach((a,i) => {
-    for(let j=i+1; j<all.length; j++) {
-      const dx=a.x-all[j].x, dy=a.y-all[j].y, dist=Math.sqrt(dx*dx+dy*dy);
-      if(dist<35 && Math.random()<0.3) res.push([a,all[j],0.01+Math.random()*0.03]);
+    for(let j=i+1;j<all.length;j++){
+      const dx=a.x-all[j].x, dy=a.y-all[j].y, d=Math.sqrt(dx*dx+dy*dy);
+      if(d<50) r.push([a,all[j],0.005+Math.random()*0.02]); // 50单位≈中国沿海到内陆
     }
   });
-  return res;
+  return r;
 }
 
 const shippingRoutes = buildShipping();
