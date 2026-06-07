@@ -265,7 +265,7 @@ export const siteContent = {
     },
     community: {
       eyebrow: "免费试点",
-      title: "用一个具体问题，验证 Supply Chain × AI 能否更好解决。",
+      title: "用一个具体问题，验证 AI 能否更好解决。",
       subtitle: "ChainFlow 愿意用工具能力，和真实经营中的商家一起验证。",
       body: "",
       fitTitle: "适合谁",
