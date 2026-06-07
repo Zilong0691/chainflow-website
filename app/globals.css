@@ -359,6 +359,7 @@ section[id] {
 
 /* 3D 球体光照——左上高光，边缘变暗 */
 .globe-sphere::after {
+  contain: layout style paint;
   content: "";
   position: absolute;
   inset: 0;
@@ -391,6 +392,7 @@ section[id] {
 
 /* 地图滚动层 — translateX 模拟地球自转(右→左) */
 .globe-scroll {
+  will-change: transform;
   position: absolute;
   inset: 0;
   

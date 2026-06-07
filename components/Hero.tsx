@@ -116,7 +116,6 @@ function MapG() {
       <g fill="none" strokeLinecap="round">
         {ship.map((s,i)=><path key={"s"+i} d={s.join(" ")} className="flow-path flow-path--shipping"/>)}
         {rail.map((s,i)=><path key={"r"+i} d={s.join(" ")} className="flow-path flow-path--rail"/>)}
-        {road.map((s,i)=><path key={"d"+i} d={s.join(" ")} className="flow-path flow-path--road"/>)}
       </g>
       <g>
         {[N.sh,N.sz,N.nb,N.qd,N.tj,N.dl].map((p,i)=><circle key={"C"+i} cx={p.x} cy={p.y} r="1.6" fill="#f2c76a" opacity="0.9" filter="url(#gl)"/>)}
@@ -133,7 +132,7 @@ export function Hero({ lang }: HeroProps) {
   const zh = lang === "zh";
   return (
     <section id="top" className="relative isolate overflow-hidden bg-graphite text-rice">
-      <img src="/chainflow-hero-flow.png" alt="" className="hero-asset pointer-events-none absolute inset-0 -z-30 h-full w-full object-cover object-center" />
+      <img src="/chainflow-hero-flow.jpg" alt="" className="hero-asset pointer-events-none absolute inset-0 -z-30 h-full w-full object-cover object-center" />
       <div className="absolute inset-0 -z-20 bg-[radial-gradient(circle_at_72%_42%,rgba(215,177,93,0.24)_0%,rgba(31,143,132,0.10)_28%,rgba(8,11,9,0.72)_58%,rgba(8,11,9,0.98)_100%)]" />
       <div className="absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgba(8,11,9,0.98)_0%,rgba(8,11,9,0.9)_42%,rgba(8,11,9,0.48)_74%,rgba(8,11,9,0.86)_100%)]" />
       <div className="mx-auto grid min-h-[86svh] max-w-7xl items-center gap-10 px-5 py-20 lg:grid-cols-[1fr_1fr] lg:px-8 lg:py-24">
