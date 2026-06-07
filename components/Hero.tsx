@@ -108,24 +108,23 @@ function buildRoad(): string[][] {
 
 const ship = buildShip(), rail = buildRail(), road = buildRoad();
 
-function MapLayer() {
+/* 单张地图内容(g) — 用于在2400px宽SVG中重复3次 */
+function MapG() {
   return (
-    <svg viewBox="0 0 800 400" preserveAspectRatio="xMidYMid slice" className="globe-map-svg">
+    <g>
       <path d={worldPathD} fill="rgba(215,177,93,0.18)" stroke="rgba(215,177,93,0.24)" strokeWidth="0.5" />
       <g fill="none" strokeLinecap="round">
         {ship.map((s,i)=><path key={"s"+i} d={s.join(" ")} className="flow-path flow-path--shipping"/>)}
         {rail.map((s,i)=><path key={"r"+i} d={s.join(" ")} className="flow-path flow-path--rail"/>)}
         {road.map((s,i)=><path key={"d"+i} d={s.join(" ")} className="flow-path flow-path--road"/>)}
       </g>
-      {/* 精简光点: 仅核心港口+枢纽 */}
       <g>
         {[N.sh,N.sz,N.nb,N.qd,N.tj,N.dl].map((p,i)=><circle key={"C"+i} cx={p.x} cy={p.y} r="1.6" fill="#f2c76a" opacity="0.9" filter="url(#gl)"/>)}
         {[N.tk,N.sg,N.db,N.rt,N.la,N.ny,N.ct,N.sy,N.mb,N.ld].map((p,i)=><circle key={"W"+i} cx={p.x} cy={p.y} r="1.2" fill="#f2c76a" opacity="0.6"/>)}
         {[N.cq,N.wh,N.zz,N.ch,N.fr,N.al,N.xa,N.cd,N.hr,N.heb,N.mc].map((p,i)=><circle key={"D"+i} cx={p.x} cy={p.y} r="1.3" fill="rgba(117,212,203,0.8)" opacity="0.65" filter="url(#gl)"/>)}
         {[N.ny,N.la,N.mb,N.db,N.br,N.vn,N.ld,N.sp,N.sy,N.rt].map((p,i)=><circle key={"T"+i} cx={p.x} cy={p.y} r="1.0" fill="rgba(255,250,240,0.6)" opacity="0.5"/>)}
       </g>
-      <defs><filter id="gl"><feGaussianBlur stdDeviation="1"/><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
-    </svg>
+    </g>
   );
 }
 
@@ -166,7 +165,12 @@ function GlobeFlowVisual({ lang }: { lang: Language }) {
       <div className="globe-sphere">
         <div className="globe-grid" />
         <div className="globe-scroll">
-          <MapLayer /><MapLayer /><MapLayer />
+          <svg viewBox="0 0 2400 400" preserveAspectRatio="xMidYMid slice" className="globe-map-svg">
+            <defs><filter id="gl"><feGaussianBlur stdDeviation="1"/><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+            <g transform="translate(0,0)"><MapG /></g>
+            <g transform="translate(800,0)"><MapG /></g>
+            <g transform="translate(1600,0)"><MapG /></g>
+          </svg>
         </div>
       </div>
     </div>
