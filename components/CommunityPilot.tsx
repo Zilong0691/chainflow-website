@@ -13,7 +13,11 @@ export function CommunityPilot({ lang }: CommunityPilotProps) {
   return (
     <section id="community" className="section-band bg-rice text-ink">
       <div className="mx-auto max-w-7xl px-5 py-16 lg:px-8 lg:py-24">
-        <SectionHeader eyebrow={copy.eyebrow} title={copy.title} subtitle={copy.subtitle} />
+        <div>
+          <p className="text-sm font-medium text-jade">{copy.eyebrow}</p>
+          <h2 className="mt-4 whitespace-nowrap text-3xl font-semibold leading-tight md:text-5xl">{copy.title}</h2>
+          <p className="mt-4 max-w-2xl text-pretty text-base leading-8 text-ink/70 md:text-lg">{copy.subtitle}</p>
+        </div>
 
         <div className="mt-10 grid gap-6 lg:grid-cols-3">
           <PilotPanel title={copy.fitTitle} items={copy.fit} tone="jade" />
