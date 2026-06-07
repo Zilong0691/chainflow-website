@@ -394,17 +394,18 @@ section[id] {
   position: absolute;
   inset: 0;
   display: flex;
-  width: 200%;
+  width: 300%;
   height: 100%;
-  animation: globe-spin 50s linear infinite;
+  animation: globe-spin 60s linear infinite;
 }
 
 .globe-map-svg {
   display: block;
   flex-shrink: 0;
-  width: 50%;
+  width: calc(100% / 3);
   height: 100%;
   opacity: 0.85;
+  margin-right: -1px;
 }
 
 @keyframes globe-spin {

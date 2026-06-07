@@ -166,7 +166,7 @@ function GlobeFlowVisual({ lang }: { lang: Language }) {
       <div className="globe-sphere">
         <div className="globe-grid" />
         <div className="globe-scroll">
-          <MapLayer /><MapLayer />
+          <MapLayer /><MapLayer /><MapLayer />
         </div>
       </div>
     </div>
