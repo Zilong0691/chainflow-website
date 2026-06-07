@@ -421,14 +421,13 @@ section[id] {
   opacity: 0.72;
 }
 
-/* 流星轨迹链流 — stroke-linecap:round 光点沿线流动 */
+/* 航运流星 + 铁路网 + 公路网 */
 .flow-path {
   fill: none;
   stroke-linecap: round;
-  animation: meteor 2.5s linear infinite;
 }
 
-/* 航运 — 金色流星 */
+/* 航运 — 金色流星(光点流动) */
 .flow-path--shipping {
   stroke: #f2c76a;
   stroke-width: 2.2;
@@ -438,29 +437,29 @@ section[id] {
   animation: meteor 2s linear infinite;
 }
 
-/* 铁路 — 青色流星 */
+/* 铁路 — 青色实线网(微弱闪烁) */
 .flow-path--rail {
-  stroke: rgba(117,212,203,0.75);
-  stroke-width: 1.5;
-  stroke-dasharray: 0.5 22;
-  opacity: 0.65;
-  filter: drop-shadow(0 0 4px rgba(117,212,203,0.5));
-  animation: meteor 3s linear infinite;
-}
-
-/* 公路 — 微光流星 */
-.flow-path--road {
-  stroke: rgba(255,250,240,0.3);
-  stroke-width: 0.9;
-  stroke-dasharray: 0.5 28;
-  opacity: 0.4;
+  stroke: rgba(117,212,203,0.55);
+  stroke-width: 0.7;
+  stroke-dasharray: none;
+  opacity: 0.5;
   filter: none;
-  animation: meteor 4s linear infinite;
+  animation: rail-shimmer 3s ease-in-out infinite;
 }
 
-@keyframes meteor {
-  to { stroke-dashoffset: -40; }
+/* 公路 — 白色实线网(极微荧光) */
+.flow-path--road {
+  stroke: rgba(255,250,240,0.35);
+  stroke-width: 0.45;
+  stroke-dasharray: none;
+  opacity: 0.35;
+  filter: none;
+  animation: road-glimmer 4s ease-in-out infinite;
 }
+
+@keyframes meteor { to { stroke-dashoffset: -40; } }
+@keyframes rail-shimmer { 0%,100%{opacity:0.4} 50%{opacity:0.65} }
+@keyframes road-glimmer { 0%,100%{opacity:0.25} 50%{opacity:0.45} }
 
 .globe-node {
   z-index: 3;
