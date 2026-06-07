@@ -161,32 +161,6 @@ export function Skills({ lang }: SkillsProps) {
           })}
         </div>
 
-        {/* ===== 价格 ===== */}
-        <div id="pricing" className="mt-12 scroll-mt-24">
-          <SectionHeader
-            eyebrow={copy.pricingHeader.eyebrow}
-            title={copy.pricingHeader.title}
-            subtitle={copy.pricingHeader.subtitle}
-            tone="dark"
-          />
-          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {copy.pricingCards.map((plan) => (
-              <div key={plan.name} className="rounded-2xl border border-rice/10 bg-rice/[0.045] p-5">
-                <p className="text-sm font-medium text-gold">{plan.name}</p>
-                <p className="mt-3 text-2xl font-semibold text-rice">{plan.price}</p>
-                <div className="mt-4 grid gap-2 border-t border-rice/10 pt-4">
-                  {plan.items.map((item) => (
-                    <p key={item} className="text-xs leading-6 text-rice/55">{item}</p>
-                  ))}
-                </div>
-                <a href="#contact" className="mt-5 inline-flex items-center gap-1.5 text-xs font-semibold text-rice/70 transition hover:text-gold">
-                  {plan.cta}<ArrowRight size={12} />
-                </a>
-              </div>
-            ))}
-          </div>
-        </div>
-
         {/* ===== 即将推出 ===== */}
         <div className="mt-12 rounded-2xl border border-rice/10 bg-rice/[0.03] p-6">
           <p className="text-sm font-medium text-gold">{copy.comingSoonHeader}</p>
