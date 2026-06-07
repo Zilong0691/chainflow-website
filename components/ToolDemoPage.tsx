@@ -11,23 +11,27 @@ export function ToolDemoPage({ slug }: ToolDemoPageProps) {
 
   return (
     <main className="min-h-screen bg-graphite text-rice">
-      <div className="mx-auto max-w-7xl px-5 py-6 lg:px-8 lg:py-10">
+      <div className="mx-auto max-w-7xl px-5 py-4 lg:px-8 lg:py-8">
         <a href="/#skills" className="inline-flex items-center gap-2 text-sm text-rice/70 transition hover:text-gold">
           <ArrowLeft size={16} />返回工具包
         </a>
-        <h1 className="mt-4 whitespace-nowrap text-2xl font-semibold md:text-4xl">{demo.name} · {demo.title}</h1>
+        <div className="mt-3 flex flex-wrap items-center justify-between gap-3">
+          <h1 className="text-xl font-semibold md:text-3xl">{demo.name} · {demo.title}</h1>
+          <span className="rounded-full border border-gold/25 bg-gold/10 px-3 py-1 text-xs text-gold md:hidden">推荐电脑打开，体验更完整</span>
+        </div>
       </div>
 
-      <div className="mx-auto max-w-7xl px-2 sm:px-5 lg:px-8">
+      <div className="mx-auto max-w-7xl px-1 sm:px-5 lg:px-8">
         <div className="overflow-hidden rounded-xl border border-rice/10 bg-rice/[0.04]">
           <div className="flex items-center justify-between border-b border-rice/10 bg-graphite/80 px-3 py-2 text-xs text-rice/50">
             <span>{liveDemo.browserLabel}</span>
-            <span>脱敏数据 · 不上传真实资料</span>
+            <span className="hidden sm:inline">脱敏数据 · 不上传真实资料</span>
+            <span className="sm:hidden text-gold/60">推荐电脑打开</span>
           </div>
           <iframe
             src={liveDemo.src}
             title={`${demo.name} interactive demo`}
-            className="h-[85vh] min-h-[500px] w-full bg-white"
+            className="h-[80vh] min-h-[480px] w-full bg-white"
             sandbox="allow-scripts allow-same-origin allow-popups"
             loading="lazy"
           />
