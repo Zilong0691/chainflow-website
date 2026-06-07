@@ -13,8 +13,8 @@ export function About({ lang }: AboutProps) {
       <div className="mx-auto max-w-7xl px-5 py-16 lg:px-8 lg:py-20">
         <SectionHeader eyebrow={copy.eyebrow} title={copy.title} tone="dark" />
         <div className="mt-8 grid gap-8 lg:grid-cols-[1fr_1fr]">
-          <div className="space-y-5 text-pretty text-base leading-8 text-rice/70">
-            {copy.paragraphs.map((p) => <p key={p}>{p}</p>)}
+          <div className="space-y-3 text-base leading-8 text-rice/70">
+            {copy.paragraphs.map((p) => p.split("\n").map((line,i) => <p key={i}>{line}</p>))}
             <div>
               <p className="text-sm font-medium text-rice/40">{copy.focusLabel}</p>
               <div className="mt-3 flex flex-wrap gap-1.5">

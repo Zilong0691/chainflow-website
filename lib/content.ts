@@ -299,7 +299,7 @@ export const siteContent = {
       subtitle: "",
       statement: "",
       paragraphs: [
-        "Zilong Zhao，上海交通大学研究生在读，上海交通大学深圳行业研究院跨国企业供应链研究团队成员。关注先进制造与小微企业真实经营场景中的供应链问题，逐步探索 AI 智能体在业务流程中的落地。",
+        "发起人：Zilong Zhao，上海交通大学研究生在读，\n上海交通大学深圳行业研究院跨国企业供应链研究团队成员。\n关注先进制造与小微企业真实经营场景中的供应链问题，\n逐步探索 AI 智能体在业务流程中的落地。",
       ],
       focusLabel: "关注领域",
       focusAreas: [
