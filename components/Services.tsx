@@ -16,7 +16,7 @@ export function Services({ lang }: ServicesProps) {
           eyebrow={copy.pricingHeader.eyebrow}
           title={copy.pricingHeader.title}
           subtitle={copy.pricingHeader.subtitle}
-          align="center"
+          align="left"
           tone="dark"
         />
 
