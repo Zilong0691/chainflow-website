@@ -412,31 +412,34 @@ section[id] {
   animation: flow-dash 3s linear infinite;
 }
 
-/* 航运大动脉 — 金色发光，粗线 */
+/* 航运大动脉 — 金色发光 */
 .globe-map .flow-path--shipping {
   stroke: #f2c76a;
-  stroke-width: 1.3;
-  opacity: 0.78;
-  filter: drop-shadow(0 0 5px rgba(242,199,106,0.5));
-  animation-duration: 2.5s;
+  stroke-width: 0.9;
+  stroke-dasharray: 3 6;
+  opacity: 0.6;
+  filter: drop-shadow(0 0 3px rgba(242,199,106,0.35));
+  animation: flow-dash 2s linear infinite;
 }
 
-/* 铁路骨骼 — 青蓝虚线 */
+/* 铁路骨骼 — 青蓝 */
 .globe-map .flow-path--rail {
-  stroke: rgba(117,212,203,0.55);
-  stroke-width: 0.8;
-  opacity: 0.6;
+  stroke: rgba(117,212,203,0.4);
+  stroke-width: 0.55;
+  stroke-dasharray: 2 8;
+  opacity: 0.45;
   filter: none;
-  animation-duration: 3.8s;
+  animation: flow-dash 3.5s linear infinite;
 }
 
 /* 公路毛细血管 — 极细微光 */
 .globe-map .flow-path--road {
-  stroke: rgba(255,250,240,0.22);
-  stroke-width: 0.45;
-  opacity: 0.4;
+  stroke: rgba(255,250,240,0.16);
+  stroke-width: 0.35;
+  stroke-dasharray: 1 12;
+  opacity: 0.3;
   filter: none;
-  animation-duration: 5s;
+  animation: flow-dash 5s linear infinite;
 }
 
 /* 节点光点 */
@@ -512,8 +515,8 @@ section[id] {
 
 /* --- 动画关键帧 --- */
 @keyframes globe-rotate {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
 }
 
 @keyframes atmosphere-breathe {
