@@ -389,12 +389,24 @@ section[id] {
   mask-image: radial-gradient(circle at 50% 50%, black 88%, transparent 100%);
 }
 
-/* 旋转内容层 */
-.globe-contents {
+/* 地图滚动层 — translateX 模拟地球自转(右→左) */
+.globe-scroll {
   position: absolute;
   inset: 0;
-  border-radius: 50%;
-  animation: globe-rotate 48s linear infinite;
+  display: flex;
+  width: 200%;
+  animation: globe-spin 50s linear infinite;
+}
+
+.globe-scroll > svg {
+  flex-shrink: 0;
+  width: 50%;
+  height: 100%;
+}
+
+@keyframes globe-spin {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
 }
 
 /* 世界地图 SVG（大陆 + 路线合并在一个 SVG 中） */
@@ -514,11 +526,6 @@ section[id] {
 }
 
 /* --- 动画关键帧 --- */
-@keyframes globe-rotate {
-  from { transform: rotate(360deg); }
-  to { transform: rotate(0deg); }
-}
-
 @keyframes atmosphere-breathe {
   0%, 100% { opacity: 0.6; transform: scale(1); }
   50% { opacity: 1; transform: scale(1.04); }
@@ -739,27 +746,11 @@ section[id] {
 
   .globe-visual {
     width: min(20rem, 82vw);
-    min-height: 24rem;
+    min-height: 20rem;
   }
 
   .globe-sphere {
     max-width: 20rem;
-  }
-
-  .globe-panel {
-    max-width: 20rem;
-    grid-template-columns: 1fr;
-  }
-
-  .globe-panel__metrics {
-    grid-template-columns: repeat(3, 1fr);
-    width: 100%;
-  }
-
-  .globe-panel__metrics span {
-    justify-content: center;
-    font-size: 0.6rem;
-    padding: 0.18rem 0.35rem;
   }
 }
 
