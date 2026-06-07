@@ -742,17 +742,52 @@ section[id] {
     object-position: 58% center;
   }
 
-  .supply-flow {
-    width: min(21rem, 82vw);
-  }
-
+  /* 地球 */
   .globe-visual {
-    width: min(20rem, 82vw);
-    min-height: 20rem;
+    width: 100%;
+    max-width: 22rem;
+    min-height: 16rem;
+    margin: 0 auto;
+  }
+  .globe-sphere {
+    max-width: 22rem;
+  }
+  .globe-atmosphere {
+    inset: -5%;
+  }
+  .globe-grid {
+    opacity: 0.6;
+  }
+  .globe-map-svg {
+    opacity: 0.9;
   }
 
-  .globe-sphere {
-    max-width: 20rem;
+  /* 工具墙 */
+  .tool-card {
+    padding: 0.9rem;
+    border-radius: 0.9rem;
+  }
+  .tool-card h3 {
+    font-size: 1rem;
+  }
+  .tool-detail {
+    padding: 0.9rem;
+  }
+
+  /* 按钮全宽 */
+  .btn-primary, .btn-ghost, .btn-outline {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* 段落间距 */
+  section[id] {
+    scroll-margin-top: 68px;
+  }
+
+  /* 导航 */
+  header nav a {
+    font-size: 0.75rem;
   }
 }
 
@@ -768,5 +803,18 @@ section[id] {
     animation-iteration-count: 1 !important;
     scroll-behavior: auto !important;
     transition-duration: 0.001ms !important;
+  }
+}
+
+/* 小屏手机额外优化 */
+@media (max-width: 480px) {
+  .flow-word {
+    font-size: 1.1em;
+  }
+  .globe-visual {
+    min-height: 14rem;
+  }
+  .tool-card {
+    padding: 0.75rem;
   }
 }
