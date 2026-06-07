@@ -7,7 +7,6 @@ import { Footer } from "@/components/Footer";
 import { Hero } from "@/components/Hero";
 import { Navbar } from "@/components/Navbar";
 import { PortfolioPosition } from "@/components/PortfolioPosition";
-import { Services } from "@/components/Services";
 import { Skills } from "@/components/Skills";
 import { WhyChainFlow } from "@/components/WhyChainFlow";
 import type { Language } from "@/lib/content";
@@ -37,7 +36,6 @@ export function SiteShell() {
         <PortfolioPosition lang={lang} />
         <WhyChainFlow lang={lang} />
         <Skills lang={lang} />
-        <Services lang={lang} />
         <CommunityPilot lang={lang} />
         <About lang={lang} />
       </main>

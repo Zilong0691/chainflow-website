@@ -15,7 +15,6 @@ export const siteContent = {
     nav: [
       { label: "首页", href: "#top" },
       { label: "工具包", href: "#skills" },
-      { label: "价格", href: "#pricing" },
       { label: "共创试点", href: "#community" },
       { label: "关于", href: "#about" }
     ],
@@ -108,7 +107,7 @@ export const siteContent = {
       }
     ],
     toolsHeader: {
-      eyebrow: "工具与技能",
+      eyebrow: "工具包",
       title: "每个工具，先解决一个具体问题。",
       subtitle: "工具不是概念展示，而是一把能拿来用的刀：说明它解决什么、适合谁、需要什么输入、会交付什么输出。不会代码也可以先看演示；需要落地时，可以用模板教程，也可以手把手部署到本地。"
     },
@@ -346,7 +345,6 @@ export const siteContent = {
     nav: [
       { label: "Home", href: "#top" },
       { label: "Toolkits", href: "#skills" },
-      { label: "Pricing", href: "#pricing" },
       { label: "Pilot", href: "#community" },
       { label: "About", href: "#about" }
     ],
@@ -439,7 +437,7 @@ export const siteContent = {
       }
     ],
     toolsHeader: {
-      eyebrow: "Tools / Skills",
+      eyebrow: "Toolkits",
       title: "Each Skill solves one concrete problem first.",
       subtitle: "Tools are the individual blades inside the toolkit: clear problem, input, output, and simple entries: free demo, standard version, custom deployment, or one-month implementation support."
     },
