@@ -214,8 +214,8 @@ const roadPaths = buildRoad();
 /* 渲染一张地图(大陆+路线+光点) */
 function MapLayer() {
   return (
-    <svg width="800" height="400" viewBox="0 0 800 400" preserveAspectRatio="none">
-      <path d={worldPathD} fill="rgba(215,177,93,0.16)" stroke="rgba(215,177,93,0.20)" strokeWidth="0.5" />
+    <svg viewBox="0 0 800 400" preserveAspectRatio="xMidYMid slice" className="globe-map-svg">
+      <path d={worldPathD} fill="rgba(215,177,93,0.18)" stroke="rgba(215,177,93,0.24)" strokeWidth="0.5" />
       <g fill="none" strokeLinecap="round">
         {/* 航运 — 金色 */}
         {shippingPaths.map((segs,i) => (
@@ -230,16 +230,23 @@ function MapLayer() {
           <path key={"d"+i} d={segs.join(" ")} className="flow-path flow-path--road" />
         ))}
       </g>
-      {/* 光点 */}
+      {/* 节点光点：港口·集散地·铁路枢纽 */}
       <g>
+        {/* 中国港口 — 金色大圆 */}
         {[N.sh,N.sz,N.nb,N.qd,N.tj,N.dl,N.xm,N.gz,N.qhd].map((p,i)=>(
-          <circle key={"C"+i} cx={p.x} cy={p.y} r="1.5" fill="#f2c76a" opacity="0.85" filter="url(#gl)" />
+          <circle key={"Pc"+i} cx={p.x} cy={p.y} r="1.6" fill="#f2c76a" opacity="0.9" filter="url(#gl)" />
         ))}
-        {[N.tk,N.bs,N.sg,N.db,N.rt,N.la,N.ny,N.ct,N.sy,N.sp,N.mb,N.ld,N.hg,N.sf,N.jk,N.mbk].map((p,i)=>(
-          <circle key={"W"+i} cx={p.x} cy={p.y} r="0.9" fill="rgba(255,250,240,0.55)" opacity="0.55" />
+        {/* 国际港口 — 金色小圆 */}
+        {[N.tk,N.bs,N.sg,N.db,N.rt,N.la,N.ny,N.ct,N.sy,N.sp,N.mb,N.ld,N.hg,N.sf,N.jk,N.mbk,N.os,N.bk,N.mn,N.kl,N.ad,N.kw,N.pr,N.br,N.rm,N.lg,N.alx,N.dr,N.ml,N.ak,N.vc,N.se,N.rj,N.lm,N.dlh,N.klk,N.tp].map((p,i)=>(
+          <circle key={"Pi"+i} cx={p.x} cy={p.y} r="1.0" fill="#f2c76a" opacity="0.6" />
         ))}
-        {[N.cq,N.xa,N.zz,N.wh,N.cd,N.ch,N.fr,N.al,N.mc,N.hr,N.heb].map((p,i)=>(
-          <circle key={"I"+i} cx={p.x} cy={p.y} r="0.6" fill="rgba(117,212,203,0.45)" opacity="0.4" />
+        {/* 集散地/内陆物流枢纽 — 青色 */}
+        {[N.cq,N.wh,N.zz,N.heb,N.ch,N.fr,N.al,N.mc,N.hr,N.cc,N.sg].map((p,i)=>(
+          <circle key={"D"+i} cx={p.x} cy={p.y} r="1.4" fill="rgba(117,212,203,0.8)" opacity="0.7" filter="url(#gl)" />
+        ))}
+        {/* 铁路枢纽 — 白色 */}
+        {[N.xa,N.cd,N.hg,N.rt,N.ny,N.la,N.mb,N.ms,N.db,N.ct,N.br,N.vn,N.ld,N.pr,N.rm,N.sp,N.sy].map((p,i)=>(
+          <circle key={"R"+i} cx={p.x} cy={p.y} r="1.1" fill="rgba(255,250,240,0.7)" opacity="0.6" />
         ))}
       </g>
       <defs><filter id="gl"><feGaussianBlur stdDeviation="1"/><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>

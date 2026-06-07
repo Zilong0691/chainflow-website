@@ -395,13 +395,16 @@ section[id] {
   inset: 0;
   display: flex;
   width: 200%;
+  height: 100%;
   animation: globe-spin 50s linear infinite;
 }
 
-.globe-scroll > svg {
+.globe-map-svg {
+  display: block;
   flex-shrink: 0;
   width: 50%;
   height: 100%;
+  opacity: 0.85;
 }
 
 @keyframes globe-spin {
@@ -418,38 +421,38 @@ section[id] {
   opacity: 0.72;
 }
 
-.globe-map .flow-path {
+.flow-path {
   fill: none;
   stroke-linecap: round;
   animation: flow-dash 3s linear infinite;
 }
 
 /* 航运大动脉 — 金色发光 */
-.globe-map .flow-path--shipping {
+.flow-path--shipping {
   stroke: #f2c76a;
   stroke-width: 0.9;
   stroke-dasharray: 3 6;
-  opacity: 0.6;
+  opacity: 0.65;
   filter: drop-shadow(0 0 3px rgba(242,199,106,0.35));
   animation: flow-dash 2s linear infinite;
 }
 
 /* 铁路骨骼 — 青蓝 */
-.globe-map .flow-path--rail {
-  stroke: rgba(117,212,203,0.4);
-  stroke-width: 0.55;
+.flow-path--rail {
+  stroke: rgba(117,212,203,0.55);
+  stroke-width: 0.6;
   stroke-dasharray: 2 8;
-  opacity: 0.45;
+  opacity: 0.55;
   filter: none;
   animation: flow-dash 3.5s linear infinite;
 }
 
 /* 公路毛细血管 — 极细微光 */
-.globe-map .flow-path--road {
-  stroke: rgba(255,250,240,0.16);
+.flow-path--road {
+  stroke: rgba(255,250,240,0.22);
   stroke-width: 0.35;
   stroke-dasharray: 1 12;
-  opacity: 0.3;
+  opacity: 0.35;
   filter: none;
   animation: flow-dash 5s linear infinite;
 }
