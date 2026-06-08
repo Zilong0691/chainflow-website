@@ -61,9 +61,9 @@ export const siteContent = {
         layer: "网络层",
         title: "帮你看见网络",
         englishTitle: "See the Network",
-        description: "长期探索更深层的供应链风险、机会和连接。",
+        description: "长期探索更深层的供应链风险、机会和连接。不只是识别风险，也让采购需求、供应能力与全球合作机会更有效地被发现和连接。",
         englishDescription: "",
-        examples: ["多层供应链图谱", "Tier-2 / Tier-3 风险", "替代供应商路径", "全球机会发现", "中国企业出海连接"]
+        examples: ["多层供应链图谱", "Tier-2 / Tier-3 风险", "替代供应商路径", "采购需求与供应匹配", "全球机会发现与连接", "中国企业出海连接"]
       }
     ],
     flowLogic: {
@@ -107,9 +107,9 @@ export const siteContent = {
       }
     ],
     toolsHeader: {
-      eyebrow: "工具包",
-      title: "每个工具，先解决一个具体问题。",
-      subtitle: "工具不是概念展示，而是一把能拿来用的刀：说明它解决什么、适合谁、需要什么输入、会交付什么输出。不会代码也可以先看演示；需要落地时，可以用模板教程，也可以手把手部署到本地。"
+      eyebrow: "当前能力",
+      title: "每个模块，先解决一个具体问题。",
+      subtitle: "既能独立使用，也在沉淀未来决策智能所需的数据、规则与业务能力。不会代码也可以先看演示；需要落地时，可以手把手部署到本地。"
     },
     toolsDemoCta: "先看演示",
     labels: {
@@ -124,6 +124,7 @@ export const siteContent = {
         slug: "routeflow",
         name: "RouteFlow",
         title: "短途配送排线工作台",
+        longTerm: "长期能力：履约规划与物流决策模块",
         value: "把不标准订单表转成车辆路线、司机任务表、异常处置建议和地图化交付件。",
         problem: "人工排线耗时、约束难兼顾，排完以后还难向司机和老板解释。",
         bestFor: ["同城配送", "小车队", "门店补货", "区域分拨"],
@@ -145,6 +146,7 @@ export const siteContent = {
         slug: "networkflow",
         name: "NetworkFlow",
         title: "仓网选址评估助手",
+        longTerm: "长期能力：供应链网络设计与资源配置模块",
         value: "基于需求城市、候选仓点和成本参数，快速比较仓网布局方案。",
         problem: "仓库设哪里、客户怎么分配、成本怎么比较，难以系统判断。",
         bestFor: ["区域仓规划", "出海仓布局", "经销网络优化"],
@@ -163,12 +165,12 @@ export const siteContent = {
         ]
       }
     ],
-    comingSoonHeader: "后续工具包",
+    comingSoonHeader: "能力路线图",
     comingSoonTools: [
-      { name: "SupplierMail", title: "供应商沟通助手" },
-      { name: "StockCheck", title: "库存核对助手" },
-      { name: "QuoteCompare", title: "报价对比助手" },
-      { name: "DemandFlow", title: "需求预测助手" }
+      { name: "DemandFlow", title: "需求预测 → 库存影响 → 补货建议" },
+      { name: "StockCheck", title: "库存核对与缺口识别" },
+      { name: "SupplierScore", title: "供应商评估与风险判断" },
+      { name: "QuoteCompare", title: "采购报价标准化对比" },
     ],
     demoHeader: {
       eyebrow: "工具演示",
@@ -433,9 +435,9 @@ export const siteContent = {
       }
     ],
     toolsHeader: {
-      eyebrow: "Toolkits",
-      title: "Each Skill solves one concrete problem first.",
-      subtitle: "Tools are the individual blades inside the toolkit: clear problem, input, output, and simple entries: free demo, standard version, custom deployment, or one-month implementation support."
+      eyebrow: "Capabilities",
+      title: "Each module solves one concrete problem first.",
+      subtitle: "Designed to work independently today, while building the data, rules and capability foundation for future decision intelligence. No coding required to try the demo."
     },
     toolsDemoCta: "Try Demo",
     labels: {
@@ -489,12 +491,12 @@ export const siteContent = {
         ]
       }
     ],
-    comingSoonHeader: "Coming Soon",
+    comingSoonHeader: "Capability Roadmap",
     comingSoonTools: [
-      { name: "SupplierMail", title: "Supplier Communication Assistant" },
-      { name: "StockCheck", title: "Inventory Reconciliation Assistant" },
-      { name: "QuoteCompare", title: "Quote Comparison Assistant" },
-      { name: "DemandFlow", title: "Demand Forecasting Assistant" }
+      { name: "DemandFlow", title: "Forecast → Inventory → Replenish" },
+      { name: "StockCheck", title: "Inventory gap identification" },
+      { name: "SupplierScore", title: "Supplier evaluation & risk" },
+      { name: "QuoteCompare", title: "Quote standardization & comparison" },
     ],
     demoHeader: {
       eyebrow: "Demo",
