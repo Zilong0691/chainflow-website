@@ -1,0 +1,99 @@
+{
+  "schema_version": "0.1",
+  "request_id": "req_networkflow_demo_001",
+  "module_id": "networkflow",
+  "module_version": "0.1.0",
+  "status": "success",
+  "generated_at": "2026-06-09T10:00:05+08:00",
+  "requires_human_review": true,
+  "result": {
+    "summary": {
+      "candidates_evaluated": 5,
+      "sites_recommended": 2,
+      "sites_selected": ["芜湖", "开封"],
+      "total_demand_cities": 386,
+      "coverage_rate": 0.89,
+      "uncovered_cities": 41
+    },
+    "assignments": [
+      {
+        "warehouse_id": "WH001",
+        "warehouse_name": "芜湖",
+        "demand_cities": ["上海", "杭州", "南京", "合肥"],
+        "order_count": 145,
+        "utilization": 0.73,
+        "avg_distance_km": 218
+      },
+      {
+        "warehouse_id": "WH002",
+        "warehouse_name": "开封",
+        "demand_cities": ["郑州", "西安", "济南", "石家庄"],
+        "order_count": 176,
+        "utilization": 0.98,
+        "avg_distance_km": 312
+      }
+    ],
+    "backup_scenarios": [
+      {
+        "sites": ["芜湖", "福州", "重庆"],
+        "coverage": 0.94,
+        "total_monthly_cost": 152000,
+        "note": "服务优先方案：覆盖率最高，但增加一个仓点"
+      },
+      {
+        "sites": ["开封"],
+        "coverage": 0.72,
+        "total_monthly_cost": 45000,
+        "note": "成本优先方案：只用一个仓，覆盖面有限"
+      }
+    ]
+  },
+  "metrics": {
+    "best_coverage": 0.94,
+    "best_cost_monthly": 45000,
+    "balanced_cost_monthly": 95000,
+    "balanced_coverage": 0.89,
+    "cost_reduction_vs_all_candidates": 0.118,
+    "avg_service_distance_km": 265
+  },
+  "risks": [
+    {
+      "level": "medium",
+      "description": "开封仓利用率 98%，接近容量上限，旺季可能无法满足需求",
+      "affected_objects": ["WH002"]
+    },
+    {
+      "level": "low",
+      "description": "41 个需求城市（10.6%）不在任何候选仓服务范围内",
+      "affected_objects": []
+    }
+  ],
+  "recommendations": [
+    {
+      "priority": 1,
+      "action": "采用芜湖+开封两仓方案作为基准，预留福州作为扩展备选",
+      "rationale": "89% 覆盖率，月成本 9.5 万，成本降幅 11.8%"
+    },
+    {
+      "priority": 2,
+      "action": "评估开封仓容量是否需要扩容至 200 单以上",
+      "rationale": "当前利用率 98%，旺季有超负荷风险"
+    }
+  ],
+  "assumptions": [
+    "固定成本为估算值，未包含土地、人力、税务等实际运营成本",
+    "运输成本使用每单每公里 2.5 元统一费率",
+    "服务半径 350km 为直线距离，实际道路距离可能更长"
+  ],
+  "warnings": [
+    { "code": "ESTIMATED_COST", "message": "成本为估算值，不包含土地、人力和税务", "severity": "warning" },
+    { "code": "STRAIGHT_LINE_DISTANCE", "message": "距离和服务半径均为直线距离", "severity": "warning" },
+    { "code": "NO_INVENTORY_MODEL", "message": "当前模型未纳入库存策略和周转率", "severity": "info" }
+  ],
+  "artifacts": [
+    { "type": "html", "name": "仓网地图.html", "description": "交互式仓点服务范围地图" },
+    { "type": "xlsx", "name": "需求分配明细.xlsx", "description": "每个需求城市分配到哪个仓，距离多少" },
+    { "type": "html", "name": "方案对比.html", "description": "多方案成本曲线图表" },
+    { "type": "json", "name": "results.json", "description": "完整结构化结果" }
+  ]
+}

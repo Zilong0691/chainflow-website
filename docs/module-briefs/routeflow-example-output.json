@@ -1,0 +1,104 @@
+{
+  "schema_version": "0.1",
+  "request_id": "req_routeflow_demo_001",
+  "module_id": "routeflow",
+  "module_version": "0.1.0",
+  "status": "success",
+  "generated_at": "2026-06-09T04:02:00+08:00",
+  "requires_human_review": true,
+  "result": {
+    "summary": {
+      "total_orders": 801,
+      "solver_routes": 29,
+      "physical_vehicles": 27,
+      "total_distance_km": 1501.97,
+      "total_weight_kg": 87969.4,
+      "total_volume_m3": 159.63
+    },
+    "routes": [
+      {
+        "route_id": "R01",
+        "vehicle_type": "金杯",
+        "vehicle_id": "金杯-1",
+        "stops": [
+          { "order_id": "ORD0012", "address": "上海市XX区XX路", "arrival": "04:30", "departure": "04:35", "weight_kg": 85, "volume_m3": 0.15 },
+          { "order_id": "ORD0047", "address": "上海市XX区XX路", "arrival": "04:52", "departure": "04:57", "weight_kg": 210, "volume_m3": 0.42 }
+        ],
+        "total_distance_km": 21.0,
+        "total_weight_kg": 620,
+        "total_volume_m3": 2.1,
+        "utilization_weight": 0.78,
+        "utilization_volume": 0.47,
+        "start_time": "04:00",
+        "end_time": "06:15",
+        "status": "ready"
+      }
+    ],
+    "exceptions": [
+      {
+        "route_id": "R10",
+        "vehicle_id": "4.2米-10",
+        "type": "work_duration_warning",
+        "description": "工作时长偏长（6h48min），建议人工复核",
+        "suggested_action": "考虑拆分路线或增加车辆"
+      },
+      {
+        "route_id": "R08",
+        "vehicle_id": "金杯-8",
+        "type": "capacity_warning",
+        "description": "载重利用率 96%，接近上限",
+        "suggested_action": "检查是否有超重订单，或换大车型"
+      },
+      {
+        "order_id": "ORD0523",
+        "type": "address_anomaly",
+        "description": "地址无法精确解析，使用近似坐标",
+        "suggested_action": "人工确认实际位置"
+      }
+    ]
+  },
+  "metrics": {
+    "total_distance_km": 1501.97,
+    "avg_route_distance_km": 51.8,
+    "max_route_distance_km": 89.2,
+    "total_vehicles_used": 27,
+    "avg_utilization_weight": 0.72,
+    "avg_utilization_volume": 0.58,
+    "solve_time_seconds": 112,
+    "orders_with_time_window_violation": 3
+  },
+  "risks": [
+    {
+      "level": "medium",
+      "description": "3个客户时间窗可能无法完全满足，延迟约15-30分钟",
+      "affected_objects": ["ORD0234", "ORD0456", "ORD0789"]
+    }
+  ],
+  "recommendations": [
+    {
+      "priority": 1,
+      "action": "复核金杯-8 路线的载重，考虑部分订单调至 4.2米车型",
+      "rationale": "载重利用率 96%，容错空间小"
+    },
+    {
+      "priority": 2,
+      "action": "确认 ORD0523 的实际收货地址",
+      "rationale": "地址解析异常，可能影响配送"
+    }
+  ],
+  "assumptions": [
+    "使用直线距离估算，实际道路距离可能增加 15-25%",
+    "所有订单均可在 5 分钟内完成卸货",
+    "无实时交通数据"
+  ],
+  "warnings": [
+    { "code": "STRAIGHT_LINE_DISTANCE", "message": "距离为直线估算，非实际道路距离", "severity": "warning" },
+    { "code": "STATIC_DATA", "message": "本次结果基于静态数据，不反映实时路况", "severity": "info" }
+  ],
+  "artifacts": [
+    { "type": "xlsx", "name": "司机任务表.xlsx", "description": "每车每站详细任务信息" },
+    { "type": "html", "name": "路线地图.html", "description": "交互式 Leaflet 路线地图" },
+    { "type": "html", "name": "作业甘特图.html", "description": "车辆作业时间线" },
+    { "type": "json", "name": "results.json", "description": "完整结构化结果" }
+  ]
+}

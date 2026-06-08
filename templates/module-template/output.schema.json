@@ -1,0 +1,8 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "模块输出 Schema — 请替换为模块专属字段",
+  "description": "定义本模块返回的核心业务结果结构。该对象将放在统一结果的 result 字段中。",
+  "type": "object",
+  "required": [],
+  "properties": {}
+}

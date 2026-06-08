@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ChainFlow 统一错误格式 V0.1",
+  "description": "所有 ChainFlow 工具模块在发生错误时使用的统一错误结构。目的是让调用方和用户都能理解出了什么问题、是否可以补救、建议怎么做。",
+  "type": "object",
+  "required": ["status", "error"],
+  "properties": {
+    "status": {
+      "type": "string",
+      "const": "error"
+    },
+    "error": {
+      "type": "object",
+      "required": ["code", "message", "recoverable"],
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "错误码。V0.1 仅支持以下 8 种",
+          "enum": [
+            "INVALID_INPUT",
+            "MISSING_FIELD",
+            "INVALID_FORMAT",
+            "UNSUPPORTED_CONSTRAINT",
+            "INSUFFICIENT_DATA",
+            "MODEL_FAILED",
+            "EXTERNAL_SERVICE_ERROR",
+            "INTERNAL_ERROR"
+          ]
+        },
+        "message": {
+          "type": "string",
+          "description": "用中文或用户语言描述的简明错误信息",
+          "examples": ["订单表缺少收货地址字段"]
+        },
+        "field": {
+          "type": "string",
+          "description": "出错的字段路径，如 orders.delivery_address"
+        },
+        "recoverable": {
+          "type": "boolean",
+          "description": "用户修正输入后能否重试成功"
+        },
+        "suggested_action": {
+          "type": "string",
+          "description": "建议用户采取的补救措施",
+          "examples": ["请补充收货地址列，或提供经纬度字段"]
+        },
+        "details": {
+          "type": "object",
+          "description": "额外调试信息（不展示给最终用户）"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ChainFlow 统一请求格式 V0.1",
+  "description": "所有 ChainFlow 工具模块接收请求时使用的公共外壳。工具专属业务数据放在 data 字段内。",
+  "type": "object",
+  "required": ["schema_version", "request_id", "module_id", "module_version", "data"],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "description": "公共请求标准的版本号，当前为 0.1",
+      "default": "0.1"
+    },
+    "request_id": {
+      "type": "string",
+      "description": "每次请求的唯一标识。建议格式：req_YYYYMMDD_NNN",
+      "examples": ["req_20260609_001"]
+    },
+    "organization_id": {
+      "type": "string",
+      "description": "企业或工作区标识。试点阶段可使用占位值",
+      "default": "demo"
+    },
+    "module_id": {
+      "type": "string",
+      "description": "目标工具模块标识，如 routeflow、networkflow、demandflow",
+      "examples": ["routeflow", "networkflow", "demandflow"]
+    },
+    "module_version": {
+      "type": "string",
+      "description": "请求的工具版本号，用于向后兼容",
+      "default": "0.1.0"
+    },
+    "requested_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "请求发起时间，ISO 8601 格式"
+    },
+    "data": {
+      "type": "object",
+      "description": "工具需要处理的业务数据。由各工具自行定义内部结构"
+    },
+    "config": {
+      "type": "object",
+      "description": "用户可以调整的参数，如优化目标、时间窗口等"
+    },
+    "constraints": {
+      "type": "array",
+      "description": "额外约束条件列表",
+      "items": {
+        "type": "object",
+        "properties": {
+          "type": { "type": "string" },
+          "value": {},
+          "description": { "type": "string" }
+        }
+      }
+    },
+    "context": {
+      "type": "object",
+      "description": "语言、币种、时区和单位等上下文信息",
+      "properties": {
+        "locale": { "type": "string", "default": "zh-CN" },
+        "currency": { "type": "string", "default": "CNY" },
+        "timezone": { "type": "string", "default": "Asia/Shanghai" },
+        "units": {
+          "type": "string",
+          "enum": ["metric", "imperial"],
+          "default": "metric"
+        }
+      }
+    }
+  }
+}

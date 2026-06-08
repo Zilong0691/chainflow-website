@@ -1,0 +1,21 @@
+{
+  "id": "networkflow",
+  "name": "NetworkFlow",
+  "display_name_zh": "仓网选址评估助手",
+  "version": "0.1.0",
+  "layer": "efficiency",
+  "capabilities": [
+    "warehouse_site_selection",
+    "demand_allocation",
+    "cost_estimation",
+    "scenario_comparison"
+  ],
+  "status": "prototype",
+  "requires_human_review": true,
+  "supported_inputs": ["json", "xlsx"],
+  "supported_outputs": ["json", "xlsx", "html"],
+  "dependencies": [],
+  "description_zh": "基于需求城市、候选仓点和成本参数，比较不同仓网布局方案",
+  "target_users_zh": "区域仓规划、出海仓评估、经销网络优化团队",
+  "long_term_capability_zh": "供应链网络设计与资源配置模块。可作为 DemandFlow 和 SupplierScore 的空间决策层，未来与 RouteFlow 组合形成仓网→配送完整链路。"
+}

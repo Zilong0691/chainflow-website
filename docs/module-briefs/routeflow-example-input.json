@@ -1,0 +1,62 @@
+{
+  "schema_version": "0.1",
+  "request_id": "req_routeflow_demo_001",
+  "organization_id": "demo_local_delivery",
+  "module_id": "routeflow",
+  "module_version": "0.1.0",
+  "requested_at": "2026-06-09T04:00:00+08:00",
+  "context": {
+    "locale": "zh-CN",
+    "currency": "CNY",
+    "timezone": "Asia/Shanghai",
+    "units": "metric"
+  },
+  "data": {
+    "orders": [
+      {
+        "id": "ORD0001",
+        "delivery_address": "上海市浦东新区XX路XX号",
+        "lat": 31.2304,
+        "lng": 121.4737,
+        "weight_kg": 120,
+        "volume_m3": 0.25,
+        "time_window_start": "2026-06-09T06:00:00+08:00",
+        "time_window_end": "2026-06-09T09:00:00+08:00",
+        "service_time_min": 5
+      }
+    ],
+    "note": "以上为单条示例。实际 Demo 包含 801 个脱敏订单"
+  },
+  "config": {
+    "depot": {
+      "name": "上海配送中心",
+      "lat": 31.2304,
+      "lng": 121.4737,
+      "departure_time": "2026-06-09T04:00:00+08:00",
+      "return_time": "2026-06-09T12:00:00+08:00"
+    },
+    "vehicles": [
+      {
+        "type": "金杯",
+        "count": 40,
+        "capacity_kg": 800,
+        "capacity_m3": 4.5
+      },
+      {
+        "type": "4.2米",
+        "count": 40,
+        "capacity_kg": 2500,
+        "capacity_m3": 16
+      }
+    ],
+    "solver": {
+      "max_solve_time_seconds": 120,
+      "objective": "minimize_total_distance"
+    }
+  },
+  "constraints": [
+    { "type": "vehicle_capacity", "description": "不超载" },
+    { "type": "time_window", "description": "尽量满足客户时间窗" },
+    { "type": "depot_return", "description": "所有车辆返回配送中心" }
+  ]
+}

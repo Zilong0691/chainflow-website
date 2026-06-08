@@ -1,0 +1,103 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ChainFlow 统一结果格式 V0.1",
+  "description": "所有 ChainFlow 工具模块返回结果时使用的公共外壳。工具专属输出放在 result 字段内。每个工具不仅要告诉用户算出了什么，还应说明发现了什么问题、为什么、有哪些方案、建议采取什么行动。",
+  "type": "object",
+  "required": ["schema_version", "request_id", "module_id", "module_version", "status", "result", "generated_at"],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "description": "公共结果标准的版本号",
+      "default": "0.1"
+    },
+    "request_id": {
+      "type": "string",
+      "description": "对应请求的唯一标识"
+    },
+    "module_id": {
+      "type": "string",
+      "description": "产生此结果的工具模块标识"
+    },
+    "module_version": {
+      "type": "string",
+      "description": "本次运行使用的工具版本"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["success", "partial", "error"],
+      "description": "success: 全部完成 / partial: 部分完成但有警告 / error: 失败"
+    },
+    "result": {
+      "type": "object",
+      "description": "核心业务结果。由各工具自行定义内部结构"
+    },
+    "metrics": {
+      "type": "object",
+      "description": "量化指标。如成本、里程、时间、利用率、预测误差等"
+    },
+    "risks": {
+      "type": "array",
+      "description": "发现的风险",
+      "items": {
+        "type": "object",
+        "properties": {
+          "level": { "type": "string", "enum": ["low", "medium", "high", "critical"] },
+          "description": { "type": "string" },
+          "affected_objects": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+    "recommendations": {
+      "type": "array",
+      "description": "给用户的建议",
+      "items": {
+        "type": "object",
+        "properties": {
+          "priority": { "type": "integer", "minimum": 1 },
+          "action": { "type": "string" },
+          "rationale": { "type": "string" }
+        }
+      }
+    },
+    "assumptions": {
+      "type": "array",
+      "description": "本次运行依赖的关键假设",
+      "items": { "type": "string" }
+    },
+    "warnings": {
+      "type": "array",
+      "description": "数据质量、边界条件或其他需要关注的警告",
+      "items": {
+        "type": "object",
+        "properties": {
+          "code": { "type": "string" },
+          "message": { "type": "string" },
+          "severity": { "type": "string", "enum": ["info", "warning"] }
+        }
+      }
+    },
+    "artifacts": {
+      "type": "array",
+      "description": "输出文件清单。如 Excel、HTML 报告、地图截图等",
+      "items": {
+        "type": "object",
+        "properties": {
+          "type": { "type": "string", "examples": ["xlsx", "html", "json", "png", "pdf"] },
+          "name": { "type": "string" },
+          "path": { "type": "string" },
+          "description": { "type": "string" }
+        }
+      }
+    },
+    "requires_human_review": {
+      "type": "boolean",
+      "description": "本结果是否需要人工确认后才能执行",
+      "default": true
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "结果生成时间，ISO 8601 格式"
+    }
+  }
+}

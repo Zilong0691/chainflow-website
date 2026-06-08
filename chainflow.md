@@ -89,6 +89,16 @@ ChainFlow 当前从第一层效率工具切入，但项目终局不是工具集�
 
 以真实供应链问题为起点，以可组合的 AI 能力模块为入口，持续沉淀数据结构、业务规则、决策反馈与客户信任；从效率工具走向决策智能，最终形成连接企业内外部数据、工具与全球机会的供应链 AI 决策与网络智能体系。
 
+## 模块化产品原则：独立可用，组合增值，系统复用
+
+ChainFlow 的每个工具在项目内部都被视为一个"能力模块"。每块模块像乐高积木：独立可用、独立交付、标准接入、可被调用、组合增值、持续沉淀。
+
+小型客户可以只使用一个工具。中型客户可以组合多个工具。大型企业未来可以在统一 ChainFlow 决策系统中使用多个模块。
+
+统一不依赖同一个端口、同一种编程语言或同一个算法。真正需要统一的，是每个工具对外遵守的"合同"。
+
+详细标准见 `standards/module-standard.md`。
+
 ## 第一服务对象
 
 - **第一服务对象**：供应链从业者、小企业采购/物流团队，有 Excel 和流程痛点
@@ -198,10 +208,27 @@ npx vercel --prod --yes
 # 部署后别名四个域名
 ```
 
+## 新工具开发固定入场规则
+
+以后无论使用哪个 AI 开发新工具，开始前必须按顺序读取：
+
+1. `chainflow.md` — 战略宪章
+2. `standards/module-standard.md` — 模块标准
+3. `standards/business-objects.md` — 核心业务对象
+4. `standards/common-request.schema.json` — 统一请求格式
+5. `standards/common-response.schema.json` — 统一结果格式
+6. `standards/common-error.schema.json` — 统一错误格式
+7. `templates/module-template/` — 模块模板
+8. 与本工具相关的已有模块
+9. `docs/module-briefs/<module-name>.md` — 本工具立项说明
+
+阅读后必须先汇报：如何理解三层战略、本工具属于哪层、复用哪些已有对象、为未来沉淀什么、是否需要扩展标准。在完成以上分析前，不得直接编码。
+
 ## 常见修改入口
 
 | 改什么 | 文件 |
 |--------|------|
+| 战略/标准/模板 | chainflow.md, standards/, templates/, docs/ |
 | 文案 | lib/content.ts |
 | Hero + 地球 | components/Hero.tsx, app/globals.css |
 | 首页结构 | components/SiteShell.tsx |

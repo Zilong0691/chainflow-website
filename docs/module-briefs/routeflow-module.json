@@ -1,0 +1,21 @@
+{
+  "id": "routeflow",
+  "name": "RouteFlow",
+  "display_name_zh": "短途配送排线助手",
+  "version": "0.1.0",
+  "layer": "efficiency",
+  "capabilities": [
+    "route_planning",
+    "vehicle_assignment",
+    "delivery_sequence",
+    "exception_detection"
+  ],
+  "status": "prototype",
+  "requires_human_review": true,
+  "supported_inputs": ["json", "xlsx"],
+  "supported_outputs": ["json", "xlsx", "html"],
+  "dependencies": [],
+  "description_zh": "将不标准订单表转化为车辆路线、司机任务表、异常处置建议和可视化地图",
+  "target_users_zh": "同城配送、小车队、门店补货、区域分拨团队",
+  "long_term_capability_zh": "履约规划与物流决策模块。未来可被 DemandFlow、StockCheck 等上层模块调用，作为决策链的执行环节。"
+}

@@ -1,0 +1,18 @@
+{
+  "id": "your-module-id",
+  "name": "YourModuleName",
+  "display_name_zh": "模块中文名称",
+  "version": "0.1.0",
+  "layer": "efficiency",
+  "capabilities": [
+    "请列出本模块提供的核心能力"
+  ],
+  "status": "prototype",
+  "requires_human_review": true,
+  "supported_inputs": ["json"],
+  "supported_outputs": ["json"],
+  "dependencies": [],
+  "description_zh": "一句话说明本模块解决什么问题",
+  "target_users_zh": "适合谁使用",
+  "long_term_capability_zh": "长期在 ChainFlow 系统中的能力定位"
+}

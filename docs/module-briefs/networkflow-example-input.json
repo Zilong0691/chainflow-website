@@ -1,0 +1,90 @@
+{
+  "schema_version": "0.1",
+  "request_id": "req_networkflow_demo_001",
+  "organization_id": "demo_regional_planning",
+  "module_id": "networkflow",
+  "module_version": "0.1.0",
+  "requested_at": "2026-06-09T10:00:00+08:00",
+  "context": {
+    "locale": "zh-CN",
+    "currency": "CNY",
+    "timezone": "Asia/Shanghai",
+    "units": "metric"
+  },
+  "data": {
+    "demand_cities": [
+      {
+        "id": "DC001",
+        "name": "上海",
+        "lat": 31.2304,
+        "lng": 121.4737,
+        "orders": 63
+      },
+      {
+        "id": "DC002",
+        "name": "杭州",
+        "lat": 30.2741,
+        "lng": 120.1551,
+        "orders": 42
+      }
+    ],
+    "note": "以上为 2 条示例。实际 Demo 包含 386 个需求城市"
+  },
+  "config": {
+    "candidate_warehouses": [
+      {
+        "id": "WH001",
+        "name": "芜湖",
+        "lat": 31.3526,
+        "lng": 118.4334,
+        "fixed_cost_monthly": 50000,
+        "capacity_orders": 200,
+        "service_radius_km": 350
+      },
+      {
+        "id": "WH002",
+        "name": "开封",
+        "lat": 34.7972,
+        "lng": 114.3076,
+        "fixed_cost_monthly": 45000,
+        "capacity_orders": 180,
+        "service_radius_km": 350
+      },
+      {
+        "id": "WH003",
+        "name": "福州",
+        "lat": 26.0745,
+        "lng": 119.2965,
+        "fixed_cost_monthly": 42000,
+        "capacity_orders": 150,
+        "service_radius_km": 350
+      },
+      {
+        "id": "WH004",
+        "name": "广州",
+        "lat": 23.1291,
+        "lng": 113.2644,
+        "fixed_cost_monthly": 55000,
+        "capacity_orders": 220,
+        "service_radius_km": 350
+      },
+      {
+        "id": "WH005",
+        "name": "重庆",
+        "lat": 29.563,
+        "lng": 106.5516,
+        "fixed_cost_monthly": 40000,
+        "capacity_orders": 160,
+        "service_radius_km": 350
+      }
+    ],
+    "transport_cost_per_km_per_order": 2.5,
+    "max_warehouses": 5,
+    "min_service_coverage": 0.8
+  },
+  "constraints": [
+    { "type": "service_radius", "description": "每个仓点服务半径不超过 350km" },
+    { "type": "capacity", "description": "每个仓点处理订单数不超过容量上限" },
+    { "type": "single_assignment", "description": "每个需求城市只分配给一个仓点" }
+  ]
+}

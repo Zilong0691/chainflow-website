@@ -1,0 +1,8 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "模块输入 Schema — 请替换为模块专属字段",
+  "description": "定义本模块需要的业务数据结构。该对象将放在统一请求的 data 字段中。",
+  "type": "object",
+  "required": [],
+  "properties": {}
+}
