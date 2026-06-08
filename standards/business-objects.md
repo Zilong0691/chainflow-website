@@ -24,6 +24,21 @@
 
 ---
 
+## Customer｜客户
+
+| 字段 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| id | string | 是 | 唯一标识 |
+| name | string | 是 | 客户名称 |
+| type | string | 否 | 类型：b2b/b2c/retail |
+| location | Location | 否 | 常用收货地 |
+
+> 注：Customer 是收货方，与 Organization（企业/组织）不同。
+> 一个 Organization 可以对应多个 Customer。
+> 目前只定义最小公共字段，客户详细信息可在各模块中扩展。
+
+---
+
 ## Location｜地点
 
 | 字段 | 类型 | 必填 | 说明 |

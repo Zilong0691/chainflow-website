@@ -107,7 +107,7 @@ ChainFlow 的每个工具在项目内部都被视为一个"能力模块"。每�
 
 ## 真正的壁垒
 
-单个脚本容易被复制。真正壁垒在于：场景理解 → 数据模板与清洗规则 → 完整工作流 → 业务可读输出 → 交付与培训能力 → 真实案例与信任。
+单个脚本容易被复制。ChainFlow 的长期壁垒不来自某一个通用大模型、通用 Agent 框架或单个算法。大模型、RAG、记忆、调度与工具调用属于基础能力。真正需要持续沉淀的是供应链业务对象、数据模板、业务流程、约束规则、能力模块、决策反馈、真实案例、客户信任与供应链关系网络。
 
 ## 当前明确不做
 
@@ -284,3 +284,24 @@ npx vercel --prod --yes
 
 ### 2026-06｜网站定位从"小工具站"拉回"产品实验室+作品集"
 原因：工具只是第一层入口，ChainFlow 战略远不止于卖排线和选址工具。
+
+### 2026-06-09｜ChainFlow Module Standard V0.1 封版
+
+**核心原则**：外层严格、核心对象逐步统一、内部 Payload 灵活。
+
+**当前交付物**：
+- `standards/module-standard.md` — 模块六项要求、概念动作、版本规范
+- `standards/business-objects.md` — 17 个核心业务对象（最小公共字段）
+- `standards/common-request.schema.json` — 统一请求格式
+- `standards/common-response.schema.json` — 统一结果格式
+- `standards/common-error.schema.json` — 统一错误格式（8 种错误码）
+- `templates/module-template/` — 可复制的模块开发模板
+- `modules/routeflow/` — 完整模块实现（含校验脚本）
+- `modules/networkflow/` — 完整模块实现（含校验脚本）
+- `modules/demandflow/` — 设计阶段骨架
+- `test/standards.test.js` — 17 项基础测试，npm test 可执行
+- `docs/module-briefs/` — 三个工具立项说明 + 模块身份 + 示例输入/输出 + 兼容性测试
+
+**已验证兼容**：RouteFlow（效率层）、NetworkFlow（效率/决策桥梁）、DemandFlow（决策层纸面模型）
+
+**当前状态**：实验性基础标准。V0.1 不追求企业级完备性，允许向后兼容升级。不代表企业级平台已经完成。标准变更需在关键决策记录中说明原因。
