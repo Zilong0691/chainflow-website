@@ -1,0 +1,97 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DemandFlow 输出 Schema V0.1 (设计稿)",
+  "description": "DemandFlow 专属输出。当前为设计阶段。",
+  "type": "object",
+  "required": ["forecasts", "risks"],
+  "properties": {
+    "forecasts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["sku_id", "date", "forecast", "lower_bound", "upper_bound"],
+        "properties": {
+          "sku_id": { "type": "string" },
+          "date": { "type": "string", "format": "date" },
+          "forecast": { "type": "number", "minimum": 0 },
+          "lower_bound": { "type": "number", "description": "预测下界（置信区间）" },
+          "upper_bound": { "type": "number", "description": "预测上界（置信区间）" }
+        }
+      }
+    },
+    "risks": {
+      "type": "object",
+      "properties": {
+        "stockout": {
+          "type": "array",
+          "description": "缺货风险清单",
+          "items": {
+            "type": "object",
+            "properties": {
+              "sku_id": { "type": "string" },
+              "estimated_date": { "type": "string", "format": "date" },
+              "risk_level": { "type": "string", "enum": ["low", "medium", "high"] },
+              "current_stock": { "type": "integer" },
+              "days_until_stockout": { "type": "integer" }
+            }
+          }
+        },
+        "overstock": {
+          "type": "array",
+          "description": "积压风险清单",
+          "items": {
+            "type": "object",
+            "properties": {
+              "sku_id": { "type": "string" },
+              "current_stock": { "type": "integer" },
+              "forecast_30d": { "type": "number" },
+              "stock_cover_days": { "type": "integer" },
+              "risk_level": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "replenishment_plan": {
+      "type": "array",
+      "description": "补货建议",
+      "items": {
+        "type": "object",
+        "properties": {
+          "sku_id": { "type": "string" },
+          "recommended_quantity": { "type": "integer" },
+          "order_by_date": { "type": "string", "format": "date" },
+          "expected_arrival": { "type": "string", "format": "date" },
+          "rationale": { "type": "string" },
+          "supplier_options": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+    "safety_stock_recommendations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "sku_id": { "type": "string" },
+          "current_safety_stock": { "type": "integer" },
+          "recommended_safety_stock": { "type": "integer" },
+          "rationale": { "type": "string" }
+        }
+      }
+    },
+    "scenarios": {
+      "type": "array",
+      "description": "多情景对比",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string", "description": "乐观/基准/悲观" },
+          "assumptions": { "type": "array", "items": { "type": "string" } },
+          "forecast_total": { "type": "number" },
+          "stockout_risk_count": { "type": "integer" },
+          "overstock_risk_count": { "type": "integer" }
+        }
+      }
+    }
+  }
+}

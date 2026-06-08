@@ -1,0 +1,29 @@
+{
+  "id": "demandflow",
+  "name": "DemandFlow",
+  "display_name_zh": "需求预测与补货决策助手",
+  "version": "0.1.0",
+  "layer": "decision",
+  "capabilities": [
+    "demand_forecasting",
+    "inventory_gap_analysis",
+    "stockout_risk_detection",
+    "overstock_risk_detection",
+    "safety_stock_recommendation",
+    "replenishment_planning",
+    "scenario_comparison"
+  ],
+  "status": "idea",
+  "requires_human_review": true,
+  "supported_inputs": ["json", "xlsx"],
+  "supported_outputs": ["json", "xlsx", "html"],
+  "dependencies": [],
+  "description_zh": "基于历史需求、当前库存和业务事件，预测未来需求、识别缺货与积压风险、建议安全库存和补货方案。",
+  "target_users_zh": "采购经理、库存管理员、中小型零售和贸易企业的运营负责人",
+  "long_term_capability_zh": "预测与决策智能模块。是 ChainFlow 从效率层走向决策层的第一个桥梁模块。可调用 StockCheck、SupplierScore，并被 RouteFlow 和 NetworkFlow 消费。",
+  "development_prerequisites": [
+    "RouteFlow 和 NetworkFlow 标准化改造完成",
+    "至少 2-3 个真实或模拟数据集用于验证",
+    "公共请求/结果格式稳定运行"
+  ]
+}
