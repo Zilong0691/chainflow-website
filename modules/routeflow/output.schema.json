@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RouteFlow 输出 Schema V0.1",
+  "description": "RouteFlow 专属输出结构。该对象放在统一结果的 result 字段中。",
+  "type": "object",
+  "required": ["summary", "routes"],
+  "properties": {
+    "summary": {
+      "type": "object",
+      "required": ["total_orders", "total_routes", "total_distance_km"],
+      "properties": {
+        "total_orders": { "type": "integer" },
+        "total_routes": { "type": "integer" },
+        "total_distance_km": { "type": "number" },
+        "total_weight_kg": { "type": "number" },
+        "total_volume_m3": { "type": "number" },
+        "vehicles_used": { "type": "integer" },
+        "solve_time_seconds": { "type": "number" }
+      }
+    },
+    "routes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["route_id", "vehicle_type", "stops"],
+        "properties": {
+          "route_id": { "type": "string" },
+          "vehicle_type": { "type": "string" },
+          "vehicle_id": { "type": "string" },
+          "stops": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "stop_number": { "type": "integer" },
+                "order_id": { "type": "string" },
+                "address": { "type": "string" },
+                "lat": { "type": "number" },
+                "lng": { "type": "number" },
+                "arrival": { "type": "string" },
+                "departure": { "type": "string" },
+                "weight_kg": { "type": "number" },
+                "volume_m3": { "type": "number" }
+              }
+            }
+          },
+          "total_distance_km": { "type": "number" },
+          "total_weight_kg": { "type": "number" },
+          "total_volume_m3": { "type": "number" },
+          "utilization_weight": { "type": "number", "minimum": 0, "maximum": 1 },
+          "utilization_volume": { "type": "number", "minimum": 0, "maximum": 1 },
+          "start_time": { "type": "string" },
+          "end_time": { "type": "string" },
+          "status": { "type": "string", "enum": ["ready", "warning", "review"] }
+        }
+      }
+    },
+    "exceptions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "route_id": { "type": "string" },
+          "order_id": { "type": "string" },
+          "vehicle_id": { "type": "string" },
+          "type": { "type": "string" },
+          "severity": { "type": "string", "enum": ["info", "warning", "critical"] },
+          "description": { "type": "string" },
+          "suggested_action": { "type": "string" }
+        }
+      }
+    },
+    "unserved_orders": {
+      "type": "array",
+      "description": "无法在约束内完成配送的订单",
+      "items": { "type": "string" }
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "schema_version": "0.1",
+  "request_id": "req_test_001",
+  "module_id": "routeflow",
+  "module_version": "0.1.0",
+  "data": {
+    "orders": [
+      { "id": "ORD001", "lat": 31.2304, "lng": 121.4737, "weight_kg": 120, "volume_m3": 0.25, "time_window_start": "2026-06-09T06:00:00+08:00", "time_window_end": "2026-06-09T09:00:00+08:00" },
+      { "id": "ORD002", "lat": 31.2000, "lng": 121.4500, "weight_kg": 80, "volume_m3": 0.15 },
+      { "id": "ORD003", "lat": 31.2500, "lng": 121.5000, "weight_kg": 200, "volume_m3": 0.40, "priority": 2 }
+    ],
+    "depot": {
+      "name": "上海配送中心",
+      "lat": 31.2304,
+      "lng": 121.4737,
+      "departure_time": "2026-06-09T04:00:00+08:00",
+      "return_time": "2026-06-09T12:00:00+08:00"
+    },
+    "vehicles": [
+      { "type": "金杯", "count": 2, "capacity_kg": 800, "capacity_m3": 4.5 },
+      { "type": "4.2米", "count": 1, "capacity_kg": 2500, "capacity_m3": 16 }
+    ]
+  }
+}
