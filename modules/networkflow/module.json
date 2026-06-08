@@ -1,0 +1,32 @@
+{
+  "id": "networkflow",
+  "name": "NetworkFlow",
+  "display_name_zh": "仓网选址评估助手",
+  "version": "0.1.0",
+  "layer": "efficiency",
+  "capabilities": [
+    "warehouse_site_selection",
+    "demand_allocation",
+    "cost_estimation",
+    "scenario_comparison",
+    "service_coverage_analysis"
+  ],
+  "status": "prototype",
+  "demo_url": "/tools/networkflow",
+  "demo_file": "public/demos/networkflow/index.html",
+  "requires_human_review": true,
+  "supported_inputs": ["json", "xlsx"],
+  "supported_outputs": ["json", "xlsx", "html"],
+  "dependencies": [],
+  "description_zh": "基于需求城市、候选仓点和成本参数，比较不同仓网布局方案。当前版本为预计算 Demo，数据硬编码在 HTML 中。",
+  "target_users_zh": "区域仓规划、出海仓评估、经销网络优化团队",
+  "long_term_capability_zh": "供应链网络设计与资源配置模块。可作为 DemandFlow 和 SupplierScore 的空间决策层。",
+  "current_limitations": [
+    "数据硬编码，不接受外部上传",
+    "无输入校验",
+    "无结构化 JSON 输出",
+    "成本为估算值，不含土地、人力、税务",
+    "距离为直线估算",
+    "移动端参数面板无法滚动"
+  ]
+}

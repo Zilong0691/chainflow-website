@@ -1,0 +1,24 @@
+{
+  "schema_version": "0.1",
+  "request_id": "req_nf_test_001",
+  "module_id": "networkflow",
+  "module_version": "0.1.0",
+  "data": {
+    "demand_cities": [
+      { "id": "DC001", "name": "上海", "lat": 31.2304, "lng": 121.4737, "orders": 63 },
+      { "id": "DC002", "name": "杭州", "lat": 30.2741, "lng": 120.1551, "orders": 42 },
+      { "id": "DC003", "name": "南京", "lat": 32.0603, "lng": 118.7969, "orders": 38 },
+      { "id": "DC004", "name": "合肥", "lat": 31.8206, "lng": 117.2272, "orders": 25 }
+    ],
+    "candidate_warehouses": [
+      { "id": "WH001", "name": "芜湖", "lat": 31.3526, "lng": 118.4334, "fixed_cost_monthly": 50000, "capacity_orders": 200, "service_radius_km": 350 },
+      { "id": "WH002", "name": "开封", "lat": 34.7972, "lng": 114.3076, "fixed_cost_monthly": 45000, "capacity_orders": 180, "service_radius_km": 350 },
+      { "id": "WH003", "name": "福州", "lat": 26.0745, "lng": 119.2965, "fixed_cost_monthly": 42000, "capacity_orders": 150, "service_radius_km": 350 }
+    ],
+    "transport_config": {
+      "cost_per_km_per_order": 2.5,
+      "max_warehouses": 2,
+      "min_coverage": 0.8
+    }
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "NetworkFlow 输出 Schema V0.1",
+  "description": "NetworkFlow 专属输出结构。放在统一结果的 result 字段中。",
+  "type": "object",
+  "required": ["summary", "selected_sites", "assignments"],
+  "properties": {
+    "summary": {
+      "type": "object",
+      "required": ["candidates_evaluated", "sites_selected", "coverage_rate"],
+      "properties": {
+        "candidates_evaluated": { "type": "integer" },
+        "sites_selected": { "type": "integer" },
+        "total_demand_cities": { "type": "integer" },
+        "coverage_rate": { "type": "number", "minimum": 0, "maximum": 1 },
+        "uncovered_cities": { "type": "integer" }
+      }
+    },
+    "selected_sites": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "推荐的仓点 ID 列表"
+    },
+    "assignments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["warehouse_id", "demand_cities"],
+        "properties": {
+          "warehouse_id": { "type": "string" },
+          "warehouse_name": { "type": "string" },
+          "demand_cities": { "type": "array", "items": { "type": "string" } },
+          "order_count": { "type": "integer" },
+          "utilization": { "type": "number" },
+          "avg_distance_km": { "type": "number" }
+        }
+      }
+    },
+    "backup_scenarios": {
+      "type": "array",
+      "description": "备选方案，供决策者比较",
+      "items": {
+        "type": "object",
+        "properties": {
+          "sites": { "type": "array", "items": { "type": "string" } },
+          "coverage": { "type": "number" },
+          "total_monthly_cost": { "type": "number" },
+          "note": { "type": "string" }
+        }
+      }
+    }
+  }
+}

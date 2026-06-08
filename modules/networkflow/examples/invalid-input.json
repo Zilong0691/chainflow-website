@@ -1,0 +1,8 @@
+{
+  "data": {
+    "demand_cities": [
+      { "name": "上海", "lat": 31.2304, "lng": 121.4737 }
+    ],
+    "candidate_warehouses": []
+  }
+}

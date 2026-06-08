@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "NetworkFlow 输入 Schema V0.1",
+  "description": "NetworkFlow 专属输入字段。放在统一请求的 data 字段中。",
+  "type": "object",
+  "required": ["demand_cities", "candidate_warehouses"],
+  "properties": {
+    "demand_cities": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "lat", "lng"],
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string", "description": "城市名称" },
+          "lat": { "type": "number", "minimum": -90, "maximum": 90 },
+          "lng": { "type": "number", "minimum": -180, "maximum": 180 },
+          "orders": { "type": "integer", "minimum": 1, "description": "预估订单量" },
+          "weight_kg": { "type": "number", "minimum": 0 },
+          "region": { "type": "string", "description": "所属区域" }
+        }
+      }
+    },
+    "candidate_warehouses": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "lat", "lng"],
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "lat": { "type": "number" },
+          "lng": { "type": "number" },
+          "fixed_cost_monthly": { "type": "number", "minimum": 0, "description": "月固定运营成本" },
+          "capacity_orders": { "type": "integer", "minimum": 1, "description": "最大处理订单数" },
+          "service_radius_km": { "type": "number", "minimum": 0, "default": 350 }
+        }
+      }
+    },
+    "transport_config": {
+      "type": "object",
+      "properties": {
+        "cost_per_km_per_order": { "type": "number", "minimum": 0, "default": 2.5 },
+        "max_warehouses": { "type": "integer", "minimum": 1 },
+        "min_coverage": { "type": "number", "minimum": 0, "maximum": 1, "default": 0.8 }
+      }
+    }
+  }
+}
