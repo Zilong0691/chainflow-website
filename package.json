@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "test": "node test/standards.test.js && node test/pages.test.js"
+    "test": "node test/standards.test.js && node test/pages.test.js && node test/solver.test.js"
   },
   "dependencies": {
     "@supabase/ssr": "^0.12.0",

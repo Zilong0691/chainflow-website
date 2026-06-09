@@ -36,42 +36,31 @@ export default function RouteFlowPage() {
     setOutput(null);
 
     const idempotencyKey = `rf_${Date.now()}_${Math.random().toString(36).slice(2, 6)}`;
-    const steps = ["parse", "route", "explain"];
 
     try {
-      for (let i = 0; i < steps.length; i++) {
-        setPipeline(prev => prev.map((s, idx) => idx === i ? { ...s, status: "loading" } : s));
+      // LLM 解析 + 确定性求解器 + LLM 解读 → 单次 API 调用
+      setPipeline(prev => prev.map((s, idx) => idx === 0 ? { ...s, status: "loading" } : s));
+      const config = loadConfig();
+      const res = await fetch("/api/llm", {
+        method: "POST", headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ action: "route", input, userKey: config?.apiKey }),
+      });
+      if (!res.ok) { const err = await res.json(); throw new Error(err.error); }
+      const data = await res.json();
 
-        const config = loadConfig();
-        const res = await fetch("/api/llm", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            action: steps[i],
-            input: i === 0 ? input : (i === 1 ? JSON.parse(pipeline[0].content || "{}") : JSON.parse(pipeline[1].content || "{}")),
-            userKey: config?.apiKey,
-          }),
-        });
+      setPipeline(prev => prev.map((s, idx) => idx === 0 ? { ...s, status: "done", content: JSON.stringify(data.parsed, null, 2) } : s));
+      setPipeline(prev => prev.map((s, idx) => idx === 1 ? { ...s, status: "done", content: JSON.stringify(data.routes, null, 2) } : s));
+      setPipeline(prev => prev.map((s, idx) => idx === 2 ? { ...s, status: "done", content: data.explanation } : s));
 
-        if (!res.ok) { const err = await res.json(); throw new Error(err.error); }
-        const data = await res.json();
-
-        const content = steps[i] === "explain" ? data.explanation : JSON.stringify(steps[i] === "parse" ? data.parsed : data.routes, null, 2);
-        setPipeline(prev => prev.map((s, idx) => idx === i ? { ...s, status: "done", content } : s));
-      }
-
-      // 组装输出
-      const parsed = JSON.parse(pipeline[0].content || "{}");
-      const routes = JSON.parse(pipeline[1].content || "{}");
-      setOutput({ parsed, routes, explanation: pipeline[2].content });
+      setOutput({ parsed: data.parsed, routes: data.routes, explanation: data.explanation });
 
       // 保存运行记录 + 扣减试用
       if (chargeTrial && user) {
         const result = await saveModuleRun({
           userId: user.id, moduleId: "routeflow", moduleVersion: "0.2.0",
           idempotencyKey,
-          inputSummary: { orders: parsed.orders?.length, vehicles: parsed.vehicles?.length },
-          resultData: { summary: routes.summary, routes: routes.routes?.length },
+          inputSummary: { orders: data.parsed?.orders?.length, vehicles: data.parsed?.vehicles?.length },
+          resultData: { summary: data.routes?.summary, routes: data.routes?.routes?.length },
           runStatus: "success", chargeTrial: true,
         });
         setRunSaved(true); setLastRunId(result.runId);

@@ -36,37 +36,28 @@ export default function NetworkFlowPage() {
     const idempotencyKey = `nf_${Date.now()}_${Math.random().toString(36).slice(2, 6)}`;
 
     try {
-      // Step 1: Parse
+      // 统一管道：LLM解析 → 确定性求解器 → LLM解读
       setPipeline(prev => prev.map((s, i) => i === 0 ? { ...s, status: "loading" } : s));
       const config = loadConfig();
-      const pRes = await fetch("/api/llm", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ action: "parse", input, userKey: config?.apiKey }) });
-      if (!pRes.ok) { const err = await pRes.json(); throw new Error(err.error); }
-      const parsed = await pRes.json();
-      setPipeline(prev => prev.map((s, i) => i === 0 ? { ...s, status: "done", content: JSON.stringify(parsed.parsed, null, 2) } : s));
+      const res = await fetch("/api/llm", {
+        method: "POST", headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ action: "networkflow", input, userKey: config?.apiKey }),
+      });
+      if (!res.ok) { const err = await res.json(); throw new Error(err.error); }
+      const data = await res.json();
 
-      // Step 2: Evaluate (仓网评估专用 prompt)
-      setPipeline(prev => prev.map((s, i) => i === 1 ? { ...s, status: "loading" } : s));
-      const routePrompt = `你是仓网规划专家。根据需求城市和候选仓信息，生成仓网选址方案。输出 JSON: { scenarios: [{ name, sites, coverage, cost, reasoning }], recommendations: [] }。要求：至少3个方案（成本优先/服务优先/均衡），如实标注覆盖率和成本。`;
-      const rRes = await fetch("/api/llm", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ action: "route", input: parsed.parsed, userKey: config?.apiKey }) });
-      if (!rRes.ok) { const err = await rRes.json(); throw new Error(err.error); }
-      const routed = await rRes.json();
-      setPipeline(prev => prev.map((s, i) => i === 1 ? { ...s, status: "done", content: JSON.stringify(routed.routes, null, 2) } : s));
+      setPipeline(prev => prev.map((s, i) => i === 0 ? { ...s, status: "done", content: JSON.stringify(data.parsed, null, 2) } : s));
+      setPipeline(prev => prev.map((s, i) => i === 1 ? { ...s, status: "done", content: JSON.stringify(data.routes, null, 2) } : s));
+      setPipeline(prev => prev.map((s, i) => i === 2 ? { ...s, status: "done", content: data.explanation } : s));
 
-      // Step 3: Explain
-      setPipeline(prev => prev.map((s, i) => i === 2 ? { ...s, status: "loading" } : s));
-      const eRes = await fetch("/api/llm", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ action: "explain", input: routed.routes, userKey: config?.apiKey }) });
-      if (!eRes.ok) { const err = await eRes.json(); throw new Error(err.error); }
-      const explained = await eRes.json();
-      setPipeline(prev => prev.map((s, i) => i === 2 ? { ...s, status: "done", content: explained.explanation } : s));
-
-      setOutput({ parsed: parsed.parsed, routes: routed.routes, explanation: explained.explanation });
+      setOutput({ parsed: data.parsed, routes: data.routes, explanation: data.explanation });
 
       if (chargeTrial && user) {
         const result = await saveModuleRun({
           userId: user.id, moduleId: "networkflow", moduleVersion: "0.2.0",
           idempotencyKey,
-          inputSummary: { demandCities: parsed.parsed?.demand_cities?.length, warehouses: parsed.parsed?.candidate_warehouses?.length },
-          resultData: { scenarios: routed.routes?.scenarios?.length },
+          inputSummary: { demandCities: data.parsed?.orders?.length, warehouses: data.parsed?.warehouses?.length },
+          resultData: { scenarios: data.routes?.scenarios?.length },
           runStatus: "success", chargeTrial: true,
         });
         setRunSaved(true);
