@@ -9,6 +9,8 @@
     "test": "node test/standards.test.js && node test/pages.test.js"
   },
   "dependencies": {
+    "@supabase/ssr": "^0.12.0",
+    "@supabase/supabase-js": "^2.108.1",
     "d3-geo": "^3.1.1",
     "lucide-react": "^0.468.0",
     "next": "^14.2.18",
