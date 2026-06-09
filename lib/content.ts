@@ -123,7 +123,7 @@ export const siteContent = {
       {
         slug: "routeflow",
         name: "RouteFlow",
-        title: "短途配送排线工作台",
+        title: "短途配送排线助手",
         longTerm: "长期能力：履约规划与物流决策模块",
         value: "把不标准订单表转成车辆路线、司机任务表、异常处置建议和地图化交付件。",
         problem: "人工排线耗时、约束难兼顾，排完以后还难向司机和老板解释。",
@@ -662,7 +662,7 @@ export type ToolSlug = "routeflow" | "networkflow";
 export const demoPages = {
   routeflow: {
     name: "RouteFlow",
-    title: "短途配送排线工作台",
+    title: "短途配送排线助手",
     subtitle: "把一张并不完美的订单表，整理成车辆排线方案、司机任务表、异常处置建议和可视化路线图。",
     price: "Demo 免费 / 标准版 ¥399 / 定制化开发部署 ¥2999 起",
     storyTitle: "模拟业务场景",
