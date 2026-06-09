@@ -1,14 +1,13 @@
 # NetworkFlow — 仓网选址评估助手
 
-## 当前状态：Prototype（两个版本并存）
+## 当前状态：Prototype（完整 Demo + Next.js 外壳）
 
 | 版本 | 路径 | 定位 |
 |------|------|------|
-| 旧 HTML Demo | `public/demos/networkflow/index.html` | 完整功能参考版（参数面板、成本拆分、城市分配明细） |
-| Next.js Preview | `app/tools/networkflow/page.tsx` | 结构化重写 Preview（Leaflet npm 包、无随机数据） |
+| 旧 HTML Demo | `public/demos/networkflow/index.html` | **完整功能版**（参数调整、重新求解、成本拆分、城市分配表、数学模型） |
+| Next.js 页面 | `app/tools/networkflow/page.tsx` | iframe 嵌入完整 Demo + 顶栏统计 + JSON 导出 |
 
-⚠️ Next.js Preview 功能尚未对等，详见 `docs/module-briefs/networkflow-comparison.md`。
-在功能达标前，不得删除旧 Demo。
+Next.js 页面通过 iframe 保留旧 Demo 全部交互，不做功能替换。
 
 ## 解决什么问题
 
