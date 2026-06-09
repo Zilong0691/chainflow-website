@@ -3,6 +3,7 @@
 import { useState, useCallback, useEffect } from "react";
 import { useAuth } from "@/components/AuthProvider";
 import KeyManager, { loadConfig } from "./KeyManager";
+import SharePanel from "@/components/SharePanel";
 import { fetchTrialStatus, saveModuleRun, fetchRunHistory, type TrialStatus, type RunRecord } from "@/lib/trial";
 
 type Tab = "demo" | "trial" | "history";
@@ -19,6 +20,7 @@ export default function RouteFlowPage() {
   const [trial, setTrial] = useState<TrialStatus | null>(null);
   const [history, setHistory] = useState<RunRecord[]>([]);
   const [runSaved, setRunSaved] = useState(false);
+  const [lastRunId, setLastRunId] = useState("");
 
   useEffect(() => {
     if (user) {
@@ -72,7 +74,7 @@ export default function RouteFlowPage() {
           resultData: { summary: routes.summary, routes: routes.routes?.length },
           runStatus: "success", chargeTrial: true,
         });
-        setRunSaved(true);
+        setRunSaved(true); setLastRunId(result.runId);
         if (result.charged) setTrial(prev => prev ? { ...prev, used: prev.used + 1, remaining: result.remaining } : prev);
       }
     } catch (e: any) {
@@ -164,7 +166,15 @@ export default function RouteFlowPage() {
                   </div>
                 </div>
               ))}
-              {runSaved && <p className="text-green-400/60 text-xs">✅ 结果已保存 · 试用次数已扣</p>}
+              {runSaved && (
+                <div className="flex items-center justify-between">
+                  <p className="text-green-400/60 text-xs">✅ 结果已保存 · 试用次数已扣</p>
+                  {user && lastRunId && (
+                    <SharePanel userId={user.id} moduleRunId={lastRunId} shareType="driver"
+                      resourceScope={{}} />
+                  )}
+                </div>
+              )}
             </div>
 
             {output?.explanation && (

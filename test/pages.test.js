@@ -44,8 +44,9 @@ test("RouteFlow 页面引用旧 Demo", () => {
   assert(raw.includes("/demos/routeflow/"), "应引用 RouteFlow Demo");
 });
 test("NetworkFlow 页面使用 ToolDemoPage", () => {
+  // NetworkFlow 已升级为三Tab页面，不再使用 ToolDemoPage
   const raw = fs.readFileSync(path.join(__dirname, "..", "app", "tools", "networkflow", "page.tsx"), "utf-8");
-  assert(raw.includes("ToolDemoPage"), "应使用 ToolDemoPage");
+  assert(raw.includes("/demos/networkflow/"), "应引用 NetworkFlow Demo");
 });
 
 /* ── 4. 不含随机逻辑 ── */
