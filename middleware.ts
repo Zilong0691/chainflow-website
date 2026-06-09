@@ -1,8 +1,8 @@
-// middleware.ts — 当前不强制登录
-// V1.0+ 阶段引入订阅制时再启用认证
-// import { createServerClient } from "@supabase/ssr";
-// import { NextResponse, type NextRequest } from "next/server";
-//
-// export async function middleware(request: NextRequest) { ... }
-//
-// export const config = { matcher: ["/tools/:path*"] };
+export { updateSession as middleware } from "@/lib/supabase/middleware";
+
+export const config = {
+  matcher: [
+    // 所有非静态路径（排除 _next/static, _next/image, favicon 等）
+    "/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)",
+  ],
+};
