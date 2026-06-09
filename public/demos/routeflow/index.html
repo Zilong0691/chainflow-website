@@ -2701,15 +2701,29 @@ types.forEach(t => { const o = document.createElement('option'); o.value = t; o.
 routesData.forEach(r => { const o = document.createElement('option'); o.value = r.id; o.textContent = '路线' + r.route_id + '·车辆' + r.id + ' (' + r.type + ')'; selVehicle.appendChild(o); });
 
 // ── Draw routes (prefer prefetched road_coords, fallback straight-line) ──
+// 所有路线确保闭环：起点=终点=配送中心
 var roadLoadedCount = 0;
+var depotLat = routesData[0].stops[0].lat;
+var depotLng = routesData[0].stops[0].lng;
 routesData.forEach(r => {
-  const pts = (r.road_coords && r.road_coords.length > 1) ? r.road_coords : r.stops.map(s => [s.lat, s.lng]);
+  const rawPts = (r.road_coords && r.road_coords.length > 1) ? r.road_coords : r.stops.map(s => [s.lat, s.lng]);
+  // 闭环修复：确保路线返回配送中心
+  const pts = rawPts.slice();
+  if (pts.length > 1) {
+    const firstPt = pts[0];
+    const lastPt = pts[pts.length - 1];
+    if (Math.abs(firstPt[0] - lastPt[0]) > 0.0001 || Math.abs(firstPt[1] - lastPt[1]) > 0.0001) {
+      pts.push([firstPt[0], firstPt[1]]);
+    }
+  }
   if (r.road_coords && r.road_coords.length > 1) roadLoadedCount++;
   const line = L.polyline(pts, {color:r.color, weight:3, opacity:0.8});
   line.addTo(map);
   line.routeId = r.id;
+  const distKm = r.dist || (r.stops.length > 1 ? r.stops[r.stops.length-1].total_km : 0);
+  const loadKg = r.load || r.stops.reduce((s,st) => s + (st.weight||0), 0);
   const label = (r.road_coords && r.road_coords.length > 1) ? '实际道路' : '直线距离';
-  line.bindPopup('车辆 '+r.id+' ('+label+')  '+r.dist+'km  载重: '+r.load+'kg  体积: '+(r.load_vol||0)+'m³');
+  line.bindPopup('车辆 '+r.id+' ('+label+')<br>'+distKm+'km  载重: '+loadKg+'kg  体积: '+(r.load_vol||0)+'m³');
   routeLayers.push(line);
   markerLayers.push(null);
 });
@@ -2769,7 +2783,7 @@ function applyFilter() {
         && (filteredType === 'all' || rd.type === filteredType);
     });
     if (visible.length > 0) {
-      const bds = L.latLngBounds(visible.flatMap(r => (r.real_coords || r.stops.map(s => [s.lat, s.lng]))));
+      const bds = L.latLngBounds(visible.flatMap(r => (r.road_coords || r.stops.map(s => [s.lat, s.lng]))));
       map.fitBounds(bds);
     }
   } else if (filteredVid === 'all' && filteredType === 'all') {
@@ -2778,14 +2792,18 @@ function applyFilter() {
 }
 function filterVehicle() {
   filteredVid = document.getElementById('selVehicle').value;
-  document.getElementById('selType').value = 'all';
-  filteredType = 'all';
+  if (filteredVid !== 'all') {
+    document.getElementById('selType').value = 'all';
+    filteredType = 'all';
+  }
   applyFilter();
 }
 function filterType() {
   filteredType = document.getElementById('selType').value;
-  document.getElementById('selVehicle').value = 'all';
-  filteredVid = 'all';
+  if (filteredType !== 'all') {
+    document.getElementById('selVehicle').value = 'all';
+    filteredVid = 'all';
+  }
   applyFilter();
 }
 function toggleAutofit() { autofitEnabled = document.getElementById('chkAutofit').checked; }
