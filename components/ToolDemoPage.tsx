@@ -42,7 +42,7 @@ const liveDemos: Record<
   }
 > = {
   routeflow: {
-    src: "/demos/routeflow/",
+    src: "/demos/routeflow/index.html",
     promise: "不用上传文件也能先体验：下面展示脱敏调度工作台，用户可以直接查看地图、车辆路线、司机任务表、作业甘特图、异常处置建议和结果面板。",
     contextTitle: "脱敏业务场景",
     context:
@@ -58,7 +58,7 @@ const liveDemos: Record<
     browserLabel: "RouteFlow 脱敏调度工作台"
   },
   networkflow: {
-    src: "/demos/networkflow/",
+    src: "/demos/networkflow/index.html",
     promise: "不用先理解模型，也能先体验：下面保留原版选址评估网页，用户可以直接查看候选仓、服务范围、成本拆解和方案对比。",
     contextTitle: "模拟业务场景",
     context:
