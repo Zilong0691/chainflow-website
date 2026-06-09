@@ -21,7 +21,7 @@ function fixedOffset(index: number, lat: number, lng: number): [number, number] 
 
 interface Site {
   id: string; name: string; lat: number; lng: number;
-  selected: boolean; orders: number; util: number;
+  orders: number; util: number;
   avgKm: number; color: string; cities: string[];
 }
 

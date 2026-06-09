@@ -175,9 +175,9 @@ test("RouteFlow 数据集两次读取结果完全一致", () => {
   const raw2 = fs.readFileSync(p, "utf-8");
   assert(raw1 === raw2, "两次读取不一致（这不应发生）");
 
-  // 提取 "const DEMO_DATA" 段
-  const match = raw1.match(/const DEMO_DATA = (\{[\s\S]*?\n\};)/);
-  assert(match, "DEMO_DATA 定义未找到");
+  // 提取 "const MAP_ROUTES" 段（V0.2 重命名）
+  const match = raw1.match(/const MAP_ROUTES = (\[[\s\S]*?\n\]);/);
+  assert(match, "MAP_ROUTES 定义未找到");
 
   // 移除注释后验证不包含随机逻辑
   const noComments = raw1
