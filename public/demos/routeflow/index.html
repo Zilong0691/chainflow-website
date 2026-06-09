@@ -2816,37 +2816,65 @@ function toggleFormula() {
 // ========== 实际道路路线（浏览器端直接调 OSRM API）==========
 let realRoutesLoaded = false;
 let osmRequestsInFlight = 0;
+let realRoutesActive = false;
 
+// 批次请求OSRM，避免同时29个请求被限流
 function fetchRealRoutes() {
-  if (realRoutesLoaded) return;
+  if (realRoutesActive) return;
+  realRoutesActive = true;
   const status = document.getElementById('routeStatus');
-  if (status) status.textContent = '正在请求实际道路路线(OSRM)...';
-  realRoutesLoaded = true;
+  if (status) status.textContent = '正在请求实际道路路线(OSRM)…';
   let done = 0, success = 0;
   const total = routesData.length;
-  routesData.forEach(function(rd, i) {
-    const coords = rd.stops.map(function(s) { return s.lng + ',' + s.lat; });
-    const url = 'https://router.project-osrm.org/route/v1/driving/' + coords.join(';') + '?overview=full&geometries=geojson';
-    osmRequestsInFlight++;
-    fetch(url).then(function(r) { return r.json(); }).then(function(js) {
-      done++; osmRequestsInFlight--;
-      if (status) status.textContent = '实际路线: ' + done + '/' + total;
-      if (js.code !== 'Ok' || !js.routes || !js.routes[0]) { console.warn('OSRM fail for vid='+rd.id, js.message); return; }
-      const geom = js.routes[0].geometry.coordinates.map(function(c) { return [c[1], c[0]]; });
-      map.removeLayer(routeLayers[i]);
-      const rl = L.polyline(geom, {color: rd.color, weight:3, opacity:0.9});
-      rl.routeId = rd.id;
-      rl.bindPopup('车辆 '+rd.id+' (实际道路)  载重:'+rd.load+'kg  体积:'+(rd.load_vol||0)+'m³');
-      rl.addTo(map);
-      routeLayers[i] = rl;
-      success++;
-    }).catch(function(e) {
-      done++; osmRequestsInFlight--;
-      console.warn('OSRM err for vid='+rd.id, e);
-      if (status) status.textContent = '实际路线: ' + done + '/' + total + ' (部分失败)';
-    });
-  });
+  const depot = routesData[0].stops[0]; // 配送中心
+
+  // 分批发送，每批5条，间隔200ms
+  function fetchBatch(startIdx) {
+    if (startIdx >= total) return;
+    const endIdx = Math.min(startIdx + 5, total);
+
+    for (let i = startIdx; i < endIdx; i++) {
+      const rd = routesData[i];
+      // 包含回路：配送中心 → 各站点 → 配送中心
+      const allCoords = rd.stops.map(s => s.lng + ',' + s.lat);
+      allCoords.push(depot.lng + ',' + depot.lat); // 加回配送中心
+      const url = 'https://router.project-osrm.org/route/v1/driving/' + allCoords.join(';') + '?overview=full&geometries=geojson';
+      osmRequestsInFlight++;
+
+      fetch(url).then(r => r.json()).then(js => {
+        done++; osmRequestsInFlight--;
+        if (status) status.textContent = '实际道路: ' + done + '/' + total + (success < done ? ' (' + success + '条成功)' : '');
+        if (js.code !== 'Ok' || !js.routes || !js.routes[0]) { console.warn('OSRM fail vid=' + rd.id, js.message); return; }
+        const geom = js.routes[0].geometry.coordinates.map(c => [c[1], c[0]]);
+        // 检查是否已含回路
+        const firstG = geom[0], lastG = geom[geom.length - 1];
+        const hasReturn = Math.abs(firstG[0] - lastG[0]) < 0.001 && Math.abs(firstG[1] - lastG[1]) < 0.001;
+        if (!hasReturn) geom.push([firstG[0], firstG[1]]);
+
+        map.removeLayer(routeLayers[i]);
+        const rl = L.polyline(geom, {color: rd.color, weight:3, opacity:0.9});
+        rl.routeId = rd.id;
+        rl.bindPopup('车辆 ' + rd.id + ' (实际道路闭环)<br>' + (rd.dist || 0) + 'km  载重:' + rd.load + 'kg  体积:' + (rd.load_vol || 0) + 'm³');
+        rl.addTo(map);
+        routeLayers[i] = rl;
+        // 存入road_coords供筛选自适应使用
+        rd.road_coords = geom;
+        success++;
+      }).catch(e => {
+        done++; osmRequestsInFlight--;
+        console.warn('OSRM err vid=' + rd.id, e);
+        if (status) status.textContent = '实际道路: ' + done + '/' + total + ' (部分失败，保持直线)';
+      });
+    }
+
+    // 下一批延迟200ms
+    setTimeout(function() { fetchBatch(endIdx); }, 200);
+  }
+
+  fetchBatch(0);
 }
-// 页面加载后 road_coords 已从 Python 预取嵌入，无需再调 OSRM
+
+// 页面加载后自动请求实际道路路线（延迟2秒，避免阻塞首屏渲染）
+setTimeout(function() { fetchRealRoutes(); }, 2000);
 
 </script></body></html>
