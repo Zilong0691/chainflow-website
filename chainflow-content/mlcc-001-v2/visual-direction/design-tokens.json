@@ -1,0 +1,70 @@
+{
+  "version": "2.0",
+  "date": "2026-06-10",
+  "canvas": {
+    "width": 1080,
+    "height": 1440,
+    "ratio": "3:4",
+    "unit": "px"
+  },
+  "grid": {
+    "marginX": 70,
+    "marginY_top": 58,
+    "headerDividerY": 92,
+    "titleStartY": 150,
+    "footerStartY": 1322,
+    "judgmentY": 1353,
+    "sourceY": 1385,
+    "safeZone": {
+      "x1": 70, "y1": 100,
+      "x2": 1010, "y2": 1300,
+      "width": 940, "height": 1200
+    }
+  },
+  "colors": {
+    "paper": "#F4F0E8",
+    "ink": "#1A1D22",
+    "researchBlue": "#1E3A5F",
+    "engineerBlue": "#2C6280",
+    "mutedGray": "#6B7B8D",
+    "lineGray": "#C5CDD4",
+    "alertRed": "#C0392B",
+    "ceramic": "#D4C5A0",
+    "electrode": "#1C2E3F",
+    "plating": "#A8BCC8",
+    "copperBase": "#B87351",
+    "japanZone": "#8B4513",
+    "koreaZone": "#2E5E7E",
+    "taiwanZone": "#5D7845",
+    "chinaZone": "#8B3A3A",
+    "infoBoxBg": "#FFFFFF",
+    "infoBoxStroke": "#C5CDD4"
+  },
+  "typography": {
+    "fontSerif": "'Songti SC', 'Noto Serif CJK SC', 'STSong', SimSun, serif",
+    "fontSans": "'PingFang SC', 'Noto Sans CJK SC', 'Microsoft YaHei', Arial, sans-serif",
+    "scales": {
+      "heroTitle": { "size": 72, "lineHeight": 1.08, "weight": 700, "family": "serif" },
+      "pageTitle": { "size": 56, "lineHeight": 1.12, "weight": 700, "family": "serif" },
+      "subtitle": { "size": 26, "lineHeight": 1.38, "weight": 500, "family": "sans" },
+      "body": { "size": 22, "lineHeight": 1.48, "weight": 400, "family": "sans" },
+      "callout": { "size": 18, "lineHeight": 1.35, "weight": 600, "family": "sans" },
+      "caption": { "size": 16, "lineHeight": 1.35, "weight": 400, "family": "sans" },
+      "mini": { "size": 14, "lineHeight": 1.35, "weight": 400, "family": "sans" }
+    }
+  },
+  "shapes": {
+    "cornerRadius": 6,
+    "strokeWidth": { "divider": 1.5, "callout": 2, "accent": 3 },
+    "calloutDot": { "radius": 5, "fill": "#1E3A5F" },
+    "dashPattern": "7 8"
+  },
+  "components": {
+    "brandHeader": {
+      "seriesLabel": "链流品类志 / CF Components 001",
+      "fontSize": 16,
+      "fontWeight": 600,
+      "color": "researchBlue"
+    }
+  }
+}

@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "test": "node test/standards.test.js && node test/pages.test.js && node test/solver.test.js",
-    "bench": "node test/solver-bench.js"
+    "bench": "node test/solver-bench.js",
+    "verify": "npm run build && npm test && npm run bench"
   },
   "dependencies": {
     "@supabase/ssr": "^0.12.0",
