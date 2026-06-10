@@ -21,17 +21,33 @@ export async function GET(request: Request) {
       return NextResponse.redirect(`${origin}/auth/login?error=${encodeURIComponent(error.message)}`);
     }
 
-    // 确保 profile 存在（触发器可能未正常工作）
+    // 兜底：如果数据库触发器未正常工作，确保 profile 存在
     if (data?.user) {
-      const admin = createClient(
-        process.env.NEXT_PUBLIC_SUPABASE_URL!,
-        process.env.SUPABASE_SERVICE_ROLE_KEY!,
-        { auth: { persistSession: false } }
-      );
-      await admin.from("profiles").upsert({
-        id: data.user.id,
-        display_name: data.user.user_metadata?.display_name || data.user.email?.split("@")[0] || "用户",
-      }, { onConflict: "id", ignoreDuplicates: true });
+      try {
+        const admin = createClient(
+          process.env.NEXT_PUBLIC_SUPABASE_URL!,
+          process.env.SUPABASE_SERVICE_ROLE_KEY!,
+          { auth: { persistSession: false } }
+        );
+        // 先查是否存在
+        const { data: existing } = await admin.from("profiles").select("id").eq("id", data.user.id).maybeSingle();
+        if (!existing) {
+          await admin.from("profiles").insert({
+            id: data.user.id,
+            display_name: data.user.user_metadata?.display_name || data.user.email?.split("@")[0] || "用户",
+          });
+          // 审计：异常兜底触发
+          await admin.from("audit_logs").insert({
+            user_id: data.user.id,
+            action: "profile_fallback_created",
+            target_type: "profile",
+            metadata: { reason: "trigger_not_available", email: data.user.email },
+          });
+        }
+      } catch (e) {
+        // 静默失败：profile 创建失败不应阻断登录
+        console.error("Profile fallback failed:", e);
+      }
     }
   }
 
