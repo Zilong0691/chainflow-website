@@ -132,7 +132,7 @@ export default function FileUpload({ onDataReady }: FileUploadProps) {
           <input type="file" accept=".csv,.txt" onChange={e => { const f = e.target.files?.[0]; if (f) parseFile(f); }} className="hidden" />
         </label>
         <span className="text-rice/30">
-          <a href="#" onClick={e=>{e.preventDefault();}} className="text-gold/50 hover:text-gold">下载模板</a>
+          <a href="/templates/routeflow-template.csv" download className="text-gold/50 hover:text-gold">下载模板</a>
         </span>
         {rows.length > 0 && <span className="text-rice/40">{rows.length} 条数据</span>}
       </div>
