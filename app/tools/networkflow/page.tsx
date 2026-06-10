@@ -3,6 +3,7 @@
 import { useState, useCallback, useEffect } from "react";
 import { useAuth } from "@/components/AuthProvider";
 import { loadConfig } from "../routeflow/KeyManager";
+import FileUpload from "@/components/FileUpload";
 import { fetchTrialStatus, saveModuleRun, fetchRunHistory, type TrialStatus, type RunRecord } from "@/lib/trial";
 
 type Tab = "demo" | "trial" | "history";
@@ -19,6 +20,7 @@ export default function NetworkFlowPage() {
   const [trial, setTrial] = useState<TrialStatus | null>(null);
   const [history, setHistory] = useState<RunRecord[]>([]);
   const [runSaved, setRunSaved] = useState(false);
+  const [uploadMode, setUploadMode] = useState(false);
 
   useEffect(() => {
     if (user) {
@@ -110,16 +112,31 @@ export default function NetworkFlowPage() {
 
       {tab === "trial" && (
         <div className="flex flex-1 overflow-hidden flex-col lg:flex-row">
-          <div className="flex-1 flex flex-col min-h-0">
-            <div className="flex items-center justify-between px-3 py-1.5 border-b border-rice/10 text-xs">
-              <span className="text-rice/50">📝 描述需求城市和候选仓</span>
-              <button onClick={() => setInput(`我们在华东和中部有5个候选仓位置：芜湖(31.35,118.43)月固定成本5万、开封(34.80,114.31)4.5万、福州(26.07,119.30)4.2万、广州(23.13,113.26)5.5万、重庆(29.56,106.55)4万。服务半径350km。需求城市包括上海、杭州、南京、合肥、郑州、武汉、长沙、南昌等，共约386个城市。运输费率约2.5元/单/公里。请帮我比较不同仓网方案。`)}
-                className="text-gold/50 hover:text-gold">加载示例</button>
+          <div className="flex-1 flex flex-col min-h-0 overflow-y-auto p-3 space-y-3">
+            <div className="flex items-center gap-2 text-xs">
+              <button onClick={()=>setUploadMode(false)} className={`px-3 py-1 rounded ${!uploadMode?'bg-gold/15 text-gold':'text-rice/40'}`}>📝 文本输入</button>
+              <button onClick={()=>setUploadMode(true)} className={`px-3 py-1 rounded ${uploadMode?'bg-gold/15 text-gold':'text-rice/40'}`}>📁 CSV 上传</button>
             </div>
-            <textarea value={input} onChange={e => setInput(e.target.value)}
-              placeholder="描述候选仓位置、成本、需求城市和约束条件……"
-              className="flex-1 bg-graphite text-rice/70 text-xs p-3 resize-none outline-none font-mono" spellCheck={false} />
-            <div className="px-3 py-2 border-t border-rice/10 space-y-2">
+
+            {uploadMode ? (
+              <FileUpload onDataReady={(orders, depot, vehicles) => {
+                setInput(JSON.stringify({ orders, depot, vehicles, config: { max_warehouses: 3, min_coverage: 0.7, transport_cost_per_km_per_order: 2.5 } }, null, 2));
+                setUploadMode(false);
+              }} />
+            ) : (
+              <>
+                <div className="flex items-center justify-between text-xs">
+                  <span className="text-rice/50">📝 描述需求城市和候选仓</span>
+                  <button onClick={() => setInput(`我们在华东和中部有5个候选仓位置：芜湖(31.35,118.43)月固定成本5万、开封(34.80,114.31)4.5万、福州(26.07,119.30)4.2万、广州(23.13,113.26)5.5万、重庆(29.56,106.55)4万。服务半径350km。需求城市包括上海、杭州、南京、合肥、郑州、武汉、长沙、南昌等，共约386个城市。运输费率约2.5元/单/公里。请帮我比较不同仓网方案。`)}
+                    className="text-gold/50 hover:text-gold">加载示例</button>
+                </div>
+                <textarea value={input} onChange={e => setInput(e.target.value)}
+                  placeholder="描述候选仓位置、成本、需求城市和约束条件……"
+                  className="flex-1 bg-graphite text-rice/70 text-xs p-3 resize-none outline-none font-mono min-h-[200px]" spellCheck={false} />
+              </>
+            )}
+
+            <div className="space-y-2">
               {!user && <p className="text-amber-500/60 text-xs">⚠ 登录后运行消耗 1 次试用（共 3 次）</p>}
               <button onClick={() => runPipeline(!!user)} disabled={running || !input.trim()}
                 className="w-full rounded bg-gold/20 border border-gold/30 text-gold py-2.5 text-sm font-medium hover:bg-gold/30 disabled:opacity-30 transition">
