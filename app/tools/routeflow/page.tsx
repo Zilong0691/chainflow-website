@@ -4,6 +4,7 @@ import { useState, useCallback, useEffect } from "react";
 import { useAuth } from "@/components/AuthProvider";
 import KeyManager, { loadConfig } from "./KeyManager";
 import SharePanel from "@/components/SharePanel";
+import FileUpload from "@/components/FileUpload";
 import { fetchTrialStatus, saveModuleRun, fetchRunHistory, type TrialStatus, type RunRecord } from "@/lib/trial";
 
 type Tab = "demo" | "trial" | "history";
@@ -21,6 +22,7 @@ export default function RouteFlowPage() {
   const [history, setHistory] = useState<RunRecord[]>([]);
   const [runSaved, setRunSaved] = useState(false);
   const [lastRunId, setLastRunId] = useState("");
+  const [uploadMode, setUploadMode] = useState(false);
 
   useEffect(() => {
     if (user) {
@@ -122,19 +124,33 @@ export default function RouteFlowPage() {
       {/* Trial Tab */}
       {tab === "trial" && (
         <div className="flex flex-1 overflow-hidden flex-col lg:flex-row">
-          <div className="flex-1 flex flex-col min-h-0">
-            <div className="flex items-center justify-between px-3 py-1.5 border-b border-rice/10 text-xs">
-              <span className="text-rice/50">📝 粘贴订单数据</span>
-              <button onClick={() => setInput(`配送中心在上海闵行区莲花南路3000号。车辆：3辆金杯(800kg)、2辆4.2米(2500kg)。今天订单：\n- 浦东新区张杨北路2503号，120kg，上午9点前\n- 松江区沪亭北路781号，108kg\n- 闵行区七莘路3155号，31kg\n- 奉贤区海思路789弄，20kg\n- 金山区学府路1591号，45kg\n- 徐汇区漕宝路2697号，200kg，优先`)}
-                className="text-gold/50 hover:text-gold">加载示例</button>
+          <div className="flex-1 flex flex-col min-h-0 overflow-y-auto p-3 space-y-3">
+            <div className="flex items-center gap-2 text-xs">
+              <button onClick={()=>setUploadMode(false)} className={`px-3 py-1 rounded ${!uploadMode?'bg-gold/15 text-gold':'text-rice/40'}`}>📝 文本输入</button>
+              <button onClick={()=>setUploadMode(true)} className={`px-3 py-1 rounded ${uploadMode?'bg-gold/15 text-gold':'text-rice/40'}`}>📁 CSV 上传</button>
             </div>
-            <textarea value={input} onChange={e => setInput(e.target.value)}
-              placeholder="粘贴订单、表格或自然语言描述……"
-              className="flex-1 bg-graphite text-rice/70 text-xs p-3 resize-none outline-none font-mono" spellCheck={false} />
-            <div className="px-3 py-2 border-t border-rice/10 space-y-2">
-              {!user && (
-                <p className="text-amber-500/60 text-xs">⚠ 登录后运行将消耗 1 次试用次数（共 3 次），未登录可查看 Demo 但不保存结果</p>
-              )}
+
+            {uploadMode ? (
+              <FileUpload onDataReady={(orders, depot, vehicles) => {
+                const data = { orders, depot, vehicles };
+                setInput(JSON.stringify(data, null, 2));
+                setUploadMode(false);
+              }} />
+            ) : (
+              <>
+                <div className="flex items-center justify-between text-xs">
+                  <span className="text-rice/50">📝 粘贴订单数据</span>
+                  <button onClick={() => setInput(`配送中心在上海闵行区莲花南路3000号。车辆：3辆金杯(800kg)、2辆4.2米(2500kg)。今天订单：\n- 浦东新区张杨北路2503号，120kg，上午9点前\n- 松江区沪亭北路781号，108kg\n- 闵行区七莘路3155号，31kg\n- 奉贤区海思路789弄，20kg\n- 金山区学府路1591号，45kg\n- 徐汇区漕宝路2697号，200kg，优先`)}
+                    className="text-gold/50 hover:text-gold">加载示例</button>
+                </div>
+                <textarea value={input} onChange={e => setInput(e.target.value)}
+                  placeholder="粘贴订单、表格或自然语言描述……"
+                  className="flex-1 bg-graphite text-rice/70 text-xs p-3 resize-none outline-none font-mono min-h-[200px]" spellCheck={false} />
+              </>
+            )}
+
+            <div className="space-y-2">
+              {!user && <p className="text-amber-500/60 text-xs">⚠ 登录后运行将消耗 1 次试用次数（共 3 次），未登录可查看 Demo 但不保存结果</p>}
               <button onClick={() => runPipeline(!!user)} disabled={running || !input.trim()}
                 className="w-full rounded bg-gold/20 border border-gold/30 text-gold py-2.5 text-sm font-medium hover:bg-gold/30 disabled:opacity-30 transition">
                 {running ? "⏳ AI 处理中…" : user ? "🚀 开始 AI 排线（消耗 1 次试用）" : "🔍 预览 AI 排线（不保存）"}

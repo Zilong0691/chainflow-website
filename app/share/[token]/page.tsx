@@ -1,6 +1,7 @@
 import { createSupabaseAdmin } from "@/lib/supabase/server";
 import { hashToken } from "@/lib/share";
 import { notFound } from "next/navigation";
+import QRCode from "./QRCode";
 
 /* 司机分享页 — 公开访问，无需登录
    URL: /share/:token
@@ -42,6 +43,7 @@ export default async function SharePage({ params }: Props) {
             生成时间: {new Date(share.created_at).toLocaleString("zh-CN")}
             {share.expires_at && <> · 有效期至 {new Date(share.expires_at).toLocaleDateString("zh-CN")}</>}
           </p>
+          <div className="mt-4"><QRCode url={`${process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"}/share/${token}`} /></div>
         </div>
 
         {run?.result_data ? (
