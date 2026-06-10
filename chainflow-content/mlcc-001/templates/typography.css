@@ -1,0 +1,37 @@
+:root {
+  --cf-font-sans: -apple-system, BlinkMacSystemFont, "PingFang SC", "Noto Sans SC", "Microsoft YaHei", Arial, sans-serif;
+  --cf-font-serif: "Songti SC", "Noto Serif CJK SC", "STSong", SimSun, serif;
+  --cf-title-size: 72px;
+  --cf-subtitle-size: 27px;
+  --cf-body-size: 24px;
+  --cf-caption-size: 17px;
+}
+
+body {
+  font-family: var(--cf-font-sans);
+  color: #1B1F24;
+}
+
+.cf-title {
+  font-family: var(--cf-font-serif);
+  font-size: var(--cf-title-size);
+  line-height: 1.08;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+.cf-subtitle {
+  font-size: var(--cf-subtitle-size);
+  line-height: 1.38;
+  font-weight: 500;
+}
+
+.cf-body {
+  font-size: var(--cf-body-size);
+  line-height: 1.48;
+}
+
+.cf-caption {
+  font-size: var(--cf-caption-size);
+  line-height: 1.35;
+}

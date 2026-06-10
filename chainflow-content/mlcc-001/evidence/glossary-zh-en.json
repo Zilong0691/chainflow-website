@@ -1,0 +1,78 @@
+{
+  "MLCC": {
+    "zh": "多层片式陶瓷电容器",
+    "en": "Multilayer Ceramic Chip Capacitor"
+  },
+  "陶瓷介质层": {
+    "zh": "陶瓷介质层",
+    "en": "ceramic dielectric layer"
+  },
+  "内电极": {
+    "zh": "内电极",
+    "en": "internal electrode"
+  },
+  "端电极": {
+    "zh": "端电极",
+    "en": "termination electrode"
+  },
+  "镍层": {
+    "zh": "镍层",
+    "en": "nickel barrier layer"
+  },
+  "锡层": {
+    "zh": "锡层",
+    "en": "tin plating layer"
+  },
+  "DC Bias": {
+    "zh": "直流偏压效应",
+    "en": "DC bias effect"
+  },
+  "有效容量": {
+    "zh": "有效容量",
+    "en": "effective capacitance"
+  },
+  "ESR": {
+    "zh": "等效串联电阻",
+    "en": "equivalent series resistance"
+  },
+  "ESL": {
+    "zh": "等效串联电感",
+    "en": "equivalent series inductance"
+  },
+  "C0G/NP0": {
+    "zh": "一类陶瓷温度特性",
+    "en": "Class I temperature characteristic"
+  },
+  "X7R": {
+    "zh": "二类陶瓷温度特性",
+    "en": "Class II temperature characteristic"
+  },
+  "X5R": {
+    "zh": "二类陶瓷温度特性",
+    "en": "Class II temperature characteristic"
+  },
+  "BaTiO3": {
+    "zh": "钛酸钡",
+    "en": "barium titanate"
+  },
+  "BME": {
+    "zh": "贱金属电极",
+    "en": "base-metal electrode"
+  },
+  "共烧": {
+    "zh": "共烧",
+    "en": "co-firing"
+  },
+  "排胶": {
+    "zh": "排胶",
+    "en": "binder burnout"
+  },
+  "端接": {
+    "zh": "端接",
+    "en": "termination"
+  },
+  "分选": {
+    "zh": "测试与分选",
+    "en": "testing and sorting"
+  }
+}
