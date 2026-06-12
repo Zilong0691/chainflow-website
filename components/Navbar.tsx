@@ -28,6 +28,7 @@ export function Navbar({ lang, onLanguageChange }: NavbarProps) {
         </nav>
 
         <div className="flex items-center gap-3">
+          <a href="/auth/login" className="hidden items-center gap-1.5 rounded-full border border-gold/20 bg-gold/10 px-3 py-1.5 text-xs font-medium text-gold transition hover:bg-gold/20 sm:flex">登录</a>
           <div className="inline-flex rounded-full border border-rice/15 bg-rice/10 p-1" aria-label="Language">
             {languageOptions.map((option) => (
               <button
