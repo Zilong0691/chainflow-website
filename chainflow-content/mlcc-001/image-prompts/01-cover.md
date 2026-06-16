@@ -3,29 +3,23 @@
 ## image2-primary
 
 ```
-WeChat official account cover image. 3:4 vertical, 1080x1440px. Warm ivory paper background with subtle fiber texture.
+WeChat article cover image. 3:4 vertical aspect ratio, 1080x1440px.
 
-UPPER PORTION (top 30-40%): A large, bold, elegant Chinese title in deep navy/charcoal serif font — "MLCC·多层片式陶瓷电容器" — clean and prominent, like a magazine cover headline.
+BACKGROUND: Deep navy-blue to dark teal gradient, smooth and premium. Subtle hexagonal grid or circuit-trace pattern at 5-10% opacity for technical texture.
 
-CENTER-LOWER: A human fingertip holding a tiny 0402 MLCC (1.0×0.5mm). The capacitor is shockingly small — a grain of sand, 5% of the frame. Razor-sharp focus: warm beige ceramic body, shiny silver end caps. Surrounding it, flowing data stream lines and glowing node points in muted copper and steel blue weave across the composition — supply chain data flows.
+COMPOSITION: Hyper-realistic 3D render of an 0402 MLCC capacitor (1.0x0.5mm, warm beige ceramic body, brilliant gold-metallic end caps on both ends) positioned side-by-side with a single grain of white rice. Symmetrical comparison — MLCC on the left, rice on the right. Both objects are isolated, floating slightly above a reflective dark surface. Lit from upper-left with cinematic contrast — sharp highlights, defined shadows.
 
-Bottom-left corner: "公众号：链流 ChainFlow" in very small subtle muted grey sans-serif. Faint translucent "MLCC" watermark ghosted across background.
+TYPOGRAPHY: Large, bold, refined sans-serif title in bright white/cyan at upper portion: "MLCC". Below it, smaller subtitle in muted silver: "The Invisible Staple Inside Every Smart Device". Clean horizontal decorative line above the title in copper-gold.
 
-The image should feel like a premium publication cover — magazine-quality, not a blog header. Clean, warm, authoritative, eye-catching.
+TECHNICAL DETAILS: Fine cyan or steel-blue annotation lines pointing to the MLCC with precise dimension callouts (1.0mm, 0.5mm). Subtle scale indicator "100:1" in the bottom-right corner.
+
+BRANDING: Bottom-left corner — very small, muted grey text: "公众号：链流 ChainFlow". Faint translucent "MLCC" watermark lettering ghosted across the background at 8-10% opacity.
+
+STYLE: Premium tech-industry magazine cover. Dark, sophisticated, high-contrast, precise. Cool-toned with warm gold accents. Not a blog header. Not warm cream paper. Not minimalist poster.
 ```
-
-画面主体：上方大字标题"MLCC·多层片式陶瓷电容器" + 下方指尖捏MLCC + 数据流线
-标题要求：大号、粗体、衬线字体、深海军蓝/炭灰色、杂志封面感
-禁止：剖面蓝图、多余文字
 
 ## image2-alternative
 
 ```
-WeChat cover image. 3:4 vertical. Warm cream paper background.
-
-TOP HALF: Large elegant Chinese title in deep navy serif — "MLCC·多层片式陶瓷电容器" — dominating the upper portion, clean and bold.
-
-BOTTOM HALF: A single 0402 MLCC on a fingertip, tiny against the skin texture. Copper-gold data nodes and steel-blue connection lines radiate outward like a constellation. Bottom-left: small "公众号：链流 ChainFlow". Faint "MLCC" watermark. No other text.
-
-Premium, warm, authoritative — a magazine cover, not a tech blog.
+WeChat cover. 3:4 vertical. Deep dark blue-purple gradient background with subtle data-node constellation pattern. CENTER: hyper-realistic 3D render of a single 0402 MLCC dramatically lit — warm beige body, brilliant gold-silver end caps, casting a long sharp shadow across a dark reflective surface. UPPER: large white title "MLCC" with copper-gold subtitle. Fine cyan dimension callouts. Small bottom-left branding. Dark, cinematic, premium. Cool-toned, high-end industrial aesthetic.
 ```

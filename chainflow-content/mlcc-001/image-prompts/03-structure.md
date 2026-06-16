@@ -3,37 +3,23 @@
 ## image2-primary
 
 ```
-Clean technical cross-section illustration of an MLCC capacitor, perfectly cut through the vertical center. Alternating layers of warm beige ceramic dielectric and dark nickel internal electrodes — approximately 15-30 visible layer pairs. CRITICAL STRUCTURAL ACCURACY — THE DEFINING FEATURE OF MLCC:
+Technical cross-section illustration. 3:4 vertical. Deep dark-teal background.
 
-Study this ASCII cross-section diagram carefully before generating:
+MAIN VISUAL: A large hyper-realistic 3D cutaway render of an MLCC capacitor, sliced perfectly through the vertical center. The internal structure is revealed as a precise "layer cake":
 
+- White/cream ceramic dielectric layers (BaTiO3) — matte, slightly textured
+- Gold/copper metallic internal electrode layers (Nickel) — glossy, reflective
+- The electrodes ALTERNATE: odd layers extend from the LEFT termination toward the right (stopping just short of the right edge), even layers extend from the RIGHT termination toward the left (stopping just short of the left edge). This cantilevered alternating pattern is the defining structural feature and must be clearly visible.
+- Approximately 15-20 visible layer pairs
+- Left and right termination caps show three distinct layers: copper base (warm brown), nickel barrier (grey), tin plating (bright silver)
+
+LAYOUT: Left 60% — the large cross-section render. Right 40% — clean flat-design annotation cards with cyan connector lines pointing to: Ceramic Dielectric, Ni Internal Electrode, Cu/Ni/Sn Termination. Bottom section — a clean formula card: C_total ≈ n × εr ε0 A / d.
+
+Dark background, premium technical illustration style, cool-toned with warm gold electrode accents. High information density. Not warm paper.
 ```
-LEFT TERMINATION          RIGHT TERMINATION
-    |                          |
-    |---[Ni electrode A]-------|xxxxx  ← A spans left→near-right, connects LEFT
-    |   CERAMIC DIELECTRIC     |
-    |xxxxx[Ni electrode B]-----|      ← B spans right→near-left, connects RIGHT
-    |   CERAMIC DIELECTRIC     |
-    |---[Ni electrode A]-------|xxxxx  ← A again, connects LEFT
-    |   CERAMIC DIELECTRIC     |
-    |xxxxx[Ni electrode B]-----|      ← B again, connects RIGHT
-    |   CERAMIC DIELECTRIC     |
-    |                          |
-```
-
-KEY POINTS:
-- Every Ni electrode connects to ONLY ONE side (left or right), never both
-- Electrodes from left and right ALTERNATE in the vertical stack: A-B-A-B-A-B...
-- Each electrode extends MOST of the way across but stops SHORT of the opposite termination
-- The GAP (marked xxxxx) at the far end of each electrode prevents short-circuiting
-- Between any adjacent A and B electrode is a thin ceramic dielectric layer
-- The vertical overlap zone between adjacent A and B electrodes IS the capacitor
-- This is repeated hundreds of times in a real MLCC
-
-The image must show: electrodes cantilevered from alternating sides, NOT continuous plates spanning the full width. The left-right alternating pattern must be clearly visible in the cross-section. Left and right terminations show three distinct layers: copper base, nickel barrier, tin plating. Rendered as a precise engineering patent drawing on warm cream paper — navy blue and copper linework, like a vintage technical diagram but clean and modern. Neutral light grey background or warm paper tone. Scientific precision, editorial warmth. Not dark, not clinical. No text, no labels, no arrows. 3:4 vertical.
 
 ## image2-alternative
 
 ```
-High-precision 3D cutaway render of an MLCC. The front half removed to reveal the interleaved internal electrode structure — cantilevered electrodes from alternating sides — odd layers from left, even from right — overlapping vertically through the dielectric layer, forming each capacitive unit. Warm beige ceramic dielectric, dark nickel electrodes, copper and tin terminations. Photorealistic materials with subtle grain on the ceramic. Soft studio lighting from upper left on a clean warm grey background. Technical illustration quality — engineering accuracy, magazine beauty. No text. 3:4 vertical.
+3D exploded-view render. 3:4 vertical. Dark navy background. The MLCC is split open vertically — ceramic body halves pulled apart to reveal the internal alternating electrode structure fanned out like pages of a book. White ceramic layers, gold electrodes, silver terminations. Clean, precise, engineering-rendering quality. Annotation lines in cyan. Dark and premium.
 ```

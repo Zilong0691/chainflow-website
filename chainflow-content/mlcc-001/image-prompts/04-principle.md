@@ -3,10 +3,17 @@
 ## image2-primary
 
 ```
-Clean macro photograph of a circuit board surface. A cluster of tiny MLCC capacitors densely packed near a BGA chip. Shallow depth of field — foreground capacitors sharp, background softly blurred. The PCB's natural green-gold tones provide warmth. Warm, soft daylight — not dramatic, not moody. Like looking through a magnifying glass at a well-made circuit board. Clean, inviting, professional. No text. 3:4 vertical.
+Technical data visualization infographic. 3:4 vertical. Deep navy-blue background.
+
+UPPER HALF: A clean comparison matrix showing four capacitor classes — C0G/NP0, X7R, X5R, Y5V. Each has a horizontal temperature range bar (X-axis: -55°C to +150°C) with colored tolerance bands showing capacitance change. C0G is a near-flat thin line (high stability), Y5V is a wildly swinging wide band (poor stability). Bright cyan and orange color coding. Clean flat-vector chart style.
+
+LOWER HALF: A dramatic funnel diagram. At the top — "Nominal 10μF (100%)". As it descends through three filter stages (DC Bias → Temperature → Aging), the funnel narrows, and the output at bottom reads "Effective: 2-5μF (20-50%)". Each filter stage is a distinct color block with a brief annotation. Copper-gold for the final effective value to emphasize the dramatic drop.
+
+Dark background, high information density, premium data-visualization aesthetic. Flat-vector charts with hyper-realistic component renders as small accent elements. Cool-toned with warm gold and bright cyan highlights.
+```
 
 ## image2-alternative
 
 ```
-Conceptual still life: a single MLCC on a warm cream surface, casting a long soft shadow that transforms into a subtle waveform curve. Minimal, editorial, warm. The metaphor: a tiny component shapes signal integrity. Cream background, soft natural light. 3:4 vertical.
+Clean technical infographic. 3:4 vertical. Dark blue-purple gradient background. LEFT: temperature characteristic comparison chart with C0G/X7R/X5R curves — precise line graphs with labeled axes. RIGHT: cascading waterfall diagram showing capacitance degradation from nominal 100% down to effective ~30%. Bright cyan and orange data points. Premium, technical, data-rich. Dark background.
 ```
