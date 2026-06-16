@@ -2,8 +2,8 @@
 
 ## image2-primary
 
-```
-Premium infographic, 3:4 vertical. Deep dark blue-purple gradient background with subtle molecular-structure pattern.
+```  CRITICAL: Warm paper background theme — all elements must have high contrast and sharp definition. 3D renders must be well-lit with clear highlights. Data visualizations must use bright accent colors (cyan, gold, orange) against the dark background for readability. Fine details must remain crisp and visible — not lost in shadows.
+Premium infographic, 3:4 vertical. Warm ivory paper with subtle texture background with subtle molecular-structure pattern.
 
 UPPER SECTION: A hyper-realistic 3D render of barium titanate (BaTiO3) powder particles at nanoscale — spherical particles 100-300nm, dense but individually distinguishable, with subtle warm beige-gold tones against the dark background. Scientific-research aesthetic, like an electron microscope image enhanced for publication quality.
 
@@ -11,11 +11,11 @@ MIDDLE SECTION: A vertical supply-chain flow diagram rendered in clean flat-vect
 
 LOWER SECTION: Three small info cards with bright cyan accent borders — "Bottleneck 1: BaCO3 5N global duopoly", "Bottleneck 2: Rare earth dopants 90% China, export controlled", "Bottleneck 3: Nano-Ni powder Japan dominant".
 
-Dark, premium, data-rich. Cool-toned background with warm gold material accents. High information density. Not warm paper.
-```
+Clean, premium, data-rich. Cool-toned background with warm gold material accents. High information density. Clean and professional.
+```  CRITICAL: Warm paper background theme — all elements must have high contrast and sharp definition. 3D renders must be well-lit with clear highlights. Data visualizations must use bright accent colors (cyan, gold, orange) against the dark background for readability. Fine details must remain crisp and visible — not lost in shadows.
 
 ## image2-alternative
 
-```
-Scientific infographic. 3:4 vertical. Dark navy background with subtle particle texture. Large central 3D render of BaTiO3 crystal structure — ball-and-stick molecular model with gold, red, and white atoms. Surrounding it, flat-design flowchart showing the upstream supply chain from mines to MLCC. Bright cyan and copper-gold data labels. Dark, premium, precise.
-```
+```  CRITICAL: Warm paper background theme — all elements must have high contrast and sharp definition. 3D renders must be well-lit with clear highlights. Data visualizations must use bright accent colors (cyan, gold, orange) against the dark background for readability. Fine details must remain crisp and visible — not lost in shadows.
+Scientific infographic. 3:4 vertical. Dark navy background with subtle particle texture. Large central 3D render of BaTiO3 crystal structure — ball-and-stick molecular model with gold, red, and white atoms. Surrounding it, flat-design flowchart showing the upstream supply chain from mines to MLCC. Bright cyan and copper-gold data labels. Clean, premium, precise.
+```  CRITICAL: Warm paper background theme — all elements must have high contrast and sharp definition. 3D renders must be well-lit with clear highlights. Data visualizations must use bright accent colors (cyan, gold, orange) against the dark background for readability. Fine details must remain crisp and visible — not lost in shadows.

@@ -2,8 +2,8 @@
 
 ## image2-primary
 
-```
-Technical cross-section illustration. 3:4 vertical. Deep dark-teal background.
+```  CRITICAL: Warm paper background theme — all elements must have high contrast and sharp definition. 3D renders must be well-lit with clear highlights. Data visualizations must use bright accent colors (cyan, gold, orange) against the dark background for readability. Fine details must remain crisp and visible — not lost in shadows.
+Technical cross-section illustration. 3:4 vertical. Warm ivory paper background.
 
 MAIN VISUAL: A large hyper-realistic 3D cutaway render of an MLCC capacitor, sliced perfectly through the vertical center. The internal structure is revealed as a precise "layer cake":
 
@@ -15,11 +15,11 @@ MAIN VISUAL: A large hyper-realistic 3D cutaway render of an MLCC capacitor, sli
 
 LAYOUT: Left 60% — the large cross-section render. Right 40% — clean flat-design annotation cards with cyan connector lines pointing to: Ceramic Dielectric, Ni Internal Electrode, Cu/Ni/Sn Termination. Bottom section — a clean formula card: C_total ≈ n × εr ε0 A / d.
 
-Dark background, premium technical illustration style, cool-toned with warm gold electrode accents. High information density. Not warm paper.
-```
+Clean warm paper background, premium technical illustration style, warm paper with navy and copper electrode accents. High information density. Clean and professional.
+```  CRITICAL: Warm paper background theme — all elements must have high contrast and sharp definition. 3D renders must be well-lit with clear highlights. Data visualizations must use bright accent colors (cyan, gold, orange) against the dark background for readability. Fine details must remain crisp and visible — not lost in shadows.
 
 ## image2-alternative
 
-```
+```  CRITICAL: Warm paper background theme — all elements must have high contrast and sharp definition. 3D renders must be well-lit with clear highlights. Data visualizations must use bright accent colors (cyan, gold, orange) against the dark background for readability. Fine details must remain crisp and visible — not lost in shadows.
 3D exploded-view render. 3:4 vertical. Dark navy background. The MLCC is split open vertically — ceramic body halves pulled apart to reveal the internal alternating electrode structure fanned out like pages of a book. White ceramic layers, gold electrodes, silver terminations. Clean, precise, engineering-rendering quality. Annotation lines in cyan. Dark and premium.
-```
+```  CRITICAL: Warm paper background theme — all elements must have high contrast and sharp definition. 3D renders must be well-lit with clear highlights. Data visualizations must use bright accent colors (cyan, gold, orange) against the dark background for readability. Fine details must remain crisp and visible — not lost in shadows.

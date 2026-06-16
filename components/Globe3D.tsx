@@ -26,7 +26,7 @@ function loadThree(): Promise<any> {
   return new Promise((resolve) => {
     if ((window as any).THREE) return resolve((window as any).THREE);
     const script = document.createElement("script");
-    script.src = "https://unpkg.com/three@0.160.0/build/three.min.js";
+    script.src = "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js";
     script.onload = () => resolve((window as any).THREE);
     document.head.appendChild(script);
   });
@@ -78,13 +78,13 @@ export default function Globe3D() {
       const a = latLngToVec3(la1, lo1, R * 1.06, THREE), b = latLngToVec3(la2, lo2, R * 1.06, THREE);
       const mid = a.clone().add(b).normalize().multiplyScalar(R * 1.4);
       const c = new THREE.CubicBezierCurve3(a.clone(), mid.clone().lerp(a, 0.3), mid.clone().lerp(b, 0.3), b.clone());
-      routeG.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(c.getPoints(35)), new THREE.LineBasicMaterial({ color: 0x00bfff, transparent: true, opacity: 0.3 })));
+      routeG.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(c.getPoints(35)), new THREE.LineBasicMaterial({ color: 0xf2c76a, transparent: true, opacity: 0.3 })));
     });
     globeGroup.add(routeG);
 
     // 城市点
     const cityG = new THREE.Group();
-    HUBS.forEach(([lat, lng]) => { const dot = new THREE.Mesh(new THREE.SphereGeometry(0.025, 8, 8), new THREE.MeshBasicMaterial({ color: 0x00e5ff })); dot.position.copy(latLngToVec3(lat, lng, R * 1.015, THREE)); cityG.add(dot); });
+    HUBS.forEach(([lat, lng]) => { const dot = new THREE.Mesh(new THREE.SphereGeometry(0.025, 8, 8), new THREE.MeshBasicMaterial({ color: 0xf2c76a })); dot.position.copy(latLngToVec3(lat, lng, R * 1.015, THREE)); cityG.add(dot); });
     globeGroup.add(cityG);
 
     // 热力
@@ -122,13 +122,13 @@ export default function Globe3D() {
   }, []);
 
   return (
-    <div className="relative h-full w-full rounded-2xl overflow-hidden border border-cyan-500/15" style={{ background: "radial-gradient(ellipse at center, #0a1a30 0%, #030b17 70%)" }}>
+    <div className="relative h-full w-full rounded-2xl overflow-hidden border border-gold/10" style={{ background: "radial-gradient(ellipse at center, #0d1a12 0%, #080b09 70%)" }}>
       <div className="absolute inset-0 rounded-2xl border border-white/[0.04] pointer-events-none z-10" />
       <div ref={mountRef} className="h-full w-full" />
-      <div className="absolute bottom-4 left-4 right-4 z-20 rounded-xl border border-white/[0.06] bg-white/[0.03] backdrop-blur-md px-4 py-2.5">
-        <div className="flex items-center justify-between text-xs text-cyan-300/70">
+      <div className="absolute bottom-4 left-4 right-4 z-20 rounded-xl border border-gold/10 bg-white/[0.02] backdrop-blur-sm px-4 py-2.5">
+        <div className="flex items-center justify-between text-xs text-gold/50">
           <span>🌍 Global Supply Chain Network</span>
-          <span className="text-cyan-400/50">24 routes · 15 hubs</span>
+          <span className="text-gold/30">24 routes · 15 hubs</span>
         </div>
       </div>
     </div>
