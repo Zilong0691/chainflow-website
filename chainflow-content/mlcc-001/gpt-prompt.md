@@ -4,30 +4,28 @@
 
 ## 公众号封面图
 
-⚠️ 与内页不同：横构图 2.35:1，不是 3:4 竖版。用于公众号文章顶部头图。
+⚠️ 横构图 2.35:1，不是 3:4 竖版。公众号文章顶部头图。
 
-### 封面标题
+### 文章标题
 十张图拆解 MLCC：AI 算力军备竞赛背后，藏着一颗比米粒还小的器件
 
-### 视觉提示词
+### 正向生图提示词
 
 ```
-WeChat article cover image. HORIZONTAL 2.35:1 widescreen. NOT vertical 3:4.
-
-STYLE MUST MATCH THE 10 INTERIOR PAGES: Warm ivory paper background throughout. Clean, professional editorial aesthetic. Warm beige ceramic tones on the MLCC body. Navy blue and copper-gold for technical linework. Scientific precision meets premium publication quality. Same visual language as the rest of the series.
-
-COMPOSITION: A human fingertip fills the lower-right portion of the frame. An 0402 MLCC capacitor (1.0×0.5mm) rests on the fingertip — it is shockingly small, a grain of sand, occupying no more than 5% of the total frame. The capacitor is in sharp focus: warm beige ceramic body, silver metallic end caps.
-
-Above the fingertip, filling the upper portion of the frame: a large-scale technical cross-section blueprint of the MLCC's internal structure, rendered in clean navy blue and copper linework on the warm cream background. Alternating ceramic dielectric layers and nickel electrode layers clearly visible. The blueprint is precise and architectural, like a vintage patent drawing — clean, warm, authoritative.
-
-The composition is dense, layered, substantial — premium industry intelligence publication, warm and professional, not dark or moody. No text, no logos, no watermarks.
+Premium WeChat article cover, 2.35:1 widescreen cinematic ratio, 1800x768px. Deep navy-blue to dark teal gradient background with subtle hexagonal grid and circuit-trace decorative elements at low opacity. A hyper-realistic 3D render of an 0402 MLCC capacitor (1.0x0.5mm, warm beige ceramic body, brilliant gold-metallic end caps) placed side-by-side with a single grain of white rice — symmetrical comparison, MLCC left, rice right, both floating above a dark reflective surface. Cinematic lighting from upper-left, sharp highlights, defined shadows, high contrast. The upper 30% of the frame is reserved as a dark gradient zone suitable for white Chinese title text overlay in post-production. Fine cyan annotation lines with precise dimension callouts (1.0mm, 0.5mm). Subtle copper-gold data nodes and connection lines weaving in the background, suggesting supply chain networks. Bottom-left corner: very small muted grey text "公众号：链流 ChainFlow". Faint translucent "MLCC" watermark ghosted at 6-8% opacity. Premium tech-industry magazine aesthetic — dark, sophisticated, high-contrast, precise. 8K resolution, hyper-detailed, professional product photography quality, cinematic lighting, --ar 2.35:1
 ```
 
-### 尺寸
-横构图，推荐 1800×768 或更大（宽高比 2.35:1）。不是 1080×1440。
+### 负面提示词
 
-### 禁止元素
-文字、logo、水印
+```
+warm cream paper background, beige tones, vintage style, hand-drawn, sketch, cartoon, illustration, bright daylight, overexposed, blurry, low contrast, minimalist poster, blog header, white background, light mode, pastel colors, organic texture, grunge, handwritten text, cluttered, flat design without depth
+```
+
+### 适配说明
+
+- 吸收参考图优点：深色科技感背景 + 实物并置对比构图 + 电影级光影 + 技术标注线 + 高信息密度
+- 匹配品牌规范：铜金数据节点呼应 ChainFlow 供应链视角，深蓝底色延续系列统一调性
+- 标题安全区：上方30%暗色渐变，为白色中文标题预留空间
 
 ---
 

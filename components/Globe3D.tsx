@@ -23,7 +23,7 @@ export default function Globe3D() {
     let cleanup: (() => void) | undefined;
 
     import("three").then((THREE) => {
-      if (!el.isConnected) return;
+      if (!document.body.contains(el)) return;
       const W = el.clientWidth, H = el.clientHeight;
 
       const latLngToVec3 = (lat: number, lng: number, r: number) => {
@@ -45,7 +45,7 @@ export default function Globe3D() {
 
       scene.add(new THREE.AmbientLight(0x334466, 0.5));
       const sun = new THREE.DirectionalLight(0xe8f0ff, 1.5); sun.position.set(5, 3, 5); scene.add(sun);
-      scene.add(new THREE.DirectionalLight(0x4466aa, 0.3).copy(new THREE.Object3D()).position.set(-3, -1, -3));
+      const fill2 = new THREE.DirectionalLight(0x4466aa, 0.3); fill2.position.set(-3, -1, -3); scene.add(fill2);
 
       // 海洋
       globeGroup.add(new THREE.Mesh(new THREE.SphereGeometry(R, 64, 64), new THREE.MeshStandardMaterial({ color: 0x0a1628, roughness: 0.9, metalness: 0.1, emissive: 0x001a33, emissiveIntensity: 0.15 })));
