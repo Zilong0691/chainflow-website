@@ -103,22 +103,32 @@ ChainFlow 品牌文档。
 ## image2-primary
 
 ```
-Editorial magazine cover composition. Warm ivory paper background with subtle fiber texture. CENTER: A human fingertip holding a tiny 0402 MLCC (1.0×0.5mm). The capacitor is shockingly small on the fingertip — a grain of sand, 5% of the frame. Razor-sharp focus on the MLCC: warm beige ceramic body, shiny silver metallic end caps on both ends. Surrounding the capacitor, flowing data stream lines and glowing node points in muted copper and steel blue — like supply chain information flowing through global networks. The lines weave elegantly around the tiny component. Dense, layered composition — premium industry research publication. Museum-quality soft natural lighting from upper left. Warm, authoritative, precise. Clean, professional, not dark or moody. Bottom-left corner: "公众号：链流 ChainFlow" in very small subtle muted grey sans-serif. Faint translucent "MLCC" watermark ghosted across background. No other text. 3:4 vertical, 1080x1440px.
+WeChat official account cover image. 3:4 vertical, 1080x1440px. Warm ivory paper background with subtle fiber texture.
+
+UPPER PORTION (top 30-40%): A large, bold, elegant Chinese title in deep navy/charcoal serif font — "MLCC·多层片式陶瓷电容器" — clean and prominent, like a magazine cover headline.
+
+CENTER-LOWER: A human fingertip holding a tiny 0402 MLCC (1.0×0.5mm). The capacitor is shockingly small — a grain of sand, 5% of the frame. Razor-sharp focus: warm beige ceramic body, shiny silver end caps. Surrounding it, flowing data stream lines and glowing node points in muted copper and steel blue weave across the composition — supply chain data flows.
+
+Bottom-left corner: "公众号：链流 ChainFlow" in very small subtle muted grey sans-serif. Faint translucent "MLCC" watermark ghosted across background.
+
+The image should feel like a premium publication cover — magazine-quality, not a blog header. Clean, warm, authoritative, eye-catching.
 ```
 
-画面主体：指尖捏着微小MLCC + 铜色数据流线环绕
-背景：暖象牙白纸色
-风格：产业研究刊物封面
-禁止：剖面蓝图（Image2做不准）、任何额外文字
+画面主体：上方大字标题"MLCC·多层片式陶瓷电容器" + 下方指尖捏MLCC + 数据流线
+标题要求：大号、粗体、衬线字体、深海军蓝/炭灰色、杂志封面感
+禁止：剖面蓝图、多余文字
 
 ## image2-alternative
 
 ```
-Clean editorial composition on warm cream paper. CENTER: A single 0402 MLCC standing alone on the surface, casting a long soft shadow. Warm beige ceramic, silver end caps. Surrounding it, subtle copper-gold data nodes and steel-blue connection lines radiate outward like a constellation map — suggesting this tiny component connects to vast systems. Warm, authoritative, clean. Bottom-left: small "公众号：链流 ChainFlow". Faint "MLCC" watermark. No other text. 3:4 vertical.
-```
+WeChat cover image. 3:4 vertical. Warm cream paper background.
 
-画面主体：单颗MLCC + 四周辐射数据节点
-风格：极简但有重量感，星座图般的连线
+TOP HALF: Large elegant Chinese title in deep navy serif — "MLCC·多层片式陶瓷电容器" — dominating the upper portion, clean and bold.
+
+BOTTOM HALF: A single 0402 MLCC on a fingertip, tiny against the skin texture. Copper-gold data nodes and steel-blue connection lines radiate outward like a constellation. Bottom-left: small "公众号：链流 ChainFlow". Faint "MLCC" watermark. No other text.
+
+Premium, warm, authoritative — a magazine cover, not a tech blog.
+```
 
 
 ---

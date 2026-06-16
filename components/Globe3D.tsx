@@ -1,20 +1,14 @@
 "use client";
 
 import { useRef, useMemo, Suspense } from "react";
-import { Canvas, useFrame, useLoader, type ThreeEvent } from "@react-three/fiber";
+import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls, Stars, Sphere, Line } from "@react-three/drei";
 import * as THREE from "three";
-import { feature } from "topojson-client";
-import worldTopo from "world-atlas/countries-110m.json";
 
 /* ═══════════════════════════════════════
    3D 地球 — Three.js + 玻璃拟态
-   国际航线 · 铁路公路网 · 人口热力 · 拖拽旋转
+   国际航线 · 城市节点 · 人口热力 · 拖拽旋转
    ═══════════════════════════════════════ */
-
-const topoAny = worldTopo as any;
-const landData = feature(topoAny, topoAny.objects.land);
-const countriesData = feature(topoAny, topoAny.objects.countries);
 
 // 经纬度→3D球面坐标
 function latLngToVec3(lat: number, lng: number, radius: number): THREE.Vector3 {
@@ -55,66 +49,14 @@ function ArcCurve(start: THREE.Vector3, end: THREE.Vector3, radius: number): THR
 }
 
 function EarthSurface({ radius }: { radius: number }) {
-  const meshRef = useRef<THREE.Mesh>(null);
-  const bordersRef = useRef<THREE.Group>(null);
-
-  // 海洋底色 + 大陆边界
-  const borderLines = useMemo(() => {
-    const lines: THREE.Vector3[][] = [];
-    if (landData) {
-      const coords = (landData as any).geometry?.coordinates || [];
-      const processRing = (ring: number[][]) => {
-        const pts: THREE.Vector3[] = [];
-        ring.forEach(([lng, lat]) => {
-          if (lat == null || lng == null) return;
-          pts.push(latLngToVec3(lat, lng, radius * 1.002));
-        });
-        if (pts.length > 2) lines.push(pts);
-      };
-      coords.forEach((poly: any) => {
-        if (Array.isArray(poly[0]?.[0]?.[0])) {
-          poly.forEach((ring: number[][]) => processRing(ring));
-        } else if (Array.isArray(poly[0]?.[0])) {
-          processRing(poly[0]);
-        }
-      });
-    }
-    return lines;
-  }, [radius]);
-
   return (
     <group>
-      {/* 海洋球体 */}
-      <Sphere ref={meshRef} args={[radius, 64, 64]}>
-        <meshStandardMaterial
-          color="#0a1628"
-          roughness={0.9}
-          metalness={0.1}
-          emissive="#001a33"
-          emissiveIntensity={0.15}
-        />
+      <Sphere args={[radius, 64, 64]}>
+        <meshStandardMaterial color="#0a1628" roughness={0.9} metalness={0.1} emissive="#001a33" emissiveIntensity={0.15} />
       </Sphere>
-
-      {/* 大陆轮廓 — 发光蓝线 */}
-      <group ref={bordersRef}>
-        {borderLines.map((pts, i) => (
-          <Line key={i} points={pts} color="#1e90ff" lineWidth={0.6} transparent opacity={0.5} />
-        ))}
-      </group>
-
-      {/* 大陆填充 — 微光半透明 */}
-      <Sphere args={[radius * 1.001, 64, 64]}>
-        <meshStandardMaterial
-          color="#0d2137"
-          roughness={0.6}
-          metalness={0.3}
-          transparent
-          opacity={0.5}
-          side={THREE.FrontSide}
-        />
+      <Sphere args={[radius * 1.002, 64, 64]}>
+        <meshStandardMaterial color="#0d2137" roughness={0.6} metalness={0.3} transparent opacity={0.4} side={THREE.FrontSide} />
       </Sphere>
-
-      {/* 经纬网 */}
       <GridLines radius={radius} />
     </group>
   );
