@@ -17,9 +17,9 @@ const ROUTES: [number,number,number,number][] = [
   [31.2,121.5,1.3,103.8],[31.2,121.5,25.3,55.3],[31.2,121.5,-118.3,33.7],[31.2,121.5,51.5,-0.1],[31.2,121.5,-33.9,151.2],[1.3,103.8,25.3,55.3],[25.3,55.3,51.5,-0.1],[51.5,-0.1,40.7,-74.0],[-118.3,33.7,40.7,-74.0],[31.2,121.5,-23.9,-46.3],[22.5,114.1,1.3,103.8],[1.3,103.8,18.9,72.8],[25.3,55.3,41.0,29.0],[51.5,-0.1,41.0,29.0],[31.2,121.5,55.8,37.6],[22.5,114.1,55.8,37.6],
 ];
 
-function latLngToVec3(lat: number, lng: number, r: number): THREE.Vector3 {
+function latLngToVec3(lat: number, lng: number, r: number, T: any): any {
   const phi = (90 - lat) * (Math.PI / 180), theta = (lng + 180) * (Math.PI / 180);
-  return new THREE.Vector3(-r * Math.sin(phi) * Math.cos(theta), r * Math.cos(phi), r * Math.sin(phi) * Math.sin(theta));
+  return new T.Vector3(-r * Math.sin(phi) * Math.cos(theta), r * Math.cos(phi), r * Math.sin(phi) * Math.sin(theta));
 }
 
 function loadThree(): Promise<any> {
@@ -68,14 +68,14 @@ export default function Globe3D() {
 
     // 经纬网
     const gridG = new THREE.Group();
-    for (let lat = -60; lat <= 60; lat += 30) { const pts: THREE.Vector3[] = []; for (let lng = 0; lng <= 360; lng += 3) pts.push(latLngToVec3(lat, lng, R * 1.004)); gridG.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts), new THREE.LineBasicMaterial({ color: 0x1e3a5f, transparent: true, opacity: 0.25 }))); }
-    for (let lng = 0; lng < 360; lng += 30) { const pts: THREE.Vector3[] = []; for (let lat = -90; lat <= 90; lat += 3) pts.push(latLngToVec3(lat, lng, R * 1.004)); gridG.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts), new THREE.LineBasicMaterial({ color: 0x1e3a5f, transparent: true, opacity: 0.25 }))); }
+    for (let lat = -60; lat <= 60; lat += 30) { const pts: any[] = []; for (let lng = 0; lng <= 360; lng += 3) pts.push(latLngToVec3(lat, lng, R * 1.004, THREE)); gridG.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts), new THREE.LineBasicMaterial({ color: 0x1e3a5f, transparent: true, opacity: 0.25 }))); }
+    for (let lng = 0; lng < 360; lng += 30) { const pts: any[] = []; for (let lat = -90; lat <= 90; lat += 3) pts.push(latLngToVec3(lat, lng, R * 1.004, THREE)); gridG.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts), new THREE.LineBasicMaterial({ color: 0x1e3a5f, transparent: true, opacity: 0.25 }))); }
     globeGroup.add(gridG);
 
     // 航线
     const routeG = new THREE.Group();
     ROUTES.forEach(([la1, lo1, la2, lo2]) => {
-      const a = latLngToVec3(la1, lo1, R * 1.06), b = latLngToVec3(la2, lo2, R * 1.06);
+      const a = latLngToVec3(la1, lo1, R * 1.06, THREE), b = latLngToVec3(la2, lo2, R * 1.06, THREE);
       const mid = a.clone().add(b).normalize().multiplyScalar(R * 1.4);
       const c = new THREE.CubicBezierCurve3(a.clone(), mid.clone().lerp(a, 0.3), mid.clone().lerp(b, 0.3), b.clone());
       routeG.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(c.getPoints(35)), new THREE.LineBasicMaterial({ color: 0x00bfff, transparent: true, opacity: 0.3 })));
@@ -84,12 +84,12 @@ export default function Globe3D() {
 
     // 城市点
     const cityG = new THREE.Group();
-    HUBS.forEach(([lat, lng]) => { const dot = new THREE.Mesh(new THREE.SphereGeometry(0.025, 8, 8), new THREE.MeshBasicMaterial({ color: 0x00e5ff })); dot.position.copy(latLngToVec3(lat, lng, R * 1.015)); cityG.add(dot); });
+    HUBS.forEach(([lat, lng]) => { const dot = new THREE.Mesh(new THREE.SphereGeometry(0.025, 8, 8), new THREE.MeshBasicMaterial({ color: 0x00e5ff })); dot.position.copy(latLngToVec3(lat, lng, R * 1.015, THREE)); cityG.add(dot); });
     globeGroup.add(cityG);
 
     // 热力
     const heatG = new THREE.Group();
-    [[31.2,121.5],[39.9,116.4],[18.9,72.8],[35.7,139.8],[40.7,-74.0],[-118.3,33.7],[-23.9,-46.3],[19.4,-99.1]].forEach(([la, lo]) => { const dot = new THREE.Mesh(new THREE.SphereGeometry(0.04, 16, 16), new THREE.MeshBasicMaterial({ color: 0xff4400, transparent: true, opacity: 0.6 })); dot.position.copy(latLngToVec3(la, lo, R * 1.012)); heatG.add(dot); });
+    [[31.2,121.5],[39.9,116.4],[18.9,72.8],[35.7,139.8],[40.7,-74.0],[-118.3,33.7],[-23.9,-46.3],[19.4,-99.1]].forEach(([la, lo]) => { const dot = new THREE.Mesh(new THREE.SphereGeometry(0.04, 16, 16), new THREE.MeshBasicMaterial({ color: 0xff4400, transparent: true, opacity: 0.6 })); dot.position.copy(latLngToVec3(la, lo, R * 1.012, THREE)); heatG.add(dot); });
     globeGroup.add(heatG);
 
     // 星空
