@@ -3,10 +3,21 @@
 ## image2-primary
 
 ```
-A clean split-screen diptych on warm cream background. LEFT (2018): A stack of uniform ceramic blocks neatly arranged but slightly tilted — suggesting an orderly inventory that became excess. Warm grey-beige tones. RIGHT (2026): A single ceramic block showing intricate internal layering, glowing slightly from within with copper and amber warmth — suggesting real value and structural complexity. The two sides separated by a thin gap. Clean, editorial, conceptual. Warm, professional, not dark or ominous. No text. 3:4 vertical.
+Premium split-screen infographic, 3:4 vertical. Deep dark navy to charcoal gradient background.
+
+LEFT HALF (labeled "2018" in muted grey): A hyper-realistic 3D render of multiple identical MLCC capacitors stacked neatly in a pyramid — suggesting inventory hoarding. Cool grey-blue tones. A small annotation: "Channel inventory: 6-7 months". The visual suggests abundance that turned out to be illusion.
+
+RIGHT HALF (labeled "2026" in bright copper-gold): A single hyper-realistic MLCC stands alone on a dark reflective surface, dramatically lit. Behind it, a large semi-transparent factory silhouette with a clock icon showing "18-24 months". Annotation: "Channel inventory: 1-1.5 months". The visual suggests genuine scarcity.
+
+CENTER DIVIDER: A thin vertical gap with a subtle lightning-bolt icon — the shock of contrast.
+
+BOTTOM SECTION: A clean comparison table with 5 rows (Cause, Driver, Inventory, Price behavior, Resolution) and 2 columns (2018, 2026). Flat-vector card style with cyan and gold accent borders.
+
+Dark, dramatic contrast, premium editorial aesthetic. Not warm paper.
+```
 
 ## image2-alternative
 
 ```
-A single MLCC photographed twice, side by side on warm cream surface. LEFT: surrounded by multiple identical clones arranged neatly — abundance that was inventory illusion. RIGHT: standing alone, lit by a clean focused beam from above — real scarcity driven by real demand. The contrast is clear but presented with editorial restraint, not drama. Clean, warm, professional. 3:4 vertical.
+Conceptual comparison diptych. 3:4 vertical. Dark background. LEFT: a tower of ceramic blocks on the verge of toppling — speculative bubble metaphor, cold grey-blue. RIGHT: a single ceramic block pressed against an unyielding dark wall by an invisible upward force — real demand meets rigid supply, warm copper-amber. Clean split down the middle. Dramatic, editorial, premium.
 ```

@@ -4,7 +4,7 @@
 
 ## 公众号封面图
 
-⚠️ 横构图 2.35:1，不是 3:4 竖版。公众号文章顶部头图。
+⚠️ 横构图 2.35:1，不是 3:4 竖版。核心元素需居中，适配手机端方形裁剪。
 
 ### 文章标题
 十张图拆解 MLCC：AI 算力军备竞赛背后，藏着一颗比米粒还小的器件
@@ -12,20 +12,32 @@
 ### 正向生图提示词
 
 ```
-Premium WeChat article cover, 2.35:1 widescreen cinematic ratio, 1800x768px. Deep navy-blue to dark teal gradient background with subtle hexagonal grid and circuit-trace decorative elements at low opacity. A hyper-realistic 3D render of an 0402 MLCC capacitor (1.0x0.5mm, warm beige ceramic body, brilliant gold-metallic end caps) placed side-by-side with a single grain of white rice — symmetrical comparison, MLCC left, rice right, both floating above a dark reflective surface. Cinematic lighting from upper-left, sharp highlights, defined shadows, high contrast. The upper 30% of the frame is reserved as a dark gradient zone suitable for white Chinese title text overlay in post-production. Fine cyan annotation lines with precise dimension callouts (1.0mm, 0.5mm). Subtle copper-gold data nodes and connection lines weaving in the background, suggesting supply chain networks. Bottom-left corner: very small muted grey text "公众号：链流 ChainFlow". Faint translucent "MLCC" watermark ghosted at 6-8% opacity. Premium tech-industry magazine aesthetic — dark, sophisticated, high-contrast, precise. 8K resolution, hyper-detailed, professional product photography quality, cinematic lighting, --ar 2.35:1
+WeChat article cover image, 2.35:1 widescreen, center-composed for mobile square-crop compatibility. Deep graphite-navy gradient background, dark and substantial — not pure black, not bright blue. The background has a subtle flowing-water texture at very low opacity (5-8%), evoking the brand concept "supply chains flow like water." A hyper-realistic 3D render of an 0402 MLCC capacitor (1.0x0.5mm, warm beige ceramic body, subtle metallic end caps) rests on a dark reflective surface at the center of the composition — small, precise, anchoring the frame. From the capacitor, flowing copper-gold data stream lines radiate outward and upward like a river delta, branching into thinner steel-blue tributaries. These lines suggest supply chain information flowing from a single critical component to global networks. The upper third is a dark gradient zone reserved for white Chinese title text overlay. Small annotation: a human hair crosses the frame near the MLCC for scale — the capacitor is dwarfed by it. Bottom-left: very small muted grey text "公众号：链流 ChainFlow". No other text. The image should feel like a premium supply chain intelligence publication — dark, precise, flowing, authoritative. Not a consumer tech blog. Not a generic tech cover. The water/flow metaphor is ChainFlow's brand DNA. 8K, cinematic lighting, hyper-detailed, --ar 2.35:1
 ```
 
 ### 负面提示词
 
 ```
-warm cream paper background, beige tones, vintage style, hand-drawn, sketch, cartoon, illustration, bright daylight, overexposed, blurry, low contrast, minimalist poster, blog header, white background, light mode, pastel colors, organic texture, grunge, handwritten text, cluttered, flat design without depth
+bright daylight, white background, cream paper, beige tones, warm pastel, cartoon, illustration, hand-drawn, sketch, overexposed, blurry, minimalist poster, tech blog header, sci-fi neon, cyberpunk, circuit board pattern, motherboard, server rack, data center, generic stock photo, flat design without depth, cluttered, chaotic
 ```
 
 ### 适配说明
 
-- 吸收参考图优点：深色科技感背景 + 实物并置对比构图 + 电影级光影 + 技术标注线 + 高信息密度
-- 匹配品牌规范：铜金数据节点呼应 ChainFlow 供应链视角，深蓝底色延续系列统一调性
-- 标题安全区：上方30%暗色渐变，为白色中文标题预留空间
+- 品牌基因：深色底+流动数据线+微小器件锚点 = ChainFlow"让供应链如水一般"
+- 构图逻辑：中央聚焦MLCC+尺度对比(头发丝)+数据流辐射 = 供应链视角，不是科普视角
+- 手机适配：核心元素居中，方形裁剪不失焦
+
+---
+
+## 第01页 — 脚本
+
+# 01｜封面
+
+## 页面编号
+01 / 10
+
+## 页面标题
+MLCC·多层片式陶瓷电容器
 
 ---
 
@@ -101,31 +113,25 @@ ChainFlow 品牌文档。
 ## image2-primary
 
 ```
-WeChat official account cover image. 3:4 vertical, 1080x1440px. Warm ivory paper background with subtle fiber texture.
+WeChat article cover image. 3:4 vertical aspect ratio, 1080x1440px.
 
-UPPER PORTION (top 30-40%): A large, bold, elegant Chinese title in deep navy/charcoal serif font — "MLCC·多层片式陶瓷电容器" — clean and prominent, like a magazine cover headline.
+BACKGROUND: Deep navy-blue to dark teal gradient, smooth and premium. Subtle hexagonal grid or circuit-trace pattern at 5-10% opacity for technical texture.
 
-CENTER-LOWER: A human fingertip holding a tiny 0402 MLCC (1.0×0.5mm). The capacitor is shockingly small — a grain of sand, 5% of the frame. Razor-sharp focus: warm beige ceramic body, shiny silver end caps. Surrounding it, flowing data stream lines and glowing node points in muted copper and steel blue weave across the composition — supply chain data flows.
+COMPOSITION: Hyper-realistic 3D render of an 0402 MLCC capacitor (1.0x0.5mm, warm beige ceramic body, brilliant gold-metallic end caps on both ends) positioned side-by-side with a single grain of white rice. Symmetrical comparison — MLCC on the left, rice on the right. Both objects are isolated, floating slightly above a reflective dark surface. Lit from upper-left with cinematic contrast — sharp highlights, defined shadows.
 
-Bottom-left corner: "公众号：链流 ChainFlow" in very small subtle muted grey sans-serif. Faint translucent "MLCC" watermark ghosted across background.
+TYPOGRAPHY: Large, bold, refined sans-serif title in bright white/cyan at upper portion: "MLCC". Below it, smaller subtitle in muted silver: "The Invisible Staple Inside Every Smart Device". Clean horizontal decorative line above the title in copper-gold.
 
-The image should feel like a premium publication cover — magazine-quality, not a blog header. Clean, warm, authoritative, eye-catching.
+TECHNICAL DETAILS: Fine cyan or steel-blue annotation lines pointing to the MLCC with precise dimension callouts (1.0mm, 0.5mm). Subtle scale indicator "100:1" in the bottom-right corner.
+
+BRANDING: Bottom-left corner — very small, muted grey text: "公众号：链流 ChainFlow". Faint translucent "MLCC" watermark lettering ghosted across the background at 8-10% opacity.
+
+STYLE: Premium tech-industry magazine cover. Dark, sophisticated, high-contrast, precise. Cool-toned with warm gold accents. Not a blog header. Not warm cream paper. Not minimalist poster.
 ```
-
-画面主体：上方大字标题"MLCC·多层片式陶瓷电容器" + 下方指尖捏MLCC + 数据流线
-标题要求：大号、粗体、衬线字体、深海军蓝/炭灰色、杂志封面感
-禁止：剖面蓝图、多余文字
 
 ## image2-alternative
 
 ```
-WeChat cover image. 3:4 vertical. Warm cream paper background.
-
-TOP HALF: Large elegant Chinese title in deep navy serif — "MLCC·多层片式陶瓷电容器" — dominating the upper portion, clean and bold.
-
-BOTTOM HALF: A single 0402 MLCC on a fingertip, tiny against the skin texture. Copper-gold data nodes and steel-blue connection lines radiate outward like a constellation. Bottom-left: small "公众号：链流 ChainFlow". Faint "MLCC" watermark. No other text.
-
-Premium, warm, authoritative — a magazine cover, not a tech blog.
+WeChat cover. 3:4 vertical. Deep dark blue-purple gradient background with subtle data-node constellation pattern. CENTER: hyper-realistic 3D render of a single 0402 MLCC dramatically lit — warm beige body, brilliant gold-silver end caps, casting a long sharp shadow across a dark reflective surface. UPPER: large white title "MLCC" with copper-gold subtitle. Fine cyan dimension callouts. Small bottom-left branding. Dark, cinematic, premium. Cool-toned, high-end industrial aesthetic.
 ```
 
 
@@ -208,13 +214,23 @@ MLCC-F014, F015, F020；封装尺寸来自 EIA 标准；设备用量量级来自
 ## image2-primary
 
 ```
-Clean scale comparison photograph on a warm cream paper surface. A standard 0402 MLCC (1.0×0.5mm) photographed alongside a single grain of rice, a sesame seed, and a human hair — all arranged neatly in a row. The MLCC is in sharp focus: warm beige ceramic body, silver metallic end caps. Warm, soft natural daylight from above. Museum archival specimen photography style — like an exhibit in a science museum, not a cold laboratory shot. The image communicates "this is shockingly small" through visual comparison, without words. Warm ivory background. Clean, professional, inviting. 3:4 vertical. No text, no labels, no scale bars.
+Technical comparison infographic. 3:4 vertical. Deep navy-blue gradient background with subtle grid texture.
+
+CENTER: Hyper-realistic 3D renders of MLCC capacitors in descending size order — from 1206 (3.2mm) down to 008004 (0.25mm) — arranged in a clean horizontal row. Each capacitor is a precise white/beige ceramic block with dark grey metallic end caps. The size progression is dramatic and immediately readable.
+
+SCALE REFERENCE: A single human hair (≈80μm diameter) stretches horizontally across the bottom portion as the ultimate scale anchor. Next to the 008004, a magnified callout circle shows the hair next to the capacitor for direct comparison.
+
+TECHNICAL ANNOTATIONS: Clean cyan and white dimension labels below each capacitor (imperial code + metric size). Copper-gold accent for the smallest 008004 to highlight the extreme end.
+
+INFO BOXES: Three small data cards in the lower section — smartphone ~500-1000 units, laptop ~1000-2000, AI server thousands+. Clean flat vector cards with bright accent borders.
+
+Dark, premium, hyper-precise. Cool navy background with warm gold and bright cyan accents. Not warm paper. Not minimalist.
 ```
 
 ## image2-alternative
 
 ```
-A single 0402 MLCC sitting on a warm-toned fingertip. The MLCC is perfectly sharp, revealing ceramic texture. The fingertip fills the lower portion of the frame, providing human scale — the component appears tiny against fingerprint ridges. Clean, soft natural lighting. Warm, editorial photography style. Cream-toned background. 3:4 vertical.
+Scale comparison infographic. 3:4 vertical. Dark deep-blue background. CENTER: hyper-realistic 3D renders of common objects in a row for size comparison — a coin (18mm), a grain of rice (5mm), a sesame seed (3mm), an 0402 MLCC (1mm), and a human hair (0.08mm). Each annotated with clean dimension labels. Bright cyan and white callouts. The MLCC is dramatically the smallest — the visual shock is immediate. Dark, premium, technical.
 ```
 
 
@@ -293,39 +309,25 @@ MLCC 剖面图——SEM 风格或高精度 3D 剖面渲染。灰阶为主，陶�
 ## image2-primary
 
 ```
-Clean technical cross-section illustration of an MLCC capacitor, perfectly cut through the vertical center. Alternating layers of warm beige ceramic dielectric and dark nickel internal electrodes — approximately 15-30 visible layer pairs. CRITICAL STRUCTURAL ACCURACY — THE DEFINING FEATURE OF MLCC:
+Technical cross-section illustration. 3:4 vertical. Deep dark-teal background.
 
-Study this ASCII cross-section diagram carefully before generating:
+MAIN VISUAL: A large hyper-realistic 3D cutaway render of an MLCC capacitor, sliced perfectly through the vertical center. The internal structure is revealed as a precise "layer cake":
 
+- White/cream ceramic dielectric layers (BaTiO3) — matte, slightly textured
+- Gold/copper metallic internal electrode layers (Nickel) — glossy, reflective
+- The electrodes ALTERNATE: odd layers extend from the LEFT termination toward the right (stopping just short of the right edge), even layers extend from the RIGHT termination toward the left (stopping just short of the left edge). This cantilevered alternating pattern is the defining structural feature and must be clearly visible.
+- Approximately 15-20 visible layer pairs
+- Left and right termination caps show three distinct layers: copper base (warm brown), nickel barrier (grey), tin plating (bright silver)
+
+LAYOUT: Left 60% — the large cross-section render. Right 40% — clean flat-design annotation cards with cyan connector lines pointing to: Ceramic Dielectric, Ni Internal Electrode, Cu/Ni/Sn Termination. Bottom section — a clean formula card: C_total ≈ n × εr ε0 A / d.
+
+Dark background, premium technical illustration style, cool-toned with warm gold electrode accents. High information density. Not warm paper.
 ```
-LEFT TERMINATION          RIGHT TERMINATION
-    |                          |
-    |---[Ni electrode A]-------|xxxxx  ← A spans left→near-right, connects LEFT
-    |   CERAMIC DIELECTRIC     |
-    |xxxxx[Ni electrode B]-----|      ← B spans right→near-left, connects RIGHT
-    |   CERAMIC DIELECTRIC     |
-    |---[Ni electrode A]-------|xxxxx  ← A again, connects LEFT
-    |   CERAMIC DIELECTRIC     |
-    |xxxxx[Ni electrode B]-----|      ← B again, connects RIGHT
-    |   CERAMIC DIELECTRIC     |
-    |                          |
-```
-
-KEY POINTS:
-- Every Ni electrode connects to ONLY ONE side (left or right), never both
-- Electrodes from left and right ALTERNATE in the vertical stack: A-B-A-B-A-B...
-- Each electrode extends MOST of the way across but stops SHORT of the opposite termination
-- The GAP (marked xxxxx) at the far end of each electrode prevents short-circuiting
-- Between any adjacent A and B electrode is a thin ceramic dielectric layer
-- The vertical overlap zone between adjacent A and B electrodes IS the capacitor
-- This is repeated hundreds of times in a real MLCC
-
-The image must show: electrodes cantilevered from alternating sides, NOT continuous plates spanning the full width. The left-right alternating pattern must be clearly visible in the cross-section. Left and right terminations show three distinct layers: copper base, nickel barrier, tin plating. Rendered as a precise engineering patent drawing on warm cream paper — navy blue and copper linework, like a vintage technical diagram but clean and modern. Neutral light grey background or warm paper tone. Scientific precision, editorial warmth. Not dark, not clinical. No text, no labels, no arrows. 3:4 vertical.
 
 ## image2-alternative
 
 ```
-High-precision 3D cutaway render of an MLCC. The front half removed to reveal the interleaved internal electrode structure — cantilevered electrodes from alternating sides — odd layers from left, even from right — overlapping vertically through the dielectric layer, forming each capacitive unit. Warm beige ceramic dielectric, dark nickel electrodes, copper and tin terminations. Photorealistic materials with subtle grain on the ceramic. Soft studio lighting from upper left on a clean warm grey background. Technical illustration quality — engineering accuracy, magazine beauty. No text. 3:4 vertical.
+3D exploded-view render. 3:4 vertical. Dark navy background. The MLCC is split open vertically — ceramic body halves pulled apart to reveal the internal alternating electrode structure fanned out like pages of a book. White ceramic layers, gold electrodes, silver terminations. Clean, precise, engineering-rendering quality. Annotation lines in cyan. Dark and premium.
 ```
 
 
@@ -410,12 +412,19 @@ MLCC-F003, F004, F005, F006, F007, F013, F016。EIA-198 编码规则已从标准
 ## image2-primary
 
 ```
-Clean macro photograph of a circuit board surface. A cluster of tiny MLCC capacitors densely packed near a BGA chip. Shallow depth of field — foreground capacitors sharp, background softly blurred. The PCB's natural green-gold tones provide warmth. Warm, soft daylight — not dramatic, not moody. Like looking through a magnifying glass at a well-made circuit board. Clean, inviting, professional. No text. 3:4 vertical.
+Technical data visualization infographic. 3:4 vertical. Deep navy-blue background.
+
+UPPER HALF: A clean comparison matrix showing four capacitor classes — C0G/NP0, X7R, X5R, Y5V. Each has a horizontal temperature range bar (X-axis: -55°C to +150°C) with colored tolerance bands showing capacitance change. C0G is a near-flat thin line (high stability), Y5V is a wildly swinging wide band (poor stability). Bright cyan and orange color coding. Clean flat-vector chart style.
+
+LOWER HALF: A dramatic funnel diagram. At the top — "Nominal 10μF (100%)". As it descends through three filter stages (DC Bias → Temperature → Aging), the funnel narrows, and the output at bottom reads "Effective: 2-5μF (20-50%)". Each filter stage is a distinct color block with a brief annotation. Copper-gold for the final effective value to emphasize the dramatic drop.
+
+Dark background, high information density, premium data-visualization aesthetic. Flat-vector charts with hyper-realistic component renders as small accent elements. Cool-toned with warm gold and bright cyan highlights.
+```
 
 ## image2-alternative
 
 ```
-Conceptual still life: a single MLCC on a warm cream surface, casting a long soft shadow that transforms into a subtle waveform curve. Minimal, editorial, warm. The metaphor: a tiny component shapes signal integrity. Cream background, soft natural light. 3:4 vertical.
+Clean technical infographic. 3:4 vertical. Dark blue-purple gradient background. LEFT: temperature characteristic comparison chart with C0G/X7R/X5R curves — precise line graphs with labeled axes. RIGHT: cascading waterfall diagram showing capacitance degradation from nominal 100% down to effective ~30%. Bright cyan and orange data points. Premium, technical, data-rich. Dark background.
 ```
 
 
@@ -533,12 +542,21 @@ MLCC-F008, F012。碳酸钡/稀土/矿源数据来自产业研究报告——标
 ## image2-primary
 
 ```
-Scientific micrograph of barium titanate ceramic powder particles at nanoscale. Spherical particles 100-300nm, densely packed but individually distinguishable. Clean greyscale with subtle warm tones — genuine research documentation aesthetic. Light neutral grey background. Suitable as full-page texture or section image. No text, no scale bars. 3:4 vertical.
+Premium infographic, 3:4 vertical. Deep dark blue-purple gradient background with subtle molecular-structure pattern.
+
+UPPER SECTION: A hyper-realistic 3D render of barium titanate (BaTiO3) powder particles at nanoscale — spherical particles 100-300nm, dense but individually distinguishable, with subtle warm beige-gold tones against the dark background. Scientific-research aesthetic, like an electron microscope image enhanced for publication quality.
+
+MIDDLE SECTION: A vertical supply-chain flow diagram rendered in clean flat-vector style. Five tiers from bottom to top: Raw Minerals (Barite, Ilmenite) → High-Purity Intermediates (BaCO3 5N, TiO2 5N) → BaTiO3 Powder → MLCC Manufacturing → End Products. Each tier is a distinct color-coded block with copper-gold connector arrows flowing upward. Key suppliers labeled in small clean text beside each tier: Sakai Chemical 28%, Sinocera 22%, Ferro 18% (marked as "estimated").
+
+LOWER SECTION: Three small info cards with bright cyan accent borders — "Bottleneck 1: BaCO3 5N global duopoly", "Bottleneck 2: Rare earth dopants 90% China, export controlled", "Bottleneck 3: Nano-Ni powder Japan dominant".
+
+Dark, premium, data-rich. Cool-toned background with warm gold material accents. High information density. Not warm paper.
+```
 
 ## image2-alternative
 
 ```
-Industrial documentary photograph: ceramic powder production facility, cleanroom interior with stainless steel milling equipment. Soft natural light through viewing windows. A worker in cleanroom suit in the distance. Observational, not staged — the upstream of the upstream. Clean, airy, professional. No logos, no brand names, no identifiable faces. 3:4 vertical.
+Scientific infographic. 3:4 vertical. Dark navy background with subtle particle texture. Large central 3D render of BaTiO3 crystal structure — ball-and-stick molecular model with gold, red, and white atoms. Surrounding it, flat-design flowchart showing the upstream supply chain from mines to MLCC. Bright cyan and copper-gold data labels. Dark, premium, precise.
 ```
 
 
@@ -622,12 +640,24 @@ MLCC-F010, F017。制造流程为通用工艺框架。良率乘数公式为数�
 ## image2-primary
 
 ```
-Cleanroom interior of an electronic component manufacturing facility. Rows of precision machinery under soft diffused lighting. Shot from mezzanine looking down the production line. The atmosphere is sterile yet warm — not cold or clinical. Warm ambient tones from the cleanroom lighting. No people visible or distant silhouettes only. Clean, professional, like an architectural photograph of advanced manufacturing. No logos, no brand names, no text. 3:4 vertical.
+Premium industrial infographic, 3:4 vertical. Deep dark-teal to navy gradient background.
+
+MAIN VISUAL: A vertical 4-stage manufacturing process flow, each stage a distinct colored card with rounded corners, connected by bright copper-gold arrows flowing downward.
+
+Stage 1 (cyan accent): "Tape Casting" — hyper-realistic 3D render of a thin translucent ceramic green sheet emerging from precision machinery, glowing with warm amber backlight.
+Stage 2 (blue accent): "Screen Printing + Stacking" — 3D render showing electrode patterns being printed onto green sheets, sheets stacking up.
+Stage 3 (orange accent): "Co-firing" — 3D render of ceramic and nickel layers inside a furnace, shrinking together at 1100-1300°C. Labeled as "THE CRITICAL BOTTLENECK".
+Stage 4 (gold accent): "Testing & Sorting" — 3D render of individual capacitors being tested at high speed.
+
+BOTTOM SECTION: A dramatic formula display — "0.95^11 ≈ 0.57" in large copper-gold text. Below it: "Yield is multiplicative, not additive" in white. This visualizes why manufacturing consistency is the real barrier.
+
+Dark background, premium industrial aesthetic. Clean flat-vector layout with hyper-realistic 3D accent renders. High information density. Not warm paper.
+```
 
 ## image2-alternative
 
 ```
-Abstract close-up: a thin translucent ceramic green sheet emerging from a tape casting machine. The sheet glows with warm backlight, revealing its uniform thickness. Smooth, organic texture like handmade paper but with machine precision. Warm cream and amber tones. Clean light background. No text. 3:4 vertical.
+Industrial process infographic. 3:4 vertical. Dark navy background. Horizontal 4-step flow diagram from left to right: Slurry → Tape Cast → Stack → Fire → Test. Each step has a stylized equipment icon and key parameter callouts (temperature, pressure, thickness). Copper-gold flow arrows. Bright accent borders on bottleneck steps. Clean, precise, engineering aesthetic. Dark background.
 ```
 
 
@@ -765,12 +795,21 @@ MLCC-F012, F015, F016, F018, F019。粉体和碳酸钡数据来自产业研究�
 ## image2-primary
 
 ```
-Clean, minimalist world map focused on East Asia — Japan, Korea, Taiwan, southern China coastline. Rendered as a light-toned cartographic illustration with subtle warm beige landmasses and steel blue ocean. Small copper-gold node points scattered along the coast indicating manufacturing clusters. Clean, professional, like an intelligence briefing map but warm and editorial — not military or surveillance aesthetic. Light cream background. No country labels, no borders marked. 3:4 vertical.
+Premium data infographic, 3:4 vertical. Deep navy-blue gradient background.
+
+MAIN VISUAL: A vertical funnel diagram showing supply chain concentration from top to bottom. TOP (widest): "Downstream — Highly Fragmented" with small icons representing automotive, AI servers, industrial, smartphones, IoT. MIDDLE (narrower): "Midstream — High Concentration" with company group labels (Japan: Murata, TDK, Taiyo Yuden | Korea: Samsung | Taiwan: Yageo, Walsin | China: Fenghua, Sanhuan). BOTTOM (narrowest): "Upstream — Extreme Concentration" with key suppliers listed (Sakai Chemical 28%, Sinocera 22%, Ferro 18% — marked "estimated"). The funnel visually demonstrates "control concentrates upward".
+
+RIGHT SIDE: A horizontal timeline bar showing certification lock-in — Consumer 1-3 months → Industrial 3-6 months → Automotive 2-3 years. The automotive segment ends with a lock icon in bright warning orange, labeled "AEC-Q200: 17 tests, zero failure".
+
+BOTTOM: Three small insight cards with bright accent borders — "Upstream controls the ceiling", "Certification is the moat", "Capacity ≠ supply elasticity".
+
+Dark, premium, data-dense. Cool navy background with warm gold accents for concentration data. Clean flat-vector layout. Not warm paper.
+```
 
 ## image2-alternative
 
 ```
-A bright, well-organized electronics components distribution center. Floor-to-ceiling shelves with neatly arranged component reels. Soft natural light. Clean, orderly, professional. The scale is impressive but the mood is calm and organized — not ominous. No logos, no text. 3:4 vertical.
+Supply chain map infographic. 3:4 vertical. Dark blue background with subtle world-map outline showing East Asia coastline. Glowing copper-gold node points indicate manufacturing clusters — Japan, Korea, Taiwan, southern China — connected by thin steel-blue supply lines. Clean data labels with company names and concentration percentages. Dark, premium, intelligence-briefing aesthetic.
 ```
 
 
@@ -939,12 +978,23 @@ A bright, well-organized electronics components distribution center. Floor-to-ce
 ## image2-primary
 
 ```
-A clean split-screen diptych on warm cream background. LEFT (2018): A stack of uniform ceramic blocks neatly arranged but slightly tilted — suggesting an orderly inventory that became excess. Warm grey-beige tones. RIGHT (2026): A single ceramic block showing intricate internal layering, glowing slightly from within with copper and amber warmth — suggesting real value and structural complexity. The two sides separated by a thin gap. Clean, editorial, conceptual. Warm, professional, not dark or ominous. No text. 3:4 vertical.
+Premium split-screen infographic, 3:4 vertical. Deep dark navy to charcoal gradient background.
+
+LEFT HALF (labeled "2018" in muted grey): A hyper-realistic 3D render of multiple identical MLCC capacitors stacked neatly in a pyramid — suggesting inventory hoarding. Cool grey-blue tones. A small annotation: "Channel inventory: 6-7 months". The visual suggests abundance that turned out to be illusion.
+
+RIGHT HALF (labeled "2026" in bright copper-gold): A single hyper-realistic MLCC stands alone on a dark reflective surface, dramatically lit. Behind it, a large semi-transparent factory silhouette with a clock icon showing "18-24 months". Annotation: "Channel inventory: 1-1.5 months". The visual suggests genuine scarcity.
+
+CENTER DIVIDER: A thin vertical gap with a subtle lightning-bolt icon — the shock of contrast.
+
+BOTTOM SECTION: A clean comparison table with 5 rows (Cause, Driver, Inventory, Price behavior, Resolution) and 2 columns (2018, 2026). Flat-vector card style with cyan and gold accent borders.
+
+Dark, dramatic contrast, premium editorial aesthetic. Not warm paper.
+```
 
 ## image2-alternative
 
 ```
-A single MLCC photographed twice, side by side on warm cream surface. LEFT: surrounded by multiple identical clones arranged neatly — abundance that was inventory illusion. RIGHT: standing alone, lit by a clean focused beam from above — real scarcity driven by real demand. The contrast is clear but presented with editorial restraint, not drama. Clean, warm, professional. 3:4 vertical.
+Conceptual comparison diptych. 3:4 vertical. Dark background. LEFT: a tower of ceramic blocks on the verge of toppling — speculative bubble metaphor, cold grey-blue. RIGHT: a single ceramic block pressed against an unyielding dark wall by an invisible upward force — real demand meets rigid supply, warm copper-amber. Clean split down the middle. Dramatic, editorial, premium.
 ```
 
 
@@ -1042,12 +1092,21 @@ MLCC-F006, F007, F011, F012, F019。供需趋势为定性方向性表达。
 ## image2-primary
 
 ```
-Clean conceptual still life: a single MLCC capacitor standing on a circuit board trace, like a bridge over a small gap. The perspective is from slightly above, looking down. The PCB provides warm green-gold tones. Soft, natural lighting. The metaphor is subtle: this tiny component connects two sides — without it, the circuit breaks. Editorial restraint, not drama. Warm cream and green-gold tones. No text. 3:4 vertical.
+Premium data infographic, 3:4 vertical. Deep navy-blue background.
+
+UPPER HALF: A dramatic supply-demand gap visualization. Two curves on a clean coordinate plane — a steep upward orange line (Demand: AI servers + EVs) and a shallow upward cyan line (Supply: high-end capacity). Between them, a widening red-shaded gap zone labeled "Structural Shortage". Flat-vector chart style, precise and clean.
+
+LOWER HALF: A vertical 3-stage gate diagram. Stage 1 (cyan): "Parameter Match" — capacitance, voltage, package, DC Bias curve check. Stage 2 (orange): "Engineering Verification" — thermal cycling, board flex, soldering, life testing. Stage 3 (red): "Supply Assurance" — lead time, channel, PCN/EOL risk, second source, counterfeit risk. Each stage is a distinct card with checklist icons. A large lock icon at the bottom: "All 3 gates must pass before substitution is valid." Copper-gold connector arrows flowing downward.
+
+Bottom-right: small annotation card — "Typical substitution timeline: Consumer 1-3 months, Automotive 12-18 months."
+
+Dark, premium, data-rich. High information density. Cool-toned with warm orange/red warning accents.
+```
 
 ## image2-alternative
 
 ```
-A clean hourglass on a warm cream surface. Instead of sand, the upper half contains a cascade of tiny MLCC capacitors. Some are flowing smoothly through the neck, a few paused at the narrowest point. The lower half is nearly empty. The metaphor: supply is running thin, and the bottleneck is visible. Clean, warm, editorial — not ominous or dark. Natural soft lighting. 3:4 vertical. No text.
+Conceptual visualization. 3:4 vertical. Dark background. UPPER: an hourglass where the upper half contains tiny MLCC capacitors flowing through a narrow neck — some stuck, creating a visible bottleneck. The lower half nearly empty. LOWER: three checkpoint cards showing the substitution verification gates. Dramatic, editorial, metaphorical. Premium quality.
 ```
 
 
@@ -1159,11 +1218,26 @@ AI 在每个环节可以做什么：
 ## image2-primary
 
 ```
-A calm, expansive waterscape at dawn — a wide river or lake with gentle ripples catching soft morning light. The water is clear and flowing, reflecting pale sky tones. In the distance, faint silhouettes of industrial infrastructure — ports, cranes, warehouses — visible through soft morning haze. The metaphor: supply chains flowing like water, infrastructure fading into the background, flow itself is the focus. Clean, serene, professional. Soft blue-grey and warm ivory tones. Not dark — gentle and hopeful. 3:4 vertical. No text.
+Premium strategic insight infographic, 3:4 vertical. Deep navy-blue gradient background with subtle flowing water pattern at low opacity — referencing the brand vision "Let supply chains flow like water."
+
+LAYOUT: Five signal cards arranged in a 3+2 staggered grid, each with a distinct accent color border (cyan, gold, orange, steel-blue, copper). Each card contains: a clean line-icon, a bold white title, and 2-3 lines of data text.
+
+CARD 1 (cyan): "Upstream Material Expansion" — watch ceramic powder and Ni paste supplier investment announcements. Lead time 2-3 years.
+CARD 2 (gold): "Auto-grade Line Utilization" — if utilization hits 95%+, non-automotive customers get squeezed.
+CARD 3 (orange): "Domestic Certification Progress" — each new Tier1 qualification widens the substitution window.
+CARD 4 (steel-blue): "Technology Gap" — Murata at 006003, domestic majority at 0402+. Gap = years of catch-up.
+CARD 5 (copper): "Alternative Penetration" — silicon capacitors, thin-film capacitors in specific high-frequency niches.
+
+BOTTOM: A clean horizontal flow diagram — five connected nodes: Data → Signal → Judgment → Action → Flow. Each node is a glowing copper-gold circle connected by bright cyan arrows. This is the ChainFlow brand framework visualized.
+
+Bottom-left: small "公众号：链流 ChainFlow". Faint "MLCC" watermark.
+
+Dark, premium, strategic. Cool navy background with warm gold and bright cyan accents. High information density with elegant card layout. Not warm paper.
+```
 
 ## image2-alternative
 
 ```
-Abstract overhead photograph of clear water flowing over smooth pale stones. Intricate flow patterns — some rushing, some pooling, some finding alternative paths around obstacles. Clean, bright, zen-like but professional. Pale blue-grey and warm stone tones. Supply chains adapt and find paths, like water. 3:4 vertical. No text.
+Strategic dashboard infographic. 3:4 vertical. Dark navy background with subtle constellation-pattern data nodes. Five clean cards in a radial or cascading layout, each with icon, title, and key metrics. Central ChainFlow framework diagram connecting Data→Signal→Judgment→Action→Flow. Cool-toned, premium, authoritative. High data density.
 ```
 

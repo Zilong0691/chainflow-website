@@ -3,10 +3,25 @@
 ## image2-primary
 
 ```
-A calm, expansive waterscape at dawn — a wide river or lake with gentle ripples catching soft morning light. The water is clear and flowing, reflecting pale sky tones. In the distance, faint silhouettes of industrial infrastructure — ports, cranes, warehouses — visible through soft morning haze. The metaphor: supply chains flowing like water, infrastructure fading into the background, flow itself is the focus. Clean, serene, professional. Soft blue-grey and warm ivory tones. Not dark — gentle and hopeful. 3:4 vertical. No text.
+Premium strategic insight infographic, 3:4 vertical. Deep navy-blue gradient background with subtle flowing water pattern at low opacity — referencing the brand vision "Let supply chains flow like water."
+
+LAYOUT: Five signal cards arranged in a 3+2 staggered grid, each with a distinct accent color border (cyan, gold, orange, steel-blue, copper). Each card contains: a clean line-icon, a bold white title, and 2-3 lines of data text.
+
+CARD 1 (cyan): "Upstream Material Expansion" — watch ceramic powder and Ni paste supplier investment announcements. Lead time 2-3 years.
+CARD 2 (gold): "Auto-grade Line Utilization" — if utilization hits 95%+, non-automotive customers get squeezed.
+CARD 3 (orange): "Domestic Certification Progress" — each new Tier1 qualification widens the substitution window.
+CARD 4 (steel-blue): "Technology Gap" — Murata at 006003, domestic majority at 0402+. Gap = years of catch-up.
+CARD 5 (copper): "Alternative Penetration" — silicon capacitors, thin-film capacitors in specific high-frequency niches.
+
+BOTTOM: A clean horizontal flow diagram — five connected nodes: Data → Signal → Judgment → Action → Flow. Each node is a glowing copper-gold circle connected by bright cyan arrows. This is the ChainFlow brand framework visualized.
+
+Bottom-left: small "公众号：链流 ChainFlow". Faint "MLCC" watermark.
+
+Dark, premium, strategic. Cool navy background with warm gold and bright cyan accents. High information density with elegant card layout. Not warm paper.
+```
 
 ## image2-alternative
 
 ```
-Abstract overhead photograph of clear water flowing over smooth pale stones. Intricate flow patterns — some rushing, some pooling, some finding alternative paths around obstacles. Clean, bright, zen-like but professional. Pale blue-grey and warm stone tones. Supply chains adapt and find paths, like water. 3:4 vertical. No text.
+Strategic dashboard infographic. 3:4 vertical. Dark navy background with subtle constellation-pattern data nodes. Five clean cards in a radial or cascading layout, each with icon, title, and key metrics. Central ChainFlow framework diagram connecting Data→Signal→Judgment→Action→Flow. Cool-toned, premium, authoritative. High data density.
 ```

@@ -3,10 +3,19 @@
 ## image2-primary
 
 ```
-Clean conceptual still life: a single MLCC capacitor standing on a circuit board trace, like a bridge over a small gap. The perspective is from slightly above, looking down. The PCB provides warm green-gold tones. Soft, natural lighting. The metaphor is subtle: this tiny component connects two sides — without it, the circuit breaks. Editorial restraint, not drama. Warm cream and green-gold tones. No text. 3:4 vertical.
+Premium data infographic, 3:4 vertical. Deep navy-blue background.
+
+UPPER HALF: A dramatic supply-demand gap visualization. Two curves on a clean coordinate plane — a steep upward orange line (Demand: AI servers + EVs) and a shallow upward cyan line (Supply: high-end capacity). Between them, a widening red-shaded gap zone labeled "Structural Shortage". Flat-vector chart style, precise and clean.
+
+LOWER HALF: A vertical 3-stage gate diagram. Stage 1 (cyan): "Parameter Match" — capacitance, voltage, package, DC Bias curve check. Stage 2 (orange): "Engineering Verification" — thermal cycling, board flex, soldering, life testing. Stage 3 (red): "Supply Assurance" — lead time, channel, PCN/EOL risk, second source, counterfeit risk. Each stage is a distinct card with checklist icons. A large lock icon at the bottom: "All 3 gates must pass before substitution is valid." Copper-gold connector arrows flowing downward.
+
+Bottom-right: small annotation card — "Typical substitution timeline: Consumer 1-3 months, Automotive 12-18 months."
+
+Dark, premium, data-rich. High information density. Cool-toned with warm orange/red warning accents.
+```
 
 ## image2-alternative
 
 ```
-A clean hourglass on a warm cream surface. Instead of sand, the upper half contains a cascade of tiny MLCC capacitors. Some are flowing smoothly through the neck, a few paused at the narrowest point. The lower half is nearly empty. The metaphor: supply is running thin, and the bottleneck is visible. Clean, warm, editorial — not ominous or dark. Natural soft lighting. 3:4 vertical. No text.
+Conceptual visualization. 3:4 vertical. Dark background. UPPER: an hourglass where the upper half contains tiny MLCC capacitors flowing through a narrow neck — some stuck, creating a visible bottleneck. The lower half nearly empty. LOWER: three checkpoint cards showing the substitution verification gates. Dramatic, editorial, metaphorical. Premium quality.
 ```

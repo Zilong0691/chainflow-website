@@ -3,10 +3,19 @@
 ## image2-primary
 
 ```
-Clean, minimalist world map focused on East Asia — Japan, Korea, Taiwan, southern China coastline. Rendered as a light-toned cartographic illustration with subtle warm beige landmasses and steel blue ocean. Small copper-gold node points scattered along the coast indicating manufacturing clusters. Clean, professional, like an intelligence briefing map but warm and editorial — not military or surveillance aesthetic. Light cream background. No country labels, no borders marked. 3:4 vertical.
+Premium data infographic, 3:4 vertical. Deep navy-blue gradient background.
+
+MAIN VISUAL: A vertical funnel diagram showing supply chain concentration from top to bottom. TOP (widest): "Downstream — Highly Fragmented" with small icons representing automotive, AI servers, industrial, smartphones, IoT. MIDDLE (narrower): "Midstream — High Concentration" with company group labels (Japan: Murata, TDK, Taiyo Yuden | Korea: Samsung | Taiwan: Yageo, Walsin | China: Fenghua, Sanhuan). BOTTOM (narrowest): "Upstream — Extreme Concentration" with key suppliers listed (Sakai Chemical 28%, Sinocera 22%, Ferro 18% — marked "estimated"). The funnel visually demonstrates "control concentrates upward".
+
+RIGHT SIDE: A horizontal timeline bar showing certification lock-in — Consumer 1-3 months → Industrial 3-6 months → Automotive 2-3 years. The automotive segment ends with a lock icon in bright warning orange, labeled "AEC-Q200: 17 tests, zero failure".
+
+BOTTOM: Three small insight cards with bright accent borders — "Upstream controls the ceiling", "Certification is the moat", "Capacity ≠ supply elasticity".
+
+Dark, premium, data-dense. Cool navy background with warm gold accents for concentration data. Clean flat-vector layout. Not warm paper.
+```
 
 ## image2-alternative
 
 ```
-A bright, well-organized electronics components distribution center. Floor-to-ceiling shelves with neatly arranged component reels. Soft natural light. Clean, orderly, professional. The scale is impressive but the mood is calm and organized — not ominous. No logos, no text. 3:4 vertical.
+Supply chain map infographic. 3:4 vertical. Dark blue background with subtle world-map outline showing East Asia coastline. Glowing copper-gold node points indicate manufacturing clusters — Japan, Korea, Taiwan, southern China — connected by thin steel-blue supply lines. Clean data labels with company names and concentration percentages. Dark, premium, intelligence-briefing aesthetic.
 ```
