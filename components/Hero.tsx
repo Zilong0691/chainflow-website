@@ -3,9 +3,6 @@ import { siteContent, type Language } from "@/lib/content";
 import { feature } from "topojson-client";
 import { geoEquirectangular, geoPath, type GeoProjection } from "d3-geo";
 import worldTopo from "world-atlas/countries-110m.json";
-import dynamic from "next/dynamic";
-
-const Globe3D = dynamic(() => import("./Globe3D"), { ssr: false });
 
 type HeroProps = { lang: Language };
 type Pt = {x:number,y:number};
@@ -153,7 +150,7 @@ export function Hero({ lang }: HeroProps) {
           </div>
         </div>
         <div className="relative flex min-h-[18rem] items-center justify-center sm:min-h-[24rem] lg:min-h-[34rem]">
-          <Globe3D />
+          <GlobeFlowVisual lang={lang} />
         </div>
       </div>
     </section>
