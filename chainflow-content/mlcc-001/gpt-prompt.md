@@ -43,7 +43,7 @@ bright daylight, white background, cream paper, beige tones, warm pastel, cartoo
 
 ## 第01页 — 脚本
 
-# 01｜封面
+# 01｜开篇
 
 ## 页面编号
 01 / 10
@@ -108,30 +108,30 @@ ChainFlow 品牌文档。
 
 ## 第01页 — 视觉提示词
 
-# 01｜封面 — 视觉锚点提示词
-
-> **REFERENCE IMAGE**: Use the provided 三环 MLCC cross-section diagram as the authoritative reference for electrode structure. Follow its alternating left-right electrode pattern exactly, but render it in our style: warm ivory paper background, hyper-realistic 3D, copper-gold electrodes, warm lighting.
+# 01｜开篇 — 视觉锚点提示词
 
 ## image2-primary
 
 ```
-WeChat cover image. 3:4 vertical, 1080x1440px. Warm ivory paper background with subtle fiber texture.
+CRITICAL: The MLCC is a COMPLETE INTACT component. NO cutaway. NO cross-section. NO internal layers.
 
-COMPOSITION: A dramatic hyper-realistic 3D render. The MLCC is cut open diagonally — one half intact (warm beige ceramic body, gold-metallic end caps), the other half revealing the internal layered structure. The internal structure MUST match the provided 三环 reference image: alternating layers of white/cream ceramic dielectric and gold/copper metallic electrodes. The electrodes alternate — some extending from the left silver terminal, some from the right — forming an interlocking comb pattern where electrodes from opposite sides overlap but DO NOT touch. There is a visible zigzag gap pattern. 10-15 visible layer pairs. Dramatic cinematic lighting from upper-left — sharp highlights on the metallic end caps and electrode layers, soft warm shadows.
+WeChat article image. 3:4 vertical, 1080x1440px. Warm ivory paper background with subtle fiber texture.
 
-SURROUNDING: A single grain of white rice floating nearby for scale comparison. Subtle copper-gold data stream lines flowing outward. A human hair crossing the foreground — the MLCC is dwarfed by it.
+COMPOSITION: Hyper-realistic 3D render. On the left, an intact 0402 MLCC capacitor (1.0×0.5mm) — complete warm beige ceramic block with brilliant gold-metallic end caps on both ends. On the right, a single grain of white rice. Symmetrical comparison. Both floating just above the warm paper surface. Dramatic cinematic lighting from upper-left. A human hair lies across the foreground — the MLCC is dwarfed by it.
 
-TECHNICAL: Fine cyan annotation lines with precise dimension callouts (1.0mm, 0.5mm). Subtle "100:1" scale indicator.
+SURROUNDING: Subtle copper-gold data stream lines flowing outward, branching into thinner steel-blue tributaries — suggesting supply chain networks.
 
-BRANDING: Bottom-left — very small muted grey text "公众号：链流 ChainFlow  chainflowlab.com". Faint translucent "MLCC" watermark at 8-10% opacity.
+TECHNICAL: Fine cyan annotation lines with dimension callouts (1.0mm, 0.5mm). "100:1" scale indicator.
 
-STYLE: Dramatic, premium, warm. Magazine cover quality. Not dark. Not clinical.
+BRANDING: Bottom-left small muted grey "公众号：链流 ChainFlow  chainflowlab.com". Faint "MLCC" watermark at 8-10%.
+
+STYLE: Dramatic, premium, warm. Magazine quality. Not dark. Not clinical.
 ```
 
 ## image2-alternative
 
 ```
-WeChat cover. 3:4 vertical. Warm ivory paper background. CENTER: hyper-realistic 3D render — MLCC split open like a geode, one half intact warm beige ceramic with gold-silver end caps, the other half revealing internal alternating layers matching the 三环 reference image. Copper-gold data lines radiating outward. Fine cyan dimension callouts. Bottom-left: "公众号：链流 ChainFlow  chainflowlab.com". Dramatic, warm, editorial. Not dark.
+WeChat article image. 3:4 vertical. Warm ivory paper background. CENTER: hyper-realistic 3D render of a single intact 0402 MLCC — warm beige body, gold-silver end caps, casting a long soft shadow. Human hair nearby for scale. Copper-gold data lines radiating outward. Fine cyan dimension callouts. Bottom-left: "公众号：链流 ChainFlow  chainflowlab.com". Warm, clean, dramatic. NO cutaway. Not dark.
 ```
 
 
@@ -303,9 +303,6 @@ MLCC 剖面图——SEM 风格或高精度 3D 剖面渲染。灰阶为主，陶�
 ---
 
 ## 第03页 — 视觉提示词
-
-⚠️ 重要：生图前先单独发送 image-prompts/preflight-electrode-fix.md 给GPT，同时附上三环参考截图。确认GPT理解了"对插梳子"结构后，再发下面的生图提示词。
-
 
 # 03｜技术结构 — 视觉锚点提示词
 
