@@ -1,5 +1,16 @@
 # ChainFlow MLCC 001 — 公众号封面图 + 十页图文脚本与视觉提示词
 
+## ⚠️ 全局规则（全部页面必须遵守）
+
+1. 统一底色：所有页面使用暖象牙白/暖奶油色(warm ivory/cream paper)，带细微纸纤维纹理。无深色黑底页面。
+2. 统一风格：高端产业研究刊物——干净、温暖、专业。超写实3D渲染+扁平矢量混合。不是海报、不是博客头图、不是暗黑风、不是极简风。
+3. 统一配色：暖纸白+铜金(copper-gold)数据标注+钢蓝(steel-blue)连接线+青色(cyan)技术标注+警示橙(orange)风险提示。
+4. 统一光影：电影级柔和自然光，左上定向。清晰高光，柔和阴影。不暗沉不过曝。
+5. 尺寸：封面横构图2.35:1。十页内页竖版3:4(1080×1440px)。
+6. 画质：8K超精细，专业产品摄影品质，电影级布光。
+7. 禁止：深色黑底、霓虹荧光、漫画插画、极简海报、科技博客风、过曝、模糊、低对比度。文字规则：①左下角必须包含"公众号：链流 ChainFlow  chainflowlab.com"（灰色小字）②可以生成"MLCC"英文影印水印 ③可以生成"100:1"等技术标注数字和单位 ④严禁在右上角生成任何文字 ⑤严禁生成中文标语（如"供应链如水""让供应链如水一般""信息如流"等——这些是错误的，不要写）⑥页面主标题和正文不要生成在图片上（那个在Figma后期排版）。简单说：图片上的中文只允许左下角公众号名，其他的别碰。
+8. 英文提示词优先：GPT Image对英文理解精度远高于中文。
+
 ---
 
 ## 公众号封面图
@@ -12,7 +23,7 @@
 ### 正向生图提示词
 
 ```
-WeChat article cover image, 2.35:1 widescreen, center-composed for mobile square-crop compatibility. Deep graphite-navy gradient background, dark and substantial — not pure black, not bright blue. The background has a subtle flowing-water texture at very low opacity (5-8%), evoking the brand concept "supply chains flow like water." A hyper-realistic 3D render of an 0402 MLCC capacitor (1.0x0.5mm, warm beige ceramic body, subtle metallic end caps) rests on a dark reflective surface at the center of the composition — small, precise, anchoring the frame. From the capacitor, flowing copper-gold data stream lines radiate outward and upward like a river delta, branching into thinner steel-blue tributaries. These lines suggest supply chain information flowing from a single critical component to global networks. The upper third is a dark gradient zone reserved for white Chinese title text overlay. Small annotation: a human hair crosses the frame near the MLCC for scale — the capacitor is dwarfed by it. Bottom-left: very small muted grey text "公众号：链流 ChainFlow". No other text. The image should feel like a premium supply chain intelligence publication — dark, precise, flowing, authoritative. Not a consumer tech blog. Not a generic tech cover. The water/flow metaphor is ChainFlow's brand DNA. 8K, cinematic lighting, hyper-detailed, --ar 2.35:1
+WeChat article cover image, 2.35:1 widescreen, center-composed for mobile square-crop compatibility. Warm ivory paper background with subtle fiber texture. The background has a subtle flowing-water pattern at very low opacity (5-8%), evoking the brand concept "let supply chains flow like water." A hyper-realistic 3D render of an 0402 MLCC capacitor (1.0x0.5mm, warm beige ceramic body, subtle metallic end caps) rests on a clean warm surface at the center of the composition — small, precise, anchoring the frame. From the capacitor, flowing copper-gold data stream lines radiate outward and upward like a river delta, branching into thinner steel-blue tributaries. These lines suggest supply chain information flowing from a single critical component to global networks. The upper third is reserved as clean space for Chinese title text overlay in post-production. Small annotation: a human hair crosses the frame near the MLCC for scale — the capacitor is dwarfed by it. Bottom-left: very small muted grey text "公众号：链流 ChainFlow  chainflowlab.com". Absolutely no other text anywhere on the image. Clean, professional, warm. Premium supply chain intelligence publication. Not a consumer tech blog. 8K, cinematic lighting, hyper-detailed, --ar 2.35:1
 ```
 
 ### 负面提示词
@@ -23,21 +34,10 @@ bright daylight, white background, cream paper, beige tones, warm pastel, cartoo
 
 ### 适配说明
 
-- 品牌基因：深色底+流动数据线+微小器件锚点 = ChainFlow"让供应链如水一般"
+- 品牌基因：暖纸白底+流动数据线+微小器件锚点 = ChainFlow"让供应链如水一般"
 - 构图逻辑：中央聚焦MLCC+尺度对比(头发丝)+数据流辐射 = 供应链视角，不是科普视角
 - 手机适配：核心元素居中，方形裁剪不失焦
 
----
-
-## 第01页 — 脚本
-
-# 01｜封面
-
-## 页面编号
-01 / 10
-
-## 页面标题
-MLCC·多层片式陶瓷电容器
 
 ---
 
@@ -110,28 +110,28 @@ ChainFlow 品牌文档。
 
 # 01｜封面 — 视觉锚点提示词
 
+> **REFERENCE IMAGE**: Use the provided 三环 MLCC cross-section diagram as the authoritative reference for electrode structure. Follow its alternating left-right electrode pattern exactly, but render it in our style: warm ivory paper background, hyper-realistic 3D, copper-gold electrodes, warm lighting.
+
 ## image2-primary
 
 ```
-WeChat article cover image. 3:4 vertical aspect ratio, 1080x1440px.
+WeChat cover image. 3:4 vertical, 1080x1440px. Warm ivory paper background with subtle fiber texture.
 
-BACKGROUND: Deep navy-blue to dark teal gradient, smooth and premium. Subtle hexagonal grid or circuit-trace pattern at 5-10% opacity for technical texture.
+COMPOSITION: A dramatic hyper-realistic 3D render. The MLCC is cut open diagonally — one half intact (warm beige ceramic body, gold-metallic end caps), the other half revealing the internal layered structure. The internal structure MUST match the provided 三环 reference image: alternating layers of white/cream ceramic dielectric and gold/copper metallic electrodes. The electrodes alternate — some extending from the left silver terminal, some from the right — forming an interlocking comb pattern where electrodes from opposite sides overlap but DO NOT touch. There is a visible zigzag gap pattern. 10-15 visible layer pairs. Dramatic cinematic lighting from upper-left — sharp highlights on the metallic end caps and electrode layers, soft warm shadows.
 
-COMPOSITION: Hyper-realistic 3D render of an 0402 MLCC capacitor (1.0x0.5mm, warm beige ceramic body, brilliant gold-metallic end caps on both ends) positioned side-by-side with a single grain of white rice. Symmetrical comparison — MLCC on the left, rice on the right. Both objects are isolated, floating slightly above a reflective dark surface. Lit from upper-left with cinematic contrast — sharp highlights, defined shadows.
+SURROUNDING: A single grain of white rice floating nearby for scale comparison. Subtle copper-gold data stream lines flowing outward. A human hair crossing the foreground — the MLCC is dwarfed by it.
 
-TYPOGRAPHY: Large, bold, refined sans-serif title in bright white/cyan at upper portion: "MLCC". Below it, smaller subtitle in muted silver: "The Invisible Staple Inside Every Smart Device". Clean horizontal decorative line above the title in copper-gold.
+TECHNICAL: Fine cyan annotation lines with precise dimension callouts (1.0mm, 0.5mm). Subtle "100:1" scale indicator.
 
-TECHNICAL DETAILS: Fine cyan or steel-blue annotation lines pointing to the MLCC with precise dimension callouts (1.0mm, 0.5mm). Subtle scale indicator "100:1" in the bottom-right corner.
+BRANDING: Bottom-left — very small muted grey text "公众号：链流 ChainFlow  chainflowlab.com". Faint translucent "MLCC" watermark at 8-10% opacity.
 
-BRANDING: Bottom-left corner — very small, muted grey text: "公众号：链流 ChainFlow". Faint translucent "MLCC" watermark lettering ghosted across the background at 8-10% opacity.
-
-STYLE: Premium tech-industry magazine cover. Dark, sophisticated, high-contrast, precise. Cool-toned with warm gold accents. Not a blog header. Not warm cream paper. Not minimalist poster.
+STYLE: Dramatic, premium, warm. Magazine cover quality. Not dark. Not clinical.
 ```
 
 ## image2-alternative
 
 ```
-WeChat cover. 3:4 vertical. Deep dark blue-purple gradient background with subtle data-node constellation pattern. CENTER: hyper-realistic 3D render of a single 0402 MLCC dramatically lit — warm beige body, brilliant gold-silver end caps, casting a long sharp shadow across a dark reflective surface. UPPER: large white title "MLCC" with copper-gold subtitle. Fine cyan dimension callouts. Small bottom-left branding. Dark, cinematic, premium. Cool-toned, high-end industrial aesthetic.
+WeChat cover. 3:4 vertical. Warm ivory paper background. CENTER: hyper-realistic 3D render — MLCC split open like a geode, one half intact warm beige ceramic with gold-silver end caps, the other half revealing internal alternating layers matching the 三环 reference image. Copper-gold data lines radiating outward. Fine cyan dimension callouts. Bottom-left: "公众号：链流 ChainFlow  chainflowlab.com". Dramatic, warm, editorial. Not dark.
 ```
 
 
@@ -213,8 +213,8 @@ MLCC-F014, F015, F020；封装尺寸来自 EIA 标准；设备用量量级来自
 
 ## image2-primary
 
-```
-Technical comparison infographic. 3:4 vertical. Deep navy-blue gradient background with subtle grid texture.
+```  CRITICAL: Warm paper background theme — all elements must have high contrast and sharp definition. 3D renders must be well-lit with clear highlights. Data visualizations must use bright accent colors (cyan, gold, orange) against the dark background for readability. Fine details must remain crisp and visible — not lost in shadows.
+Technical comparison infographic. 3:4 vertical. Warm cream paper background with subtle grid texture.
 
 CENTER: Hyper-realistic 3D renders of MLCC capacitors in descending size order — from 1206 (3.2mm) down to 008004 (0.25mm) — arranged in a clean horizontal row. Each capacitor is a precise white/beige ceramic block with dark grey metallic end caps. The size progression is dramatic and immediately readable.
 
@@ -224,14 +224,14 @@ TECHNICAL ANNOTATIONS: Clean cyan and white dimension labels below each capacito
 
 INFO BOXES: Three small data cards in the lower section — smartphone ~500-1000 units, laptop ~1000-2000, AI server thousands+. Clean flat vector cards with bright accent borders.
 
-Dark, premium, hyper-precise. Cool navy background with warm gold and bright cyan accents. Not warm paper. Not minimalist.
-```
+Clean, premium, hyper-precise. Cool navy background with warm gold and bright cyan accents. Clean and professional. Not minimalist.
+```  CRITICAL: Warm paper background theme — all elements must have high contrast and sharp definition. 3D renders must be well-lit with clear highlights. Data visualizations must use bright accent colors (cyan, gold, orange) against the dark background for readability. Fine details must remain crisp and visible — not lost in shadows.
 
 ## image2-alternative
 
-```
-Scale comparison infographic. 3:4 vertical. Dark deep-blue background. CENTER: hyper-realistic 3D renders of common objects in a row for size comparison — a coin (18mm), a grain of rice (5mm), a sesame seed (3mm), an 0402 MLCC (1mm), and a human hair (0.08mm). Each annotated with clean dimension labels. Bright cyan and white callouts. The MLCC is dramatically the smallest — the visual shock is immediate. Dark, premium, technical.
-```
+```  CRITICAL: Warm paper background theme — all elements must have high contrast and sharp definition. 3D renders must be well-lit with clear highlights. Data visualizations must use bright accent colors (cyan, gold, orange) against the dark background for readability. Fine details must remain crisp and visible — not lost in shadows.
+Scale comparison infographic. 3:4 vertical. Dark deep-blue background. CENTER: hyper-realistic 3D renders of common objects in a row for size comparison — a coin (18mm), a grain of rice (5mm), a sesame seed (3mm), an 0402 MLCC (1mm), and a human hair (0.08mm). Each annotated with clean dimension labels. Bright cyan and white callouts. The MLCC is dramatically the smallest — the visual shock is immediate. Clean, premium, technical.
+```  CRITICAL: Warm paper background theme — all elements must have high contrast and sharp definition. 3D renders must be well-lit with clear highlights. Data visualizations must use bright accent colors (cyan, gold, orange) against the dark background for readability. Fine details must remain crisp and visible — not lost in shadows.
 
 
 ---
@@ -304,30 +304,60 @@ MLCC 剖面图——SEM 风格或高精度 3D 剖面渲染。灰阶为主，陶�
 
 ## 第03页 — 视觉提示词
 
+⚠️ 重要：生图前先单独发送 image-prompts/preflight-electrode-fix.md 给GPT，同时附上三环参考截图。确认GPT理解了"对插梳子"结构后，再发下面的生图提示词。
+
+
 # 03｜技术结构 — 视觉锚点提示词
+
+
+> **REFERENCE IMAGE**: Use the provided 三环 MLCC cross-section diagram as the authoritative reference for electrode structure. Follow its alternating left-right electrode pattern exactly, but render it in our style: warm ivory paper background, hyper-realistic 3D, copper-gold electrodes, warm lighting.
+## ⚠️ 生图前先确认（发给GPT，确认理解后再生图）
+
+在生成图片之前，请先确认你理解了MLCC内部电极的"对插梳子"结构。如果你理解的是"所有电极都对齐""金属贯穿整个宽度""左右电极在中间连在一起""S形或Z形连接"——这些都是错的。正确的结构是：左侧梳子齿只连左柄，右侧梳子齿只连右柄，两把梳子齿对插但不接触。请确认理解后，再按下面的提示词生图。
+
+---
 
 ## image2-primary
 
 ```
-Technical cross-section illustration. 3:4 vertical. Deep dark-teal background.
+TECHNICAL CROSS-SECTION OF MLCC CAPACITOR — THE MOST CRITICAL INSTRUCTION COMES FIRST:
 
-MAIN VISUAL: A large hyper-realistic 3D cutaway render of an MLCC capacitor, sliced perfectly through the vertical center. The internal structure is revealed as a precise "layer cake":
+THE ELECTRODE STRUCTURE IS TWO INTERLOCKING COMBS, NOT STACKED PANCAKES, NOT S-CURVES, NOT Z-SHAPES.
 
-- White/cream ceramic dielectric layers (BaTiO3) — matte, slightly textured
-- Gold/copper metallic internal electrode layers (Nickel) — glossy, reflective
-- The electrodes ALTERNATE: odd layers extend from the LEFT termination toward the right (stopping just short of the right edge), even layers extend from the RIGHT termination toward the left (stopping just short of the left edge). This cantilevered alternating pattern is the defining structural feature and must be clearly visible.
-- Approximately 15-20 visible layer pairs
-- Left and right termination caps show three distinct layers: copper base (warm brown), nickel barrier (grey), tin plating (bright silver)
+HERE IS EXACTLY WHAT TO DRAW:
+1. Draw a horizontal rectangle. Left side = Left Terminal cap (silver). Right side = Right Terminal cap (silver).
+2. Draw Layer 1 (dielectric): a beige band spanning the full width.
+3. Draw Layer 2 (electrode A): a gold line starting FROM the LEFT terminal, extending RIGHT about 70% across, then STOPPING. There is a GAP of empty beige space between this line's right end and the Right Terminal.
+4. Draw Layer 3 (dielectric): another beige band spanning full width.
+5. Draw Layer 4 (electrode B): a gold line starting FROM the RIGHT terminal, extending LEFT about 70% across, then STOPPING. There is a GAP of empty beige space between this line's left end and the Left Terminal.
+6. REPEAT this alternating pattern 20-30 times. Layer A, Layer B, Layer A, Layer B... NEVER the same direction twice in a row.
 
-LAYOUT: Left 60% — the large cross-section render. Right 40% — clean flat-design annotation cards with cyan connector lines pointing to: Ceramic Dielectric, Ni Internal Electrode, Cu/Ni/Sn Termination. Bottom section — a clean formula card: C_total ≈ n × εr ε0 A / d.
+WHAT YOU MUST NEVER DRAW:
+- NEVER draw a gold line that touches BOTH terminals. Every electrode touches only ONE side.
+- NEVER draw electrodes that meet in the middle. The gap must be visible.
+- NEVER draw S-shaped or Z-shaped connections between layers. Each electrode is a straight horizontal line.
+- NEVER draw all electrodes starting from the same side. They MUST alternate.
 
-Dark background, premium technical illustration style, cool-toned with warm gold electrode accents. High information density. Not warm paper.
+THE CORRECT VISUAL: Looking at the cross-section from left to right, you should see a ZIGZAG pattern of gaps — gap on the right, gap on the left, gap on the right, gap on the left... alternating with every layer.
+
+---
+
+REST OF THE IMAGE:
+3:4 vertical, 1080x1440px. Warm ivory paper background.
+White/cream ceramic dielectric layers — matte, slightly textured.
+Gold/copper metallic electrode layers — glossy, reflective.
+Approximately 20-30 layer pairs.
+Left and right terminations: copper base (warm brown) → nickel barrier (grey) → tin plating (bright silver).
+LAYOUT: Left 60% — cross-section. Right 40% — annotation cards. Bottom — formula: C_total ≈ n × εr ε0 A / d.
+Clean, warm, premium technical illustration. Not dark. Not clinical.
 ```
 
 ## image2-alternative
 
 ```
-3D exploded-view render. 3:4 vertical. Dark navy background. The MLCC is split open vertically — ceramic body halves pulled apart to reveal the internal alternating electrode structure fanned out like pages of a book. White ceramic layers, gold electrodes, silver terminations. Clean, precise, engineering-rendering quality. Annotation lines in cyan. Dark and premium.
+SAME ELECTRODE RULES AS PRIMARY — two interlocking combs, NOT stacked pancakes, NOT S-curves.
+
+3D exploded-view render. 3:4 vertical. Warm ivory paper background. The MLCC is split open vertically — ceramic body halves pulled apart to reveal the internal alternating electrode structure fanned out like pages of a book. White ceramic layers, gold electrodes, silver terminations. Each electrode clearly extends from only ONE side. Clean, precise, warm. Not dark.
 ```
 
 
@@ -411,21 +441,21 @@ MLCC-F003, F004, F005, F006, F007, F013, F016。EIA-198 编码规则已从标准
 
 ## image2-primary
 
-```
-Technical data visualization infographic. 3:4 vertical. Deep navy-blue background.
+```  CRITICAL: Warm paper background theme — all elements must have high contrast and sharp definition. 3D renders must be well-lit with clear highlights. Data visualizations must use bright accent colors (cyan, gold, orange) against the dark background for readability. Fine details must remain crisp and visible — not lost in shadows.
+Technical data visualization infographic. 3:4 vertical. Warm cream paper background.
 
 UPPER HALF: A clean comparison matrix showing four capacitor classes — C0G/NP0, X7R, X5R, Y5V. Each has a horizontal temperature range bar (X-axis: -55°C to +150°C) with colored tolerance bands showing capacitance change. C0G is a near-flat thin line (high stability), Y5V is a wildly swinging wide band (poor stability). Bright cyan and orange color coding. Clean flat-vector chart style.
 
 LOWER HALF: A dramatic funnel diagram. At the top — "Nominal 10μF (100%)". As it descends through three filter stages (DC Bias → Temperature → Aging), the funnel narrows, and the output at bottom reads "Effective: 2-5μF (20-50%)". Each filter stage is a distinct color block with a brief annotation. Copper-gold for the final effective value to emphasize the dramatic drop.
 
-Dark background, high information density, premium data-visualization aesthetic. Flat-vector charts with hyper-realistic component renders as small accent elements. Cool-toned with warm gold and bright cyan highlights.
-```
+Clean warm paper background, high information density, premium data-visualization aesthetic. Flat-vector charts with hyper-realistic component renders as small accent elements. Warm paper with navy and copper and bright cyan highlights.
+```  CRITICAL: Warm paper background theme — all elements must have high contrast and sharp definition. 3D renders must be well-lit with clear highlights. Data visualizations must use bright accent colors (cyan, gold, orange) against the dark background for readability. Fine details must remain crisp and visible — not lost in shadows.
 
 ## image2-alternative
 
-```
-Clean technical infographic. 3:4 vertical. Dark blue-purple gradient background. LEFT: temperature characteristic comparison chart with C0G/X7R/X5R curves — precise line graphs with labeled axes. RIGHT: cascading waterfall diagram showing capacitance degradation from nominal 100% down to effective ~30%. Bright cyan and orange data points. Premium, technical, data-rich. Dark background.
-```
+```  CRITICAL: Warm paper background theme — all elements must have high contrast and sharp definition. 3D renders must be well-lit with clear highlights. Data visualizations must use bright accent colors (cyan, gold, orange) against the dark background for readability. Fine details must remain crisp and visible — not lost in shadows.
+Clean technical infographic. 3:4 vertical. Dark blue-purple gradient background. LEFT: temperature characteristic comparison chart with C0G/X7R/X5R curves — precise line graphs with labeled axes. RIGHT: cascading waterfall diagram showing capacitance degradation from nominal 100% down to effective ~30%. Bright cyan and orange data points. Premium, technical, data-rich. Clean warm paper background.
+```  CRITICAL: Warm paper background theme — all elements must have high contrast and sharp definition. 3D renders must be well-lit with clear highlights. Data visualizations must use bright accent colors (cyan, gold, orange) against the dark background for readability. Fine details must remain crisp and visible — not lost in shadows.
 
 
 ---
@@ -541,8 +571,8 @@ MLCC-F008, F012。碳酸钡/稀土/矿源数据来自产业研究报告——标
 
 ## image2-primary
 
-```
-Premium infographic, 3:4 vertical. Deep dark blue-purple gradient background with subtle molecular-structure pattern.
+```  CRITICAL: Warm paper background theme — all elements must have high contrast and sharp definition. 3D renders must be well-lit with clear highlights. Data visualizations must use bright accent colors (cyan, gold, orange) against the dark background for readability. Fine details must remain crisp and visible — not lost in shadows.
+Premium infographic, 3:4 vertical. Warm ivory paper with subtle texture background with subtle molecular-structure pattern.
 
 UPPER SECTION: A hyper-realistic 3D render of barium titanate (BaTiO3) powder particles at nanoscale — spherical particles 100-300nm, dense but individually distinguishable, with subtle warm beige-gold tones against the dark background. Scientific-research aesthetic, like an electron microscope image enhanced for publication quality.
 
@@ -550,14 +580,14 @@ MIDDLE SECTION: A vertical supply-chain flow diagram rendered in clean flat-vect
 
 LOWER SECTION: Three small info cards with bright cyan accent borders — "Bottleneck 1: BaCO3 5N global duopoly", "Bottleneck 2: Rare earth dopants 90% China, export controlled", "Bottleneck 3: Nano-Ni powder Japan dominant".
 
-Dark, premium, data-rich. Cool-toned background with warm gold material accents. High information density. Not warm paper.
-```
+Clean, premium, data-rich. Cool-toned background with warm gold material accents. High information density. Clean and professional.
+```  CRITICAL: Warm paper background theme — all elements must have high contrast and sharp definition. 3D renders must be well-lit with clear highlights. Data visualizations must use bright accent colors (cyan, gold, orange) against the dark background for readability. Fine details must remain crisp and visible — not lost in shadows.
 
 ## image2-alternative
 
-```
-Scientific infographic. 3:4 vertical. Dark navy background with subtle particle texture. Large central 3D render of BaTiO3 crystal structure — ball-and-stick molecular model with gold, red, and white atoms. Surrounding it, flat-design flowchart showing the upstream supply chain from mines to MLCC. Bright cyan and copper-gold data labels. Dark, premium, precise.
-```
+```  CRITICAL: Warm paper background theme — all elements must have high contrast and sharp definition. 3D renders must be well-lit with clear highlights. Data visualizations must use bright accent colors (cyan, gold, orange) against the dark background for readability. Fine details must remain crisp and visible — not lost in shadows.
+Scientific infographic. 3:4 vertical. Dark navy background with subtle particle texture. Large central 3D render of BaTiO3 crystal structure — ball-and-stick molecular model with gold, red, and white atoms. Surrounding it, flat-design flowchart showing the upstream supply chain from mines to MLCC. Bright cyan and copper-gold data labels. Clean, premium, precise.
+```  CRITICAL: Warm paper background theme — all elements must have high contrast and sharp definition. 3D renders must be well-lit with clear highlights. Data visualizations must use bright accent colors (cyan, gold, orange) against the dark background for readability. Fine details must remain crisp and visible — not lost in shadows.
 
 
 ---
@@ -639,8 +669,8 @@ MLCC-F010, F017。制造流程为通用工艺框架。良率乘数公式为数�
 
 ## image2-primary
 
-```
-Premium industrial infographic, 3:4 vertical. Deep dark-teal to navy gradient background.
+```  CRITICAL: Warm paper background theme — all elements must have high contrast and sharp definition. 3D renders must be well-lit with clear highlights. Data visualizations must use bright accent colors (cyan, gold, orange) against the dark background for readability. Fine details must remain crisp and visible — not lost in shadows.
+Premium industrial infographic, 3:4 vertical. Warm ivory paper with subtle grain background.
 
 MAIN VISUAL: A vertical 4-stage manufacturing process flow, each stage a distinct colored card with rounded corners, connected by bright copper-gold arrows flowing downward.
 
@@ -651,14 +681,14 @@ Stage 4 (gold accent): "Testing & Sorting" — 3D render of individual capacitor
 
 BOTTOM SECTION: A dramatic formula display — "0.95^11 ≈ 0.57" in large copper-gold text. Below it: "Yield is multiplicative, not additive" in white. This visualizes why manufacturing consistency is the real barrier.
 
-Dark background, premium industrial aesthetic. Clean flat-vector layout with hyper-realistic 3D accent renders. High information density. Not warm paper.
-```
+Clean warm paper background, premium industrial aesthetic. Clean flat-vector layout with hyper-realistic 3D accent renders. High information density. Clean and professional.
+```  CRITICAL: Warm paper background theme — all elements must have high contrast and sharp definition. 3D renders must be well-lit with clear highlights. Data visualizations must use bright accent colors (cyan, gold, orange) against the dark background for readability. Fine details must remain crisp and visible — not lost in shadows.
 
 ## image2-alternative
 
-```
-Industrial process infographic. 3:4 vertical. Dark navy background. Horizontal 4-step flow diagram from left to right: Slurry → Tape Cast → Stack → Fire → Test. Each step has a stylized equipment icon and key parameter callouts (temperature, pressure, thickness). Copper-gold flow arrows. Bright accent borders on bottleneck steps. Clean, precise, engineering aesthetic. Dark background.
-```
+```  CRITICAL: Warm paper background theme — all elements must have high contrast and sharp definition. 3D renders must be well-lit with clear highlights. Data visualizations must use bright accent colors (cyan, gold, orange) against the dark background for readability. Fine details must remain crisp and visible — not lost in shadows.
+Industrial process infographic. 3:4 vertical. Dark navy background. Horizontal 4-step flow diagram from left to right: Slurry → Tape Cast → Stack → Fire → Test. Each step has a stylized equipment icon and key parameter callouts (temperature, pressure, thickness). Copper-gold flow arrows. Bright accent borders on bottleneck steps. Clean, precise, engineering aesthetic. Clean warm paper background.
+```  CRITICAL: Warm paper background theme — all elements must have high contrast and sharp definition. 3D renders must be well-lit with clear highlights. Data visualizations must use bright accent colors (cyan, gold, orange) against the dark background for readability. Fine details must remain crisp and visible — not lost in shadows.
 
 
 ---
@@ -794,8 +824,8 @@ MLCC-F012, F015, F016, F018, F019。粉体和碳酸钡数据来自产业研究�
 
 ## image2-primary
 
-```
-Premium data infographic, 3:4 vertical. Deep navy-blue gradient background.
+```  CRITICAL: Warm paper background theme — all elements must have high contrast and sharp definition. 3D renders must be well-lit with clear highlights. Data visualizations must use bright accent colors (cyan, gold, orange) against the dark background for readability. Fine details must remain crisp and visible — not lost in shadows.
+Premium data infographic, 3:4 vertical. Warm cream paper background.
 
 MAIN VISUAL: A vertical funnel diagram showing supply chain concentration from top to bottom. TOP (widest): "Downstream — Highly Fragmented" with small icons representing automotive, AI servers, industrial, smartphones, IoT. MIDDLE (narrower): "Midstream — High Concentration" with company group labels (Japan: Murata, TDK, Taiyo Yuden | Korea: Samsung | Taiwan: Yageo, Walsin | China: Fenghua, Sanhuan). BOTTOM (narrowest): "Upstream — Extreme Concentration" with key suppliers listed (Sakai Chemical 28%, Sinocera 22%, Ferro 18% — marked "estimated"). The funnel visually demonstrates "control concentrates upward".
 
@@ -803,14 +833,14 @@ RIGHT SIDE: A horizontal timeline bar showing certification lock-in — Consumer
 
 BOTTOM: Three small insight cards with bright accent borders — "Upstream controls the ceiling", "Certification is the moat", "Capacity ≠ supply elasticity".
 
-Dark, premium, data-dense. Cool navy background with warm gold accents for concentration data. Clean flat-vector layout. Not warm paper.
-```
+Clean, premium, data-dense. Cool navy background with warm gold accents for concentration data. Clean flat-vector layout. Clean and professional.
+```  CRITICAL: Warm paper background theme — all elements must have high contrast and sharp definition. 3D renders must be well-lit with clear highlights. Data visualizations must use bright accent colors (cyan, gold, orange) against the dark background for readability. Fine details must remain crisp and visible — not lost in shadows.
 
 ## image2-alternative
 
-```
-Supply chain map infographic. 3:4 vertical. Dark blue background with subtle world-map outline showing East Asia coastline. Glowing copper-gold node points indicate manufacturing clusters — Japan, Korea, Taiwan, southern China — connected by thin steel-blue supply lines. Clean data labels with company names and concentration percentages. Dark, premium, intelligence-briefing aesthetic.
-```
+```  CRITICAL: Warm paper background theme — all elements must have high contrast and sharp definition. 3D renders must be well-lit with clear highlights. Data visualizations must use bright accent colors (cyan, gold, orange) against the dark background for readability. Fine details must remain crisp and visible — not lost in shadows.
+Supply chain map infographic. 3:4 vertical. Dark blue background with subtle world-map outline showing East Asia coastline. Glowing copper-gold node points indicate manufacturing clusters — Japan, Korea, Taiwan, southern China — connected by thin steel-blue supply lines. Clean data labels with company names and concentration percentages. Clean, premium, intelligence-briefing aesthetic.
+```  CRITICAL: Warm paper background theme — all elements must have high contrast and sharp definition. 3D renders must be well-lit with clear highlights. Data visualizations must use bright accent colors (cyan, gold, orange) against the dark background for readability. Fine details must remain crisp and visible — not lost in shadows.
 
 
 ---
@@ -977,8 +1007,8 @@ Supply chain map infographic. 3:4 vertical. Dark blue background with subtle wor
 
 ## image2-primary
 
-```
-Premium split-screen infographic, 3:4 vertical. Deep dark navy to charcoal gradient background.
+```  CRITICAL: Warm paper background theme — all elements must have high contrast and sharp definition. 3D renders must be well-lit with clear highlights. Data visualizations must use bright accent colors (cyan, gold, orange) against the dark background for readability. Fine details must remain crisp and visible — not lost in shadows.
+Premium split-screen infographic, 3:4 vertical. Warm cream paper background background.
 
 LEFT HALF (labeled "2018" in muted grey): A hyper-realistic 3D render of multiple identical MLCC capacitors stacked neatly in a pyramid — suggesting inventory hoarding. Cool grey-blue tones. A small annotation: "Channel inventory: 6-7 months". The visual suggests abundance that turned out to be illusion.
 
@@ -988,14 +1018,14 @@ CENTER DIVIDER: A thin vertical gap with a subtle lightning-bolt icon — the sh
 
 BOTTOM SECTION: A clean comparison table with 5 rows (Cause, Driver, Inventory, Price behavior, Resolution) and 2 columns (2018, 2026). Flat-vector card style with cyan and gold accent borders.
 
-Dark, dramatic contrast, premium editorial aesthetic. Not warm paper.
-```
+Dark, dramatic contrast, premium editorial aesthetic. Clean and professional.
+```  CRITICAL: Warm paper background theme — all elements must have high contrast and sharp definition. 3D renders must be well-lit with clear highlights. Data visualizations must use bright accent colors (cyan, gold, orange) against the dark background for readability. Fine details must remain crisp and visible — not lost in shadows.
 
 ## image2-alternative
 
-```
-Conceptual comparison diptych. 3:4 vertical. Dark background. LEFT: a tower of ceramic blocks on the verge of toppling — speculative bubble metaphor, cold grey-blue. RIGHT: a single ceramic block pressed against an unyielding dark wall by an invisible upward force — real demand meets rigid supply, warm copper-amber. Clean split down the middle. Dramatic, editorial, premium.
-```
+```  CRITICAL: Warm paper background theme — all elements must have high contrast and sharp definition. 3D renders must be well-lit with clear highlights. Data visualizations must use bright accent colors (cyan, gold, orange) against the dark background for readability. Fine details must remain crisp and visible — not lost in shadows.
+Conceptual comparison diptych. 3:4 vertical. Clean warm paper background. LEFT: a tower of ceramic blocks on the verge of toppling — speculative bubble metaphor, cold grey-blue. RIGHT: a single ceramic block pressed against an unyielding dark wall by an invisible upward force — real demand meets rigid supply, warm copper-amber. Clean split down the middle. Dramatic, editorial, premium.
+```  CRITICAL: Warm paper background theme — all elements must have high contrast and sharp definition. 3D renders must be well-lit with clear highlights. Data visualizations must use bright accent colors (cyan, gold, orange) against the dark background for readability. Fine details must remain crisp and visible — not lost in shadows.
 
 
 ---
@@ -1091,8 +1121,8 @@ MLCC-F006, F007, F011, F012, F019。供需趋势为定性方向性表达。
 
 ## image2-primary
 
-```
-Premium data infographic, 3:4 vertical. Deep navy-blue background.
+```  CRITICAL: Warm paper background theme — all elements must have high contrast and sharp definition. 3D renders must be well-lit with clear highlights. Data visualizations must use bright accent colors (cyan, gold, orange) against the dark background for readability. Fine details must remain crisp and visible — not lost in shadows.
+Premium data infographic, 3:4 vertical. Warm cream paper background.
 
 UPPER HALF: A dramatic supply-demand gap visualization. Two curves on a clean coordinate plane — a steep upward orange line (Demand: AI servers + EVs) and a shallow upward cyan line (Supply: high-end capacity). Between them, a widening red-shaded gap zone labeled "Structural Shortage". Flat-vector chart style, precise and clean.
 
@@ -1100,14 +1130,14 @@ LOWER HALF: A vertical 3-stage gate diagram. Stage 1 (cyan): "Parameter Match" �
 
 Bottom-right: small annotation card — "Typical substitution timeline: Consumer 1-3 months, Automotive 12-18 months."
 
-Dark, premium, data-rich. High information density. Cool-toned with warm orange/red warning accents.
-```
+Clean, premium, data-rich. High information density. Cool-toned with warm orange/red warning accents.
+```  CRITICAL: Warm paper background theme — all elements must have high contrast and sharp definition. 3D renders must be well-lit with clear highlights. Data visualizations must use bright accent colors (cyan, gold, orange) against the dark background for readability. Fine details must remain crisp and visible — not lost in shadows.
 
 ## image2-alternative
 
-```
-Conceptual visualization. 3:4 vertical. Dark background. UPPER: an hourglass where the upper half contains tiny MLCC capacitors flowing through a narrow neck — some stuck, creating a visible bottleneck. The lower half nearly empty. LOWER: three checkpoint cards showing the substitution verification gates. Dramatic, editorial, metaphorical. Premium quality.
-```
+```  CRITICAL: Warm paper background theme — all elements must have high contrast and sharp definition. 3D renders must be well-lit with clear highlights. Data visualizations must use bright accent colors (cyan, gold, orange) against the dark background for readability. Fine details must remain crisp and visible — not lost in shadows.
+Conceptual visualization. 3:4 vertical. Clean warm paper background. UPPER: an hourglass where the upper half contains tiny MLCC capacitors flowing through a narrow neck — some stuck, creating a visible bottleneck. The lower half nearly empty. LOWER: three checkpoint cards showing the substitution verification gates. Dramatic, editorial, metaphorical. Premium quality.
+```  CRITICAL: Warm paper background theme — all elements must have high contrast and sharp definition. 3D renders must be well-lit with clear highlights. Data visualizations must use bright accent colors (cyan, gold, orange) against the dark background for readability. Fine details must remain crisp and visible — not lost in shadows.
 
 
 ---
@@ -1217,8 +1247,8 @@ AI 在每个环节可以做什么：
 
 ## image2-primary
 
-```
-Premium strategic insight infographic, 3:4 vertical. Deep navy-blue gradient background with subtle flowing water pattern at low opacity — referencing the brand vision "Let supply chains flow like water."
+```  CRITICAL: Warm paper background theme — all elements must have high contrast and sharp definition. 3D renders must be well-lit with clear highlights. Data visualizations must use bright accent colors (cyan, gold, orange) against the dark background for readability. Fine details must remain crisp and visible — not lost in shadows.
+Premium strategic insight infographic, 3:4 vertical. Warm cream paper background with subtle flowing water pattern at low opacity — referencing the brand vision "Let supply chains flow like water."
 
 LAYOUT: Five signal cards arranged in a 3+2 staggered grid, each with a distinct accent color border (cyan, gold, orange, steel-blue, copper). Each card contains: a clean line-icon, a bold white title, and 2-3 lines of data text.
 
@@ -1232,12 +1262,12 @@ BOTTOM: A clean horizontal flow diagram — five connected nodes: Data → Signa
 
 Bottom-left: small "公众号：链流 ChainFlow". Faint "MLCC" watermark.
 
-Dark, premium, strategic. Cool navy background with warm gold and bright cyan accents. High information density with elegant card layout. Not warm paper.
-```
+Clean, premium, strategic. Cool navy background with warm gold and bright cyan accents. High information density with elegant card layout. Clean and professional.
+```  CRITICAL: Warm paper background theme — all elements must have high contrast and sharp definition. 3D renders must be well-lit with clear highlights. Data visualizations must use bright accent colors (cyan, gold, orange) against the dark background for readability. Fine details must remain crisp and visible — not lost in shadows.
 
 ## image2-alternative
 
-```
+```  CRITICAL: Warm paper background theme — all elements must have high contrast and sharp definition. 3D renders must be well-lit with clear highlights. Data visualizations must use bright accent colors (cyan, gold, orange) against the dark background for readability. Fine details must remain crisp and visible — not lost in shadows.
 Strategic dashboard infographic. 3:4 vertical. Dark navy background with subtle constellation-pattern data nodes. Five clean cards in a radial or cascading layout, each with icon, title, and key metrics. Central ChainFlow framework diagram connecting Data→Signal→Judgment→Action→Flow. Cool-toned, premium, authoritative. High data density.
-```
+```  CRITICAL: Warm paper background theme — all elements must have high contrast and sharp definition. 3D renders must be well-lit with clear highlights. Data visualizations must use bright accent colors (cyan, gold, orange) against the dark background for readability. Fine details must remain crisp and visible — not lost in shadows.
 

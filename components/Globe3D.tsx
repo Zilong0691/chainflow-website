@@ -26,7 +26,7 @@ function loadThree(): Promise<any> {
   return new Promise((resolve) => {
     if ((window as any).THREE) return resolve((window as any).THREE);
     const script = document.createElement("script");
-    script.src = "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js";
+    script.src = "/three.min.js";
     script.onload = () => resolve((window as any).THREE);
     document.head.appendChild(script);
   });
