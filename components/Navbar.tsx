@@ -20,6 +20,7 @@ export function Navbar({ lang, onLanguageChange }: NavbarProps) {
         </a>
 
         <nav className="hidden items-center gap-7 md:flex" aria-label="Primary navigation">
+          <a href="/demo" className="shrink-0 text-sm font-semibold text-gold hover:text-rice">{lang === "zh" ? "产品 Demo" : "Product Demo"}</a>
           {copy.nav.map((item) => (
             <a key={item.href} href={item.href} className="text-sm text-rice/70 transition hover:text-rice">
               {item.label}
