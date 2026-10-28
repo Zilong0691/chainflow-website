@@ -19,6 +19,15 @@ export function DemoSection({ lang }: DemoSectionProps) {
           tone="dark"
         />
 
+        <a href="/demo" className="mt-12 flex flex-col gap-6 rounded-2xl border border-gold/40 bg-rice/[0.045] p-7 transition hover:border-gold hover:bg-rice/[0.07] sm:flex-row sm:items-center sm:justify-between md:p-9">
+          <div>
+            <p className="text-sm font-medium text-gold">{lang === "zh" ? "ChainFlow 产品 Demo" : "ChainFlow Product Demo"}</p>
+            <h3 className="mt-3 text-3xl font-semibold text-rice">{lang === "zh" ? "从 BOM 到齐套，体验完整工作台" : "Explore the workbench, from BOM to material readiness"}</h3>
+            <p className="mt-3 text-sm leading-6 text-rice/70">{lang === "zh" ? "供应网络、供料核对、价格与风险，使用完整虚构业务案例。" : "Supplier networks, material readiness, pricing and risk through a complete fictional business case."}</p>
+          </div>
+          <span className="flex shrink-0 items-center gap-2 font-semibold text-gold">{lang === "zh" ? "进入产品 Demo" : "Open Demo"}<ArrowRight size={18} /></span>
+        </a>
+
         <div className="mt-14 grid gap-5 lg:grid-cols-2">
           {copy.tools.map((tool) => (
             <a
