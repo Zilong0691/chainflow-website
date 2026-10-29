@@ -12,10 +12,10 @@ export function ToolDemoPage({ slug }: ToolDemoPageProps) {
   return (
     <main className="h-svh bg-graphite text-rice flex flex-col">
       <div className="flex items-center justify-between px-4 py-2 border-b border-rice/10 bg-graphite/90 shrink-0">
-        <a href="/#skills" className="inline-flex items-center gap-1.5 text-xs text-rice/60 transition hover:text-gold">
-          <ArrowLeft size={14} />返回
+        <a href="/demo" className="inline-flex items-center gap-1.5 text-xs text-rice/60 transition hover:text-gold">
+          <ArrowLeft size={14} />返回 ChainFlow 工作台
         </a>
-        <span className="text-xs text-gold/50">推荐电脑打开，体验更完整</span>
+        <span className="text-xs text-gold/50">历史功能原型</span>
       </div>
       <iframe
         src={liveDemo.src}
