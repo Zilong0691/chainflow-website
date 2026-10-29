@@ -72,9 +72,9 @@ export default function RouteFlowPage() {
       {/* 顶栏 */}
       <div className="flex flex-wrap items-center justify-between gap-2 border-b border-rice/10 bg-graphite/90 px-3 py-2 text-xs shrink-0">
         <div className="flex items-center gap-3">
-          <a href="/#skills" className="text-rice/40 hover:text-gold">← 返回</a>
+          <a href="/demo" className="text-rice/40 hover:text-gold">← 返回 ChainFlow 工作台</a>
           <span className="font-semibold text-rice">RouteFlow</span>
-          <span className="text-rice/30">AI 排线工作台 · v0.2.0</span>
+          <span className="text-rice/30">历史功能原型 · v0.2.0</span>
         </div>
         <div className="flex items-center gap-3 text-rice/40">
           <KeyManager trialsLeft={-1} onSave={() => {}} />

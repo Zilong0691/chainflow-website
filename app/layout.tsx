@@ -5,7 +5,7 @@ import "./marketing.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://chainflowlab.com"),
-  title: "ChainFlow 链流 | 供应链 × AI 产品实验室",
+  title: "ChainFlow 链流 | 供应链工作台",
   description:
     "让供应链，如水一般。连接 BOM、供料、价格与供应网络的供应链工作台。",
   openGraph: {
