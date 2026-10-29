@@ -1,3 +1,5 @@
+2026-10-29：官网按指定参考重做，原工具及固定产品 Demo 入口保留。任务范围、素材和三维复用见 [官网重构](docs/website-redesign.md)。
+
 # ChainFlow 官网 V0.2
 
 ChainFlow 是一个基于 Next.js、React 和 Tailwind CSS 的供应链 AI 工具箱网站。当前版本围绕“省时间 / 做判断 / 看见网络”组织首页，重点展示 RouteFlow、NetworkFlow、Pricing 和第一批试点入口。
