@@ -3,10 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
+    "dev": "node scripts/build-globe.mjs && next dev",
+    "build": "node scripts/build-globe.mjs && next build",
     "start": "next start",
-    "test": "node test/standards.test.js && node test/pages.test.js"
+    "test": "node test/standards.test.js && node test/pages.test.js && node --test test/marketing-demo.test.mjs"
   },
   "dependencies": {
     "@supabase/ssr": "^0.12.0",
@@ -16,6 +16,7 @@
     "next": "^14.2.18",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "three": "^0.186.1",
     "topojson-client": "^3.1.0",
     "world-atlas": "^2.0.2"
   },
@@ -26,6 +27,7 @@
     "@types/react-dom": "^18.3.1",
     "@types/topojson-client": "^3.1.5",
     "autoprefixer": "^10.4.20",
+    "esbuild": "^0.25.12",
     "postcss": "^8.4.49",
     "tailwindcss": "^3.4.15",
     "typescript": "^5.6.3"

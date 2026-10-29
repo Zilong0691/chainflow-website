@@ -10,3 +10,9 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 .DS_Store
+
+.taste-skill/
+*.tsbuildinfo
+
+# 三维依赖由构建脚本确定性生成，不提交派生包
+public/marketing/globe-engine.js

@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import "./globals.css";
+import "./marketing.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://chainflowlab.com"),
   title: "ChainFlow 链流 | 供应链 × AI 产品实验室",
   description:
-    "让供应链，如水一般。面向供应链从业者、商家与中小企业的实用 AI 小工具实验室。",
+    "让供应链，如水一般。连接 BOM、供料、价格与供应网络的供应链工作台。",
   openGraph: {
     title: "ChainFlow 链流",
     description: "让供应链，如水一般。",
@@ -21,11 +22,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="zh-CN">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet" />
-      </head>
       <body>{children}</body>
     </html>
   );

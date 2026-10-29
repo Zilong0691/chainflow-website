@@ -1,0 +1,6 @@
+{
+  "sourceRevision": "dd477c57afa7fc71a8a1142d5eeabb3b085ba9d1",
+  "engineSha256": "b46f9d473e2443c92198bcec1cbdfae78ac31bb2909d51aa8f73485277ed412e",
+  "adaptation": "调整相对导入，移除高德导出；企业核心仅保留原坐标校验；官网传入scrollZoom=false保留页面滚动；不读取内部供应商点位",
+  "earthAttribution": "NASA Blue Marble，历史卫星合成影像；Natural Earth轮廓回退"
+}
