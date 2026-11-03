@@ -154,3 +154,13 @@ html[lang=en] .cf-hero-title{font-size:clamp(44px,5.1vw,74px)}
 .cf-brand-icon{width:30px;height:30px;object-fit:contain;flex:none}
 @media(max-width:1050px){.cf-chains-body{grid-template-columns:1fr;gap:18px}.cf-globe-legend{display:none}}
 @media(max-width:760px){.cf-globe-trigger{font-size:12px;padding:8px 13px}.cf-chains{margin-top:22px;padding-top:20px}}
+
+/* 图例：两种风险环用空心圆环表达，与球面上的标记一致 */
+.cf-globe-legend span.is-risk{gap:8px}
+.cf-globe-legend i.ring-red,.cf-globe-legend i.ring-amber{width:11px;height:11px;border-radius:50%;background:none!important;border:2px solid #C1272D;opacity:.75}
+.cf-globe-legend i.ring-amber{border-color:#D4764E;border-width:1.5px;width:9px;height:9px;opacity:.65}
+.cf-chain-box li b{font-size:11.5px;font-weight:500;color:#cfdcea;line-height:1.5;display:block}
+.cf-chain-box li small{font-size:10.5px;color:#6f88a4;display:block;margin-top:2px}
+.cf-chain-desc{margin-left:auto;font-size:10.5px;color:#6f88a4;font-weight:400}
+.cf-chain-box li.is-empty{color:#5c7characters}
+.cf-chain-box li.is-empty{color:#5c728c}

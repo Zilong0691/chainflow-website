@@ -29,7 +29,7 @@
    "lat": 52.13,
    "publishedAt": "2026-10-26",
    "source": "https://www.nexperia.com/about/news-events/press-releases/Nexperia-builds-momentum-with-continued-growth-in-Q3-2026",
-   "level": "important",
+   "level": "watch",
    "flow": "capital"
   },
   {
@@ -44,7 +44,7 @@
    "lat": 25.03,
    "publishedAt": "2026-10-29",
    "source": "https://www.trendforce.cn/presscenter/news/20261029-13285.html",
-   "level": "important",
+   "level": "watch",
    "flow": "capital"
   },
   {
@@ -74,7 +74,7 @@
    "lat": 24.14,
    "publishedAt": "2026-10-22",
    "source": "https://eponews.com/tsmc-rare-earth-free-equipment-china/",
-   "level": "watch",
+   "level": "important",
    "flow": "information"
   },
   {
@@ -89,7 +89,7 @@
    "lat": 38.9,
    "publishedAt": "2026-10-29",
    "source": "https://www.talayinsight.com/zh/rapor/washington-cip-lisansini-amerikan-fabrikasi-karsiliginda-pazarliga-aciyor/",
-   "level": "watch",
+   "level": "important",
    "flow": "capital"
   },
   {
@@ -120,7 +120,7 @@
    "publishedAt": "2026-08-04",
    "source": "https://news.un.org/zh/story/2026/08/1142581",
    "level": "important",
-   "flow": "logistics"
+   "flow": "goods"
   },
   {
    "id": "cf-risk-9",
@@ -134,8 +134,8 @@
    "lat": 51.26,
    "publishedAt": "2026-09-09",
    "source": "https://www.maersk.com/news/articles/2026/09/09/europe-market-update-september",
-   "level": "important",
-   "flow": "logistics"
+   "level": "watch",
+   "flow": "goods"
   },
   {
    "id": "cf-risk-10",
@@ -149,8 +149,8 @@
    "lat": 41.9,
    "publishedAt": "2026-10-28",
    "source": "https://www.ctee.com.tw/news/20261029700226-439901",
-   "level": "important",
-   "flow": "logistics"
+   "level": "watch",
+   "flow": "goods"
   },
   {
    "id": "cf-risk-11",
@@ -214,20 +214,20 @@
   }
  ],
  "flows": {
-  "logistics": {
-   "zh": "物流流",
-   "en": "Cargo flow",
-   "desc": "航运、港口与在途运输的变化"
+  "goods": {
+   "zh": "实物流",
+   "en": "Physical flow",
+   "desc": "零部件、原材料与成品的跨区流转"
   },
   "capital": {
    "zh": "资金流",
    "en": "Capital flow",
-   "desc": "价格、产能、资本开支与贸易管制"
+   "desc": "货款、账期与票据结算往来"
   },
   "information": {
    "zh": "信息流",
    "en": "Information flow",
-   "desc": "质量、监管与技术情报"
+   "desc": "订单、交期、质量与变更协同"
   }
  }
 }
