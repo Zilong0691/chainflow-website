@@ -172,3 +172,7 @@ html[lang=en] .cf-hero-title{font-size:clamp(44px,5.1vw,74px)}
 .cf-chains-body{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr) minmax(0,1fr);gap:26px;align-items:start}
 .cf-chains-globe{display:none}
 @media(max-width:1050px){.cf-chains-body{grid-template-columns:1fr;gap:18px}.cf-hero.is-open .cf-globe-stage{max-width:100%}}
+
+/* 导航：半透明磨砂深色遮罩，保证 logo 边缘干净 */
+.cf-nav{position:sticky;top:0;z-index:60;background:rgba(8,12,19,.72);backdrop-filter:blur(14px) saturate(1.1);-webkit-backdrop-filter:blur(14px) saturate(1.1);border-bottom:1px solid rgba(255,255,255,.05)}
+.cf-brand-icon{filter:none}
