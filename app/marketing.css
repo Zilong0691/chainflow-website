@@ -18,3 +18,66 @@
 html[lang=en] .cf-hero-title{font-size:clamp(44px,5.1vw,74px)}
 
 .cf-product-preview{border-radius:12px;overflow:hidden;background:#142030}.cf-product-preview>a{position:relative;display:block;max-height:700px;overflow:hidden}.cf-product-preview img{display:block;width:100%;height:auto;object-fit:cover;object-position:top}.cf-preview-open{display:flex;align-items:center;gap:18px;position:absolute;right:25px;bottom:25px;padding:15px 23px;border-radius:100px;background:#2164df;color:white;font-size:16px;font-weight:500;transition:transform .2s,background .2s}.cf-product-preview>a:hover .cf-preview-open{transform:translateY(-3px);background:#1653c9}@media(max-width:760px){.cf-product-preview>a{max-height:390px}.cf-preview-open{right:12px;bottom:12px;padding:10px 15px;font-size:13px;gap:10px}}@media(prefers-reduced-motion:reduce){.cf-product-preview>a:hover .cf-preview-open{transform:none}}
+
+/* 首页风险可视化：地球风险标记、驾驶舱与风险列表 */
+.cf-globe-stage{position:relative;min-width:0}
+.cf-risk-pin{position:absolute;left:0;top:0;width:24px;height:24px;display:grid;place-items:center;cursor:pointer;z-index:3;pointer-events:auto}
+.cf-risk-pin-dot{width:9px;height:9px;border-radius:50%;background:#f0a35e;box-shadow:0 0 0 4px rgba(240,163,94,.22),0 0 12px rgba(240,163,94,.65);transition:transform .18s,box-shadow .18s}
+.cf-risk-pin[data-topic="memory"] .cf-risk-pin-dot{background:#7fb2ff;box-shadow:0 0 0 4px rgba(127,178,255,.22),0 0 12px rgba(127,178,255,.6)}
+.cf-risk-pin[data-topic="components"] .cf-risk-pin-dot{background:#f0a35e}
+.cf-risk-pin[data-topic="chips"] .cf-risk-pin-dot{background:#c48cff;box-shadow:0 0 0 4px rgba(196,140,255,.22),0 0 12px rgba(196,140,255,.6)}
+.cf-risk-pin[data-topic="upstream"] .cf-risk-pin-dot{background:#5fd6c4;box-shadow:0 0 0 4px rgba(95,214,196,.22),0 0 12px rgba(95,214,196,.6)}
+.cf-risk-pin[data-topic="automotive"] .cf-risk-pin-dot{background:#ff8fa0;box-shadow:0 0 0 4px rgba(255,143,160,.22),0 0 12px rgba(255,143,160,.6)}
+.cf-risk-pin.is-active .cf-risk-pin-dot,.cf-risk-pin:hover .cf-risk-pin-dot{transform:scale(1.55);box-shadow:0 0 0 6px rgba(255,255,255,.18),0 0 18px currentColor}
+.cf-risk-tip{position:absolute;left:22px;top:-6px;width:min(268px,58vw);background:#0d1929;border:1px solid #24384f;border-radius:8px;padding:11px 13px;display:grid;gap:4px;text-align:left;z-index:9;box-shadow:0 16px 40px #0008;pointer-events:none}
+.cf-risk-tip b{font-size:12.5px;font-weight:600;color:#eef4ff;line-height:1.5;display:block}
+.cf-risk-tip small{font-size:11px;color:#8fa9c8}
+.cf-risk-tip em{font-size:11px;color:#6f89a8;font-style:normal}
+.cf-hero-risklist{list-style:none;position:absolute;right:0;top:-6px;width:min(300px,44vw);display:grid;gap:6px;z-index:4}
+.cf-hero-risklist li.is-active>button{background:#1a2b40;border-color:#2f4a6a}
+.cf-hero-risklist button{width:100%;text-align:left;background:#101a27cc;border:1px solid #1d2b3d;border-radius:7px;padding:9px 11px;display:grid;gap:3px;backdrop-filter:blur(6px);transition:background .18s,border-color .18s}
+.cf-hero-risklist button:hover{background:#16243a;border-color:#2a4160}
+.cf-hero-risklist b{font-size:11.5px;font-weight:500;color:#dbe6f5;line-height:1.45;display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cf-hero-risklist small{font-size:10px;color:#6f88a6}
+.cf-hero-risklist .is-loading{display:flex;align-items:center;gap:7px;font-size:11px;color:#7f93ad;background:#101a27cc;border:1px solid #1d2b3d;border-radius:7px;padding:10px 12px;list-style:none}
+.cf-risk-tag{display:inline-flex;align-items:center;font-size:10px;padding:2px 6px;border-radius:3px;background:#1e2f44;color:#9db8d8;white-space:nowrap;font-style:normal}
+.cf-risk-tag.topic-memory{background:#1b2a4a;color:#8bb4ff}
+.cf-risk-tag.topic-components{background:#382a1c;color:#f0b47e}
+.cf-risk-tag.topic-chips{background:#2e2140;color:#c9a2ff}
+.cf-risk-tag.topic-upstream{background:#173331;color:#7fded0}
+.cf-risk-tag.topic-automotive{background:#3a2130;color:#ffa8b6}
+.cf-risk-desk{display:grid;grid-template-columns:1fr 1.25fr;gap:22px;margin-top:38px;align-items:start}
+.cf-cockpit{background:#0e1724;border:1px solid #1c2938;border-radius:12px;padding:20px;display:grid;gap:18px}
+.cf-cockpit-head{display:flex;align-items:center;gap:8px;font-size:13px}
+.cf-cockpit-head b{font-weight:600;color:#e8effa}
+.cf-cockpit-head small{color:#6f88a6;font-size:11px;margin-left:auto}
+.cf-cockpit-metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;padding-bottom:16px;border-bottom:1px solid #1a2737}
+.cf-cockpit-metrics strong{display:block;font-size:23px;font-weight:500;letter-spacing:-.03em;color:#f0f5fc}
+.cf-cockpit-metrics span{font-size:10.5px;color:#7189a6}
+.cf-cockpit-flow{list-style:none;display:grid;gap:10px}
+.cf-cockpit-flow>li{border-left:2px solid #22374e;padding-left:12px;display:grid;gap:5px}
+.cf-cockpit-flow>li.is-empty{opacity:.45}
+.cf-flow-head{display:flex;align-items:center;gap:8px}
+.cf-flow-head em{margin-left:auto;font-style:normal;font-size:11px;color:#5f7794}
+.cf-cockpit-flow button{text-align:left;background:none;border:0;padding:4px 0;display:grid;gap:2px}
+.cf-cockpit-flow button b{font-size:11.5px;font-weight:500;color:#c3d2e4;line-height:1.45;display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cf-cockpit-flow button small{font-size:10px;color:#5f7794}
+.cf-cockpit-flow button:hover b,.cf-cockpit-flow button.is-active b{color:#8bb8ff}
+.cf-flow-empty{font-size:11px;color:#5a718c}
+.cf-risk-list{background:#0e1724;border:1px solid #1c2938;border-radius:12px;overflow:hidden}
+.cf-risk-list>header{display:flex;align-items:baseline;gap:10px;padding:16px 18px;border-bottom:1px solid #1a2737}
+.cf-risk-list>header b{font-size:13px;font-weight:600;color:#e8effa}
+.cf-risk-list>header small{font-size:11px;color:#6f88a6}
+.cf-risk-list ul{list-style:none;max-height:430px;overflow:auto}
+.cf-risk-list li{padding:14px 18px;border-bottom:1px solid #16222f;display:grid;gap:6px;transition:background .16s}
+.cf-risk-list li:last-child{border-bottom:0}
+.cf-risk-list li.is-active{background:#132033}
+.cf-risk-line{display:flex;align-items:center;gap:9px}
+.cf-risk-line time{font-size:10.5px;color:#67809c}
+.cf-risk-list li>b{font-size:12.5px;font-weight:600;color:#e2ebf7;line-height:1.5}
+.cf-risk-list li>p{font-size:11.5px;line-height:1.75;color:#8ba0b9;margin:0}
+.cf-risk-foot{display:flex;align-items:center;gap:10px;font-size:10.5px;color:#63809f}
+.cf-risk-foot a{display:inline-flex;align-items:center;gap:4px;color:#7fa9dd;margin-left:auto}
+.cf-risk-foot a:hover{color:#a9c9f5}
+@media(max-width:1050px){.cf-risk-desk{grid-template-columns:1fr}.cf-hero-risklist{display:none}}
+@media(max-width:760px){.cf-risk-desk{grid-template-columns:1fr;gap:14px}.cf-cockpit{padding:15px}.cf-cockpit-metrics strong{font-size:19px}.cf-risk-list ul{max-height:none}.cf-risk-tip{width:min(232px,64vw);left:18px}.cf-risk-list li{padding:12px 14px}}
