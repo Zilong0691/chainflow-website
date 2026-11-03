@@ -121,3 +121,36 @@ html[lang=en] .cf-hero-title{font-size:clamp(44px,5.1vw,74px)}
 
 /* 导航品牌图标：透明底图形，不用色块裁切，避免在深色导航上发暗 */
 .cf-brand-icon{width:30px;height:30px;object-fit:contain;flex:none;filter:drop-shadow(0 2px 6px #1b6fe022)}
+
+/* 首屏恢复左文右球；点击地球就地展开三链与全球风险，不打断页面下滑 */
+.cf-hero.is-open{align-items:start}
+.cf-globe-trigger{display:inline-flex;align-items:center;gap:8px;margin-top:26px;background:none;border:1px solid #22374e;border-radius:100px;padding:9px 16px;font-size:13px;color:#8fb4dd;transition:border-color .18s,color .18s,background .18s}
+.cf-globe-trigger:hover{border-color:#2f5580;color:#b9d5f5;background:#0f1c2b}
+.cf-hero.is-open .cf-globe-trigger svg{transform:rotate(180deg)}
+.cf-chains{grid-column:1/-1;margin-top:34px;padding-top:30px;border-top:1px solid #172433;animation:cf-copy-in .5s both}
+.cf-chains-body{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:26px;align-items:start}
+.cf-rail{display:flex;flex-direction:column;gap:14px;min-width:0;padding-top:0;align-self:start}
+.cf-rail>header{display:flex;align-items:center;gap:8px;font-size:12px;letter-spacing:.06em;color:#8aa2bd;text-transform:uppercase}
+.cf-rail>header em{margin-left:auto;font-style:normal;color:#6a849f}
+.cf-dot.is-alert{background:#ff5a4d;box-shadow:0 0 8px #ff5a4d99}
+.cf-chain-box{background:#0e1826cc;border:1px solid #182838;border-radius:9px;padding:14px 16px}
+.cf-chain-head{display:flex;align-items:center;gap:9px;margin-bottom:9px}
+.cf-chain-head i{width:3px;height:14px;border-radius:2px;display:block}
+.cf-chain-head b{font-size:13.5px;font-weight:600;color:#e2ecf8}
+.cf-chain-box ul{list-style:none;display:grid;gap:7px}
+.cf-chain-box li{font-size:12px;line-height:1.7;color:#93a9c2;padding-left:12px;position:relative}
+.cf-chain-box li::before{content:'';position:absolute;left:0;top:8px;width:4px;height:4px;border-radius:50%;background:#3a5776}
+.cf-rail-right ul{list-style:none;display:grid;gap:7px}
+.cf-rail-right li{background:#0e1826cc;border:1px solid #182838;border-radius:9px;padding:11px 13px;display:grid;gap:5px;transition:border-color .18s,background .18s}
+.cf-rail-right li.is-active{border-color:#3a2b2b;background:#16202e}
+.cf-rail-right li b{font-size:11.5px;font-weight:500;color:#cfdcea;line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.cf-rail-right li small{font-size:10.5px;color:#6f88a4}
+.cf-risk-hover{position:fixed;left:50%;bottom:34px;transform:translateX(-50%);background:#0d1929f2;border:1px solid #2a4058;border-radius:9px;padding:12px 16px;display:grid;gap:5px;max-width:min(560px,86vw);z-index:40;box-shadow:0 20px 48px #0009;pointer-events:none}
+.cf-risk-hover b{font-size:13px;font-weight:600;color:#eef4ff;line-height:1.5}
+.cf-risk-hover small{font-size:11px;color:#8298b4}
+.cf-globe-legend{position:absolute;left:0;bottom:52px;display:flex;flex-direction:column;gap:6px;font-size:11px;color:#8aa2bd;pointer-events:none}
+.cf-globe-legend span{display:flex;align-items:center;gap:7px}
+.cf-globe-legend i{width:14px;height:2px;border-radius:1px;display:block}
+.cf-brand-icon{width:30px;height:30px;object-fit:contain;flex:none}
+@media(max-width:1050px){.cf-chains-body{grid-template-columns:1fr;gap:18px}.cf-globe-legend{display:none}}
+@media(max-width:760px){.cf-globe-trigger{font-size:12px;padding:8px 13px}.cf-chains{margin-top:22px;padding-top:20px}}

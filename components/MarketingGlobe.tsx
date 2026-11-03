@@ -18,7 +18,7 @@ function chainArcs(){
  ];
 }
 
-export function MarketingGlobe({lang,risks=[],activeId='',onPick,hoverId='',onHover}:{lang:'zh'|'en';risks?:GlobeRisk[];activeId?:string;onPick?:(id:string)=>void;hoverId?:string;onHover?:(id:string)=>void}){
+export function MarketingGlobe({lang,risks=[],activeId='',onPick,hoverId='',onHover,onOpen}:{lang:'zh'|'en';risks?:GlobeRisk[];activeId?:string;onPick?:(id:string)=>void;hoverId?:string;onHover?:(id:string)=>void;onOpen?:()=>void}){
  const host=useRef<HTMLDivElement>(null),engine=useRef<any>(null);
  const [failed,setFailed]=useState(false);
  const [running,setRunning]=useState(true);
@@ -40,7 +40,8 @@ export function MarketingGlobe({lang,risks=[],activeId='',onPick,hoverId='',onHo
     riskPoints:riskRef.current.map(r=>({id:r.id,lon:r.lon,lat:r.lat,level:r.level,color:r.level==='important'?'#ff5a4d':'#ff9a5c'})),
     onView:(view:any)=>{if(host.current)host.current.dataset.globeView=JSON.stringify(view);},
     onRiskHover:(id:string)=>onHover?.(id),
-    onRiskSelect:(id:string)=>onPick?.(id),
+    onRiskSelect:(id:string)=>{onPick?.(id);onOpen?.();},
+    onSelect:()=>onOpen?.(),
     onError:()=>setFailed(true)
    });
    const canvas=host.current.querySelector('canvas');
