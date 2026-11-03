@@ -16,6 +16,7 @@ export function MarketingLanding(){
   <div className="cf-globe-stage"><MarketingGlobe lang={lang} risks={risks} activeId={activeRisk} onPick={setActiveRisk} onHover={setHoverRisk} onOpen={()=>setGlobeOpen(true)}/></div>
   {globeOpen&&<div className="cf-chains" id="chains">
    <div className="cf-chains-body">
+    <div className="cf-chains-globe" aria-hidden="true"/>
     <aside className="cf-rail cf-rail-left" aria-label={zh?'全球三流动态':'Global three flows'}>
      <header><span className="cf-dot"/>{zh?'全球三流':'Three flows'}</header>
      {[{k:'goods',c:'#2A76BB',t:zh?'实物流':'Physical flow',d:zh?'零部件、原材料与成品的跨区流转':'Parts, materials and finished goods'},{k:'capital',c:'#E9C46A',t:zh?'资金流':'Capital flow',d:zh?'货款、账期与票据结算往来':'Payment, terms and settlement'},{k:'information',c:'#2EC4B6',t:zh?'信息流':'Information flow',d:zh?'订单、交期、质量与变更协同':'Orders, lead time, quality and changes'}].map(g=>{const items=risks.filter(r=>(r as any).flow===g.k).slice(0,3);return <section className="cf-chain-box" key={g.k}><div className="cf-chain-head"><i style={{background:g.c}}/><b>{g.t}</b><span className="cf-chain-desc">{g.d}</span></div><ul>{items.map(r=><li key={r.id} onMouseEnter={()=>setActiveRisk(r.id)}><b>{r.title}</b><small>{r.place} · {r.publishedAt}</small></li>)}{!items.length&&<li className="is-empty">{zh?'本期无更新':'No updates'}</li>}</ul></section>;})}

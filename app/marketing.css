@@ -164,3 +164,11 @@ html[lang=en] .cf-hero-title{font-size:clamp(44px,5.1vw,74px)}
 .cf-chain-desc{margin-left:auto;font-size:10.5px;color:#6f88a4;font-weight:400}
 .cf-chain-box li.is-empty{color:#5c7characters}
 .cf-chain-box li.is-empty{color:#5c728c}
+
+/* 展开后：地球居中，三流在左，风险在右 */
+.cf-hero.is-open{display:block;padding-top:12px}
+.cf-hero.is-open .cf-hero-copy{display:none}
+.cf-hero.is-open .cf-globe-stage{max-width:640px;margin:0 auto}
+.cf-chains-body{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr) minmax(0,1fr);gap:26px;align-items:start}
+.cf-chains-globe{display:none}
+@media(max-width:1050px){.cf-chains-body{grid-template-columns:1fr;gap:18px}.cf-hero.is-open .cf-globe-stage{max-width:100%}}
