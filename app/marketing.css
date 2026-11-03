@@ -81,3 +81,40 @@ html[lang=en] .cf-hero-title{font-size:clamp(44px,5.1vw,74px)}
 .cf-risk-foot a:hover{color:#a9c9f5}
 @media(max-width:1050px){.cf-risk-desk{grid-template-columns:1fr}.cf-hero-risklist{display:none}}
 @media(max-width:760px){.cf-risk-desk{grid-template-columns:1fr;gap:14px}.cf-cockpit{padding:15px}.cf-cockpit-metrics strong{font-size:19px}.cf-risk-list ul{max-height:none}.cf-risk-tip{width:min(232px,64vw);left:18px}.cf-risk-list li{padding:12px 14px}}
+
+/* 首屏沉浸式：地球居中，左右两侧分别是链上流转与风险事件 */
+.cf-hero-immersive{position:relative;display:grid;grid-template-columns:258px minmax(0,1fr) 300px;align-items:center;gap:18px;min-height:calc(100svh - 84px);padding:26px 40px 30px;overflow:hidden}
+.cf-hero-center{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;min-width:0}
+.cf-hero-headline{text-align:center;max-width:720px;margin-bottom:-6px}
+.cf-hero-title{font-size:clamp(34px,3.4vw,50px);line-height:1.14;letter-spacing:-.05em!important}
+.cf-line-mask{display:inline-block;overflow:hidden;padding-bottom:.08em;margin-bottom:-.08em}
+.cf-line-mask+.cf-line-mask{margin-left:.24em}
+.cf-line-mask>span{display:block;animation:cf-line-in .95s cubic-bezier(.22,1,.36,1) both}
+.cf-hero-description{font-size:15px;line-height:1.8;margin-top:16px!important;color:#9db0c8;max-width:560px;margin-inline:auto;animation:cf-copy-in .8s .23s both}
+.cf-hero-globe{width:100%;max-width:720px;height:clamp(390px,52svh,560px);position:relative}
+.cf-hero-globe .cf-globe-wrap{height:100%;animation:cf-earth-in 1.4s .05s both}
+.cf-hero-cta{display:flex;align-items:center;gap:26px;animation:cf-copy-in .8s .37s both}
+.cf-rail{display:flex;flex-direction:column;gap:14px;align-self:stretch;padding-top:52px;min-width:0}
+.cf-rail>header{display:flex;align-items:center;gap:8px;font-size:12px;letter-spacing:.06em;color:#8aa2bd;text-transform:uppercase}
+.cf-rail>header em{margin-left:auto;font-style:normal;color:#6a849f}
+.cf-dot.is-alert{background:#ff5a4d;box-shadow:0 0 8px #ff5a4d99}
+.cf-rail-item{display:flex;gap:10px;align-items:flex-start;background:#0e1826cc;border:1px solid #182838;border-radius:8px;padding:11px 13px;backdrop-filter:blur(6px);transition:border-color .18s,background .18s}
+.cf-rail-item:hover{border-color:#274058;background:#131f30}
+.cf-rail-item>i{width:2px;align-self:stretch;border-radius:2px;flex:none;margin-top:2px}
+.cf-rail-item b{font-size:12.5px;font-weight:600;color:#dbe7f6;display:block}
+.cf-rail-item small{font-size:11px;line-height:1.65;color:#7e93ad;display:block;margin-top:3px}
+.cf-rail-right ul{list-style:none;display:grid;gap:7px}
+.cf-rail-right li{background:#0e1826cc;border:1px solid #182838;border-radius:8px;padding:10px 12px;display:grid;gap:5px;backdrop-filter:blur(6px);transition:border-color .18s,background .18s}
+.cf-rail-right li.is-active{border-color:#3a2b2b;background:#16202e}
+.cf-rail-right li b{font-size:11.5px;font-weight:500;color:#cfdcea;line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.cf-rail-right li small{font-size:10.5px;color:#6f88a4}
+.cf-rail-right .is-loading{display:flex;align-items:center;gap:7px;font-size:11px;color:#7f93ad}
+.cf-risk-hover{position:fixed;left:50%;bottom:34px;transform:translateX(-50%);background:#0d1929f2;border:1px solid #2a4058;border-radius:9px;padding:12px 16px;display:grid;gap:5px;max-width:min(560px,86vw);z-index:40;box-shadow:0 20px 48px #0009;pointer-events:none}
+.cf-risk-hover b{font-size:13px;font-weight:600;color:#eef4ff;line-height:1.5}
+.cf-risk-hover small{font-size:11px;color:#8298b4}
+.cf-globe-legend{position:absolute;left:0;bottom:52px;display:flex;flex-direction:column;gap:6px;font-size:11px;color:#8aa2bd;pointer-events:none}
+.cf-globe-legend span{display:flex;align-items:center;gap:7px}
+.cf-globe-legend i{width:14px;height:2px;border-radius:1px;display:block}
+@media(max-width:1180px){.cf-hero-immersive{grid-template-columns:220px minmax(0,1fr) 250px;padding-inline:24px}}
+@media(max-width:1050px){.cf-hero-immersive{grid-template-columns:1fr;padding:20px 20px 34px;min-height:0}.cf-rail{display:none}.cf-hero-globe{height:clamp(330px,44svh,430px)}.cf-hero-title{font-size:clamp(32px,6vw,44px)}}
+@media(max-width:760px){.cf-hero-immersive{padding:14px 16px 28px}.cf-hero-description{font-size:13.5px;margin-top:12px!important}.cf-hero-globe{height:330px}.cf-hero-cta{gap:18px}.cf-line-mask+.cf-line-mask{margin-left:0;display:block}.cf-risk-hover{bottom:18px;padding:10px 12px}}
