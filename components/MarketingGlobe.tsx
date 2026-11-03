@@ -1,7 +1,7 @@
 "use client";
 import {useEffect,useRef,useState} from 'react';
 
-export type GlobeRisk={id:string;title:string;summary:string;topic:string;topicLabel:string;kind:string;place:string;lon:number;lat:number;publishedAt:string;source:string|null;level:string};
+export type GlobeRisk={id:string;title:string;summary:string;topic:string;topicLabel:string;kind:string;place:string;lon:number;lat:number;publishedAt:string;source:string|null;level:string;flow?:'logistics'|'capital'|'information'};
 
 // 仅为官网构造城市级示意点位，不读取供应网络的公司位置。
 const cities=[[121.47,31.23],[114.06,22.55],[120.16,30.28],[116.4,39.9],[104.06,30.67],[139.69,35.68],[135.5,34.69],[126.98,37.56],[103.82,1.35],[100.5,13.75],[106.85,-6.2],[77.2,28.61],[55.27,25.2],[8.68,50.11],[2.35,48.86],[-.12,51.5],[-74,40.7],[-118.24,34.05],[151.2,-33.87],[-46.63,-23.55]];

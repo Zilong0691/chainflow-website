@@ -17,9 +17,9 @@ export function MarketingLanding(){
   <div className="cf-globe-stage"><MarketingGlobe lang={lang} risks={risks} activeId={activeRisk} onPick={setActiveRisk} onHover={setHoverRisk} onOpen={()=>setGlobeOpen(true)}/></div>
   {globeOpen&&<div className="cf-chains" id="chains">
    <div className="cf-chains-body">
-    <aside className="cf-rail cf-rail-left" aria-label={zh?'全球链上动态':'Global chain activity'}>
-     <header><span className="cf-dot"/>{zh?'全球实时流转':'Global flow'}</header>
-     {[{k:'logistics',c:'#4ea8ff',t:zh?'物流链':'Logistics',items:zh?['欧洲码头与内河运输受限','红海绕行推高亚欧运价','亚洲台风导致主要港口停摆']:['European terminals and inland transport restricted','Red Sea diversions lift Asia-Europe rates','Typhoons halt major Asian ports']},{k:'capital',c:'#f0c674',t:zh?'资金链':'Capital',items:zh?['存储原厂资本开支上调六成','半导体设备订单增长','汽车零部件账期普遍延长']:['Memory makers raise capex','Semiconductor equipment orders climb','Auto parts payment terms extend']},{k:'information',c:'#5fd6c4',t:zh?'信息链':'Information',items:zh?['高容 MLCC 缺口延续至 2027','DRAM 供给收缩至五成','稀土出口管制影响设备采购']:['High-cap MLCC shortage through 2027','DRAM supply shrinks up to 50%','Rare-earth controls hit equipment buying']}].map(g=><section className="cf-chain-box" key={g.k}><div className="cf-chain-head"><i style={{background:g.c}}/><b>{g.t}</b></div><ul>{g.items.map((x:string)=><li key={x}>{x}</li>)}</ul></section>)}
+    <aside className="cf-rail cf-rail-left" aria-label={zh?'全球三流动态':'Global three flows'}>
+     <header><span className="cf-dot"/>{zh?'全球三流':'Three flows'}</header>
+     {[{k:'logistics',c:'#4ea8ff',t:zh?'物流流':'Cargo flow',d:zh?'航运、港口与在途运输':'Shipping, ports and transit'},{k:'capital',c:'#f0c674',t:zh?'资金流':'Capital flow',d:zh?'价格、产能与资本开支':'Prices, capacity and capex'},{k:'information',c:'#5fd6c4',t:zh?'信息流':'Information flow',d:zh?'质量、监管与技术情报':'Quality, regulation and technology'}].map(g=>{const items=risks.filter(r=>(r as any).flow===g.k).slice(0,3);return <section className="cf-chain-box" key={g.k}><div className="cf-chain-head"><i style={{background:g.c}}/><b>{g.t}</b><span className="cf-chain-desc">{g.d}</span></div><ul>{items.map(r=><li key={r.id} onMouseEnter={()=>setActiveRisk(r.id)}><b>{r.title}</b><small>{r.place} · {r.publishedAt}</small></li>)}{!items.length&&<li className="is-empty">{zh?'本期无更新':'No updates'}</li>}</ul></section>;})}
     </aside>
     <aside className="cf-rail cf-rail-right" aria-label={zh?'全球风险':'Global risks'}>
      <header><span className="cf-dot is-alert"/>{zh?'全球风险':'Global risks'}<em>{risks.length}</em></header>
