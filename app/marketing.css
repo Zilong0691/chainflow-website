@@ -176,3 +176,24 @@ html[lang=en] .cf-hero-title{font-size:clamp(44px,5.1vw,74px)}
 /* 导航：半透明磨砂深色遮罩，保证 logo 边缘干净 */
 .cf-nav{position:sticky;top:0;z-index:60;background:rgba(8,12,19,.72);backdrop-filter:blur(14px) saturate(1.1);-webkit-backdrop-filter:blur(14px) saturate(1.1);border-bottom:1px solid rgba(255,255,255,.05)}
 .cf-brand-icon{filter:none}
+
+/* 首屏滚动驱动：地球随滚动从右侧移到中间，两侧淡入三流与风险 */
+.cf-hero-scroll{--p:0;position:relative;height:220vh}
+.cf-hero-pin{position:sticky;top:0;height:100svh;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center;gap:0;padding:0 40px;overflow:hidden}
+.cf-hero-inner{display:contents}
+.cf-hero-copy{grid-column:1;justify-self:start;max-width:520px;opacity:calc(1 - var(--p)*1.6);transform:translateX(calc(var(--p) * -60px))}
+.cf-globe-stage{grid-column:2;width:100%;max-width:760px;height:min(78svh,720px);justify-self:center;
+ transform:translateX(calc(var(--p) * -14vw)) scale(calc(1 + var(--p) * .18));
+ transition:transform .08s linear}
+.cf-rail{position:absolute;top:50%;transform:translateY(-50%);width:300px;opacity:0;pointer-events:none;transition:opacity .25s}
+.cf-rail-left{left:40px;opacity:calc((var(--p) - .55) * 2.2)}
+.cf-rail-right{right:40px;opacity:calc((var(--p) - .55) * 2.2)}
+.cf-hero-scroll[data-ready="1"] .cf-rail{pointer-events:auto}
+@media(max-width:1050px){
+ .cf-hero-scroll{height:180vh}
+ .cf-hero-pin{grid-template-columns:1fr;padding:0 20px}
+ .cf-globe-stage{grid-column:1;grid-row:2;height:44svh;max-width:100%;transform:translateY(calc(var(--p) * -6vh)) scale(calc(1 + var(--p)*.12))}
+ .cf-rail{width:auto;left:16px;right:16px;width:auto}
+ .cf-rail-left{top:auto;bottom:calc(46% + 12px);transform:none}
+ .cf-rail-right{top:auto;bottom:16px;transform:none}
+}

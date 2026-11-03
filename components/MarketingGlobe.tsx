@@ -6,6 +6,7 @@ export type GlobeRisk={id:string;title:string;summary:string;topic:string;topicL
 // 仅为官网构造城市级示意点位，不读取供应网络的公司位置。
 const cities=[[121.47,31.23],[114.06,22.55],[120.16,30.28],[116.4,39.9],[104.06,30.67],[139.69,35.68],[135.5,34.69],[126.98,37.56],[103.82,1.35],[100.5,13.75],[106.85,-6.2],[77.2,28.61],[55.27,25.2],[8.68,50.11],[2.35,48.86],[-.12,51.5],[-74,40.7],[-118.24,34.05],[151.2,-33.87],[-46.63,-23.55]];
 // 多个制造与集散枢纽作为网络节点，弧线在节点之间互联，不汇聚到单一城市。
+const HUB_LIST:Array<[string,[number,number]]>=[['上海',[121.47,31.23]],['苏州',[120.62,31.32]],['深圳',[114.06,22.55]],['台北',[121.56,25.03]],['首尔',[126.98,37.56]],['东京',[139.69,35.68]],['新加坡',[103.82,1.35]],['慕尼黑',[11.58,48.14]],['埃因霍温',[5.47,51.44]],['奥斯汀',[-97.74,30.27]],['瓜达拉哈拉',[-103.35,20.67]]];
 const HUBS:Record<string,[number,number]>={shanghai:[121.47,31.23],suzhou:[120.62,31.32],shenzhen:[114.06,22.55],taipei:[121.56,25.03],seoul:[126.98,37.56],tokyo:[139.69,35.68],singapore:[103.82,1.35],munich:[11.58,48.14],eindhoven:[5.47,51.44],austin:[-97.74,30.27],guadalajara:[-103.35,20.67]};
 
 // 实物流：供应商与工厂、客户之间的实物跨区流转，可双向。
@@ -51,10 +52,10 @@ export function MarketingGlobe({lang,risks=[],activeId='',onPick,hoverId='',onHo
    engine.current=module.mountGlobe({
     host:host.current,
     land,
-    points:Object.values(HUBS).map(([lon,lat],i)=>({id:'public-city-'+i,supplierId:'fictional-'+i,company:'',lon,lat,coordinateSystem:'WGS84',kind:i%3?'office':'factory',verified:true})),
+    points:HUB_LIST.map(([name,[lon,lat]],i)=>({id:'public-city-'+i,supplierId:'fictional-'+i,company:name,lon,lat,coordinateSystem:'WGS84',kind:i%3?'office':'factory',verified:true})),
     reference:{lon:HUBS.shanghai[0],lat:HUBS.shanghai[1],coordinateSystem:'WGS84'},
     scrollZoom:false,
-    layers:{heat:false,scatter:true,pulse:true,links:true},
+    layers:{heat:true,heatOpacity:.22,heatGroups:0,scatter:true,pulse:true,links:true,labelsAlways:true},
     chainArcs:buildArcs(),
     riskPoints:riskRef.current.map(r=>({id:r.id,lon:r.lon,lat:r.lat,level:r.level,color:r.level==='important'?'#C1272D':'#D4764E'})),
     onView:(view:any)=>{if(host.current)host.current.dataset.globeView=JSON.stringify(view);},
