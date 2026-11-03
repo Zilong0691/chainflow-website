@@ -118,3 +118,6 @@ html[lang=en] .cf-hero-title{font-size:clamp(44px,5.1vw,74px)}
 @media(max-width:1180px){.cf-hero-immersive{grid-template-columns:220px minmax(0,1fr) 250px;padding-inline:24px}}
 @media(max-width:1050px){.cf-hero-immersive{grid-template-columns:1fr;padding:20px 20px 34px;min-height:0}.cf-rail{display:none}.cf-hero-globe{height:clamp(330px,44svh,430px)}.cf-hero-title{font-size:clamp(32px,6vw,44px)}}
 @media(max-width:760px){.cf-hero-immersive{padding:14px 16px 28px}.cf-hero-description{font-size:13.5px;margin-top:12px!important}.cf-hero-globe{height:330px}.cf-hero-cta{gap:18px}.cf-line-mask+.cf-line-mask{margin-left:0;display:block}.cf-risk-hover{bottom:18px;padding:10px 12px}}
+
+/* 导航品牌图标：透明底图形，不用色块裁切，避免在深色导航上发暗 */
+.cf-brand-icon{width:30px;height:30px;object-fit:contain;flex:none;filter:drop-shadow(0 2px 6px #1b6fe022)}
