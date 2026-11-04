@@ -12,6 +12,12 @@ const HUBS:Array<{name:string;lat:number;lng:number;size:number}>=[
  {name:'埃因霍温',lat:51.44,lng:5.47,size:.28},{name:'奥斯汀',lat:30.27,lng:-97.74,size:.34},
  {name:'瓜达拉哈拉',lat:20.67,lng:-103.35,size:.28}
 ];
+// 主要港口：与制造枢纽分开标注，帮助理解实物流路径。
+const PORTS:Array<{name:string;lat:number;lng:number}>=[
+ {name:'新加坡港',lat:1.26,lng:103.84},{name:'上海港',lat:31.22,lng:121.5},
+ {name:'深圳港',lat:22.5,lng:114.1},{name:'釜山港',lat:35.1,lng:129.04},
+ {name:'鹿特丹港',lat:51.92,lng:4.48},{name:'香港港',lat:22.31,lng:114.17}
+];
 const byName=(n:string)=>HUBS.find(h=>h.name===n)!;
 
 // 三流弧线：节点之间互联，不汇聚单点。
@@ -34,9 +40,9 @@ export function MarketingGlobe({lang,risks=[],activeId='',onPick,hoverId='',onHo
 
  const ringsFor=(list:GlobeRisk[])=>list.map(r=>({
   id:r.id,lat:r.lat,lng:r.lon,
-  maxR:r.level==='important'?5.2:3.0,
-  propagationSpeed:r.level==='important'?1.1:1.6,
-  repeatPeriod:r.level==='important'?2200:1650,
+  maxR:r.level==='important'?9:5,
+  propagationSpeed:r.level==='important'?1.2:1.8,
+  repeatPeriod:r.level==='important'?3600:2800,
   color:riskColor(r.level),level:r.level
  }));
 
@@ -56,35 +62,74 @@ export function MarketingGlobe({lang,risks=[],activeId='',onPick,hoverId='',onHo
       .showAtmosphere(true);
     globe.current=g;
 
-    // 城市标注：用 HTML 元素叠加，保证在任何缩放下都清晰可见。
-    const labelEls=new Map<string,HTMLElement>();
-    const labelData=HUBS.map(h=>{
+    // 城市与港口标注：按方位错开，东亚密集区用放射排布避免叠字。
+    const OFFSET:Record<string,[number,number]>={
+      '上海':[-52,-6],'苏州':[-14,-30],'深圳':[-26,40],'台北':[58,20],
+      '首尔':[10,-26],'东京':[34,-18],'釜山港':[96,-58],'深圳港':[-124,40],
+      '上海港':[-130,-46],'香港港':[-38,74],'新加坡港':[-58,-40],'新加坡':[26,32],
+      '慕尼黑':[-20,-18],'埃因霍温':[-46,-4],'鹿特丹港':[-8,-30]
+    };
+    const makeTag=(text:string,variant:string,name:string)=>{
       const div=document.createElement('div');
-      div.className='cf-city-tag';
-      div.textContent=h.name;
-      labelEls.set(h.name,div);
-      return {...h,__el:div};
-    });
+      div.className='cf-city-tag '+variant;
+      div.textContent=text;
+      const [dx,dy]=OFFSET[name]||[0,0];
+      // globe.gl 每帧会覆写 transform，用 margin 做偏移才稳定。
+      div.style.marginLeft=`${dx}px`;
+      div.style.marginTop=`${dy}px`;
+      return div;
+    };
+    const labelData=[
+      ...HUBS.map(h=>({...h,__el:makeTag(h.name,'is-city',h.name)})),
+      ...PORTS.map(p=>({...p,__el:makeTag(p.name,'is-port',p.name)}))
+    ];
     g.htmlElementsData(labelData)
      .htmlLat('lat').htmlLng('lng').htmlAltitude(.008)
      .htmlElement((d:any)=>d.__el);
+
+    // 标签防重叠：每帧后按优先级剔除互相遮挡的标签，城市优先于港口。
+    let culling=false;
+    const cull=()=>{
+      if(culling)return;culling=true;requestAnimationFrame(()=>{
+        culling=false;
+        const boxes:{el:HTMLElement;rect:DOMRect;priority:number}[]=[];
+        for(const d of labelData){
+          const el=d.__el as HTMLElement;
+          if(!el.isConnected)continue;
+          el.style.visibility='';
+          const rect=el.getBoundingClientRect();
+          if(rect.width===0)continue;
+          boxes.push({el,rect,priority:el.classList.contains('is-city')?2:1});
+        }
+        boxes.sort((a,b)=>b.priority-a.priority);
+        const shown:DOMRect[]=[];
+        for(const box of boxes){
+          const hit=shown.some(r=>!(box.rect.right<r.left-4||box.rect.left>r.right+4||box.rect.bottom<r.top-2||box.rect.top>r.bottom+2));
+          if(hit&&box.priority<2)box.el.style.visibility='hidden';
+          else if(hit)box.el.style.visibility='hidden';
+          else shown.push(box.rect);
+        }
+      });
+    };
+    const cullTimer=setInterval(cull,260);
+    (el as any).__cfCullTimer=cullTimer;
 
 // 热力：按节点权重的低透明热力斑，不抢主视觉
     g.heatmapsData([HUBS.map(h=>({lat:h.lat,lng:h.lng,weight:h.size}))])
      .heatmapPointLat('lat').heatmapPointLng('lng')
      .heatmapPointWeight((d:any)=>d.weight||.3)
-     .heatmapTopAltitude(.14)
-     .heatmapBandwidth(4.5)
-     .heatmapColorSaturation(1.2)
-     .heatmapBaseAltitude(.006);
+     .heatmapTopAltitude(.10)
+     .heatmapBandwidth(2.0)
+     .heatmapColorSaturation(.9)
+     .heatmapBaseAltitude(.002);
 
     // 三流弧线
     const arcs=[...GOODS.map(([a,b])=>buildArc(a,b,'goods')),...CAPITAL.map(([a,b])=>buildArc(a,b,'capital')),...INFORMATION.map(([a,b])=>buildArc(a,b,'information'))];
     g.arcsData(arcs)
      .arcColor((d:any)=>d.color)
-     .arcAltitudeAutoScale(.3)
-     .arcStroke(.26)
-     .arcDashLength(.4).arcDashGap(.3)
+     .arcAltitudeAutoScale(.34)
+     .arcStroke(.55)
+     .arcDashLength(.55).arcDashGap(.22)
      .arcDashInitialGap(()=>Math.random())
      .arcDashAnimateTime((d:any)=>d.flow==='capital'?5200:d.flow==='information'?4400:3800)
      .arcsTransitionDuration(0);
@@ -110,7 +155,7 @@ export function MarketingGlobe({lang,risks=[],activeId='',onPick,hoverId='',onHo
   return()=>{
    disposed=true;
    const el=host.current as any;
-   if(el?.__cfResize)window.removeEventListener('resize',el.__cfResize);
+   if(el?.__cfResize)window.removeEventListener('resize',el.__cfResize);if(el?.__cfCullTimer)clearInterval(el.__cfCullTimer);
    globe.current?._destructor?.();globe.current=null;
   };
  },[]);

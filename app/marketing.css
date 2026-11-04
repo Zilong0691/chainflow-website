@@ -177,7 +177,7 @@ html[lang=en] .cf-hero-title{font-size:clamp(44px,5.1vw,74px)}
 .cf-brand-icon{filter:none}
 
 /* 首屏滚动驱动：地球随滚动从右侧移到中间，两侧淡入三流与风险 */
-.cf-hero-scroll{--p:0;position:relative;height:220vh}
+.cf-hero-scroll{position:relative;height:220vh}
 .cf-hero-pin{position:sticky;top:0;height:100svh;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center;gap:0;padding:0 40px;overflow:hidden}
 .cf-hero-inner{display:contents}
 .cf-hero-copy{grid-column:1;justify-self:start;max-width:520px;opacity:calc(1 - var(--p)*1.6);transform:translateX(calc(var(--p) * -60px))}
@@ -200,8 +200,7 @@ html[lang=en] .cf-hero-title{font-size:clamp(44px,5.1vw,74px)}
 .cf-hero-scroll[data-stage="mid"] .cf-hero-copy{opacity:0;pointer-events:none}
 
 /* 中段布局：地球居中，两侧信息收窄到边缘 */
-.cf-hero-pin{--p:0;position:relative}
-.cf-hero-scroll{--p:0}
+.cf-hero-pin{position:relative}
 @media(min-width:1051px){
  .cf-hero-scroll{height:240vh}
  .cf-hero-pin{grid-template-columns:minmax(0,1fr);position:sticky;top:0}
