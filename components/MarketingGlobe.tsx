@@ -1,88 +1,139 @@
 "use client";
 import {useEffect,useRef,useState} from 'react';
 
-export type GlobeRisk={id:string;title:string;summary:string;topic:string;topicLabel:string;kind:string;place:string;lon:number;lat:number;publishedAt:string;source:string|null;level:string;flow?:'logistics'|'capital'|'information'};
+export type GlobeRisk={id:string;title:string;summary:string;topic:string;topicLabel:string;kind:string;place:string;lon:number;lat:number;publishedAt:string;source:string|null;level:string;flow?:'goods'|'capital'|'information'};
 
-// 仅为官网构造城市级示意点位，不读取供应网络的公司位置。
-const cities=[[121.47,31.23],[114.06,22.55],[120.16,30.28],[116.4,39.9],[104.06,30.67],[139.69,35.68],[135.5,34.69],[126.98,37.56],[103.82,1.35],[100.5,13.75],[106.85,-6.2],[77.2,28.61],[55.27,25.2],[8.68,50.11],[2.35,48.86],[-.12,51.5],[-74,40.7],[-118.24,34.05],[151.2,-33.87],[-46.63,-23.55]];
-// 多个制造与集散枢纽作为网络节点，弧线在节点之间互联，不汇聚到单一城市。
-const HUB_LIST:Array<[string,[number,number]]>=[['上海',[121.47,31.23]],['苏州',[120.62,31.32]],['深圳',[114.06,22.55]],['台北',[121.56,25.03]],['首尔',[126.98,37.56]],['东京',[139.69,35.68]],['新加坡',[103.82,1.35]],['慕尼黑',[11.58,48.14]],['埃因霍温',[5.47,51.44]],['奥斯汀',[-97.74,30.27]],['瓜达拉哈拉',[-103.35,20.67]]];
-const HUBS:Record<string,[number,number]>={shanghai:[121.47,31.23],suzhou:[120.62,31.32],shenzhen:[114.06,22.55],taipei:[121.56,25.03],seoul:[126.98,37.56],tokyo:[139.69,35.68],singapore:[103.82,1.35],munich:[11.58,48.14],eindhoven:[5.47,51.44],austin:[-97.74,30.27],guadalajara:[-103.35,20.67]};
+// 全球供应链枢纽：制造、集散与客户端节点，均为示意。
+const HUBS:Array<{name:string;lat:number;lng:number;size:number}>=[
+ {name:'上海',lat:31.23,lng:121.47,size:.42},{name:'苏州',lat:31.32,lng:120.62,size:.36},
+ {name:'深圳',lat:22.55,lng:114.06,size:.42},{name:'台北',lat:25.03,lng:121.56,size:.34},
+ {name:'首尔',lat:37.56,lng:126.98,size:.32},{name:'东京',lat:35.68,lng:139.69,size:.34},
+ {name:'新加坡',lat:1.35,lng:103.82,size:.36},{name:'慕尼黑',lat:48.14,lng:11.58,size:.34},
+ {name:'埃因霍温',lat:51.44,lng:5.47,size:.28},{name:'奥斯汀',lat:30.27,lng:-97.74,size:.34},
+ {name:'瓜达拉哈拉',lat:20.67,lng:-103.35,size:.28}
+];
+const byName=(n:string)=>HUBS.find(h=>h.name===n)!;
 
-// 实物流：供应商与工厂、客户之间的实物跨区流转，可双向。
-const GOODS:Array<[number,number]>[]=[
- [HUBS.taipei,HUBS.shanghai],[HUBS.seoul,HUBS.suzhou],[HUBS.tokyo,HUBS.shenzhen],
- [HUBS.singapore,HUBS.shenzhen],[HUBS.shanghai,HUBS.munich],[HUBS.shenzhen,HUBS.singapore],
- [HUBS.munich,HUBS.eindhoven],[HUBS.austin,HUBS.guadalajara],[HUBS.shanghai,HUBS.austin],
- [HUBS.taipei,HUBS.shenzhen],[HUBS.eindhoven,HUBS.suzhou]
-];
-// 资金流：下游向上游结算，方向与实物流相反。
-const CAPITAL:Array<[number,number]>[]=[
- [HUBS.shanghai,HUBS.taipei],[HUBS.suzhou,HUBS.seoul],[HUBS.shenzhen,HUBS.tokyo],
- [HUBS.shenzhen,HUBS.singapore],[HUBS.munich,HUBS.shanghai],[HUBS.guadalajara,HUBS.austin],
- [HUBS.eindhoven,HUBS.munich]
-];
-// 信息流：订单、交期、质量与变更协同，双向互通。
-const INFORMATION:Array<[number,number]>[]=[
- [HUBS.shanghai,HUBS.suzhou],[HUBS.suzhou,HUBS.shenzhen],[HUBS.shenzhen,HUBS.taipei],
- [HUBS.munich,HUBS.eindhoven],[HUBS.austin,HUBS.munich],[HUBS.shanghai,HUBS.singapore],
- [HUBS.singapore,HUBS.eindhoven]
-];
+// 三流弧线：节点之间互联，不汇聚单点。
+const GOODS:[string,string][]=[['台北','上海'],['首尔','苏州'],['东京','深圳'],['新加坡','深圳'],['上海','慕尼黑'],['深圳','新加坡'],['慕尼黑','埃因霍温'],['奥斯汀','瓜达拉哈拉'],['上海','奥斯汀'],['台北','深圳'],['埃因霍温','苏州']];
+const CAPITAL:[string,string][]=[['上海','台北'],['苏州','首尔'],['深圳','东京'],['深圳','新加坡'],['慕尼黑','上海'],['瓜达拉哈拉','奥斯汀'],['埃因霍温','慕尼黑']];
+const INFORMATION:[string,string][]=[['上海','苏州'],['苏州','深圳'],['深圳','台北'],['慕尼黑','埃因霍温'],['奥斯汀','慕尼黑'],['上海','新加坡'],['新加坡','埃因霍温']];
 
-function buildArcs(){
- const make=(list:Array<[number,number]>[],color:string,opacity:number)=>list.map(([from,to])=>({color,from,to,opacity}));
- return [
-  ...make(GOODS,'#2A76BB',.42),
-  ...make(CAPITAL,'#E9C46A',.38),
-  ...make(INFORMATION,'#2EC4B6',.34)
- ];
-}
+const CHAIN_COLOR={goods:'#2A76BB',capital:'#E9C46A',information:'#2EC4B6'} as const;
+const riskColor=(level:string)=>level==='important'?'#C1272D':'#D4764E';
+
+const buildArc=(from:string,to:string,flow:keyof typeof CHAIN_COLOR)=>{
+ const a=byName(from),b=byName(to);
+ return {startLat:a.lat,startLng:a.lng,endLat:b.lat,endLng:b.lng,color:CHAIN_COLOR[flow],flow};
+};
 
 export function MarketingGlobe({lang,risks=[],activeId='',onPick,hoverId='',onHover,onOpen}:{lang:'zh'|'en';risks?:GlobeRisk[];activeId?:string;onPick?:(id:string)=>void;hoverId?:string;onHover?:(id:string)=>void;onOpen?:()=>void}){
- const host=useRef<HTMLDivElement>(null),engine=useRef<any>(null);
- const [failed,setFailed]=useState(false);
- const [running,setRunning]=useState(true);
+ const host=useRef<HTMLDivElement>(null),globe=useRef<any>(null);
+ const [failed,setFailed]=useState(false),[ready,setReady]=useState(false);
  const riskRef=useRef<GlobeRisk[]>(risks);riskRef.current=risks;
 
+ const ringsFor=(list:GlobeRisk[])=>list.map(r=>({
+  id:r.id,lat:r.lat,lng:r.lon,
+  maxR:r.level==='important'?5.2:3.0,
+  propagationSpeed:r.level==='important'?1.1:1.6,
+  repeatPeriod:r.level==='important'?2200:1650,
+  color:riskColor(r.level),level:r.level
+ }));
+
  useEffect(()=>{
-  let active=true;
-  const url='/marketing/globe-engine.js';
-  Promise.all([import(/* webpackIgnore: true */ url),fetch('/world-land.geojson').then(r=>r.json())]).then(([module,land])=>{
-   if(!active||!host.current)return;
-   engine.current=module.mountGlobe({
-    host:host.current,
-    land,
-    points:HUB_LIST.map(([name,[lon,lat]],i)=>({id:'public-city-'+i,supplierId:'fictional-'+i,company:name,lon,lat,coordinateSystem:'WGS84',kind:i%3?'office':'factory',verified:true})),
-    reference:{lon:HUBS.shanghai[0],lat:HUBS.shanghai[1],coordinateSystem:'WGS84'},
-    scrollZoom:false,
-    layers:{heat:true,heatOpacity:.22,heatGroups:0,scatter:true,pulse:true,links:true,labelsAlways:true},
-    chainArcs:buildArcs(),
-    riskPoints:riskRef.current.map(r=>({id:r.id,lon:r.lon,lat:r.lat,level:r.level,color:r.level==='important'?'#C1272D':'#D4764E'})),
-    onView:(view:any)=>{if(host.current)host.current.dataset.globeView=JSON.stringify(view);},
-    onRiskHover:(id:string)=>onHover?.(id),
-    onRiskSelect:(id:string)=>{onPick?.(id);onOpen?.();},
-    onSelect:()=>onOpen?.(),
-    onError:()=>setFailed(true)
-   });
-   const canvas=host.current.querySelector('canvas');
-   if(canvas)canvas.style.touchAction='pan-y';
-  }).catch(()=>setFailed(true));
-  return()=>{active=false;engine.current?.dispose();engine.current=null;};
+  let disposed=false;
+  (async()=>{
+   try{
+    const mod:any=await import('globe.gl');
+    const Globe=mod.default||mod;
+    if(disposed||!host.current)return;
+    const el=host.current,width=()=>el.clientWidth||640,height=()=>el.clientHeight||520;
+    const g=new Globe(el,{animateIn:false,rendererConfig:{antialias:true,alpha:true,powerPreference:'low-power'}})
+      .width(width()).height(height())
+      .backgroundColor('rgba(0,0,0,0)')
+      .globeImageUrl('/earth-surface.jpg')
+      .atmosphereColor('#6aa6cc').atmosphereAltitude(.18)
+      .showAtmosphere(true);
+    globe.current=g;
+
+    // 城市标注：用 HTML 元素叠加，保证在任何缩放下都清晰可见。
+    const labelEls=new Map<string,HTMLElement>();
+    const labelData=HUBS.map(h=>{
+      const div=document.createElement('div');
+      div.className='cf-city-tag';
+      div.textContent=h.name;
+      labelEls.set(h.name,div);
+      return {...h,__el:div};
+    });
+    g.htmlElementsData(labelData)
+     .htmlLat('lat').htmlLng('lng').htmlAltitude(.008)
+     .htmlElement((d:any)=>d.__el);
+
+// 热力：按节点权重的低透明热力斑，不抢主视觉
+    g.heatmapsData([HUBS.map(h=>({lat:h.lat,lng:h.lng,weight:h.size}))])
+     .heatmapPointLat('lat').heatmapPointLng('lng')
+     .heatmapPointWeight((d:any)=>d.weight||.3)
+     .heatmapTopAltitude(.14)
+     .heatmapBandwidth(4.5)
+     .heatmapColorSaturation(1.2)
+     .heatmapBaseAltitude(.006);
+
+    // 三流弧线
+    const arcs=[...GOODS.map(([a,b])=>buildArc(a,b,'goods')),...CAPITAL.map(([a,b])=>buildArc(a,b,'capital')),...INFORMATION.map(([a,b])=>buildArc(a,b,'information'))];
+    g.arcsData(arcs)
+     .arcColor((d:any)=>d.color)
+     .arcAltitudeAutoScale(.3)
+     .arcStroke(.26)
+     .arcDashLength(.4).arcDashGap(.3)
+     .arcDashInitialGap(()=>Math.random())
+     .arcDashAnimateTime((d:any)=>d.flow==='capital'?5200:d.flow==='information'?4400:3800)
+     .arcsTransitionDuration(0);
+
+    // 风险：水波环
+    g.ringsData(ringsFor(riskRef.current))
+     .ringColor((d:any)=>d.color)
+     .ringMaxRadius('maxR').ringPropagationSpeed('propagationSpeed').ringRepeatPeriod('repeatPeriod')
+     .ringAltitude(.008);
+
+    g.pointOfView({lat:20,lng:100,altitude:2.3},0);
+    const controls=g.controls();
+    controls.autoRotate=true;controls.autoRotateSpeed=.32;
+    controls.enableZoom=false;controls.minDistance=180;controls.maxDistance=560;
+
+    const onResize=()=>{g.width(width()).height(height());};
+    window.addEventListener('resize',onResize);
+    (el as any).__cfResize=onResize;
+    el.dataset.globeReady='1';
+    setReady(true);
+   }catch(error){console.error('globe init failed',error);setFailed(true);}
+  })();
+  return()=>{
+   disposed=true;
+   const el=host.current as any;
+   if(el?.__cfResize)window.removeEventListener('resize',el.__cfResize);
+   globe.current?._destructor?.();globe.current=null;
+  };
  },[]);
 
- // 风险数据到达后重建图形，保持圆环与数据集一致。
+ // 风险数据集变化时更新水波
  useEffect(()=>{
-  const e=engine.current;
-  if(!e||!host.current)return;
-  e.setRisks?.(risks.map(r=>({id:r.id,lon:r.lon,lat:r.lat,level:r.level,color:r.level==='important'?'#C1272D':'#D4764E'})));
- }, [risks]);
+  const g=globe.current;if(!g)return;
+  g.ringsData(ringsFor(risks));
+ },[risks]);
 
- return <div className="cf-globe-wrap" data-risks={risks.length}>
+ // 选中风险时飞向该点
+ useEffect(()=>{
+  const g=globe.current;if(!g||!activeId)return;
+  const r=risks.find(x=>x.id===activeId);if(!r)return;
+  g.pointOfView({lat:r.lat,lng:r.lon,altitude:1.8},900);
+ },[activeId,risks]);
+
+ return <div className="cf-globe-wrap" data-risks={risks.length} data-ready={ready?'1':'0'}>
   <div ref={host} className="cf-globe" data-testid="marketing-globe"/>
   {failed&&<img className="cf-earth-fallback" src="/earth-surface.jpg" alt={lang==='zh'?'地球表面参照图':'Earth surface reference'}/>}
   <div className="cf-globe-actions">
-   <button onClick={()=>{engine.current?.motion();setRunning(!running);}} aria-label={lang==='zh'?(running?'暂停地球自转':'继续地球自转'):(running?'Pause rotation':'Resume rotation')}>{running?'Ⅱ':'▷'}</button>
-   <button onClick={()=>engine.current?.global()} aria-label={lang==='zh'?'复位地球':'Reset globe'}>↺</button>
+   <button onClick={()=>{const c=globe.current?.controls();if(!c)return;c.autoRotate=!c.autoRotate;}} aria-label={lang==='zh'?'暂停或继续自转':'Pause or resume rotation'}>Ⅱ</button>
+   <button onClick={()=>globe.current?.pointOfView({lat:20,lng:100,altitude:2.3},900)} aria-label={lang==='zh'?'复位地球':'Reset globe'}>↺</button>
   </div>
   <div className="cf-globe-legend" aria-hidden="true">
    <span><i style={{background:'#2A76BB'}}/>{lang==='zh'?'实物流':'Physical flow'}</span>

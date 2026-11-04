@@ -168,10 +168,9 @@ html[lang=en] .cf-hero-title{font-size:clamp(44px,5.1vw,74px)}
 /* 展开后：地球居中，三流在左，风险在右 */
 .cf-hero.is-open{display:block;padding-top:12px}
 .cf-hero.is-open .cf-hero-copy{display:none}
-.cf-hero.is-open .cf-globe-stage{max-width:640px;margin:0 auto}
 .cf-chains-body{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr) minmax(0,1fr);gap:26px;align-items:start}
 .cf-chains-globe{display:none}
-@media(max-width:1050px){.cf-chains-body{grid-template-columns:1fr;gap:18px}.cf-hero.is-open .cf-globe-stage{max-width:100%}}
+@media(max-width:1050px){.cf-chains-body{grid-template-columns:1fr;gap:18px}}
 
 /* 导航：半透明磨砂深色遮罩，保证 logo 边缘干净 */
 .cf-nav{position:sticky;top:0;z-index:60;background:rgba(8,12,19,.72);backdrop-filter:blur(14px) saturate(1.1);-webkit-backdrop-filter:blur(14px) saturate(1.1);border-bottom:1px solid rgba(255,255,255,.05)}
@@ -182,9 +181,6 @@ html[lang=en] .cf-hero-title{font-size:clamp(44px,5.1vw,74px)}
 .cf-hero-pin{position:sticky;top:0;height:100svh;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center;gap:0;padding:0 40px;overflow:hidden}
 .cf-hero-inner{display:contents}
 .cf-hero-copy{grid-column:1;justify-self:start;max-width:520px;opacity:calc(1 - var(--p)*1.6);transform:translateX(calc(var(--p) * -60px))}
-.cf-globe-stage{grid-column:2;width:100%;max-width:760px;height:min(78svh,720px);justify-self:center;
- transform:translateX(calc(var(--p) * -14vw)) scale(calc(1 + var(--p) * .18));
- transition:transform .08s linear}
 .cf-rail{position:absolute;top:50%;transform:translateY(-50%);width:300px;opacity:0;pointer-events:none;transition:opacity .25s}
 .cf-rail-left{left:40px;opacity:calc((var(--p) - .55) * 2.2)}
 .cf-rail-right{right:40px;opacity:calc((var(--p) - .55) * 2.2)}
@@ -197,3 +193,34 @@ html[lang=en] .cf-hero-title{font-size:clamp(44px,5.1vw,74px)}
  .cf-rail-left{top:auto;bottom:calc(46% + 12px);transform:none}
  .cf-rail-right{top:auto;bottom:16px;transform:none}
 }
+
+/* 城市标签：低亮度小字，随地球投影定位 */
+.cf-city-label{position:absolute;left:0;top:0;font-size:10.5px;color:#8fa8c4;letter-spacing:.02em;white-space:nowrap;pointer-events:none;text-shadow:0 1px 3px #000a;transform:translate(10px,-4px)}
+/* 展开后：地球完全居中，两侧信息压到边缘，中间留白让出地球 */
+.cf-hero-scroll[data-stage="mid"] .cf-hero-copy{opacity:0;pointer-events:none}
+
+/* 中段布局：地球居中，两侧信息收窄到边缘 */
+.cf-hero-pin{--p:0;position:relative}
+.cf-hero-scroll{--p:0}
+@media(min-width:1051px){
+ .cf-hero-scroll{height:240vh}
+ .cf-hero-pin{grid-template-columns:minmax(0,1fr);position:sticky;top:0}
+ .cf-hero-copy{position:absolute;left:40px;top:calc(50% - 90px);max-width:440px;opacity:calc(1 - var(--p)*2.4);transform:translateY(calc(var(--p) * -40px))}
+ .cf-globe-stage{position:absolute;left:50%;top:50%;width:min(72vh,700px);height:min(72vh,700px);
+  transform:translate(-50%,-50%) translateX(calc((1 - var(--p)) * (1 - var(--p)) * 22vw)) scale(calc(.88 + var(--p) * .26))}
+ .cf-rail-left{left:24px;width:270px}
+ .cf-rail-right{right:24px;width:290px}
+}
+
+/* 左侧标题重新排版：收紧留白，标题与副标题成组靠左下 */
+.cf-hero-copy{left:clamp(40px,6vw,120px)!important;top:auto!important;bottom:clamp(90px,14vh,160px)!important;transform:translateY(calc(var(--p) * -30px))!important;max-width:min(560px,44vw)!important}
+.cf-hero-title{font-size:clamp(44px,4.6vw,68px)!important;line-height:1.1!important;letter-spacing:-.055em!important}
+.cf-hero-description{font-size:clamp(15px,1.15vw,18px)!important;margin-top:22px!important;color:#9aadc4!important;line-height:1.75!important;max-width:430px!important}
+/* 图例随地球居中一起淡出，让地球主体完全居中 */
+.cf-globe-legend{opacity:calc(1 - var(--p,0) * 2.6);transition:opacity .2s}
+/* 中段时两侧信息压到边缘毛玻璃 */
+.cf-rail{background:transparent;backdrop-filter:none}
+.cf-chain-box,.cf-rail-right li{backdrop-filter:blur(10px);background:rgba(12,20,31,.72)}
+
+/* 城市标签：地球上的 HTML 叠加层，压暗克制 */
+.cf-city-tag{font-size:11px;color:#9fb6cf;letter-spacing:.02em;white-space:nowrap;text-shadow:0 1px 4px #000c,0 0 8px #0008;pointer-events:none;transform:translate(-50%,-50%)}
