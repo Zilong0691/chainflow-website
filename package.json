@@ -3,16 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "node scripts/build-globe.mjs && next dev",
-    "build": "node scripts/build-globe.mjs && next build",
+    "dev": "next dev",
+    "build": "next build",
     "start": "next start",
-    "test": "node test/standards.test.js && node test/pages.test.js && node --test test/marketing-demo.test.mjs"
+    "test": "node test/standards.test.js && node test/pages.test.js && node --test test/marketing-demo.test.mjs && node --test test/shared-globe.test.mjs"
   },
   "dependencies": {
     "@supabase/ssr": "^0.12.0",
     "@supabase/supabase-js": "^2.108.1",
     "d3-geo": "^3.1.1",
-    "globe.gl": "^2.46.2",
     "lucide-react": "^0.468.0",
     "next": "^14.2.18",
     "react": "^18.3.1",
