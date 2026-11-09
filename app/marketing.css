@@ -172,27 +172,27 @@ html[lang=en] .cf-hero-title{font-size:clamp(44px,5.1vw,74px)}
 .cf-chains-globe{display:none}
 @media(max-width:1050px){.cf-chains-body{grid-template-columns:1fr;gap:18px}}
 
-/* 首页品牌与构图：白色品牌栏，文字与地球共用可见首屏高度。 */
+/* 首页品牌与构图：蓝灰毛玻璃品牌栏，文字与地球共用可见首屏高度。 */
 @font-face{font-family:"ChainFlow Rounded";src:url("/fonts/chainflow-rounded.woff") format("woff");font-weight:400;font-style:normal;font-display:swap}
-.cf-site{--cf-nav-height:76px}
-.cf-nav{background:#fff;color:#172b46;border-bottom:1px solid #e7ecf1;backdrop-filter:none}
+.cf-site{--cf-nav-height:68px;background:#080c13 url("/marketing/starfield.svg") center top / 1920px 1200px repeat}
+.cf-nav{background:linear-gradient(105deg,rgba(165,186,209,.78),rgba(115,145,178,.62));color:#172b46;border-bottom:1px solid rgba(208,223,239,.22);backdrop-filter:blur(24px) saturate(.8);-webkit-backdrop-filter:blur(24px) saturate(.8)}
 .cf-nav-inner{height:var(--cf-nav-height);width:calc(100% - clamp(40px,12vw,240px));max-width:none}
 .cf-wordmark{gap:12px}
-.cf-brand-icon{width:60px;height:60px;filter:none;object-fit:contain}
-.cf-brand-wordmark{display:block;width:142px;height:auto;mix-blend-mode:multiply}
-.cf-brand-cn{color:#64748b;font-size:15px;margin-left:4px}
-.cf-lang,.cf-menu{color:#33465e}
+.cf-brand-icon{width:56px;height:56px;filter:none;object-fit:contain}
+.cf-brand-wordmark{display:block;width:142px;height:auto}
+.cf-brand-cn{color:#263b55;font-size:15px;margin-left:4px}
+.cf-lang,.cf-menu{color:#172b46}
 .cf-lang:hover{color:#145ac4}
 .cf-nav .cf-button{background:#235fbb;color:#fff;border-radius:8px}
 .cf-nav .cf-button:hover{background:#194b9a;transform:none}
 /* 没有导航条目时，不显示无内容的菜单按钮。 */
 .cf-nav nav:empty,.cf-menu{display:none}
-.cf-hero-scroll{position:relative;height:240svh;--p:0}
+.cf-hero-scroll{position:relative;height:240svh;--p:0;background:linear-gradient(90deg,rgba(8,12,19,.68),rgba(8,12,19,.08) 70%)}
 .cf-hero-pin{position:sticky;top:var(--cf-nav-height);height:calc(100svh - var(--cf-nav-height));display:block;padding:0;overflow:hidden}
 .cf-hero-inner{display:contents}
 .cf-hero-copy{position:absolute;left:clamp(40px,6vw,120px);top:44%;bottom:auto;max-width:none;padding:0;opacity:calc(1 - var(--p)*2.4);transform:translateY(calc(-50% - var(--p)*30px))}
-.cf-site .cf-hero-title{font-family:"ChainFlow Rounded","Arial Rounded MT Bold","PingFang SC",sans-serif;font-size:clamp(50px,4.8vw,76px);font-weight:400;line-height:1.22;letter-spacing:.015em!important}
-.cf-line-mask{display:block}
+.cf-site .cf-hero-title{font-family:"ChainFlow Rounded","Arial Rounded MT Bold","PingFang SC",sans-serif;font-size:clamp(38px,3.35vw,60px);font-weight:400;line-height:1.35;letter-spacing:.025em!important;white-space:nowrap}
+.cf-line-mask{display:inline-block}
 .cf-line-mask+.cf-line-mask{margin-left:0}
 .cf-hero-description{font-size:clamp(14px,1.1vw,17px);margin:24px 0 0!important;color:#a9b8cb;line-height:1.8;max-width:none;white-space:nowrap}
 html[lang="en"] .cf-hero-description{white-space:normal;max-width:430px}
@@ -211,7 +211,7 @@ html[lang="en"] .cf-hero-description{white-space:normal;max-width:430px}
  .cf-hero-pin{position:relative;top:auto;height:auto;min-height:calc(100svh - var(--cf-nav-height));padding:48px 32px 20px;display:flex;flex-direction:column}
  .cf-hero-inner{display:flex;flex-direction:column;width:100%}
  .cf-hero-copy{position:relative;left:auto;top:auto;max-width:none;width:100%;opacity:1;transform:none}
- .cf-site .cf-hero-title{font-size:clamp(46px,6vw,62px)}
+ .cf-site .cf-hero-title{font-size:clamp(36px,5vw,52px)}
  .cf-hero-description{font-size:16px;white-space:normal;max-width:620px}
  .cf-globe-stage{position:relative;left:auto;top:auto;width:min(68vw,520px);height:min(68vw,520px);align-self:center;transform:none;margin-top:4px}
  .cf-rail{display:none}
@@ -227,7 +227,8 @@ html[lang="en"] .cf-hero-description{white-space:normal;max-width:430px}
  .cf-nav-actions>.cf-button svg{display:none}
  .cf-nav-inner{width:calc(100% - 28px);gap:10px}
  .cf-hero-pin{padding:42px 24px 16px}
- .cf-site .cf-hero-title{font-size:clamp(44px,10vw,62px)}
+ .cf-site .cf-hero-title{font-size:clamp(38px,9.5vw,52px);white-space:normal}
+ .cf-line-mask{display:block}
  .cf-hero-description{font-size:15px;margin-top:20px!important;max-width:100%}
  .cf-globe-stage{width:min(100%,440px);height:clamp(300px,90vw,440px);margin-top:18px}
  .cf-earth-credit{right:0;font-size:9px!important}
@@ -236,3 +237,7 @@ html[lang="en"] .cf-hero-description{white-space:normal;max-width:430px}
 
 /* 城市标签：地球上的 HTML 叠加层，压暗克制 */
 .cf-city-tag{font-size:11px;color:#9fb6cf;letter-spacing:.02em;white-space:nowrap;text-shadow:0 1px 4px #000c,0 0 8px #0008;pointer-events:none;transform:translate(-50%,-50%)}
+
+/* 英文保持适当行长，不因单行中文规则挤压地球。 */
+html[lang="en"] .cf-hero-title{white-space:normal;max-width:540px}
+html[lang="en"] .cf-line-mask{display:block}
