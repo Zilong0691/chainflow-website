@@ -15,3 +15,10 @@ test('地球代理原样转发同一制品并核对摘要，不代理业务数�
  assert.equal((await api.projectGlobeAsset('globe-renderer.js',config)).status,503);
  assert.equal((await api.projectGlobeAsset('globe-renderer.js',{url:'https://evil.invalid',artificialOnly:true})).status,503);
 });
+
+test('带摘要的同版资源可缓存，版本清单仍每次核对',async t=>{
+ const body='{}',digest=createHash('sha256').update(body).digest('hex');const server=http.createServer((req,res)=>res.end(body));await new Promise(r=>server.listen(0,'127.0.0.1',r));t.after(()=>server.close());
+ const entry={url:`http://127.0.0.1:${server.address().port}`,artificialOnly:true};
+ const asset=await api.projectGlobeAsset('world-land.geojson',entry,{preview:true,digest});assert.match(asset.headers.get('cache-control'),/immutable/);
+ const manifest=await api.projectGlobeAsset('manifest.json',entry,{preview:true});assert.equal(manifest.headers.get('cache-control'),'no-store');
+});
