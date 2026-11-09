@@ -62,21 +62,14 @@ export function MarketingGlobe({lang,risks=[],activeId='',onPick,hoverId='',onHo
       .showAtmosphere(true);
     globe.current=g;
 
-    // 城市与港口标注：按方位错开，东亚密集区用放射排布避免叠字。
-    const OFFSET:Record<string,[number,number]>={
-      '上海':[-52,-6],'苏州':[-14,-30],'深圳':[-26,40],'台北':[58,20],
-      '首尔':[10,-26],'东京':[34,-18],'釜山港':[96,-58],'深圳港':[-124,40],
-      '上海港':[-130,-46],'香港港':[-38,74],'新加坡港':[-58,-40],'新加坡':[26,32],
-      '慕尼黑':[-20,-18],'埃因霍温':[-46,-4],'鹿特丹港':[-8,-30]
-    };
+    // 锚点严格落在经纬度投影处，仅在旁边摆放文字，不移动地理位置。
     const makeTag=(text:string,variant:string,name:string)=>{
       const div=document.createElement('div');
       div.className='cf-city-tag '+variant;
-      div.textContent=text;
-      const [dx,dy]=OFFSET[name]||[0,0];
-      // globe.gl 每帧会覆写 transform，用 margin 做偏移才稳定。
-      div.style.marginLeft=`${dx}px`;
-      div.style.marginTop=`${dy}px`;
+      div.dataset.place=name;
+      const dot=document.createElement('i');dot.className='cf-city-anchor';
+      const label=document.createElement('span');label.textContent=text;
+      div.append(dot,label);
       return div;
     };
     const labelData=[
@@ -86,6 +79,7 @@ export function MarketingGlobe({lang,risks=[],activeId='',onPick,hoverId='',onHo
     g.htmlElementsData(labelData)
      .htmlLat('lat').htmlLng('lng').htmlAltitude(.008)
      .htmlElement((d:any)=>d.__el);
+    for(const d of labelData){d.__el.dataset.lat=String(d.lat);d.__el.dataset.lng=String(d.lng);}
 
     // 标签防重叠：每帧后按优先级剔除互相遮挡的标签，城市优先于港口。
     let culling=false;
@@ -94,12 +88,12 @@ export function MarketingGlobe({lang,risks=[],activeId='',onPick,hoverId='',onHo
         culling=false;
         const boxes:{el:HTMLElement;rect:DOMRect;priority:number}[]=[];
         for(const d of labelData){
-          const el=d.__el as HTMLElement;
-          if(!el.isConnected)continue;
+          const anchor=d.__el as HTMLElement,el=anchor.querySelector('span')!;
+          if(!anchor.isConnected)continue;
           el.style.visibility='';
           const rect=el.getBoundingClientRect();
           if(rect.width===0)continue;
-          boxes.push({el,rect,priority:el.classList.contains('is-city')?2:1});
+          boxes.push({el,rect,priority:anchor.classList.contains('is-city')?2:1});
         }
         boxes.sort((a,b)=>b.priority-a.priority);
         const shown:DOMRect[]=[];
@@ -118,7 +112,7 @@ export function MarketingGlobe({lang,risks=[],activeId='',onPick,hoverId='',onHo
     g.heatmapsData([HUBS.map(h=>({lat:h.lat,lng:h.lng,weight:h.size}))])
      .heatmapPointLat('lat').heatmapPointLng('lng')
      .heatmapPointWeight((d:any)=>d.weight||.3)
-     .heatmapTopAltitude(.10)
+     .heatmapTopAltitude(.012)
      .heatmapBandwidth(2.0)
      .heatmapColorSaturation(.9)
      .heatmapBaseAltitude(.002);

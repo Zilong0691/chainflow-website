@@ -175,7 +175,7 @@ html[lang=en] .cf-hero-title{font-size:clamp(44px,5.1vw,74px)}
 /* 首页品牌与构图：蓝灰毛玻璃品牌栏，文字与地球共用可见首屏高度。 */
 @font-face{font-family:"ChainFlow Rounded";src:url("/fonts/chainflow-rounded.woff") format("woff");font-weight:400;font-style:normal;font-display:swap}
 .cf-site{--cf-nav-height:68px;background:#080c13 url("/marketing/starfield.svg") center top / 1920px 1200px repeat}
-.cf-nav{background:linear-gradient(105deg,rgba(165,186,209,.78),rgba(115,145,178,.62));color:#172b46;border-bottom:1px solid rgba(208,223,239,.22);backdrop-filter:blur(24px) saturate(.8);-webkit-backdrop-filter:blur(24px) saturate(.8)}
+.cf-nav{background:linear-gradient(105deg,rgba(224,237,247,.94),rgba(194,216,235,.88));color:#172b46;border-bottom:1px solid rgba(208,223,239,.22);backdrop-filter:blur(24px) saturate(.8);-webkit-backdrop-filter:blur(24px) saturate(.8)}
 .cf-nav-inner{height:var(--cf-nav-height);width:calc(100% - clamp(40px,12vw,240px));max-width:none}
 .cf-wordmark{gap:12px}
 .cf-brand-icon{width:56px;height:56px;filter:none;object-fit:contain}
@@ -236,7 +236,9 @@ html[lang="en"] .cf-hero-description{white-space:normal;max-width:430px}
 }
 
 /* 城市标签：地球上的 HTML 叠加层，压暗克制 */
-.cf-city-tag{font-size:11px;color:#9fb6cf;letter-spacing:.02em;white-space:nowrap;text-shadow:0 1px 4px #000c,0 0 8px #0008;pointer-events:none;transform:translate(-50%,-50%)}
+.cf-city-tag{width:0;height:0;pointer-events:none}
+.cf-city-anchor{position:absolute;left:-2px;top:-2px;width:4px;height:4px;border-radius:50%;background:#bce9ff;box-shadow:0 0 4px #4da5d8}
+.cf-city-tag span{position:absolute;left:6px;top:-7px;font-size:11px;color:#c2d9ec;letter-spacing:.02em;white-space:nowrap;text-shadow:0 1px 4px #000,0 0 8px #000}
 
 /* 英文保持适当行长，不因单行中文规则挤压地球。 */
 html[lang="en"] .cf-hero-title{white-space:normal;max-width:540px}

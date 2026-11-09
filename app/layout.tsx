@@ -5,7 +5,7 @@ import "./marketing.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://chainflowlab.com"),
-  icons: { icon: "/chainflow-mark-128.png" },
+  icons: { icon: "/brand/chainflow-favicon.png" },
   title: "ChainFlow 链流 | 供应链工作台",
   description:
     "让供应链，如水一般。连接 BOM、供料、价格与供应网络的供应链工作台。",
