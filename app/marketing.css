@@ -172,54 +172,67 @@ html[lang=en] .cf-hero-title{font-size:clamp(44px,5.1vw,74px)}
 .cf-chains-globe{display:none}
 @media(max-width:1050px){.cf-chains-body{grid-template-columns:1fr;gap:18px}}
 
-/* 导航：半透明磨砂深色遮罩，保证 logo 边缘干净 */
-.cf-nav{position:sticky;top:0;z-index:60;background:rgba(8,12,19,.72);backdrop-filter:blur(14px) saturate(1.1);-webkit-backdrop-filter:blur(14px) saturate(1.1);border-bottom:1px solid rgba(255,255,255,.05)}
-.cf-brand-icon{filter:none}
-
-/* 首屏滚动驱动：地球随滚动从右侧移到中间，两侧淡入三流与风险 */
-.cf-hero-scroll{position:relative;height:220vh}
-.cf-hero-pin{position:sticky;top:0;height:100svh;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center;gap:0;padding:0 40px;overflow:hidden}
+/* 首页品牌与构图：白色品牌栏，文字与地球共用可见首屏高度。 */
+@font-face{font-family:"ChainFlow Rounded";src:url("/fonts/chainflow-rounded.woff") format("woff");font-weight:400;font-style:normal;font-display:swap}
+.cf-site{--cf-nav-height:76px}
+.cf-nav{background:#fff;color:#172b46;border-bottom:1px solid #e7ecf1;backdrop-filter:none}
+.cf-nav-inner{height:var(--cf-nav-height);width:calc(100% - clamp(40px,12vw,240px));max-width:none}
+.cf-wordmark{gap:12px}
+.cf-brand-icon{width:60px;height:60px;filter:none;object-fit:contain}
+.cf-brand-wordmark{display:block;width:142px;height:auto;mix-blend-mode:multiply}
+.cf-brand-cn{color:#64748b;font-size:15px;margin-left:4px}
+.cf-lang,.cf-menu{color:#33465e}
+.cf-lang:hover{color:#145ac4}
+.cf-nav .cf-button{background:#235fbb;color:#fff;border-radius:8px}
+.cf-nav .cf-button:hover{background:#194b9a;transform:none}
+/* 没有导航条目时，不显示无内容的菜单按钮。 */
+.cf-nav nav:empty,.cf-menu{display:none}
+.cf-hero-scroll{position:relative;height:240svh;--p:0}
+.cf-hero-pin{position:sticky;top:var(--cf-nav-height);height:calc(100svh - var(--cf-nav-height));display:block;padding:0;overflow:hidden}
 .cf-hero-inner{display:contents}
-.cf-hero-copy{grid-column:1;justify-self:start;max-width:520px;opacity:calc(1 - var(--p)*1.6);transform:translateX(calc(var(--p) * -60px))}
-.cf-rail{position:absolute;top:50%;transform:translateY(-50%);width:300px;opacity:0;pointer-events:none;transition:opacity .25s}
-.cf-rail-left{left:40px;opacity:calc((var(--p) - .55) * 2.2)}
-.cf-rail-right{right:40px;opacity:calc((var(--p) - .55) * 2.2)}
+.cf-hero-copy{position:absolute;left:clamp(40px,6vw,120px);top:44%;bottom:auto;max-width:none;padding:0;opacity:calc(1 - var(--p)*2.4);transform:translateY(calc(-50% - var(--p)*30px))}
+.cf-site .cf-hero-title{font-family:"ChainFlow Rounded","Arial Rounded MT Bold","PingFang SC",sans-serif;font-size:clamp(50px,4.8vw,76px);font-weight:400;line-height:1.22;letter-spacing:.015em!important}
+.cf-line-mask{display:block}
+.cf-line-mask+.cf-line-mask{margin-left:0}
+.cf-hero-description{font-size:clamp(14px,1.1vw,17px);margin:24px 0 0!important;color:#a9b8cb;line-height:1.8;max-width:none;white-space:nowrap}
+html[lang="en"] .cf-hero-description{white-space:normal;max-width:430px}
+.cf-globe-stage{position:absolute;left:50%;top:44%;width:min(76svh,760px);height:min(76svh,760px);transform:translate(-50%,-50%) translateX(calc((1 - var(--p)) * (1 - var(--p)) * 24vw)) scale(calc(.92 + var(--p)*.18))}
+.cf-globe-stage .cf-globe-wrap{width:100%;height:100%;margin:0}
+.cf-globe-legend{opacity:calc(1 - var(--p) * 2.6);transition:opacity .2s}
+.cf-rail{position:absolute;top:48%;transform:translateY(-50%);padding:0;pointer-events:none;background:transparent;backdrop-filter:none}
+.cf-rail-left{left:24px;width:270px;opacity:calc((var(--p) - .55) * 2.2)}
+.cf-rail-right{right:24px;width:290px;opacity:calc((var(--p) - .55) * 2.2)}
 .cf-hero-scroll[data-ready="1"] .cf-rail{pointer-events:auto}
-@media(max-width:1050px){
- .cf-hero-scroll{height:180vh}
- .cf-hero-pin{grid-template-columns:1fr;padding:0 20px}
- .cf-globe-stage{grid-column:1;grid-row:2;height:44svh;max-width:100%;transform:translateY(calc(var(--p) * -6vh)) scale(calc(1 + var(--p)*.12))}
- .cf-rail{width:auto;left:16px;right:16px;width:auto}
- .cf-rail-left{top:auto;bottom:calc(46% + 12px);transform:none}
- .cf-rail-right{top:auto;bottom:16px;transform:none}
-}
-
-/* 城市标签：低亮度小字，随地球投影定位 */
-.cf-city-label{position:absolute;left:0;top:0;font-size:10.5px;color:#8fa8c4;letter-spacing:.02em;white-space:nowrap;pointer-events:none;text-shadow:0 1px 3px #000a;transform:translate(10px,-4px)}
-/* 展开后：地球完全居中，两侧信息压到边缘，中间留白让出地球 */
-.cf-hero-scroll[data-stage="mid"] .cf-hero-copy{opacity:0;pointer-events:none}
-
-/* 中段布局：地球居中，两侧信息收窄到边缘 */
-.cf-hero-pin{position:relative}
-@media(min-width:1051px){
- .cf-hero-scroll{height:240vh}
- .cf-hero-pin{grid-template-columns:minmax(0,1fr);position:sticky;top:0}
- .cf-hero-copy{position:absolute;left:40px;top:calc(50% - 90px);max-width:440px;opacity:calc(1 - var(--p)*2.4);transform:translateY(calc(var(--p) * -40px))}
- .cf-globe-stage{position:absolute;left:50%;top:50%;width:min(72vh,700px);height:min(72vh,700px);
-  transform:translate(-50%,-50%) translateX(calc((1 - var(--p)) * (1 - var(--p)) * 22vw)) scale(calc(.88 + var(--p) * .26))}
- .cf-rail-left{left:24px;width:270px}
- .cf-rail-right{right:24px;width:290px}
-}
-
-/* 左侧标题重新排版：收紧留白，标题与副标题成组靠左下 */
-.cf-hero-copy{left:clamp(40px,6vw,120px)!important;top:auto!important;bottom:clamp(90px,14vh,160px)!important;transform:translateY(calc(var(--p) * -30px))!important;max-width:min(560px,44vw)!important}
-.cf-hero-title{font-size:clamp(44px,4.6vw,68px)!important;line-height:1.1!important;letter-spacing:-.055em!important}
-.cf-hero-description{font-size:clamp(15px,1.15vw,18px)!important;margin-top:22px!important;color:#9aadc4!important;line-height:1.75!important;max-width:430px!important}
-/* 图例随地球居中一起淡出，让地球主体完全居中 */
-.cf-globe-legend{opacity:calc(1 - var(--p,0) * 2.6);transition:opacity .2s}
-/* 中段时两侧信息压到边缘毛玻璃 */
-.cf-rail{background:transparent;backdrop-filter:none}
 .cf-chain-box,.cf-rail-right li{backdrop-filter:blur(10px);background:rgba(12,20,31,.72)}
+@media(max-width:1050px){
+ .cf-site{--cf-nav-height:72px}
+ .cf-nav-inner{width:calc(100% - 40px)}
+ .cf-hero-scroll{height:auto}
+ .cf-hero-pin{position:relative;top:auto;height:auto;min-height:calc(100svh - var(--cf-nav-height));padding:48px 32px 20px;display:flex;flex-direction:column}
+ .cf-hero-inner{display:flex;flex-direction:column;width:100%}
+ .cf-hero-copy{position:relative;left:auto;top:auto;max-width:none;width:100%;opacity:1;transform:none}
+ .cf-site .cf-hero-title{font-size:clamp(46px,6vw,62px)}
+ .cf-hero-description{font-size:16px;white-space:normal;max-width:620px}
+ .cf-globe-stage{position:relative;left:auto;top:auto;width:min(68vw,520px);height:min(68vw,520px);align-self:center;transform:none;margin-top:4px}
+ .cf-rail{display:none}
+ .cf-globe-legend{display:none}
+}
+@media(max-width:760px){
+ .cf-site{--cf-nav-height:68px}
+ .cf-brand-icon{width:48px;height:48px}
+ .cf-brand-wordmark{width:116px}
+ .cf-wordmark{gap:7px}
+ .cf-nav-actions{gap:10px}
+ .cf-nav-actions>.cf-button{display:inline-flex;font-size:12px;min-height:36px;padding:7px 10px;gap:5px}
+ .cf-nav-actions>.cf-button svg{display:none}
+ .cf-nav-inner{width:calc(100% - 28px);gap:10px}
+ .cf-hero-pin{padding:42px 24px 16px}
+ .cf-site .cf-hero-title{font-size:clamp(44px,10vw,62px)}
+ .cf-hero-description{font-size:15px;margin-top:20px!important;max-width:100%}
+ .cf-globe-stage{width:min(100%,440px);height:clamp(300px,90vw,440px);margin-top:18px}
+ .cf-earth-credit{right:0;font-size:9px!important}
+ .cf-globe-actions{right:0;bottom:40px}
+}
 
 /* 城市标签：地球上的 HTML 叠加层，压暗克制 */
 .cf-city-tag{font-size:11px;color:#9fb6cf;letter-spacing:.02em;white-space:nowrap;text-shadow:0 1px 4px #000c,0 0 8px #0008;pointer-events:none;transform:translate(-50%,-50%)}
