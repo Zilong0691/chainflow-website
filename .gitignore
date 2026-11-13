@@ -16,3 +16,10 @@ pnpm-debug.log*
 
 # 三维依赖由构建脚本确定性生成，不提交派生包
 public/marketing/globe-engine.js
+
+# 地球发布资源从锁定的本地输入构建
+public/globe-assets/
+public/earth-fallback.svg
+public/globe-renderer.js
+output/playwright/
+.playwright-cli/

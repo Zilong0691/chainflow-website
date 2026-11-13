@@ -243,3 +243,10 @@ html[lang="en"] .cf-hero-description{white-space:normal;max-width:430px}
 /* 英文保持适当行长，不因单行中文规则挤压地球。 */
 html[lang="en"] .cf-hero-title{white-space:normal;max-width:540px}
 html[lang="en"] .cf-line-mask{display:block}
+
+/* 地球首帧确认后才撤下静态兜底，绘制中断时自动恢复。 */
+.cf-earth-fallback{inset:0;left:0;top:0;width:100%;height:100%;object-fit:contain;border-radius:0;z-index:0;opacity:1;transition:opacity .25s ease}
+.cf-globe canvas{position:relative;z-index:1}
+.cf-globe-wrap[data-ready="1"] .cf-earth-fallback{opacity:0}
+.cf-globe-actions button:disabled{opacity:.4;cursor:default}
+.cf-sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}

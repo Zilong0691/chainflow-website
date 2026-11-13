@@ -1,0 +1,2 @@
+# 通用渲染器按摘要锁定，保留第三方着色器的原始格式。
+lib/globe/globe-renderer.js -whitespace
