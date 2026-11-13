@@ -1,0 +1,36 @@
+name: 地球发布验证
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm test
+      - run: npm run build
+      - run: npx --yes --package=@playwright/cli@0.1.24 playwright-cli install-browser chrome
+      - name: 验证故障恢复
+        run: |
+          npm run start -- --hostname 127.0.0.1 --port 3146 > /tmp/globe-preview.log 2>&1 &
+          npx --yes --package=@playwright/cli@0.1.24 playwright-cli -s=release open http://127.0.0.1:3146 --browser chrome
+          npx --yes --package=@playwright/cli@0.1.24 playwright-cli -s=release run-code --filename scripts/probe-globe-browser.js
+          npx --yes --package=@playwright/cli@0.1.24 playwright-cli -s=release run-code --filename scripts/check-globe-recovery.js
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: globe-release
+          path: |
+            output/playwright/
+            .playwright-cli/
+          retention-days: 7
