@@ -1,0 +1,45 @@
+name: 官网地球健康检查
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '17,47 * * * *'
+permissions:
+  contents: read
+concurrency:
+  group: globe-health
+  cancel-in-progress: false
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - name: 核对线上资源完整性
+        run: npm run monitor:globe
+      - name: 准备浏览器
+        run: npx --yes --package=@playwright/cli@0.1.24 playwright-cli install-browser chrome
+      - name: 打开官网并检查真实首帧
+        run: |
+          npx --yes --package=@playwright/cli@0.1.24 playwright-cli -s=health open https://www.chainflowlab.com --browser chrome
+          npx --yes --package=@playwright/cli@0.1.24 playwright-cli -s=health run-code --filename scripts/probe-globe-browser.js
+      - name: 保存检查画面
+        if: always()
+        run: |
+          mkdir -p output/playwright
+          npx --yes --package=@playwright/cli@0.1.24 playwright-cli -s=health screenshot --filename output/playwright/health.png
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: globe-health
+          path: |
+            output/playwright/
+            .playwright-cli/
+          retention-days: 7
+      - name: 关闭检查浏览器
+        if: always()
+        run: npx --yes --package=@playwright/cli@0.1.24 playwright-cli -s=health close
